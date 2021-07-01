@@ -23,7 +23,7 @@
     
 - chat module
     - voice call
-    - text box (scan text, recog, import file)
+    - text box (scan text, recog, import file, format the text)
     - group chat
     - keyword from student - then use relavent answer
     
@@ -33,4 +33,6 @@
 problem statement
 - Teachers need to use the "traditional" way to do the data management like record marks on papers. 
 - Payment is still stick to pay in cash.
-- 
+- provide the username and password only is no longer safer and secure in nowadays, face id 才是王道
+- Students are not able to meet or ask questions about homework phyiscally during this Covid-19 pandemic.
+- Other social media app do not have too much font formatting features.
