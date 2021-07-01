@@ -1,0 +1,36 @@
+- user module
+    - log in/out
+    - register acc(face id) (mayb finger print)
+
+- academic module****
+    - (student) (mobile)
+        - view timetable, marks
+        - take attendance (with code)
+        
+    - (teacher)
+        - respond to students / set task reminder
+        - gv attendance (generate code)
+        - 
+        
+    - (admin) (web - for management)
+        - edit timetable, marks
+        - update information (event, discount)
+    
+- payment module
+    - debit / credit / online banking pay
+    - generate receipt
+    - calculate the fee
+    
+- chat module
+    - voice call
+    - text box (scan text, recog, import file)
+    - group chat
+    - keyword from student - then use relavent answer
+    
+- reward module
+    - calculate the reward point
+    
+problem statement
+- Teachers need to use the "traditional" way to do the data management like record marks on papers. 
+- Payment is still stick to pay in cash.
+- 
