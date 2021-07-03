@@ -32,7 +32,25 @@
     
 problem statement
 - Teachers need to use the "traditional" way to do the data management like record marks on papers. 
+- ***What would teacher prefer record data, the traditional way or the modern way ?
 - Payment is still stick to pay in cash.
 - provide the username and password only is no longer safer and secure in nowadays, face id 才是王道
 - Students are not able to meet or ask questions about homework phyiscally during this Covid-19 pandemic.
 - Other social media app do not have too much font formatting features.
+
+Target: 
+- Teacher
+    - Topic: A study on how mobile application / phone improves the work efficiency of teachers.
+    - P1: Most people nowadays lack the knowledge of using modern application to improve their work efficiency
+    - P2: 
+    - O1.1：To investigate how often do teachers update their knowledge on modern technologies.
+    - O1.2: To investigate what would teacher prefer record data, the traditional way or the modern way.
+
+- Student
+    - Topic: A study on the impact of mobile application / phone brings to the student.
+    - P1: Students rely more on mobile application in this modern world.
+    - O1.1: Can student survive without using mobile phone in a period of time? -> To investigate the frequency of mobile phone usage of student.
+    - O1.2: To investigate the propuse of student using the mobile phone.
+    
+    
+    
