@@ -1,0 +1,28 @@
+Idea:
+1. Ghost Emoji -> 👻
+2. auto arrange timetable
+3. take IC photo, get the text from the pic
+4. Hover subject image, text and description will display as block
+5. admin can add more button on the side navigation bar
+6. rating for subject (table: studentRating, stduentID+subjectID)
+7. add category entity
+8. add category for course: 
+    - language
+    - level
+    - price
+    - name
+    - image
+    - 
+9. account number for tutor
+
+Login page: 
+1. take IC photo, get the text from the pic
+
+Subject Page: 
+1. Hover subject image, text and description will display as block
+2. Order Icon, can add subject to the order list
+3. Click view in timetable, then show a timetable, ez for users to view and arrange the time slot
+
+Payment Page: 
+1. Need an order page
+2.
