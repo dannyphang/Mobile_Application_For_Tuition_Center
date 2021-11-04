@@ -1,0 +1,102 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="student.master.cs" Inherits="Tuition_Center_Application.common.MasterPage.student" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <%--side navigation bar--%>
+        <div class="sidebar">
+            <%--logo--%>
+            <div class="logo-details"> 
+              <i class='bx bxl-c-plus-plus icon'></i>
+                <div class="logo_name">Authentic Education Center</div>
+                <i class='bx bx-menu' id="btn" ></i>
+            </div>
+            <ul class="nav-list">
+                <li>
+                    <i class='bx bx-search' ></i>
+                    <input type="text" placeholder="Search...">
+                    <span class="tooltip">Search</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-home'></i>
+                        <span class="links_name">Home</span>
+                    </a>
+                    <span class="tooltip">Home</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-book-content'></i>
+                        <span class="links_name">Timetable</span>
+                    </a>
+                    <span class="tooltip">Timetable</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-user' ></i>
+                        <span class="links_name">Students</span>
+                    </a>
+                    <span class="tooltip">Students</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-phone' ></i>
+                        <span class="links_name">Classroom</span>
+                    </a>
+                    <span class="tooltip">Classroom</span>
+                </li>
+                <li class="profile">
+                    <a href="../home.aspx" onclick="signout_confirm()">
+                        <div class="profile-details">
+                            <img id="profile_img2" src=".." runat="server" alt="profileImg">
+                            <div class="name_job">
+                                <asp:Label ID="profile_name" runat="server" Text="Label" CssClass="name">DannyPhang</asp:Label>
+                            </div>
+                        </div>
+                        <i class='bx bx-log-out' id="log_out" ></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <%--content--%>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+    <%-------------------------------------JavaScript------------------------------------%>
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
+        let searchBtn = document.querySelector(".bx-search");
+
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+            menuBtnChange();//calling the function(optional)
+        });
+
+        searchBtn.addEventListener("click", () => { // Sidebar open when you click on the search iocn
+            sidebar.classList.toggle("open");
+            menuBtnChange(); //calling the function(optional)
+        });
+
+        // following are the code to change sidebar button(optional)
+        function menuBtnChange() {
+            if (sidebar.classList.contains("open")) {
+                closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+            } else {
+                closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
+            }
+        }
+    </script>
+</body>
+</html>

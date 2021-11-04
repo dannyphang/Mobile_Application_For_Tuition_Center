@@ -1,0 +1,108 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="staff.master.cs" Inherits="Tuition_Center_Application.common.MasterPage.staff" %>
+
+<!DOCTYPE html>
+<%@ Register Src="~/common/cursor.ascx" TagPrefix="CURSOR" TagName="POINTER"%>
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="~/css/side_nav.css" />
+    <link rel="stylesheet" href="~/css/staff_master.css" />
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <CURSOR:POINTER ID="cursorcontrol" runat="server" />
+    <form runat="server">
+        <div class="sidebar">
+            <%--logo--%>
+            <div class="logo-details"> 
+              <i class='bx bxl-c-plus-plus icon'></i>
+                <div class="logo_name">Authentic Education Center</div>
+                <i class='bx bx-menu' id="btn" ></i>
+            </div>
+            <ul class="nav-list">
+                <li>
+                    <i class='bx bx-search' ></i>
+                    <input type="text" placeholder="Search...">
+                    <span class="tooltip">Search</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-home'></i>
+                        <span class="links_name">Home</span>
+                    </a>
+                    <span class="tooltip">Home</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-book-content'></i>
+                        <span class="links_name">Timetable</span>
+                    </a>
+                    <span class="tooltip">Timetable</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-user' ></i>
+                        <span class="links_name">Students</span>
+                    </a>
+                    <span class="tooltip">Students</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-phone' ></i>
+                        <span class="links_name">Classroom</span>
+                    </a>
+                    <span class="tooltip">Classroom</span>
+                </li>
+                <li class="profile">
+                    <a href="../home.aspx" onclick="signout_confirm()">
+                        <div class="profile-details">
+                            <img id="profile_img2" src=".." runat="server" alt="profileImg">
+                            <div class="name_job">
+                                <asp:Label ID="profile_name" runat="server" Text="Label" CssClass="name">DannyPhang</asp:Label>
+                            </div>
+                        </div>
+                        <i class='bx bx-log-out' id="log_out" ></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <%--content--%>
+        <section>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </section>
+    </form>
+    
+    <!----------------------------------------Javascript----------------------------------------------->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!--add active class in selected list item-->
+    <script>
+        let list = document.querySelectorAll('.list');
+        for (let i = 0; i < list.length; i++) {
+
+            list[i].onclick = function(){
+                let j = 0;
+                while (j < list.length) {
+                    list[j++].className = 'list';
+                }
+                list[i].className = 'list active';
+            }
+        }
+    </script>
+    <!--sign out confirm alert-->
+    <script>
+        function signout_confirm() {
+            var confirm = confirm("Are you sure to sign out?");
+            if (confirm) {
+                alert("Your account have been signed out!");
+            }
+        }
+    </script>
+    <script src="../../js/side_nav.js"></script>
+</body>
+</html>

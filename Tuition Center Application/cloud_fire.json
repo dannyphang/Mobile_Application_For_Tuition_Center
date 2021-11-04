@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "tuition-centre-application",
+  "private_key_id": "60f1837c34a1c89e4d025146c8f1969104c1c1b5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDqKRm+9xSLGTd3\nLQR76ywlkFihodhTooviahJpRMolct35+6gV3CAZO7jM6A3VLL4x1EdfAr5pthlj\nh+YY00u3LEInfdD+fbSb4IwZW17tVr5ox3+5cCMSGOaJT1i2vP82kOW0sD64LsJM\n9toxI0ygE8AKJP5sKq+BiQw8yBFagUxZiE8ctfrMmI7/KZodCvv9bzsdEU4g9HVO\n4+xTZyhi4ibhef49enWGR71+nXZnJHewPB9kg4A6O8uV0JDu8qdNo7mzMi+bQ8MO\nDVRq/4l3TDitxs1JIZUoekVwBjPMwtLbOVuMGlhiFqrjgn29PH5pzsmVYLI1nJxN\niiZze0SzAgMBAAECggEAR9btPa/bPyOw5yDKF+SaSjoDXy9iyaH8ba3iUSaYKC4a\nGShStMYwmN1AQKlPGSBdh7cbYHRci90g4+7dMq+csqli8G/Cz1kssIgPI3ZrZMBw\nsX/HWVKkh9hY3jaYPpQ0bn684pcR3vsFhIxVe67bQt9cUyBvaCseZkzwErPE0zFy\ns6Z7eYKfDAHugvKOpm3X4FaRYYG1uKQ4zAmg3B9isf+6te1rRT6WbF4mox05Pfld\nckbjgbmL2r+KI/RbJFuUkAy03RX0rW9dzAMtw47zTF1bX3fV/IH0KoP3LYgt9Sp7\nkkCfdjvNfU1V5IJomNfJlXeq2vhojspC7IpBdPsGOQKBgQD9W85Mm2xh/D5KnD5y\nGkfGk38qjM7Taw+wgTyQ5Eqny6v7HypeK3A/Lxu2YEf0A3Vvg7kNRyHWLyOrnSnb\nN09Id8XtZZrlTK+QjQ/2IO2DRrw45mChbvIuXLVl9SeXopjrq9JZivrinTvC3fRw\nLDHeqqrWdvknmjyNZkEW2JbHeQKBgQDsmg58gUyLMFQFkTfl/PaNwP6w8znWb2is\n1okP7Cn0yUTrJB/ggy4W58BlZaYbIpUl/AlG+9m/Odklf0TRK+5m/r7+XMUitG+a\nG3nnoosyx7x+wmYovcLjn3PzdPHNzzzIKqG2mYllPcGFr7+uh7xY7Uj7yaLv0ayL\nT/RcKskmiwKBgQDhOAURkHAuQl7VUEMqhzYaze8TUgxhYCCYVKoUWvwKYUFGgJPX\nFmI3qJbH7prHzXNNaBjONtdbYJgi7BjTKD2wO9iUiefBwgOnSd5Qe0Dnm6+iHRj1\nKHzcvcj7E4zYfM/XX+wjcSpI3GDNfyTVulOyjqBC+YvOqor9X1KpDmwqcQKBgA/S\n0csz3omkhsoEh0eDXn3mfWIaMjEMLGT6yBnfgoLTfx92wAcE3u07PJvLa4t/CZiL\nvZcYutxWIxal51VR6dTLjrx2OdzzUk9tLP732PVhdFLJ74kj/8e3X0rV9GH+TSNZ\n7ozGwfCaa7nkIh6rB0avP+VO++2sCS0cAMy1M9S3AoGBALXWkqwUQKgVlqmERrUA\nNNfrZMQBzD5UB3Gf9jGfTVh595G8Y1sKQhoc4IcGCzCFEjEMxje9OzOpkynLuHfU\nmw3JWKe5U+U/Ex5rafyH1CtPRxlsdDbYJNYgsJNqB29sYOJX9GjbSXOZzbumBNgV\nfnMJArxKrxBt6YK+4VtaJKjg\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-j6e4x@tuition-centre-application.iam.gserviceaccount.com",
+  "client_id": "106902639560736456087",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-j6e4x%40tuition-centre-application.iam.gserviceaccount.com"
+}
