@@ -20,3 +20,10 @@ function menuBtnChange() {
         closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
     }
 }
+// sign out confirm alert
+function signout_confirm() {
+    var confirm = confirm("Are you sure to sign out?");
+    if (confirm) {
+        alert("Your account have been signed out!");
+    }
+}

@@ -15,5 +15,7 @@ namespace Tuition_Center_Application.class_file
         public string level { get; set; }
         [FirestoreProperty]
         public float price { get; set; }
+        [FirestoreProperty]
+        public string language { get; set; }
     }
 }

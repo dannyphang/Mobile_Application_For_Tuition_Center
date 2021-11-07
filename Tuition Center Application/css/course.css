@@ -10,7 +10,7 @@
 
 /* body */
 .course_section {
-    min-height: 100vh;
+    min-height: 50vh;
     padding: 40px;
     display: flex;
     flex-wrap: wrap;
@@ -18,7 +18,7 @@
     align-items: center;
     background: hsl(220, 10%, 12%);
     font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
-    clear: both;
+    cursor: none;
 }
 
 /* .flip-card-container */
@@ -29,8 +29,8 @@
     --white-2: hsl(0, 0%, 80%);
     --dark: hsl(var(--hue), 25%, 10%);
     --grey: hsl(0, 0%, 50%);
-    width: 310px;
-    height: 500px;
+    width: 250px;
+    height: 400px;
     margin: 40px;
     perspective: 1000px;
 }
@@ -202,7 +202,7 @@ img {
     border-radius: 1000px;
     background: transparent;
     transition: .3s;
-    cursor: pointer;
+    cursor: none;
 }
 
 .book_btn:hover,
@@ -210,6 +210,7 @@ img {
     color: var(--primary);
     background: hsla(var(--hue), 25%, 10%, .2);
     border-color: currentColor;
+    cursor: none;
 }
 
 .book_btn:active {

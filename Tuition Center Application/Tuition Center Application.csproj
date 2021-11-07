@@ -144,6 +144,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="common\Admin\course.aspx" />
+    <Content Include="common\Admin\home.aspx" />
     <Content Include="common\course.aspx" />
     <Content Include="common\cursor.ascx" />
     <Content Include="common\footer.ascx" />
@@ -151,6 +153,7 @@
     <Content Include="common\Staff\home.aspx" />
     <Content Include="common\testing.aspx" />
     <Content Include="common\tutor.aspx" />
+    <Content Include="css\admin_course.css" />
     <Content Include="css\course.css" />
     <Content Include="css\footer.css" />
     <Content Include="css\login.css" />
@@ -160,6 +163,7 @@
     <Content Include="css\testing.css" />
     <Content Include="css\tutor.css" />
     <Content Include="img\profile.png" />
+    <Content Include="js\admin_course.js" />
     <Content Include="js\footer.js" />
     <Content Include="js\side_nav.js" />
     <Content Include="testing2.aspx" />
@@ -167,6 +171,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="class_file\Course.cs" />
+    <Compile Include="common\Admin\course.aspx.cs">
+      <DependentUpon>course.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Admin\course.aspx.designer.cs">
+      <DependentUpon>course.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Admin\home.aspx.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Admin\home.aspx.designer.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
     <Compile Include="common\course.aspx.cs">
       <DependentUpon>course.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -280,7 +298,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="common\Admin\" />
     <Folder Include="common\Student\" />
   </ItemGroup>
   <PropertyGroup>

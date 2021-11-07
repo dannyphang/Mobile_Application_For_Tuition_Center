@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - tuition_code</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'/> 
+    <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
+    <script src="https://cdn.jsdelivr.net/npm/kursor@0.0.14/dist/kursor.js"></script>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/side_nav.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
+</head>
+<body>
+    <div class="sidebar">
+        @* logo *@
+        <div class="logo-details"> 
+            <i class='bx bxl-c-plus-plus icon'></i>
+            <div class="logo_name">Authentic Education Center</div>
+            <i class='bx bx-menu' id="btn" ></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <i class='bx bx-search' ></i>
+                <input type="text" placeholder="Search...">
+                <span class="tooltip">Search</span>
+            </li>
+            <li>
+                <a asp-action="Main">
+                    <i class='bx bx-home'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="/Page/Guess/Course">
+                    <i class='bx bx-book-content'></i>
+                    <span class="links_name">Course</span>
+                </a>
+                <span class="tooltip">Course</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-user' ></i>
+                    <span class="links_name">Tutor</span>
+                </a>
+                <span class="tooltip">Tutor</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-phone' ></i>
+                    <span class="links_name">Contat Us</span>
+                </a>
+                <span class="tooltip">Contact Us</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxs-school' ></i>
+                    <span class="links_name">About Us</span>
+                </a>
+                <span class="tooltip">About Us</span>
+            </li>
+            <li>
+                <a href="./login.aspx">
+                    <i class='bx bx-log-in' id="log_out" ></i>
+                    <span class="links_name">Sign In</span>
+                </a>
+                <span class="tooltip">Sign In</span>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>About</h6>
+                    <p class="text-justify">
+                        The Authentic Education Center (AEC) – a well-established education learning center that has started its very first center in October 2017 in Penang.
+                    </p>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>TALK TO US</h6>
+                    <ul class="footer-links">
+                        <li><a href="#"><ion-icon name="location-outline" class="talk-icon"></ion-icon>55-3, Jalan Pisang Embun, Kampung Melayu, 11500 Ayer Itam, Pulau Pinang</a></li>
+                        <li><a href="#"><ion-icon name="call-outline" class="talk-icon"></ion-icon>+6016-507 9008</a></li>
+                        <li><a href="#"><ion-icon name="mail-outline" class="talk-icon"></ion-icon>info@authenticeducationcenter.com</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>OPERATING HOURS</h6>
+                    <ul class="footer-links">
+                        <li><a href="http://scanfcode.com/about/">About Us</a></li>
+                        <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
+                        <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
+                        <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
+                        <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by 
+                    <a href="#">Danny</a>.
+                    </p>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="#"><span><ion-icon name="logo-facebook"></ion-icon></span></a></li>
+                        <li><a class="twitter" href="#"><span><ion-icon name="logo-twitter"></ion-icon></span></a></li>
+                        <li><a class="instagram" href="#"><span><ion-icon name="logo-instagram"></ion-icon></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    
+    <script src="~/js/side_nav.js"></script>
+    <script src="~/js/cursor.js"></script>
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

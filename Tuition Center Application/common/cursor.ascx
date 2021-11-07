@@ -5,6 +5,6 @@
     new kursor({
         type: 1,
         removeDefaultCursor: true, 
-        color: '#000', 
+        color: '#90ff00',
     })
 </script>
