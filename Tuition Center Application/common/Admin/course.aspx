@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/admin.Master" AutoEventWireup="true" CodeBehind="course.aspx.cs" Inherits="Tuition_Center_Application.common.Admin.course" Async="true"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 	<link rel="stylesheet" href="../../css/admin_course.css" />
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
     <!-- CONTENT -->
 	<section id="content">
 		<!-- MAIN -->
@@ -34,7 +36,7 @@
 					<div class="head">
 						<h3>Courses</h3>
 						<i class='bx bx-search' ></i>
-						<i class='bx bx-list-ul'></i>
+						<%--<i class='bx bx-list-ul'></i>--%>
 					</div>
 					<table>
 						<thead>
@@ -77,5 +79,6 @@
 	</section>
 	<!-- CONTENT -->
 
+	<script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
 	<script src="../../js/side_nav.js"></script>
 </asp:Content>

@@ -8,7 +8,7 @@
 
     <%--content--%>
     <section>
-        <div class="category_section">
+        <%--<div class="category_section">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
@@ -40,7 +40,7 @@
                 </div>
                 <hr>
             </div>
-        </div>
+        </div>--%>
         <div class="course_section">
             <%foreach (var cr in course_var) {%>
                 <div>
