@@ -249,3 +249,4 @@ D:\Users\Danny\Documents\Tuition Center Application (FYP)\Tuition Center Applica
 D:\Users\Danny\Documents\Tuition Center Application (FYP)\Tuition Center Application\obj\Debug\Tuition Center Application.csproj.CoreCompileInputs.cache
 D:\Users\Danny\Documents\Tuition Center Application (FYP)\Tuition Center Application\obj\Debug\Tuition Center Application.dll
 D:\Users\Danny\Documents\Tuition Center Application (FYP)\Tuition Center Application\obj\Debug\Tuition Center Application.pdb
+D:\Users\Danny\Documents\Tuition Center Application (FYP)\Tuition Center Application\obj\Debug\Tuition Center Application.csproj.CopyComplete
