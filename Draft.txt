@@ -1,3 +1,20 @@
+------------------------------------------------------
+- documentation
+    chapter 3
+
+    dun use incremental model
+    use when start doing the FYP 
+    add UML
+
+    Chapter 4
+    - use ccase description
+
+    CHapter 1
+    - team 
+
+    submit in pdf also
+------------------------------------------------------
+
 Idea:
 1. Ghost Emoji -> 👻
 2. auto arrange timetable
