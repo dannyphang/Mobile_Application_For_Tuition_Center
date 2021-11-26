@@ -150,7 +150,10 @@
     <Content Include="common\cursor.ascx" />
     <Content Include="common\footer.ascx" />
     <Content Include="common\home.aspx" />
+    <Content Include="common\Staff\course.aspx" />
     <Content Include="common\Staff\home.aspx" />
+    <Content Include="common\Staff\profile.aspx" />
+    <Content Include="common\Staff\timetable.aspx" />
     <Content Include="common\testing.aspx" />
     <Content Include="common\tutor.aspx" />
     <Content Include="css\admin_course.css" />
@@ -161,16 +164,22 @@
     <Content Include="common\login.aspx" />
     <Content Include="css\staff_master.css" />
     <Content Include="css\testing.css" />
+    <Content Include="css\timetable.css" />
     <Content Include="css\tutor.css" />
     <Content Include="img\profile.png" />
     <Content Include="js\admin_course.js" />
     <Content Include="js\footer.js" />
     <Content Include="js\side_nav.js" />
+    <Content Include="js\timetable.js" />
+    <Content Include="js\timetable_util.js" />
     <Content Include="testing2.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="class_file\Course.cs" />
+    <Compile Include="class_file\Staff.cs" />
+    <Compile Include="class_file\Student.cs" />
+    <Compile Include="class_file\Datetime.cs" />
     <Compile Include="common\Admin\course.aspx.cs">
       <DependentUpon>course.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -241,12 +250,33 @@
     <Compile Include="common\MasterPage\student.Master.designer.cs">
       <DependentUpon>student.Master</DependentUpon>
     </Compile>
+    <Compile Include="common\Staff\course.aspx.cs">
+      <DependentUpon>course.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Staff\course.aspx.designer.cs">
+      <DependentUpon>course.aspx</DependentUpon>
+    </Compile>
     <Compile Include="common\Staff\home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="common\Staff\home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Staff\profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Staff\profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Staff\timetable.aspx.cs">
+      <DependentUpon>timetable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Staff\timetable.aspx.designer.cs">
+      <DependentUpon>timetable.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\testing.aspx.cs">
       <DependentUpon>testing.aspx</DependentUpon>

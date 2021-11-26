@@ -57,9 +57,12 @@
                                 </figure>
 
                                 <ul class="course_ul">
+                                    <li><%= cr.courseID %></li>
                                     <li><%= cr.courseName %></li>
                                     <li><%= cr.level %></li>
                                     <li>RM <%= cr.price %></li>
+                                    <%--<li><%= cr.date %></li>--%>
+                                    <li><%= cr.time %></li>
                                 </ul>
                             </div>
 

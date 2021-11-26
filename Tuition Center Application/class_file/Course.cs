@@ -9,6 +9,8 @@ namespace Tuition_Center_Application.class_file
     [FirestoreData]
     public class Course
     {
+        [FirestoreDocumentId]
+        public string courseID { get; set; }
         [FirestoreProperty]
         public string courseName { get; set; }
         [FirestoreProperty]
@@ -17,5 +19,9 @@ namespace Tuition_Center_Application.class_file
         public float price { get; set; }
         [FirestoreProperty]
         public string language { get; set; }
+        [FirestoreProperty]
+        public DateTime date { get; set; }
+        [FirestoreProperty]
+        public string time { get; set; }
     }
 }

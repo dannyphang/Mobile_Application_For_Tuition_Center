@@ -20,6 +20,15 @@ namespace Tuition_Center_Application.common
             database = util.firebase.get_database();
             //Dictionary<string, object> item = util.firebase.get_a_doc_snapAsync("Course", "1");
             //course_name.InnerText = 
+
+            //Course cr = new Course();
+
+            //string time = cr.date.ToString("HH:mm");
+
+            //cr.time = cr.date.ToString("HH:mm");
+
+            //var setter = database.Set("Course/" + )
+
             get_a_doc();
             
 
@@ -33,6 +42,10 @@ namespace Tuition_Center_Application.common
         async void get_a_doc()
         {
             QuerySnapshot snap = await util.firebase.get_doc_snap("Course");
+
+            //{
+            //    level += "hihi"; 
+            //};
 
             foreach (DocumentSnapshot docsnap in snap.Documents)
             {
