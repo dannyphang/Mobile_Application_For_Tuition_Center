@@ -21,16 +21,5 @@ namespace Tuition_Center_Application.class_file
         public string time_end { get; set; }
         [FirestoreProperty]
         public string day { get; set; }
-
-        public DateTime GetDate()
-        {
-            return date;
-        }
-
-        public void SetDate(Datetime date)
-        {
-            string date2 = date.ToString();
-
-        }
     }
 }

@@ -164,16 +164,19 @@
     <Content Include="common\login.aspx" />
     <Content Include="css\staff_master.css" />
     <Content Include="css\testing.css" />
+    <Content Include="css\testing2.css" />
     <Content Include="css\timetable.css" />
     <Content Include="css\tutor.css" />
     <Content Include="img\profile.png" />
     <Content Include="js\admin_course.js" />
     <Content Include="js\footer.js" />
     <Content Include="js\side_nav.js" />
+    <Content Include="js\testing.js" />
     <Content Include="js\timetable.js" />
     <Content Include="js\timetable_util.js" />
     <Content Include="testing2.aspx" />
     <Content Include="Web.config" />
+    <Content Include="testing.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="class_file\Course.cs" />
@@ -310,6 +313,13 @@
     <Compile Include="util\firebase.cs" />
     <Compile Include="util\string.cs" />
     <Compile Include="util\utility.cs" />
+    <Compile Include="testing.aspx.cs">
+      <DependentUpon>testing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testing.aspx.designer.cs">
+      <DependentUpon>testing.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="common\MasterPage\guess.Master" />

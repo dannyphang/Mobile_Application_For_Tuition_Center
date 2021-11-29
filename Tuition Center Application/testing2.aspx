@@ -1,65 +1,29 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/admin.Master" AutoEventWireup="true" CodeBehind="testing2.aspx.cs" Inherits="Tuition_Center_Application.testing2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/guess.Master" AutoEventWireup="true" CodeBehind="testing2.aspx.cs" Inherits="Tuition_Center_Application.testing2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <link rel="stylesheet" href=".././css/admin_course.css" type="text/css" />
+    <link rel="stylesheet" href=".././css/testing.css" type="text/css" />
 
-    <!-- CONTENT -->
-	<section id="content">
-		<!-- MAIN -->
-		<main>
-			<ul class="box-info">
-				<li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<h3>1020</h3>
-						<p>New Order</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group' ></i>
-					<span class="text">
-						<h3>2834</h3>
-						<p>Visitors</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<h3>$2543</h3>
-						<p>Total Sales</p>
-					</span>
-				</li>
-			</ul>
+    <div class="email" onclick="this.classList.add('expand')">
+    <div class="from">
+      <div class="from-contents">
+        <div class="name">+</div>
+      </div>
+    </div>
+    <div class="to">
+      <div class="to-contents">
+        <div class="top">
+          <div class="name-large">+</div>
+          <div class="x-touch" onclick="document.querySelector('.email').classList.remove('expand');event.stopPropagation();">
+            <div class="x">
+              <div class="line1"></div>
+              <div class="line2"></div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          
+        </div>
+      </div>
+    </div>
+  </div>    
 
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Courses</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-list-ul'></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</main>
-		<!-- MAIN -->
-	</section>
-	<!-- CONTENT -->
 </asp:Content>

@@ -12,6 +12,7 @@ namespace Tuition_Center_Application.common.Staff
     public partial class timetable : System.Web.UI.Page
     {
         FirestoreDb database;
+        protected List<string> time_list = new List<string>();
         protected List<Datetime> datetime_mon_list = new List<Datetime>();
         protected List<Datetime> datetime_tue_list = new List<Datetime>();
         protected List<Datetime> datetime_wed_list = new List<Datetime>();
@@ -22,8 +23,27 @@ namespace Tuition_Center_Application.common.Staff
         protected void Page_Load(object sender, EventArgs e)
         {
             database = util.firebase.get_database();
-
+            timetable_list();
             get_a_doc();
+        }
+
+        protected void timetable_list()
+        {
+            double time_start = 8.0;
+            double time_end = 20.0;
+
+            for (double i = time_start; i < time_end; i += 0.3)
+            {
+                int temp = (int)(i * 100);
+
+                if (temp - (Math.Floor(i) * 100) == 60)
+                { 
+                    i = Math.Ceiling(i);
+                }
+
+                time_list.Add(i.ToString("00.00").Replace(".", ":"));
+
+            }
         }
 
         async void get_a_doc()

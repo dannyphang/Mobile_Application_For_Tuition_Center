@@ -1,4 +1,4 @@
-﻿import 'boxicons'
+﻿//import 'boxicons'
 
 let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.querySelector("#btn");

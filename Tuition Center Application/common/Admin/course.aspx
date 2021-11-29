@@ -79,6 +79,5 @@
 	</section>
 	<!-- CONTENT -->
 
-	<script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
-	<script src="../../js/side_nav.js"></script>
+	<%--<script src="../../js/side_nav.js"></script>--%>
 </asp:Content>
