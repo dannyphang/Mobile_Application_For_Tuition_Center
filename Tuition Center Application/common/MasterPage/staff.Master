@@ -7,7 +7,6 @@
     <title></title>
     <link rel="stylesheet" href="~/css/side_nav.css" />
     <link rel="stylesheet" href="~/css/staff_master.css" />
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <CURSOR:POINTER ID="cursorcontrol" runat="server" />
@@ -15,40 +14,40 @@
         <div class="sidebar">
             <%--logo--%>
             <div class="logo-details"> 
-              <i class='bx bxl-c-plus-plus icon'></i>
+                <i><ion-icon name="heart" class="icon"></ion-icon></i>
                 <div class="logo_name">Authentic Education Center</div>
-                <i class='bx bx-menu' id="btn" ></i>
+                <i><ion-icon name="menu-outline" id="btn" class="menu_icon" onclick="menuBtnChange()"></ion-icon></i>
             </div>
             <ul class="nav-list">
                 <li>
-                    <i class='bx bx-search' ></i>
+                    <i class="search_icon"><ion-icon name="search-outline" id="search_btn"></ion-icon></i>
                     <input type="text" placeholder="Search...">
                     <span class="tooltip">Search</span>
                 </li>
                 <li>
                     <a href="#">
-                        <i class='bx bx-home'></i>
+                        <i><ion-icon name="home-outline"></ion-icon></i>
                         <span class="links_name">Home</span>
                     </a>
                     <span class="tooltip">Home</span>
                 </li>
                 <li>
                     <a href="#">
-                        <i class='bx bx-book-content'></i>
+                        <i><ion-icon name="calendar-outline"></ion-icon></i>
                         <span class="links_name">Timetable</span>
                     </a>
                     <span class="tooltip">Timetable</span>
                 </li>
                 <li>
                     <a href="#">
-                        <i class='bx bx-user' ></i>
+                        <i><ion-icon name="person-outline"></ion-icon></i>
                         <span class="links_name">Students</span>
                     </a>
                     <span class="tooltip">Students</span>
                 </li>
                 <li>
                     <a href="#">
-                        <i class='bx bx-phone' ></i>
+                        <i><ion-icon name="school-outline"></ion-icon></i>
                         <span class="links_name">Classroom</span>
                     </a>
                     <span class="tooltip">Classroom</span>
@@ -61,7 +60,7 @@
                                 <asp:Label ID="profile_name" runat="server" Text="Label" CssClass="name">DannyPhang</asp:Label>
                             </div>
                         </div>
-                        <i class='bx bx-log-out' id="log_out" ></i>
+                        <i id="log_out"><ion-icon name="log-out-outline"></ion-icon></i>
                     </a>
                 </li>
             </ul>

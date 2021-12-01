@@ -28,7 +28,7 @@
             <div class="col-half">
                 <%--Level DDL--%>
                 <div class="input-group input-group-icon">
-                    <h4>Tutor</h4>
+                    <h4>Level</h4>
                     <div class="input-group">
                         <asp:DropDownList ID="level_ddl" runat="server"></asp:DropDownList>
                     </div>
@@ -71,11 +71,7 @@
             </div>
         </div>
         <div class="row">
-            <h4>Terms and Conditions</h4>
-            <div class="input-group">
-                <input id="terms" type="checkbox" />
-                <label for="terms">I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy.</label>
-            </div>
+            
         </div>
     </div>
 

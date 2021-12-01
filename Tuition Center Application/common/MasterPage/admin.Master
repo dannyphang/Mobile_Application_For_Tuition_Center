@@ -6,71 +6,60 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet" href="~/css/side_nav.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
     <CURSOR:POINTER ID="cursorcontrol" runat="server" />
-    <%--side navgation bar version 2--%>
     <div class="sidebar open">
         <%--logo--%>
         <div class="logo-details"> 
-            <i class='bx bxl-c-plus-plus icon'></i>
+            <i><ion-icon name="heart" class="icon"></ion-icon></i>
             <div class="logo_name">Authentic Education Center</div>
-            <i class='bx bx-menu-alt-right'></i>
+            <i><ion-icon name="menu-outline" id="btn" class="menu_icon" onclick="menuBtnChange()"></ion-icon></i>
         </div>
         <ul class="nav-list">
             <li>
-                <i class='bx bx-search' ></i>
+                <i class="search_icon"><ion-icon name="search-outline" id="search_btn"></ion-icon></i>
                 <input type="text" placeholder="Search...">
                 <span class="tooltip">Search</span>
             </li>
             <li>
                 <a href="./home.aspx">
-                    <i class='bx bx-home'></i>
+                    <i><ion-icon name="home-outline"></ion-icon></i>
                     <span class="links_name">Home</span>
                 </a>
                 <span class="tooltip">Home</span>
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bx-user'></i>
+                    <i><ion-icon name="person-outline"></ion-icon></i>
                     <span class="links_name">Student</span>
                 </a>
                 <span class="tooltip">Student</span>
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bx-user' ></i>
+                    <i><ion-icon name="people-outline"></ion-icon></i>
                     <span class="links_name">Staff</span>
                 </a>
                 <span class="tooltip">Staff</span>
             </li>
             <li>
                 <a href="./course.aspx">
-                    <i class='bx bx-book-content' ></i>
+                    <i><ion-icon name="book-outline"></ion-icon></i>
                     <span class="links_name">Course</span>
                 </a>
                 <span class="tooltip">Course</span>
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bxs-file-doc'></i>
+                    <i><ion-icon name="document-text-outline"></ion-icon></i>
                     <span class="links_name">Report</span>
                 </a>
                 <span class="tooltip">Report</span>
             </li>
             <li class="profile">
                     <a href="../../home.aspx" onclick="signout_confirm()">
-                        <div class="profile-details">
-                            <img id="profile_img2" src=".." runat="server" alt="profileImg">
-                            <div class="name_job">
-                                <asp:Label ID="profile_name" runat="server" Text="Label" CssClass="name">DannyPhang</asp:Label>
-                            </div>
-                        </div>
-                        <i class='bx bx-log-out' id="log_out" ></i>
+                        <i id="log_out"><ion-icon name="log-out-outline"></ion-icon></i>
                     </a>
                 </li>
         </ul>
@@ -88,7 +77,9 @@
     <%--<FOOTER:FOOTER ID="footercontrol" runat="server" />--%>
 
     <!--Javascript-->
-
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="../../js/side_nav.js"></script>
+    
 </body>
 </html>
