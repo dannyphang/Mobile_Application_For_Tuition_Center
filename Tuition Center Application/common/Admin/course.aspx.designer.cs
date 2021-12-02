@@ -33,15 +33,6 @@ namespace Tuition_Center_Application.common.Admin
         protected global::System.Web.UI.WebControls.TextBox name_text;
 
         /// <summary>
-        /// level_ddl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList level_ddl;
-
-        /// <summary>
         /// tutor_ddl control.
         /// </summary>
         /// <remarks>

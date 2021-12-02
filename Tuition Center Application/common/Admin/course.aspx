@@ -119,7 +119,11 @@
                                 <div class="input-group input-group-icon">
                                     <h4>Level</h4>
                                     <div class="input-group">
-                                        <asp:DropDownList ID="level_ddl" runat="server"></asp:DropDownList>
+                                        <select id="Select1">
+                                            <% foreach (var lv in level_list){ %>
+                                                <option><%= lv%></option>
+                                            <% } %> 
+                                        </select>
                                     </div>
                                 </div>
                             </div>

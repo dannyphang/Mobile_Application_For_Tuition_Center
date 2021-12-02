@@ -22,7 +22,14 @@ namespace Tuition_Center_Application.class_file
         [FirestoreProperty]
         public string day { get; set; }
         [FirestoreProperty]
-        public string time_start { get; set; }
+        public string time_start
+        {
+            get { return time_start; }
+            set
+            {
+                time_start = value;
+            }
+        }
         [FirestoreProperty]
         public string time_end { get; set; }
         [FirestoreProperty]
@@ -32,5 +39,7 @@ namespace Tuition_Center_Application.class_file
         public static string[] day_list = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         public static string[] duration_list = { "1 hour", "1.5 hour", "2 hours", "2.5 hours" };
         
+
+
     }
 }

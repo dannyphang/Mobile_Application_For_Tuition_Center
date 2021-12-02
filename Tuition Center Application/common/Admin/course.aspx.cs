@@ -20,7 +20,7 @@ namespace Tuition_Center_Application.common.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             database = util.firebase.get_database();
-            level_item();
+            //level_item();
             day_item();
             duration_item();
             get_a_doc();
@@ -39,11 +39,11 @@ namespace Tuition_Center_Application.common.Admin
 
         public void level_item()
         {
-            level_ddl.Items.Clear();
-            for (int i = 0; i < level_list.Length; i++)
-            {
-                level_ddl.Items.Add(level_list[i]);
-            }
+            //level_ddl.Items.Clear();
+            //for (int i = 0; i < level_list.Length; i++)
+            //{
+            //    level_ddl.Items.Add(level_list[i]);
+            //}
         }
 
         public void day_item()
@@ -75,7 +75,10 @@ namespace Tuition_Center_Application.common.Admin
 
             string language_value = Request.Form["language_value"];
             //name_text.Text = language_value;
-            Response.Write("<script>alert('" + level_ddl.SelectedValue + "')</script>");
+
+            //Response.Write("<script>alert('" + level_ddl.SelectedValue + "')</script>");
+            //System.Diagnostics.Debug.WriteLine(level_ddl.SelectedValue);
+
             //Course new_course = new Course
             //{
             //    courseName = name_text.Text,

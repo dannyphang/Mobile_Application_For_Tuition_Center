@@ -146,6 +146,7 @@
   <ItemGroup>
     <Content Include="common\Admin\course.aspx" />
     <Content Include="common\Admin\home.aspx" />
+    <Content Include="common\Admin\staff.aspx" />
     <Content Include="common\course.aspx" />
     <Content Include="common\cursor.ascx" />
     <Content Include="common\footer.ascx" />
@@ -181,7 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="class_file\Course.cs" />
-    <Compile Include="class_file\Staff.cs" />
+    <Compile Include="class_file\Tutor.cs" />
     <Compile Include="class_file\Student.cs" />
     <Compile Include="class_file\Datetime.cs" />
     <Compile Include="common\Admin\course.aspx.cs">
@@ -197,6 +198,13 @@
     </Compile>
     <Compile Include="common\Admin\home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Admin\staff.aspx.cs">
+      <DependentUpon>staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Admin\staff.aspx.designer.cs">
+      <DependentUpon>staff.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\course.aspx.cs">
       <DependentUpon>course.aspx</DependentUpon>
