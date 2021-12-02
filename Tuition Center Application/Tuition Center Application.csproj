@@ -157,6 +157,7 @@
     <Content Include="common\testing.aspx" />
     <Content Include="common\tutor.aspx" />
     <Content Include="css\admin_course.css" />
+    <Content Include="css\admin_staff.css" />
     <Content Include="css\course.css" />
     <Content Include="css\footer.css" />
     <Content Include="css\login.css" />

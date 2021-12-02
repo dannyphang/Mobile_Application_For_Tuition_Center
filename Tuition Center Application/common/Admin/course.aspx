@@ -212,7 +212,7 @@
                             </div>
                             <div class="col-half">
                                 <asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click"/>
-                                <asp:Button ID="submit_btn" runat="server" Text="Submit" CssClass="modal_btn" OnClientClick="get_language_value()" OnClick="submit_btn_Click"/>
+                                <asp:Button ID="submit_btn" runat="server" Text="Submit" CssClass="modal_btn" OnClick="submit_btn_Click"/>
                             </div>
                         </div>
                     </div>

@@ -6,9 +6,10 @@ using Google.Cloud.Firestore;
 
 namespace Tuition_Center_Application.class_file
 {
-    [FirestoreData]
     public class Staff
     {
+        [FirestoreDocumentId]
+        public string tutorID { get; set; }
         [FirestoreProperty]
         public string name { get; set; }
         [FirestoreProperty]
@@ -24,8 +25,8 @@ namespace Tuition_Center_Application.class_file
         [FirestoreProperty]
         public string phoneNo { get; set; }
         [FirestoreProperty]
-        public DateTime onBoardingDate { get; set; }
+        public string onBoardingDate { get; set; }
         [FirestoreProperty]
-        public int salary{ get; set; }
+        public float salary { get; set; }
     }
 }

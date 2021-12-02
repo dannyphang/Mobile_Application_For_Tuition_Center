@@ -71,21 +71,21 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void submit_btn_Click(object sender, EventArgs e)
         {
-            //DocumentReference doc = database.Collection("Course").Document("7");
+            DocumentReference doc = database.Collection("Course").Document("7");
 
             string language_value = Request.Form["language_value"];
-            name_text.Text = language_value;
-            // Response.Write("<script>alert('" + language_value + "')</script>");
+            //name_text.Text = language_value;
+            Response.Write("<script>alert('" + level_ddl.SelectedValue + "')</script>");
             //Course new_course = new Course
             //{
             //    courseName = name_text.Text,
-            //    level = level_ddl.SelectedValue,
+            //    level = level_ddl.SelectedValue, // *
             //    price = int.Parse(price_text.Text),
-            //    language = language_value,
-            //    day = day_ddl.SelectedValue,
+            //    language = language_value, // *
+            //    day = day_ddl.SelectedValue, // *
             //    time_start = hour_text.Text + ":" + min_text.Text,
             //    time_end = time_end_count(duration_str_to_float(duration_ddl.SelectedIndex), hour_text.Text, min_text.Text),
-            //    duration = duration_str_to_float(duration_ddl.SelectedIndex), 
+            //    duration = duration_str_to_float(duration_ddl.SelectedIndex), // *
             //};
 
             //doc.SetAsync(new_course);
@@ -115,34 +115,36 @@ namespace Tuition_Center_Application.common.Admin
             float time_start = float.Parse(time); // 9.45
             float time_end = -1;
 
+            int temp = (int)(time_start * 100) - (int)(Math.Floor(time_start) * 100);
+
             if (duration == 0)
             {
-                time_end = time_end + 1;
+                time_end += 1;
             }
             else if (duration == 1)
             {
                 time_end = (float)(time_start + 0.3);
 
-                if (time_end > 59) 
+                if (temp > 59) 
                 {
                     time_end = (float)(time_end - 0.6) + 1; // 9.75 - 0.60 + 1 = 10.15
                 }
             }
             else if (duration == 2)
             {
-                time_end = time_end + 2;
+                time_end += 2;
             }
             else if (duration == 3)
             {
                 time_end = (float)(time_start + 0.3);
 
-                if (time_end > 59)
+                if (temp > 59)
                 {
-                    time_end = (float)(time_end - 0.6) + 2; // 9.75 - 0.60 + 1 = 10.15
+                    time_end = (float)(time_end - 0.6) + 2; // 9.75 - 0.60 + 2 = 11.15
                 }
             }
 
-            return time_end.ToString().Replace(".", ":");
+            return time_end.ToString("00.00").Replace(".", ":");
         }
 
         void clear_data()
