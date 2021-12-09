@@ -11,9 +11,6 @@ allSideMenu.forEach(item=> {
 	})
 });
 
-
-
-
 // TOGGLE SIDEBAR
 const menuBar = document.querySelector('#content nav .bx.bx-menu');
 const sidebar = document.getElementById('sidebar');
@@ -21,12 +18,6 @@ const sidebar = document.getElementById('sidebar');
 menuBar.addEventListener('click', function () {
 	sidebar.classList.toggle('hide');
 })
-
-
-
-
-
-
 
 const searchButton = document.querySelector('#content nav form .form-input button');
 const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
@@ -44,10 +35,6 @@ searchButton.addEventListener('click', function (e) {
 	}
 })
 
-
-
-
-
 if(window.innerWidth < 768) {
 	sidebar.classList.add('hide');
 } else if(window.innerWidth > 576) {
@@ -55,15 +42,12 @@ if(window.innerWidth < 768) {
 	searchForm.classList.remove('show');
 }
 
-
 window.addEventListener('resize', function () {
 	if(this.innerWidth > 576) {
 		searchButtonIcon.classList.replace('bx-x', 'bx-search');
 		searchForm.classList.remove('show');
 	}
 })
-
-
 
 const switchMode = document.getElementById('switch-mode');
 
@@ -74,3 +58,18 @@ switchMode.addEventListener('change', function () {
 		document.body.classList.remove('dark');
 	}
 })
+
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			$('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+			$('#imagePreview').hide();
+			$('#imagePreview').fadeIn(650);
+		}
+		reader.readAsDataURL(input.files[0]);
+	}
+}
+$("#imageUpload").change(function () {
+	readURL(this);
+});

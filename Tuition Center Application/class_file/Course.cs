@@ -22,14 +22,7 @@ namespace Tuition_Center_Application.class_file
         [FirestoreProperty]
         public string day { get; set; }
         [FirestoreProperty]
-        public string time_start
-        {
-            get { return time_start; }
-            set
-            {
-                time_start = value;
-            }
-        }
+        public string time_start { get; set; }
         [FirestoreProperty]
         public string time_end { get; set; }
         [FirestoreProperty]

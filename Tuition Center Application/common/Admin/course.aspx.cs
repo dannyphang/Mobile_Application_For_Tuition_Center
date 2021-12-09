@@ -20,10 +20,15 @@ namespace Tuition_Center_Application.common.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             database = util.firebase.get_database();
-            //level_item();
-            day_item();
-            duration_item();
+
+            if (IsPostBack)
+            {
+                demo_modal.Attributes.Add("class", "modal_form expand");
+            }
+
             get_a_doc();
+
+
         }
 
         async void get_a_doc()
@@ -35,15 +40,18 @@ namespace Tuition_Center_Application.common.Admin
                 Course course = docsnap.ConvertTo<Course>();
                 course_var.Add(course);
             }
+
+            course_repeater.DataSource = course_var;
+            course_repeater.DataBind();
         }
 
         public void level_item()
         {
-            //level_ddl.Items.Clear();
-            //for (int i = 0; i < level_list.Length; i++)
-            //{
-            //    level_ddl.Items.Add(level_list[i]);
-            //}
+            level_ddl.Items.Clear();
+            for (int i = 0; i < level_list.Length; i++)
+            {
+                level_ddl.Items.Add(level_list[i]);
+            }
         }
 
         public void day_item()
@@ -73,26 +81,21 @@ namespace Tuition_Center_Application.common.Admin
         {
             DocumentReference doc = database.Collection("Course").Document("7");
 
-            string language_value = Request.Form["language_value"];
-            //name_text.Text = language_value;
 
-            //Response.Write("<script>alert('" + level_ddl.SelectedValue + "')</script>");
-            //System.Diagnostics.Debug.WriteLine(level_ddl.SelectedValue);
+            Course new_course = new Course
+            {
+                courseName = name_text.Text,
+                level = level_ddl.SelectedValue, 
+                price = int.Parse(price_text.Text),
+                language = language_ddl.SelectedValue,
+                day = day_ddl.SelectedValue, 
+                time_start = hour_text.Text + ":" + min_text.Text,
+                time_end = time_end_count(duration_str_to_float(duration_ddl.SelectedIndex), hour_text.Text, min_text.Text),
+                duration = duration_str_to_float(duration_ddl.SelectedIndex), 
+            };
 
-            //Course new_course = new Course
-            //{
-            //    courseName = name_text.Text,
-            //    level = level_ddl.SelectedValue, // *
-            //    price = int.Parse(price_text.Text),
-            //    language = language_value, // *
-            //    day = day_ddl.SelectedValue, // *
-            //    time_start = hour_text.Text + ":" + min_text.Text,
-            //    time_end = time_end_count(duration_str_to_float(duration_ddl.SelectedIndex), hour_text.Text, min_text.Text),
-            //    duration = duration_str_to_float(duration_ddl.SelectedIndex), // *
-            //};
-
-            //doc.SetAsync(new_course);
-            //clear_data();
+            doc.SetAsync(new_course);
+            clear_data();
         }
 
         float duration_str_to_float(int index)
@@ -118,32 +121,32 @@ namespace Tuition_Center_Application.common.Admin
             float time_start = float.Parse(time); // 9.45
             float time_end = -1;
 
-            int temp = (int)(time_start * 100) - (int)(Math.Floor(time_start) * 100);
-
-            if (duration == 0)
+            int temp = (int)Math.Ceiling((time_start - Math.Floor(time_start)) * 100); // 10.45 - 10.00 = 0.45 * 100 = 45
+            
+            if (duration == 1.0)
             {
-                time_end += 1;
+                time_end = (float)(time_start + 1);
             }
-            else if (duration == 1)
+            else if (duration == 1.5)
             {
-                time_end = (float)(time_start + 0.3);
+                time_end = (float)(time_start + 1.3);
 
-                if (temp > 59) 
+                if (temp >= 30) 
                 {
                     time_end = (float)(time_end - 0.6) + 1; // 9.75 - 0.60 + 1 = 10.15
                 }
             }
-            else if (duration == 2)
+            else if (duration == 2.0)
             {
-                time_end += 2;
+                time_end = (float)(time_start + 2);
             }
-            else if (duration == 3)
+            else if (duration == 2.5)
             {
-                time_end = (float)(time_start + 0.3);
+                time_end = (float)(time_start + 2.3);
 
-                if (temp > 59)
+                if (temp >= 30)
                 {
-                    time_end = (float)(time_end - 0.6) + 2; // 9.75 - 0.60 + 2 = 11.15
+                    time_end = (float)(time_end - 0.6) + 1; // 9.75 - 0.60 + 2 = 11.15
                 }
             }
 
@@ -155,11 +158,155 @@ namespace Tuition_Center_Application.common.Admin
             name_text.Text = "";
             level_ddl.SelectedIndex = 0;
             tutor_ddl.SelectedIndex = 0;
+            language_ddl.SelectedIndex = 0;
             price_text.Text = "";
             day_ddl.SelectedIndex = 0;
             duration_ddl.SelectedIndex = 0;
             hour_text.Text = "";
             min_text.Text = "";
+        }
+
+        string getID(object sender)
+        {
+            LinkButton btn = (LinkButton)sender;
+            RepeaterItem item = (RepeaterItem)btn.NamingContainer;
+
+            return ((HiddenField)item.FindControl("courseID_hd")).Value;
+        }
+
+        protected void more_btn_Click(object sender, EventArgs e)
+        {
+            
+            for (int i = 0; i < course_var.Count(); i++)
+            {
+                if (course_var[i].courseID == getID(sender))
+                {
+                    System.Diagnostics.Debug.WriteLine(course_var[i].courseID + ": " + course_var[i].language);
+                    name_text2.Text = course_var[i].courseName;
+                    level_ddl2.SelectedValue = course_var[i].level;
+                    language_ddl2.SelectedValue = course_var[i].language;
+                    price_text2.Text = course_var[i].price.ToString();
+                    day_ddl2.SelectedValue = course_var[i].day;
+                    duration_ddl2.SelectedIndex = duration_int(course_var[i].duration);
+                    hour_text2.Text = hour_convert(course_var[i].time_start);
+                    min_text2.Text = min_convert(course_var[i].time_start);
+
+
+                }
+            }
+
+
+        }
+
+        protected void edit_btn_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < course_var.Count(); i++)
+            {
+                if (course_var[i].courseID == getID(sender))
+                {
+                    System.Diagnostics.Debug.WriteLine(course_var[i].courseID + ": " + course_var[i].language);
+                    name_text2.Text = course_var[i].courseName;
+                    level_ddl2.SelectedValue = course_var[i].level;
+                    language_ddl2.SelectedValue = course_var[i].language;
+                    price_text2.Text = course_var[i].price.ToString();
+                    day_ddl2.SelectedValue = course_var[i].day;
+                    duration_ddl2.SelectedIndex = duration_int(course_var[i].duration);
+                    hour_text2.Text = hour_convert(course_var[i].time_start);
+                    min_text2.Text = min_convert(course_var[i].time_start);
+                }
+            }
+        }
+
+        protected void delete_btn_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < course_var.Count(); i++)
+            {
+                if (course_var[i].courseID == getID(sender))
+                {
+
+                }
+            }
+        }
+
+        protected int duration_int(float duration)
+        {
+            int index = -1;
+
+            if (duration == 1.0)
+            {
+                return 0;
+            }
+            else if (duration == 1.5)
+            {
+                return 1;
+            }
+            else if (duration == 2.0)
+            {
+                return 2;
+            }
+            else if (duration == 2.5)
+            {
+                return 3;
+            }
+
+            return index;
+        }
+
+        protected string hour_convert(string time)
+        {
+            string str = "why r u here?";
+
+            str = time.Substring(0, 2);
+
+            return str;
+        }
+
+        protected string min_convert(string time)
+        {
+            string str = "why r u here?";
+
+            str = time.Substring(3, 2);
+
+            return str;
+        }
+
+        protected void reset_btn_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < course_var.Count(); i++)
+            {
+                if (course_var[i].courseID == getID(sender))
+                {
+                    //System.Diagnostics.Debug.WriteLine(course_var[i].courseID + ": " + course_var[i].language);
+                    name_text2.Text = course_var[i].courseName;
+                    level_ddl2.SelectedValue = course_var[i].level;
+                    language_ddl2.SelectedValue = course_var[i].language;
+                    price_text2.Text = course_var[i].price.ToString();
+                    day_ddl2.SelectedValue = course_var[i].day;
+                    duration_ddl2.SelectedIndex = duration_int(course_var[i].duration);
+                    hour_text2.Text = hour_convert(course_var[i].time_start);
+                    min_text2.Text = min_convert(course_var[i].time_start);
+                }
+            }
+        }
+
+        protected void update_btn_Click(object sender, EventArgs e)
+        {
+            DocumentReference doc = database.Collection("Course").Document(getID(sender));
+
+            Course new_course = new Course
+            {
+                courseName = name_text2.Text,
+                level = level_ddl2.SelectedValue,
+                price = int.Parse(price_text2.Text),
+                language = language_ddl2.SelectedValue,
+                day = day_ddl2.SelectedValue,
+                time_start = hour_text2.Text + ":" + min_text2.Text,
+                time_end = time_end_count(duration_str_to_float(duration_ddl2.SelectedIndex), hour_text2.Text, min_text2.Text),
+                duration = duration_str_to_float(duration_ddl2.SelectedIndex),
+            };
+
+            doc.SetAsync(new_course);
+            clear_data();
         }
     }
 }
