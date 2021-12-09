@@ -10,7 +10,7 @@ namespace Tuition_Center_Application.class_file
     public class Student
     {
         [FirestoreDocumentId]
-        public int studentID { get; set; }
+        public string studentID { get; set; }
         [FirestoreProperty]
         public string name { get; set; }
         [FirestoreProperty]
@@ -26,7 +26,7 @@ namespace Tuition_Center_Application.class_file
         [FirestoreProperty]
         public string phoneNo { get; set; }
         [FirestoreProperty]
-        public DateTime DOB { get; set; }
+        public string DOB { get; set; }
         [FirestoreProperty]
         public string educationLV { get; set; }
         [FirestoreProperty]

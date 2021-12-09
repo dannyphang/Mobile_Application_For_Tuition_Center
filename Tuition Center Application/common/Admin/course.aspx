@@ -7,7 +7,7 @@
 	<section id="content">
 		<!-- MAIN -->
 		<main>
-			<ul class="box-info">
+			<%--<ul class="box-info">
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
@@ -29,7 +29,7 @@
 						<p>Total Sales</p>
 					</span>
 				</li>
-			</ul>
+			</ul>--%>
 
 			<div class="table-data">
 				<div class="order">
@@ -56,6 +56,7 @@
 										    <img src="../../img/profile.png">
                                             <asp:Label ID="courseName_label" runat="server" Text=<%# Eval("courseName") %>></asp:Label>
                                             <asp:HiddenField ID="courseID_hd" runat="server" Value='<%# Eval("courseID") %>'/>
+                                            <asp:HiddenField ID="courseName_hd" runat="server" Value='<%# Eval("courseName") %>'/>
 									    </td>
 									    <td>
                                             <asp:Label ID="level_label" runat="server" Text=<%# Eval("level") %>></asp:Label>
@@ -70,18 +71,18 @@
 									    <td>
 										    <%--TODO: button: edit, delete--%>
                                             <div class="wrapper">
-                                                <asp:Label ID="more_btn" runat="server" CssClass="icon more" OnClick="more_btn_Click">
+                                                <asp:LinkButton ID="more_btn" runat="server" CssClass="icon more" OnClick="more_btn_Click" OnClientClick="detail_btn_func()">
                                                     <div class="tooltip">More</div>
                                                     <span><ion-icon name="information-circle-outline"></ion-icon></span>
-                                                </asp:Label>
-                                                <asp:LinkButton ID="edit_btn" runat="server" CssClass="icon edit" OnClick="edit_btn_Click" OnClientClick="edit_btn_func()">
+                                                </asp:LinkButton>
+                                                <asp:LinkButton ID="edit_btn" runat="server" CssClass="icon edit" OnClick="edit_btn_Click" OnClientClick="detail_btn_func()">
                                                     <div class="tooltip">Edit</div>
                                                     <span><ion-icon name="create-outline"></ion-icon></span>
                                                 </asp:LinkButton>
-                                                <asp:Label ID="delete_btn" runat="server" CssClass="icon delete" OnClick="delete_btn_Click">
+                                                <asp:LinkButton ID="delete_btn" runat="server" CssClass="icon delete" OnClick="delete_btn_Click">
                                                     <div class="tooltip">Delete</div>
                                                     <span><ion-icon name="trash-outline"></ion-icon></span>
-                                                </asp:Label>
+                                                </asp:LinkButton>
                                             </div>
 									    </td>
 								    </tr>
@@ -428,6 +429,7 @@
                                 <div class="col-half">
                                     <asp:Button ID="reset_btn" runat="server" Text="Reset" CssClass="modal_btn" OnClick="reset_btn_Click"/>
                                     <asp:Button ID="update_btn" runat="server" Text="Update" CssClass="modal_btn" OnClick="update_btn_Click"/>
+                                    <asp:HiddenField ID="courseID_hd2" runat="server" Value='<%# Eval("courseID") %>'/>
                                 </div>
                             </div>
                         </div>
@@ -439,7 +441,6 @@
 	</section>
 	<!-- CONTENT -->
 
-	<link rel="stylesheet" href="../../css/admin_course.css" />
 	<link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" />
 
     <script>
@@ -461,9 +462,8 @@
         });
     </script>
     <script>
-        function edit_btn_func() {
+        function detail_btn_func() {
             document.querySelector('.modal_form').classList.add('expand');
-            //event.returnValue = false;
         }
     </script>
 </asp:Content>

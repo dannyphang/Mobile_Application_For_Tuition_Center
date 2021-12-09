@@ -16,7 +16,7 @@ namespace Tuition_Center_Application.common.Admin
         protected static string[] level_list = Course.level_list;
         protected static string[] day_list = Course.day_list;
         protected static string[] duration_list = Course.duration_list;
-
+        string new_id = "why r u here???";
         protected void Page_Load(object sender, EventArgs e)
         {
             database = util.firebase.get_database();
@@ -24,11 +24,15 @@ namespace Tuition_Center_Application.common.Admin
             if (IsPostBack)
             {
                 demo_modal.Attributes.Add("class", "modal_form expand");
+                System.Diagnostics.Debug.WriteLine("Post Back AGAIN!!!!!");
+            }
+
+            for (int i = 0; i < course_var.Count(); i++)
+            {
+                System.Diagnostics.Debug.WriteLine(course_var[i].courseID);
             }
 
             get_a_doc();
-
-
         }
 
         async void get_a_doc()
@@ -40,6 +44,7 @@ namespace Tuition_Center_Application.common.Admin
                 Course course = docsnap.ConvertTo<Course>();
                 course_var.Add(course);
             }
+            new_id = (int.Parse(course_var[course_var.Count() - 1].courseID) + 1).ToString();
 
             course_repeater.DataSource = course_var;
             course_repeater.DataBind();
@@ -79,8 +84,8 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void submit_btn_Click(object sender, EventArgs e)
         {
-            DocumentReference doc = database.Collection("Course").Document("7");
-
+            System.Diagnostics.Debug.WriteLine("New ID: " + new_id);
+            DocumentReference doc = database.Collection("Course").Document(new_id);
 
             Course new_course = new Course
             {
@@ -176,12 +181,43 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void more_btn_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < course_var.Count(); i++)
+            {
+                if (course_var[i].courseID == getID(sender))
+                {
+                    System.Diagnostics.Debug.WriteLine(course_var[i].courseID + ": " + course_var[i].language);
+                    name_text2.Text = course_var[i].courseName;
+                    level_ddl2.SelectedValue = course_var[i].level;
+                    language_ddl2.SelectedValue = course_var[i].language;
+                    price_text2.Text = course_var[i].price.ToString();
+                    day_ddl2.SelectedValue = course_var[i].day;
+                    duration_ddl2.SelectedIndex = duration_int(course_var[i].duration);
+                    hour_text2.Text = hour_convert(course_var[i].time_start);
+                    min_text2.Text = min_convert(course_var[i].time_start);
+
+                    name_text2.Enabled = false;
+                    level_ddl2.Enabled = false;
+                    language_ddl2.Enabled = false;
+                    price_text2.Enabled = false;
+                    day_ddl2.Enabled = false;
+                    duration_ddl2.Enabled = false;
+                    hour_text2.Enabled = false;
+                    min_text2.Enabled = false;
+                    reset_btn.Visible = false;
+                    update_btn.Visible = false;
+                }
+            }
+        }
+
+        protected void edit_btn_Click(object sender, EventArgs e)
+        {
             
             for (int i = 0; i < course_var.Count(); i++)
             {
                 if (course_var[i].courseID == getID(sender))
                 {
-                    System.Diagnostics.Debug.WriteLine(course_var[i].courseID + ": " + course_var[i].language);
+                    courseID_hd2.Value = getID(sender);
+
                     name_text2.Text = course_var[i].courseName;
                     level_ddl2.SelectedValue = course_var[i].level;
                     language_ddl2.SelectedValue = course_var[i].language;
@@ -191,41 +227,25 @@ namespace Tuition_Center_Application.common.Admin
                     hour_text2.Text = hour_convert(course_var[i].time_start);
                     min_text2.Text = min_convert(course_var[i].time_start);
 
-
-                }
-            }
-
-
-        }
-
-        protected void edit_btn_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < course_var.Count(); i++)
-            {
-                if (course_var[i].courseID == getID(sender))
-                {
-                    System.Diagnostics.Debug.WriteLine(course_var[i].courseID + ": " + course_var[i].language);
-                    name_text2.Text = course_var[i].courseName;
-                    level_ddl2.SelectedValue = course_var[i].level;
-                    language_ddl2.SelectedValue = course_var[i].language;
-                    price_text2.Text = course_var[i].price.ToString();
-                    day_ddl2.SelectedValue = course_var[i].day;
-                    duration_ddl2.SelectedIndex = duration_int(course_var[i].duration);
-                    hour_text2.Text = hour_convert(course_var[i].time_start);
-                    min_text2.Text = min_convert(course_var[i].time_start);
+                    name_text2.Enabled = true;
+                    level_ddl2.Enabled = true;
+                    language_ddl2.Enabled = true;
+                    price_text2.Enabled = true;
+                    day_ddl2.Enabled = true;
+                    duration_ddl2.Enabled = true;
+                    hour_text2.Enabled = true;
+                    min_text2.Enabled = true;
+                    reset_btn.Visible = true;
+                    update_btn.Visible = true;
                 }
             }
         }
 
         protected void delete_btn_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < course_var.Count(); i++)
-            {
-                if (course_var[i].courseID == getID(sender))
-                {
+            DocumentReference doc = database.Collection("Course").Document(getID(sender));
 
-                }
-            }
+            doc.DeleteAsync();
         }
 
         protected int duration_int(float duration)
@@ -254,29 +274,20 @@ namespace Tuition_Center_Application.common.Admin
 
         protected string hour_convert(string time)
         {
-            string str = "why r u here?";
-
-            str = time.Substring(0, 2);
-
-            return str;
+            return time.Substring(0, 2);
         }
 
         protected string min_convert(string time)
         {
-            string str = "why r u here?";
-
-            str = time.Substring(3, 2);
-
-            return str;
+            return time.Substring(3, 2);
         }
 
         protected void reset_btn_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < course_var.Count(); i++)
             {
-                if (course_var[i].courseID == getID(sender))
+                if (course_var[i].courseID == courseID_hd2.Value)
                 {
-                    //System.Diagnostics.Debug.WriteLine(course_var[i].courseID + ": " + course_var[i].language);
                     name_text2.Text = course_var[i].courseName;
                     level_ddl2.SelectedValue = course_var[i].level;
                     language_ddl2.SelectedValue = course_var[i].language;
@@ -291,7 +302,9 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void update_btn_Click(object sender, EventArgs e)
         {
-            DocumentReference doc = database.Collection("Course").Document(getID(sender));
+            //System.Diagnostics.Debug.WriteLine("courseName_hd: " + courseID_hd2.Value);
+
+            DocumentReference doc = database.Collection("Course").Document(courseID_hd2.Value);
 
             Course new_course = new Course
             {
@@ -306,7 +319,6 @@ namespace Tuition_Center_Application.common.Admin
             };
 
             doc.SetAsync(new_course);
-            clear_data();
         }
     }
 }

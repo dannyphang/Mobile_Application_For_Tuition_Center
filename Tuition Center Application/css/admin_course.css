@@ -314,7 +314,6 @@ body {
         width: auto;
         height: auto;
         background: transparent;
-        border-radius: none;
         color: var(--dark);
     }
 
@@ -574,6 +573,7 @@ body {
     height: 100%;
     width: 100%;
     padding: 10px;
+    border-radius: 6px;
 }
 
 .email.expand {
@@ -989,6 +989,7 @@ select option {
     width: var(--modal_box_width);
     margin: auto;
     margin-top: -250px;
+    border-radius: 6px;
 }
 
 .modal_form.expand {

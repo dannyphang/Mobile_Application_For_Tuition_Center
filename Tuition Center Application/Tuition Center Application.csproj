@@ -147,6 +147,7 @@
     <Content Include="common\Admin\course.aspx" />
     <Content Include="common\Admin\home.aspx" />
     <Content Include="common\Admin\staff.aspx" />
+    <Content Include="common\Admin\student.aspx" />
     <Content Include="common\course.aspx" />
     <Content Include="common\cursor.ascx" />
     <Content Include="common\footer.ascx" />
@@ -160,6 +161,7 @@
     <Content Include="css\admin_course.css" />
     <Content Include="css\admin_staff.css" />
     <Content Include="css\course.css" />
+    <Content Include="css\admin_student.css" />
     <Content Include="css\footer.css" />
     <Content Include="css\login.css" />
     <Content Include="css\side_nav.css" />
@@ -171,12 +173,14 @@
     <Content Include="css\tutor.css" />
     <Content Include="img\profile.png" />
     <Content Include="js\admin_course.js" />
+    <Content Include="js\course_student.js" />
     <Content Include="js\footer.js" />
     <Content Include="js\side_nav.js" />
     <Content Include="js\testing.js" />
     <Content Include="js\timetable.js" />
     <Content Include="js\timetable_util.js" />
     <Content Include="testing2.aspx" />
+    <Content Include="testing3.aspx" />
     <Content Include="Web.config" />
     <Content Include="testing.aspx" />
   </ItemGroup>
@@ -205,6 +209,13 @@
     </Compile>
     <Compile Include="common\Admin\staff.aspx.designer.cs">
       <DependentUpon>staff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Admin\student.aspx.cs">
+      <DependentUpon>student.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Admin\student.aspx.designer.cs">
+      <DependentUpon>student.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\course.aspx.cs">
       <DependentUpon>course.aspx</DependentUpon>
@@ -318,6 +329,13 @@
     </Compile>
     <Compile Include="testing2.aspx.designer.cs">
       <DependentUpon>testing2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="testing3.aspx.cs">
+      <DependentUpon>testing3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testing3.aspx.designer.cs">
+      <DependentUpon>testing3.aspx</DependentUpon>
     </Compile>
     <Compile Include="util\firebase.cs" />
     <Compile Include="util\string.cs" />
