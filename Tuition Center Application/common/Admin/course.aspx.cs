@@ -27,10 +27,6 @@ namespace Tuition_Center_Application.common.Admin
                 System.Diagnostics.Debug.WriteLine("Post Back AGAIN!!!!!");
             }
 
-            for (int i = 0; i < course_var.Count(); i++)
-            {
-                System.Diagnostics.Debug.WriteLine(course_var[i].courseID);
-            }
 
             get_a_doc();
         }
@@ -84,7 +80,7 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void submit_btn_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("New ID: " + new_id);
+            //System.Diagnostics.Debug.WriteLine("New ID: " + new_id);
             DocumentReference doc = database.Collection("Course").Document(new_id);
 
             Course new_course = new Course

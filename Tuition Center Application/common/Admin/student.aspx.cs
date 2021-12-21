@@ -51,13 +51,6 @@ namespace Tuition_Center_Application.common.Admin
             return ((HiddenField)item.FindControl("courseID_hd")).Value;
         }
 
-        void change_level_css(object sender)
-        {
-            LinkButton btn = (LinkButton)sender;
-            RepeaterItem item = (RepeaterItem)btn.NamingContainer;
-
-        }
-
         protected void more_btn_Click(object sender, EventArgs e)
         {
 

@@ -15,12 +15,30 @@ namespace Tuition_Center_Application.common
     {
 
         /// <summary>
-        /// view_btn control.
+        /// course_repeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button view_btn;
+        protected global::System.Web.UI.WebControls.Repeater course_repeater;
+
+        /// <summary>
+        /// next_btn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton next_btn;
+
+        /// <summary>
+        /// notification_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label notification_label;
     }
 }

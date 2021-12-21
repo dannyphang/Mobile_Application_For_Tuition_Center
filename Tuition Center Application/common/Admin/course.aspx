@@ -69,7 +69,6 @@
                                             <asp:Label ID="language_label" runat="server" Text=<%# Eval("language") %>></asp:Label>
 									    </td>
 									    <td>
-										    <%--TODO: button: edit, delete--%>
                                             <div class="wrapper">
                                                 <asp:LinkButton ID="more_btn" runat="server" CssClass="icon more" OnClick="more_btn_Click" OnClientClick="detail_btn_func()">
                                                     <div class="tooltip">More</div>
@@ -88,7 +87,6 @@
 								    </tr>
                                 </ItemTemplate>
                             </asp:Repeater>
-                            <%--<asp:ObjectDataSource ID="course_dataSource" runat="server" TypeName="course_item" SelectMethod="course_list"></asp:ObjectDataSource>--%>
 						</tbody>
 					</table>
 				</div>

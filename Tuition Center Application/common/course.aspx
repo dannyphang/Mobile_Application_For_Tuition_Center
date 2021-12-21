@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/guess.Master" AutoEventWireup="true" CodeBehind="course.aspx.cs" Inherits="Tuition_Center_Application.common.course" Async="true"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/guess.Master" AutoEventWireup="true" CodeBehind="course.aspx.cs" Inherits="Tuition_Center_Application.common.course" Async="true" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--css--%>
     <link rel="stylesheet" href=".././css/course.css" type="text/css" />
@@ -42,52 +42,77 @@
             </div>
         </div>--%>
         <div class="course_section">
-            <%foreach (var cr in course_var) {%>
-                <div>
-                    <!-- flip-card-container -->
-                    <div class="flip-card-container" style="--hue: 220">
-                        <div class="flip-card">
-                            <div class="card-front">
-                                <figure>
-                                    <div class="img-bg"></div>
-                                    <img src="../img/profile.png" alt="Brohm Lake">
-                                    <%--<figcaption>
-                                        <p id="figcaption"><%= cr.courseName %></p>
-                                    </figcaption>--%>
-                                </figure>
+            <asp:Repeater ID="course_repeater" runat="server">
+                <ItemTemplate>
+                    <div>
+                        <!-- flip-card-container -->
+                        <div class="flip-card-container" style="--hue: 220">
+                            <div class="flip-card">
+                                <div class="card-front">
+                                    <figure>
+                                        <div class="img-bg"></div>
+                                        <img src="../img/profile.png" alt="Brohm Lake">
+                                    </figure>
 
-                                <ul class="course_ul">
-                                    <li><%= cr.courseID %></li>
-                                    <li><%= cr.courseName %></li>
-                                    <li><%= cr.level %></li>
-                                    <li>RM <%= cr.price %></li>
-                                </ul>
-                            </div>
+                                    <ul class="course_ul">
+                                        <li>
+                                            <asp:Label ID="courseID_label" runat="server" Text=<%# Eval("courseID") %>></asp:Label>
+                                        </li>
+                                        <li><%# Eval("courseName") %></li>
+                                        <li><%# Eval("level") %></li>
+                                        <li>RM <%# Eval("price") %></li>
+                                        <li><%# Eval("time_start") %> - <%# Eval("time_end") %></li>
+                                    </ul>
+                                </div>
 
-                            <div class="card-back">
-                                <figure>
-                                    <div class="img-bg"></div>
-                                    <img src="../img/profile.png" alt="Brohm Lake">
-                                </figure>
+                                <div class="card-back">
+                                    <figure>
+                                        <div class="img-bg"></div>
+                                        <img src="../img/profile.png" alt="Brohm Lake">
+                                    </figure>
 
-                                <asp:Button ID="view_btn" runat="server" Text="View" CssClass="book_btn" OnClick="view_btn_Click"/>
-
-                                <div class="design-container">
-                                    <span class="design design--1"></span>
-                                    <span class="design design--2"></span>
-                                    <span class="design design--3"></span>
-                                    <span class="design design--4"></span>
-                                    <span class="design design--5"></span>
-                                    <span class="design design--6"></span>
-                                    <span class="design design--7"></span>
-                                    <span class="design design--8"></span>
+                                    <%--<asp:Button ID="view_btn" runat="server" Text="Add to Cart" CssClass="book_btn" OnClick="view_btn_Click"/>--%>
+                                    <asp:Label ID="view_btn" runat="server" Text="Label" CssClass="book_btn" OnClick="view_btn_Click" ></asp:Label>
+                                    <div class="design-container">
+                                        <span class="design design--1"></span>
+                                        <span class="design design--2"></span>
+                                        <span class="design design--3"></span>
+                                        <span class="design design--4"></span>
+                                        <span class="design design--5"></span>
+                                        <span class="design design--6"></span>
+                                        <span class="design design--7"></span>
+                                        <span class="design design--8"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- /flip-card-container -->
                     </div>
-                    <!-- /flip-card-container -->
-                </div>
-            <%} %>
+                </ItemTemplate>
+            </asp:Repeater>
+            <%--<asp:Button ID="next_btn" runat="server" Text="Next" CssClass="course_next_btn"/>--%>
+            
+            <%--<div id="next_wrapper">
+                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="my-super-cool-btn" >
+                    <div class="dots-container">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <span>Next</span>
+                    
+                </asp:LinkButton>
+                <asp:Label ID="num_label" runat="server" Text="0" CssClass="num"></asp:Label>
+            </div>--%>
+
+            <div class="next_btn_container">
+                <asp:LinkButton ID="next_btn" runat="server" CssClass="notification" OnClick="next_btn_Click">
+                    <span><ion-icon name="chevron-forward-outline"></ion-icon></span>
+                    <asp:Label ID="notification_label" runat="server" Text="0" CssClass="badge"></asp:Label>
+                </asp:LinkButton>
+            </div>
+
         </div>
     </section>
 </asp:Content>

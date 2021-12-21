@@ -25,7 +25,7 @@
 				<asp:ListItem>↑ Level</asp:ListItem>
 				<asp:ListItem>↓ Level</asp:ListItem>
 			</asp:DropDownList>
-			<asp:TextBox ID="search_input" runat="server" CssClass="search_box"></asp:TextBox>
+			<asp:TextBox ID="search_input" runat="server" CssClass="search_box" placeholder="Student name..."></asp:TextBox>
 			<asp:LinkButton ID="search_text_btn" runat="server" CssClass="search_box_btn">
 				<span><ion-icon name="search-circle-outline" class="search_box_icon"></ion-icon></span>
 			</asp:LinkButton>
@@ -94,6 +94,8 @@
 			</div>
 		</main>
 		<!-- MAIN -->
+
+
     </section>
     <%-- CONTENT --%>
 

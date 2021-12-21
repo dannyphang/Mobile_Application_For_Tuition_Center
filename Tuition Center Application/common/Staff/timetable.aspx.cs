@@ -13,13 +13,13 @@ namespace Tuition_Center_Application.common.Staff
     {
         FirestoreDb database;
         protected List<string> time_list = new List<string>();
-        protected List<Datetime> datetime_mon_list = new List<Datetime>();
-        protected List<Datetime> datetime_tue_list = new List<Datetime>();
-        protected List<Datetime> datetime_wed_list = new List<Datetime>();
-        protected List<Datetime> datetime_thu_list = new List<Datetime>();
-        protected List<Datetime> datetime_fri_list = new List<Datetime>();
-        protected List<Datetime> datetime_sat_list = new List<Datetime>();
-        protected List<Datetime> datetime_sun_list = new List<Datetime>();
+        protected List<Course> day_mon_list = new List<Course>();
+        protected List<Course> day_tue_list = new List<Course>();
+        protected List<Course> day_wed_list = new List<Course>();
+        protected List<Course> day_thu_list = new List<Course>();
+        protected List<Course> day_fri_list = new List<Course>();
+        protected List<Course> day_sat_list = new List<Course>();
+        protected List<Course> day_sun_list = new List<Course>();
         protected void Page_Load(object sender, EventArgs e)
         {
             database = util.firebase.get_database();
@@ -42,52 +42,66 @@ namespace Tuition_Center_Application.common.Staff
                 }
 
                 time_list.Add(i.ToString("00.00").Replace(".", ":"));
-
             }
         }
 
         async void get_a_doc()
         {
-            QuerySnapshot snap = await util.firebase.get_doc_snap("Datetime");
+            QuerySnapshot snap = await util.firebase.get_doc_snap("Course");
 
             foreach (DocumentSnapshot docsnap in snap.Documents)
             {
-                Datetime datetime = docsnap.ConvertTo<Datetime>();
-                List<Datetime> datetime_list = new List<Datetime>();
-                datetime_list.Add(datetime);
+                Course course = docsnap.ConvertTo<Course>();
+                List<Course> day_list = new List<Course>();
+                day_list.Add(course);
 
-                for (int i = 0; i < datetime_list.Count; i++)
+                for (int i = 0; i < day_list.Count; i++)
                 {
-                    if (datetime_list[i].day.ToString() == "Monday")
+                    if (day_list[i].day.ToString() == "Monday")
                     {
-                        datetime_mon_list.Add(datetime);
+                        day_mon_list.Add(course);
                     }
-                    else if (datetime_list[i].day.ToString() == "Tuesday")
+                    else if (day_list[i].day.ToString() == "Tuesday")
                     {
-                        datetime_tue_list.Add(datetime);
+                        day_tue_list.Add(course);
                     }
-                    else if (datetime_list[i].day.ToString() == "Wednesday")
+                    else if (day_list[i].day.ToString() == "Wednesday")
                     {
-                        datetime_wed_list.Add(datetime);
+                        day_wed_list.Add(course);
                     }
-                    else if (datetime_list[i].day.ToString() == "Thursday")
+                    else if (day_list[i].day.ToString() == "Thursday")
                     {
-                        datetime_thu_list.Add(datetime);
+                        day_thu_list.Add(course);
                     }
-                    else if (datetime_list[i].day.ToString() == "Friday")
+                    else if (day_list[i].day.ToString() == "Friday")
                     {
-                        datetime_fri_list.Add(datetime);
+                        day_fri_list.Add(course);
                     }
-                    else if (datetime_list[i].day.ToString() == "Saturday")
+                    else if (day_list[i].day.ToString() == "Saturday")
                     {
-                        datetime_sat_list.Add(datetime);
+                        day_sat_list.Add(course);
                     }
-                    else if (datetime_list[i].day.ToString() == "Sunday")
+                    else if (day_list[i].day.ToString() == "Sunday")
                     {
-                        datetime_sun_list.Add(datetime);
+                        day_sun_list.Add(course);
                     }
                 }
             }
+
+            monday_repeater.DataSource = day_mon_list;
+            monday_repeater.DataBind();
+            tuesday_repeater.DataSource = day_tue_list;
+            tuesday_repeater.DataBind();
+            wednesday_repeater.DataSource = day_wed_list;
+            wednesday_repeater.DataBind();
+            thursday_repeater.DataSource = day_thu_list;
+            thursday_repeater.DataBind();
+            friday_repeater.DataSource = day_fri_list;
+            friday_repeater.DataBind();
+            saturday_repeater.DataSource = day_sat_list;
+            saturday_repeater.DataBind();
+            sunday_repeater.DataSource = day_sun_list;
+            sunday_repeater.DataBind();
         }
     }
 }

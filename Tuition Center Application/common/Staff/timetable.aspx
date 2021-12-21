@@ -21,13 +21,22 @@
                         </div>
   
                         <ul>
-                            <% foreach (var tt in datetime_mon_list) { %>
+                            <%--<% foreach (var tt in datetime_mon_list) { %>
                                 <li class="cd-schedule__event">
                                     <a data-start = <%= tt.time_start %> data-end = <%= tt.time_end %> data-content = "" data-event="event-1" href="#">
                                         <em class="cd-schedule__name"><%= tt.datetimeID %></em>
                                     </a>
                                 </li>
-                            <% } %>
+                            <% } %>--%>
+                            <asp:Repeater ID="monday_repeater" runat="server">
+                                <ItemTemplate>
+                                    <li class="cd-schedule__event">
+                                        <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
+                                            <em class="cd-schedule__name"><%# Eval("courseID") %></em>
+                                        </a>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </ul>
                     </li>
   
@@ -36,13 +45,15 @@
                         <div class="cd-schedule__top-info"><span>Tuesday</span></div>
   
                         <ul>
-                            <% foreach (var tt in datetime_tue_list) { %>
-                                <li class="cd-schedule__event">
-                                    <a data-start = <%= tt.time_start %> data-end = <%= tt.time_end %> data-content = "" data-event="event-1" href="#0">
-                                        <em class="cd-schedule__name"><%= tt.datetimeID %></em>
-                                    </a>
-                                </li>
-                            <% } %>
+                            <asp:Repeater ID="tuesday_repeater" runat="server">
+                                <ItemTemplate>
+                                    <li class="cd-schedule__event">
+                                        <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
+                                            <em class="cd-schedule__name"><%# Eval("courseID") %></em>
+                                        </a>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </ul>
                     </li>
   
@@ -51,13 +62,15 @@
                         <div class="cd-schedule__top-info"><span>Wednesday</span></div>
   
                         <ul>
-                            <% foreach (var tt in datetime_wed_list) { %>
-                                <li class="cd-schedule__event">
-                                    <a data-start = <%= tt.time_start %> data-end = <%= tt.time_end %> data-content = "" data-event="event-1" href="#0">
-                                        <em class="cd-schedule__name"><%= tt.datetimeID %></em>
-                                    </a>
-                                </li>
-                            <% } %>
+                            <asp:Repeater ID="wednesday_repeater" runat="server">
+                                <ItemTemplate>
+                                    <li class="cd-schedule__event">
+                                        <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
+                                            <em class="cd-schedule__name"><%# Eval("courseID") %></em>
+                                        </a>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </ul>
                     </li>
   
@@ -66,13 +79,15 @@
                         <div class="cd-schedule__top-info"><span>Thursday</span></div>
   
                         <ul>
-                            <% foreach (var tt in datetime_thu_list) { %>
-                                <li class="cd-schedule__event">
-                                    <a data-start = <%= tt.time_start %> data-end = <%= tt.time_end %> data-content = "" data-event="event-1" href="#0">
-                                        <em class="cd-schedule__name"><%= tt.datetimeID %></em>
-                                    </a>
-                                </li>
-                            <% } %>
+                            <asp:Repeater ID="thursday_repeater" runat="server">
+                                <ItemTemplate>
+                                    <li class="cd-schedule__event">
+                                        <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
+                                            <em class="cd-schedule__name"><%# Eval("courseID") %></em>
+                                        </a>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </ul>
                     </li>
   
@@ -81,13 +96,15 @@
                         <div class="cd-schedule__top-info"><span>Friday</span></div>
   
                         <ul>
-                            <% foreach (var tt in datetime_fri_list) { %>
-                                <li class="cd-schedule__event">
-                                    <a data-start = <%= tt.time_start %> data-end = <%= tt.time_end %> data-content = "" data-event="event-1" href="#0">
-                                        <em class="cd-schedule__name"><%= tt.datetimeID %></em>
-                                    </a>
-                                </li>
-                            <% } %>
+                            <asp:Repeater ID="friday_repeater" runat="server">
+                                <ItemTemplate>
+                                    <li class="cd-schedule__event">
+                                        <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
+                                            <em class="cd-schedule__name"><%# Eval("courseID") %></em>
+                                        </a>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </ul>
                     </li>
 
@@ -96,13 +113,15 @@
                         <div class="cd-schedule__top-info"><span>Saturday</span></div>
   
                         <ul>
-                            <% foreach (var tt in datetime_sat_list) { %>
-                                <li class="cd-schedule__event">
-                                    <a data-start = <%= tt.time_start %> data-end = <%= tt.time_end %> data-content = "" data-event="event-1" href="#0">
-                                        <em class="cd-schedule__name"><%= tt.datetimeID %></em>
-                                    </a>
-                                </li>
-                            <% } %>
+                            <asp:Repeater ID="saturday_repeater" runat="server">
+                                <ItemTemplate>
+                                    <li class="cd-schedule__event">
+                                        <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
+                                            <em class="cd-schedule__name"><%# Eval("courseID") %></em>
+                                        </a>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </ul>
                     </li>
 
@@ -111,13 +130,15 @@
                         <div class="cd-schedule__top-info"><span>Sunday</span></div>
   
                         <ul>
-                            <% foreach (var tt in datetime_sun_list) { %>
-                                <li class="cd-schedule__event">
-                                    <a data-start = <%= tt.time_start %> data-end = <%= tt.time_end %> data-content = "" data-event="event-1" href="#0">
-                                        <em class="cd-schedule__name"><%= tt.datetimeID %></em>
-                                    </a>
-                                </li>
-                            <% } %>
+                            <asp:Repeater ID="sunday_repeater" runat="server">
+                                <ItemTemplate>
+                                    <li class="cd-schedule__event">
+                                        <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
+                                            <em class="cd-schedule__name"><%# Eval("courseID") %></em>
+                                        </a>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </ul>
                     </li>
                 </ul>

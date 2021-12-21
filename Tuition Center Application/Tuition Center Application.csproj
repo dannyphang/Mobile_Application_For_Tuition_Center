@@ -148,6 +148,7 @@
     <Content Include="common\Admin\home.aspx" />
     <Content Include="common\Admin\staff.aspx" />
     <Content Include="common\Admin\student.aspx" />
+    <Content Include="common\cart.aspx" />
     <Content Include="common\course.aspx" />
     <Content Include="common\cursor.ascx" />
     <Content Include="common\footer.ascx" />
@@ -188,7 +189,6 @@
     <Compile Include="class_file\Course.cs" />
     <Compile Include="class_file\Tutor.cs" />
     <Compile Include="class_file\Student.cs" />
-    <Compile Include="class_file\Datetime.cs" />
     <Compile Include="common\Admin\course.aspx.cs">
       <DependentUpon>course.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -216,6 +216,13 @@
     </Compile>
     <Compile Include="common\Admin\student.aspx.designer.cs">
       <DependentUpon>student.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\cart.aspx.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\cart.aspx.designer.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\course.aspx.cs">
       <DependentUpon>course.aspx</DependentUpon>

@@ -8,7 +8,6 @@
     <title></title>
     <link rel="stylesheet" href="~/css/side_nav.css" />
     <link rel="stylesheet" href="~/css/footer.css" />
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -18,54 +17,54 @@
     <div class="sidebar">
         <%--logo--%>
         <div class="logo-details"> 
-            <i class='bx bxl-c-plus-plus icon'></i>
+            <i><ion-icon name="heart" class="icon"></ion-icon></i>
             <div class="logo_name">Authentic Education Center</div>
-            <i class='bx bx-menu' id="btn" ></i>
+            <ion-icon name="menu-outline" id="btn"></ion-icon>
         </div>
         <ul class="nav-list">
             <li>
-                <i class='bx bx-search' ></i>
-                <input type="text" placeholder="Search...">
+                <i class="search_icon"><ion-icon name="search-outline" id="search_btn"></ion-icon></i>
+                <input type="text" placeholder="Search..." class="nav_search">
                 <span class="tooltip">Search</span>
             </li>
             <li>
                 <a href="./home.aspx">
-                    <i class='bx bx-home'></i>
+                    <i><ion-icon name="home-outline"></ion-icon></i>
                     <span class="links_name">Home</span>
                 </a>
                 <span class="tooltip">Home</span>
             </li>
             <li>
                 <a href="./course.aspx">
-                    <i class='bx bx-book-content'></i>
+                    <i><ion-icon name="book-outline"></ion-icon></i>
                     <span class="links_name">Course</span>
                 </a>
                 <span class="tooltip">Course</span>
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bx-user' ></i>
+                    <i><ion-icon name="people-outline"></ion-icon></i>
                     <span class="links_name">Tutor</span>
                 </a>
                 <span class="tooltip">Tutor</span>
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bx-phone' ></i>
+                    <i><ion-icon name="call-outline"></ion-icon></i>
                     <span class="links_name">Contat Us</span>
                 </a>
                 <span class="tooltip">Contact Us</span>
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bxs-school' ></i>
+                    <i><ion-icon name="megaphone-outline"></ion-icon></i>
                     <span class="links_name">About Us</span>
                 </a>
                 <span class="tooltip">About Us</span>
             </li>
             <li>
                 <a href="./login.aspx">
-                    <i class='bx bx-log-in' id="log_out" ></i>
+                    <i><ion-icon name="log-in-outline" id="log_out"></ion-icon></i>
                     <span class="links_name">Sign In</span>
                 </a>
                 <span class="tooltip">Sign In</span>
@@ -88,23 +87,6 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    <!--add active class in selected list item-->
-    <%--<script>
-        let navigation = document.querySelector('.navigation');
-
-        let list = document.querySelectorAll('.list');
-        for (let i = 0; i < list.length; i++) {
-
-            list[i].onclick = function(){
-                let j = 0;
-                while (j < list.length) {
-                    list[j++].className = 'list';
-                }
-                list[i].className = 'list active';
-            }
-        }
-    </script>--%>
-    <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
     <script src="../../js/side_nav.js"></script>
 </body>
 </html>
