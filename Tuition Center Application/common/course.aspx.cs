@@ -26,10 +26,16 @@ namespace Tuition_Center_Application.common
             database = util.firebase.get_database();
 
             get_a_doc();
-            get_cart();
 
             notification_label.CssClass = "badge badge_hide";
             notification_label.Text = get_cart_num;
+
+            get_cart();
+
+            if (IsPostBack)
+            {
+                System.Diagnostics.Debug.WriteLine("~~~~ POST BACK AGAIN ~~~~");
+            }
 
             if (notification_label.Text == "0")
             {
@@ -43,7 +49,7 @@ namespace Tuition_Center_Application.common
             }
         }
 
-        protected void view_btn_Click(object sender, EventArgs e)
+        protected async void view_btn_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             RepeaterItem item = (RepeaterItem)btn.NamingContainer;
@@ -52,8 +58,23 @@ namespace Tuition_Center_Application.common
             System.Diagnostics.Debug.WriteLine("Course id: " + course_id);
 
             DocumentReference cart_doc = database.Collection("Cart").Document("1");
+            DocumentSnapshot snap = await cart_doc.GetSnapshotAsync();
 
-            cart_doc.UpdateAsync("courseID", FieldValue.ArrayUnion(course_id));
+            if (snap.Exists)
+            {
+                await cart_doc.UpdateAsync("courseID", FieldValue.ArrayUnion(course_id));
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Documents is not exists!!!!!!");
+                cart_var.Add(course_id);
+                Dictionary<string, object> cart_item = new Dictionary<string, object>
+                {
+                    { "courseID", cart_var },
+                    { "startTime", Timestamp.GetCurrentTimestamp().ToDateTime() }
+                };
+                await database.Collection("Cart").Document("1").SetAsync(cart_item);
+            }
 
             get_cart();
         }
@@ -77,24 +98,58 @@ namespace Tuition_Center_Application.common
         async void get_cart()
         {
             cart_var.Clear();
-
+            
             DocumentReference doc = database.Collection("Cart").Document("1");
 
             DocumentSnapshot snap = await doc.GetSnapshotAsync();
 
             Dictionary<string, object> key = snap.ToDictionary();
-
-            foreach (var item in key)
+            if (snap.Exists)
             {
-                if (item.Key == "courseID")
+                foreach (var item in key)
                 {
-                    foreach (var array_item in (List<object>)item.Value)
+                    if (item.Key == "startTime")
                     {
-                        System.Diagnostics.Debug.WriteLine("array_item: " + array_item);
-                        cart_var.Add(array_item.ToString());
+                        DateTime startTime = ((Timestamp)item.Value).ToDateTime();
+                        DateTime current_time = Timestamp.GetCurrentTimestamp().ToDateTime();
+
+                        //DateTime endTime = startTime.AddHours(1);
+
+                        TimeSpan span = current_time.Subtract(startTime);
+
+
+                        System.Diagnostics.Debug.WriteLine("Start Time: " + startTime);
+                        System.Diagnostics.Debug.WriteLine("Current Time: " + current_time);
+                        System.Diagnostics.Debug.WriteLine("Span(days): " + span.Days);
+                        System.Diagnostics.Debug.WriteLine("Span(hours): " + span.Hours);
+                        System.Diagnostics.Debug.WriteLine("Span(minutes): " + span.Minutes);
+                        System.Diagnostics.Debug.WriteLine("Span(seconds): " + span.Seconds);
+
+                        //System.Diagnostics.Debug.WriteLine("End Time: " + endTime);
+
+                        //await doc.UpdateAsync("currentTime", current_time);
+
+                        if (int.Parse(span.Days.ToString()) < 1 && int.Parse(span.Hours.ToString()) < 2)
+                        {
+                            if (item.Key == "courseID")
+                            {
+                                foreach (var array_item in (List<object>)item.Value)
+                                {
+                                    System.Diagnostics.Debug.WriteLine("array_item: " + array_item);
+                                    cart_var.Add(array_item.ToString());
+                                }
+                            }
+                        }
+                        else
+                        {
+                            await doc.DeleteAsync();
+                            System.Diagnostics.Debug.WriteLine("--DOCUMENT DELETED--");
+                        }
                     }
+
                 }
             }
+            
 
             get_cart_num =  cart_var.Count().ToString();
             notification_label.Text = get_cart_num;
