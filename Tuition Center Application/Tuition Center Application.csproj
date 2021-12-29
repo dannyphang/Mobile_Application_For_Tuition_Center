@@ -186,6 +186,7 @@
     <Content Include="testing.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="class_file\Cart.cs" />
     <Compile Include="class_file\Course.cs" />
     <Compile Include="class_file\Tutor.cs" />
     <Compile Include="class_file\Student.cs" />

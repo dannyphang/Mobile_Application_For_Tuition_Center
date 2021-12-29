@@ -177,6 +177,7 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void more_btn_Click(object sender, EventArgs e)
         {
+            
             for (int i = 0; i < course_var.Count(); i++)
             {
                 if (course_var[i].courseID == getID(sender))
@@ -201,6 +202,8 @@ namespace Tuition_Center_Application.common.Admin
                     min_text2.Enabled = false;
                     reset_btn.Visible = false;
                     update_btn.Visible = false;
+
+
                 }
             }
         }
@@ -301,6 +304,7 @@ namespace Tuition_Center_Application.common.Admin
             //System.Diagnostics.Debug.WriteLine("courseName_hd: " + courseID_hd2.Value);
 
             DocumentReference doc = database.Collection("Course").Document(courseID_hd2.Value);
+            //DocumentReference doc2 = database.Collection("Cart").Document("1");
 
             Course new_course = new Course
             {
@@ -315,6 +319,7 @@ namespace Tuition_Center_Application.common.Admin
             };
 
             doc.SetAsync(new_course);
+            //doc2.UpdateAsync("courseID", FieldValue.ArrayUnion("100"));
         }
     }
 }

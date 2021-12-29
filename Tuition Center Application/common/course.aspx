@@ -53,11 +53,11 @@
                                         <div class="img-bg"></div>
                                         <img src="../img/profile.png" alt="Brohm Lake">
                                     </figure>
-
+                                    <asp:HiddenField ID="courseID_hf" runat="server" Value='<%# Eval("courseID") %>' />
                                     <ul class="course_ul">
-                                        <li>
+                                        <%--<li>
                                             <asp:Label ID="courseID_label" runat="server" Text=<%# Eval("courseID") %>></asp:Label>
-                                        </li>
+                                        </li>--%>
                                         <li><%# Eval("courseName") %></li>
                                         <li><%# Eval("level") %></li>
                                         <li>RM <%# Eval("price") %></li>
@@ -71,8 +71,8 @@
                                         <img src="../img/profile.png" alt="Brohm Lake">
                                     </figure>
 
-                                    <%--<asp:Button ID="view_btn" runat="server" Text="Add to Cart" CssClass="book_btn" OnClick="view_btn_Click"/>--%>
-                                    <asp:Label ID="view_btn" runat="server" Text="Label" CssClass="book_btn" OnClick="view_btn_Click" ></asp:Label>
+                                    <asp:Button ID="view_btn" runat="server" Text="Add to Cart" CssClass="book_btn" OnClick="view_btn_Click"/>
+                                    <%--<asp:Label ID="view_btn" runat="server" Text="Label" CssClass="book_btn" OnClick="view_btn_Click" ></asp:Label>--%>
                                     <div class="design-container">
                                         <span class="design design--1"></span>
                                         <span class="design design--2"></span>
@@ -90,21 +90,6 @@
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
-            <%--<asp:Button ID="next_btn" runat="server" Text="Next" CssClass="course_next_btn"/>--%>
-            
-            <%--<div id="next_wrapper">
-                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="my-super-cool-btn" >
-                    <div class="dots-container">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <span>Next</span>
-                    
-                </asp:LinkButton>
-                <asp:Label ID="num_label" runat="server" Text="0" CssClass="num"></asp:Label>
-            </div>--%>
 
             <div class="next_btn_container">
                 <asp:LinkButton ID="next_btn" runat="server" CssClass="notification" OnClick="next_btn_Click">

@@ -14,9 +14,11 @@ namespace Tuition_Center_Application.common
     {
         FirestoreDb database;
         string new_id = "why r u here??";
+        string get_cart_num = "no cart item~";
         protected List<String> add_course_var = new List<String>();
-        List<String> course_cookie_list = new List<string>();
+        List<String> course_cookie_list = new List<String>();
         protected List<Course> course_var = new List<Course>();
+        protected List<string> cart_var = new List<string>();
         HttpCookie add_course_cookie = new HttpCookie("Course_Cookies", "I don't want to see you ah!");
 
         protected void Page_Load(object sender, EventArgs e)
@@ -24,64 +26,82 @@ namespace Tuition_Center_Application.common
             database = util.firebase.get_database();
 
             get_a_doc();
+            get_cart();
 
-            if (Request.Cookies["Course_Cookies"] == null)
-            {
-                //course_cookie_list = Request.Cookies["Course_Cookies"].Value.Split(' ').ToList();
-                notification_label.Text = course_cookie_list.Count().ToString();
-            }
+            notification_label.CssClass = "badge badge_hide";
+            notification_label.Text = get_cart_num;
 
             if (notification_label.Text == "0")
             {
-                
+                System.Diagnostics.Debug.WriteLine("notification up: " + notification_label.Text);
+                notification_label.CssClass = "badge badge_hide";
+            }
+            else
+            {
+                notification_label.CssClass = "badge";
+                System.Diagnostics.Debug.WriteLine("notification down: " + notification_label.Text);
             }
         }
 
         protected void view_btn_Click(object sender, EventArgs e)
         {
-            Label btn = (Label)sender;
+            Button btn = (Button)sender;
             RepeaterItem item = (RepeaterItem)btn.NamingContainer;
-            string course_id = ((Label)item.FindControl("courseID_label")).Text;
+            string course_id = ((HiddenField)item.FindControl("courseID_hf")).Value;
 
             System.Diagnostics.Debug.WriteLine("Course id: " + course_id);
 
-            //for (int i = 0; i < course_var.Count(); i++)
-            //{
-            //    if (course_id == course_var[i].courseID)
-            //    {
-            //        add_course_var.Add(course_var[i]);
-            //    }
-            //}
+            DocumentReference cart_doc = database.Collection("Cart").Document("1");
 
-            add_course_var.Add(course_id);
+            cart_doc.UpdateAsync("courseID", FieldValue.ArrayUnion(course_id));
 
-            // Stringify your list
-            string new_string = String.Join(",", add_course_var);
-
-            // Create a cookie
-            add_course_cookie.Value += " " + course_id;
-
-            // The cookie will exist for 7 days
-            add_course_cookie.Expires = DateTime.Now.AddHours(1);
-
-            // Write the Cookie to your Response
-            Response.Cookies.Add(add_course_cookie);
-
+            get_cart();
         }
 
         async void get_a_doc()
         {
             QuerySnapshot snap = await util.firebase.get_doc_snap("Course");
-
+            
             foreach (DocumentSnapshot docsnap in snap.Documents)
             {
                 Course course = docsnap.ConvertTo<Course>();
                 course_var.Add(course);
             }
+
             new_id = (int.Parse(course_var[course_var.Count() - 1].courseID) + 1).ToString();
 
             course_repeater.DataSource = course_var;
             course_repeater.DataBind();
+        }
+
+        async void get_cart()
+        {
+            cart_var.Clear();
+
+            DocumentReference doc = database.Collection("Cart").Document("1");
+
+            DocumentSnapshot snap = await doc.GetSnapshotAsync();
+
+            Dictionary<string, object> key = snap.ToDictionary();
+
+            foreach (var item in key)
+            {
+                if (item.Key == "courseID")
+                {
+                    foreach (var array_item in (List<object>)item.Value)
+                    {
+                        System.Diagnostics.Debug.WriteLine("array_item: " + array_item);
+                        cart_var.Add(array_item.ToString());
+                    }
+                }
+            }
+
+            get_cart_num =  cart_var.Count().ToString();
+            notification_label.Text = get_cart_num;
+
+            System.Diagnostics.Debug.WriteLine("Cart Num: " + get_cart_num);
+            System.Diagnostics.Debug.WriteLine("notification (get cart): " + notification_label.Text);
+            System.Diagnostics.Debug.WriteLine("------------------------------------------------------");
         }
 
         protected void next_btn_Click(object sender, EventArgs e)
