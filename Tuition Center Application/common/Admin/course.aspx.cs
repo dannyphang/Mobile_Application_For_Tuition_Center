@@ -177,12 +177,11 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void more_btn_Click(object sender, EventArgs e)
         {
-            
             for (int i = 0; i < course_var.Count(); i++)
             {
                 if (course_var[i].courseID == getID(sender))
                 {
-                    System.Diagnostics.Debug.WriteLine(course_var[i].courseID + ": " + course_var[i].language);
+                    //System.Diagnostics.Debug.WriteLine(course_var[i].courseID + ": " + course_var[i].language);
                     name_text2.Text = course_var[i].courseName;
                     level_ddl2.SelectedValue = course_var[i].level;
                     language_ddl2.SelectedValue = course_var[i].language;

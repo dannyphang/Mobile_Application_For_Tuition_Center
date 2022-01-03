@@ -148,11 +148,11 @@
     <Content Include="common\Admin\home.aspx" />
     <Content Include="common\Admin\staff.aspx" />
     <Content Include="common\Admin\student.aspx" />
-    <Content Include="common\cart.aspx" />
     <Content Include="common\course.aspx" />
     <Content Include="common\cursor.ascx" />
     <Content Include="common\footer.ascx" />
     <Content Include="common\home.aspx" />
+    <Content Include="common\order.aspx" />
     <Content Include="common\Staff\course.aspx" />
     <Content Include="common\Staff\home.aspx" />
     <Content Include="common\Staff\profile.aspx" />
@@ -165,6 +165,7 @@
     <Content Include="css\admin_student.css" />
     <Content Include="css\footer.css" />
     <Content Include="css\login.css" />
+    <Content Include="css\order.css" />
     <Content Include="css\side_nav.css" />
     <Content Include="common\login.aspx" />
     <Content Include="css\staff_master.css" />
@@ -217,13 +218,6 @@
     </Compile>
     <Compile Include="common\Admin\student.aspx.designer.cs">
       <DependentUpon>student.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="common\cart.aspx.cs">
-      <DependentUpon>cart.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="common\cart.aspx.designer.cs">
-      <DependentUpon>cart.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\course.aspx.cs">
       <DependentUpon>course.aspx</DependentUpon>
@@ -280,6 +274,13 @@
     </Compile>
     <Compile Include="common\MasterPage\student.Master.designer.cs">
       <DependentUpon>student.Master</DependentUpon>
+    </Compile>
+    <Compile Include="common\order.aspx.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\order.aspx.designer.cs">
+      <DependentUpon>order.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\Staff\course.aspx.cs">
       <DependentUpon>course.aspx</DependentUpon>
