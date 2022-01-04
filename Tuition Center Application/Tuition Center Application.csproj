@@ -153,6 +153,7 @@
     <Content Include="common\footer.ascx" />
     <Content Include="common\home.aspx" />
     <Content Include="common\order.aspx" />
+    <Content Include="common\order_form.aspx" />
     <Content Include="common\Staff\course.aspx" />
     <Content Include="common\Staff\home.aspx" />
     <Content Include="common\Staff\profile.aspx" />
@@ -166,6 +167,7 @@
     <Content Include="css\footer.css" />
     <Content Include="css\login.css" />
     <Content Include="css\order.css" />
+    <Content Include="css\order_form.css" />
     <Content Include="css\side_nav.css" />
     <Content Include="common\login.aspx" />
     <Content Include="css\staff_master.css" />
@@ -281,6 +283,13 @@
     </Compile>
     <Compile Include="common\order.aspx.designer.cs">
       <DependentUpon>order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\order_form.aspx.cs">
+      <DependentUpon>order_form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\order_form.aspx.designer.cs">
+      <DependentUpon>order_form.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\Staff\course.aspx.cs">
       <DependentUpon>course.aspx</DependentUpon>

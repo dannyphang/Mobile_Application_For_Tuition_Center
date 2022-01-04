@@ -156,8 +156,8 @@ namespace Tuition_Center_Application.common
 
         protected void next_btn_Click(object sender, EventArgs e)
         {
-            
-            System.Diagnostics.Debug.WriteLine("Course List: " + course_cookie_list.ToString());
+            //System.Diagnostics.Debug.WriteLine("Course List: " + course_cookie_list.ToString());
+            Response.Redirect("~/common/order.aspx");
         }
     }
 }

@@ -51,7 +51,7 @@
                                 <div class="card-front">
                                     <figure>
                                         <div class="img-bg"></div>
-                                        <img src="../img/profile.png" alt="Brohm Lake">
+                                        <img src="https://daisy.org/wp-content/uploads/2018/11/book-dark-enlightenment-1029141-1024x683.jpg" alt="Brohm Lake">
                                     </figure>
                                     <asp:HiddenField ID="courseID_hf" runat="server" Value='<%# Eval("courseID") %>' />
                                     <ul class="course_ul">
@@ -92,7 +92,7 @@
             </asp:Repeater>
 
             <div class="next_btn_container">
-                <asp:LinkButton ID="next_btn" runat="server" CssClass="notification" OnClick="next_btn_Click">
+                <asp:LinkButton ID="next_btn" runat="server" CssClass="notification" OnClick="next_btn_Click" PostBackUrl="~/common/order.aspx">
                     <span><ion-icon name="chevron-forward-outline"></ion-icon></span>
                     <asp:Label ID="notification_label" runat="server" Text="0" CssClass="badge"></asp:Label>
                 </asp:LinkButton>

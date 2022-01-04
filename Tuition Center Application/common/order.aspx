@@ -18,10 +18,9 @@
 								<th>Name</th>
 								<th>Level</th>
 								<th>Day</th>
-								<th>Start Time</th>
-								<th>End Time</th>
+								<th>Time</th>
 								<th>Price</th>
-								<th>Action</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -42,20 +41,13 @@
                                             <asp:Label ID="day_label" runat="server" Text=<%# Eval("day") %>></asp:Label>
 									    </td>
 									    <td>
-                                            <asp:Label ID="time_start_label" runat="server" Text=<%# Eval("time_start") %>></asp:Label>
-									    </td>
-									    <td>
-                                            <asp:Label ID="time_end_label" runat="server" Text=<%# Eval("time_end") %>></asp:Label>
+                                            <asp:Label ID="time_start_label" runat="server" Text=""><%# Eval("time_start") %> - <%# Eval("time_end") %></asp:Label>
 									    </td>
 									    <td>
                                             <asp:Label ID="price_label" runat="server" Text="RM "><%# Eval("price") %></asp:Label>
 									    </td>
 									    <td>
                                             <div class="wrapper">
-                                                <asp:LinkButton ID="more_btn" runat="server" CssClass="icon more" OnClick="more_btn_Click">
-                                                    <div class="tooltip">More</div>
-                                                    <span><ion-icon name="information-circle-outline"></ion-icon></span>
-                                                </asp:LinkButton>
                                                 <asp:LinkButton ID="delete_btn" runat="server" CssClass="icon delete" OnClick="delete_btn_Click">
                                                     <div class="tooltip">Delete</div>
                                                     <span><ion-icon name="trash-outline"></ion-icon></span>
@@ -71,5 +63,10 @@
 			</div>
 		</main>
 		<!-- MAIN -->
+
+		<div class="payment">
+			<h4>Payment Amount :<asp:Label ID="amount_text" runat="server" CssClass="amount" Text=""></asp:Label></h4> 
+			<asp:LinkButton ID="next_btn" runat="server" CssClass="next_btn" OnClick="next_btn_Click">Next</asp:LinkButton>
+		</div>
     </section>
 </asp:Content>

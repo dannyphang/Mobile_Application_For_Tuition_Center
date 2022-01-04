@@ -30,7 +30,7 @@
                         <ion-icon name="eye-off-outline" id="pw_close"></ion-icon>
                         <ion-icon name="eye-outline" id="pw_open"></ion-icon>
                     </span>
-                    <input type="password" class="form__input form__input2" placeholder=" " id="password_input"/>
+                    <input type="password" class="form__input form__input2" placeholder=" " id="password_input" maxlength="20" />
                     <label for="" class="form__label">Password</label>
                 </div>
                 <asp:Button ID="forgotBtn" runat="server" Text="FORGOT Password" CssClass="log-forgotBtn" />
