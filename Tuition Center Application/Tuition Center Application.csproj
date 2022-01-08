@@ -168,6 +168,7 @@
     <Content Include="css\login.css" />
     <Content Include="css\order.css" />
     <Content Include="css\order_form.css" />
+    <Content Include="css\remixicon.css" />
     <Content Include="css\side_nav.css" />
     <Content Include="common\login.aspx" />
     <Content Include="css\staff_master.css" />

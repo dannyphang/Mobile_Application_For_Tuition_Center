@@ -15,7 +15,6 @@ namespace Tuition_Center_Application.common
         protected List<Course> course_var = new List<Course>();
         protected List<Course> filtered = new List<Course>();
         protected List<string> cart_var = new List<string>();
-        string new_id = "why r u here???";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,27 +23,39 @@ namespace Tuition_Center_Application.common
             get_a_doc();
             if (IsPostBack)
             {
-                get_cart();
+                System.Diagnostics.Debug.WriteLine("~~~~ POST BACK AGAIN ~~~~");
             }
         }
 
-        protected async void delete_btn_Click(object sender, EventArgs e)
+        protected void delete_btn_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)sender;
             RepeaterItem item = (RepeaterItem)btn.NamingContainer;
             string course_id = ((HiddenField)item.FindControl("courseID_hd")).Value;
 
-            DocumentReference cart_doc = database.Collection("Cart").Document("1");
+            //DocumentReference cart_doc = database.Collection("Cart").Document("1");
 
-            System.Diagnostics.Debug.WriteLine("Removed course ID: " + course_id);
-            await cart_doc.UpdateAsync("courseID", FieldValue.ArrayRemove(course_id));
+            //System.Diagnostics.Debug.WriteLine("Removed course ID: " + course_id);
+            //await cart_doc.UpdateAsync("courseID", FieldValue.ArrayRemove(course_id));
+            //Request.Cookies["Course_Cookies"].Value = "Removed" + Timestamp.GetCurrentTimestamp().ToString();
 
+            cart_var.Remove(course_id);
+
+            Request.Cookies["Course_Cookies"].Value = "";
+
+            for (int i = 0; i < cart_var.Count(); i++)
+            {
+                Request.Cookies["Course_Cookies"].Value += cart_var[i] + " ";
+            }
+
+            Response.Cookies.Add(Request.Cookies["Course_Cookies"]);
             get_a_doc();
         }
 
         async void get_a_doc()
         {
             course_var.Clear();
+            cart_var.Clear();
 
             QuerySnapshot snap = await util.firebase.get_doc_snap("Course");
 
@@ -53,9 +64,15 @@ namespace Tuition_Center_Application.common
                 Course course = docsnap.ConvertTo<Course>();
                 course_var.Add(course);
             }
-            new_id = (int.Parse(course_var[course_var.Count() - 1].courseID) + 1).ToString();
 
-            get_cart();
+            //get_cart();
+            if (Request.Cookies["Course_Cookies"] != null)
+            {
+                cart_var = Request.Cookies["Course_Cookies"].Value.Split(' ').ToList();
+                System.Diagnostics.Debug.WriteLine("Course_Cookies: " + Request.Cookies["Course_Cookies"].Value);
+            }
+
+            get_course();
         }
 
         async void get_cart()
@@ -114,7 +131,6 @@ namespace Tuition_Center_Application.common
         void get_course()
         {
             filtered = course_var.Where(course => cart_var.Contains(course.courseID)).ToList();
-            System.Diagnostics.Debug.WriteLine("filtered count: " + filtered.Count());
 
             order_repeater.DataSource = filtered;
             order_repeater.DataBind();
@@ -134,9 +150,12 @@ namespace Tuition_Center_Application.common
 
         protected void next_btn_Click(object sender, EventArgs e)
         {
-            //Session["Total_Amount"] = amount_text.Text;
-            //Session["Cart_List"] = cart_var;
+            HttpCookie amount_cookie = new HttpCookie("amount_cookie");
+            amount_cookie.Value = amount_text.Text;
+            Response.Cookies.Add(amount_cookie);
+
             Response.Redirect("~/common/order_form.aspx", false);
+
         }
     }
 }

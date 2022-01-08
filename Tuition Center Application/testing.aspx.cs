@@ -15,5 +15,20 @@ namespace Tuition_Center_Application
         {
 
         }
+
+        protected void delete_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void clear_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void submit_btn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

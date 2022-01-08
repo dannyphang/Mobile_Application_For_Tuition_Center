@@ -70,7 +70,7 @@
 									    </td>
 									    <td>
                                             <div class="wrapper">
-                                                <asp:LinkButton ID="more_btn" runat="server" CssClass="icon more" OnClick="more_btn_Click" OnClientClick="detail_btn_func()">
+                                                <asp:LinkButton ID="more_btn" runat="server" CssClass="icon more" OnClick="more_btn_Click" OnClientClick="return detail_btn_func()">
                                                     <div class="tooltip">More</div>
                                                     <span><ion-icon name="information-circle-outline"></ion-icon></span>
                                                 </asp:LinkButton>
@@ -462,6 +462,12 @@
     <script>
         function detail_btn_func() {
             document.querySelector('.modal_form').classList.add('expand');
+
+
+
+
+
+            return false;
         }
     </script>
 </asp:Content>

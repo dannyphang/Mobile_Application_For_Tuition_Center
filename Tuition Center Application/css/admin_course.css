@@ -621,7 +621,7 @@ body {
 }
 
 .modal_btn:nth-of-type(1) {
-    margin-right: 1rem;
+    margin-right: 0;
 }
 
 .modal_btn:hover,

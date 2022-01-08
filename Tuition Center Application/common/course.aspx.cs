@@ -19,7 +19,8 @@ namespace Tuition_Center_Application.common
         List<String> course_cookie_list = new List<String>();
         protected List<Course> course_var = new List<Course>();
         protected List<string> cart_var = new List<string>();
-        HttpCookie add_course_cookie = new HttpCookie("Course_Cookies", "I don't want to see you ah!");
+        protected List<string> cart_var2 = new List<string>();
+        HttpCookie add_course_cookie = new HttpCookie("Course_Cookies");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,29 +28,29 @@ namespace Tuition_Center_Application.common
 
             get_a_doc();
 
-            notification_label.CssClass = "badge badge_hide";
-            notification_label.Text = get_cart_num;
+            //notification_label.CssClass = "badge badge_hide";
+            //notification_label.Text = get_cart_num;
 
-            get_cart();
+            //get_cart();
 
-            if (IsPostBack)
-            {
-                System.Diagnostics.Debug.WriteLine("~~~~ POST BACK AGAIN ~~~~");
-            }
+            //if (IsPostBack)
+            //{
+            //    System.Diagnostics.Debug.WriteLine("~~~~ POST BACK AGAIN ~~~~");
+            //}
 
-            if (notification_label.Text == "0")
-            {
-                System.Diagnostics.Debug.WriteLine("notification up: " + notification_label.Text);
-                notification_label.CssClass = "badge badge_hide";
-            }
-            else
-            {
-                notification_label.CssClass = "badge";
-                System.Diagnostics.Debug.WriteLine("notification down: " + notification_label.Text);
-            }
+            //if (notification_label.Text == "0")
+            //{
+            //    System.Diagnostics.Debug.WriteLine("notification up: " + notification_label.Text);
+            //    notification_label.CssClass = "badge badge_hide";
+            //}
+            //else
+            //{
+            //    notification_label.CssClass = "badge";
+            //    System.Diagnostics.Debug.WriteLine("notification down: " + notification_label.Text);
+            //}
         }
 
-        protected async void view_btn_Click(object sender, EventArgs e)
+        protected void view_btn_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             RepeaterItem item = (RepeaterItem)btn.NamingContainer;
@@ -57,26 +58,31 @@ namespace Tuition_Center_Application.common
 
             System.Diagnostics.Debug.WriteLine("Course id: " + course_id);
 
-            DocumentReference cart_doc = database.Collection("Cart").Document("1");
-            DocumentSnapshot snap = await cart_doc.GetSnapshotAsync();
+            //DocumentReference cart_doc = database.Collection("Cart").Document("1");
+            //DocumentSnapshot snap = await cart_doc.GetSnapshotAsync();
 
-            if (snap.Exists)
-            {
-                await cart_doc.UpdateAsync("courseID", FieldValue.ArrayUnion(course_id));
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Documents is not exists!!!!!!");
-                cart_var.Add(course_id);
-                Dictionary<string, object> cart_item = new Dictionary<string, object>
-                {
-                    { "courseID", cart_var },
-                    { "startTime", Timestamp.GetCurrentTimestamp().ToDateTime() }
-                };
-                await database.Collection("Cart").Document("1").SetAsync(cart_item);
-            }
+            //if (snap.Exists)
+            //{
+            //    await cart_doc.UpdateAsync("courseID", FieldValue.ArrayUnion(course_id));
+            //}
+            //else
+            //{
+            //    System.Diagnostics.Debug.WriteLine("Documents is not exists!!!!!!");
+            //    cart_var.Add(course_id);
+            //    Dictionary<string, object> cart_item = new Dictionary<string, object>
+            //    {
+            //        { "courseID", cart_var },
+            //        { "startTime", Timestamp.GetCurrentTimestamp().ToDateTime() }
+            //    };
+            //    await database.Collection("Cart").Document("1").SetAsync(cart_item);
+            //}
 
-            get_cart();
+            //get_cart();
+            
+            added_course_list_hf.Value += course_id + " ";
+
+            add_course_cookie.Value = added_course_list_hf.Value;
+            Response.Cookies.Add(add_course_cookie);
         }
 
         async void get_a_doc()
@@ -148,6 +154,17 @@ namespace Tuition_Center_Application.common
             
             get_cart_num =  cart_var.Count().ToString();
             notification_label.Text = get_cart_num;
+
+            if (notification_label.Text == "0")
+            {
+                System.Diagnostics.Debug.WriteLine("notification 1: " + notification_label.Text);
+                notification_label.CssClass = "badge badge_hide";
+            }
+            else
+            {
+                notification_label.CssClass = "badge";
+                System.Diagnostics.Debug.WriteLine("notification 2: " + notification_label.Text);
+            }
 
             System.Diagnostics.Debug.WriteLine("Cart Num: " + get_cart_num);
             System.Diagnostics.Debug.WriteLine("notification (get cart): " + notification_label.Text);

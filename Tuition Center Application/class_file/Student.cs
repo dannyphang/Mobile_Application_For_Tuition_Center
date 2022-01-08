@@ -20,16 +20,22 @@ namespace Tuition_Center_Application.class_file
         [FirestoreProperty]
         public string IC { get; set; }
         [FirestoreProperty]
+        public string OTP { get; set; }
+        [FirestoreProperty]
+        public DateTime OTP_Send { get; set; }
+        [FirestoreProperty]
         public string avatar { get; set; }
         [FirestoreProperty]
         public string address { get; set; }
         [FirestoreProperty]
         public string phoneNo { get; set; }
         [FirestoreProperty]
-        public string DOB { get; set; }
+        public DateTime DOB { get; set; }
         [FirestoreProperty]
         public string educationLV { get; set; }
         [FirestoreProperty]
         public string school { get; set; }
+        [FirestoreProperty]
+        public List<string> courseID { get; set; }
     }
 }

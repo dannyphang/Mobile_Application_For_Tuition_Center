@@ -1,43 +1,120 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/guess.Master" AutoEventWireup="true" CodeBehind="order_form.aspx.cs" Inherits="Tuition_Center_Application.common.order_form" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/guess.Master" AutoEventWireup="true" CodeBehind="order_form.aspx.cs" Inherits="Tuition_Center_Application.common.order_form" Async="true"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 	<link rel="stylesheet" href="../../css/order_form.css" />
-
-    <div class="reg_form_content">
-        <div class="row"> 
-            <%-- Avatar preview & upload --%>
-            <%--<div class="avatar-upload">
-                <div class="avatar-edit">
-                    <asp:FileUpload ID="imageUpload" runat="server" CssClass="file_input"/>
-                    <input type='file' id="imageUpload" class="file_input" accept=".png, .jpg, .jpeg" />
-                    <label for="imageUpload"></label>
-                </div>
-                <div class="avatar-preview">
-                    <div class="image_preview" id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+    <section id="container">
+        <div class="reg_form_content">
+            <div class="row row2">
+                <div class="avatar-upload">
+                    <div class="avatar-edit">
+                        <input type='file' id="imageUpload" class="file_input" accept=".png, .jpg, .jpeg"/>
+                        <label for="imageUpload"></label>
                     </div>
-                </div>
-            </div>--%>
-            <div class="avatar-upload">
-                <div class="avatar-edit">
-                    <input type='file' id="imageUpload" class="file_input" accept=".png, .jpg, .jpeg"/>
-                    <label for="imageUpload"></label>
-                </div>
-                <div class="avatar-preview">
-                    <div id="imagePreview" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                    <div class="avatar-preview">
+                        <div id="imagePreview" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <h4>Course</h4>
-            <%--Course Name Textbox--%>
-            <div class="input-group input-group-icon">
-                <asp:TextBox ID="name_text" runat="server" CssClass="input" placeholder="Course name"></asp:TextBox>
-                <div class="input-icon"><p></p></div>
-            </div>
-            <div class="col-half">
-                <%--Level DDL--%>
+            <%--Student Name Textbox--%>
+            <div class="row row2">
+                <h4 class="h4_text">Name</h4>
                 <div class="input-group input-group-icon">
-                    <h4>Level</h4>
+                    <asp:TextBox ID="name_text" runat="server" CssClass="input" placeholder="Name"></asp:TextBox>
+                    <div class="input-icon">
+                            <div class="tooltip">Delete</div>
+                            <span class="info_icon"><ion-icon name="information-circle-outline"></ion-icon></span>
+                    </div>
+                </div>
+            </div>
+            <%--IC Textbox--%>
+            <div class="row row2">
+                <h4 class="h4_text">IC NO</h4>
+                <div class="input-group input-group-icon">
+                    <asp:TextBox ID="IC_text" runat="server" CssClass="input" placeholder="IC No"></asp:TextBox>
+                    <div class="input-icon">
+                        <p>
+                            <div class="tooltip">Delete</div>
+                            <span class="info_icon"><ion-icon name="information-circle-outline"></ion-icon></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <%--Email Textbox--%>
+            <div class="row row2">
+                <h4 class="h4_text">Email</h4>
+                <div class="input-group input-group-icon">
+                    <asp:TextBox ID="email_text" runat="server" CssClass="input" placeholder="Email"></asp:TextBox>
+                    <div class="input-icon">
+                        <p>
+                            <div class="tooltip">Delete</div>
+                            <span class="info_icon"><ion-icon name="information-circle-outline"></ion-icon></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row row2">
+                <%--Password Textbox--%>
+                <div class="col-half col-half2">
+                    <h4 class="h4_text">Password</h4>
+                    <div class="input-group input-group-icon">
+                        <asp:TextBox ID="password_text" runat="server" CssClass="input" placeholder="Password"></asp:TextBox>
+                        <div class="input-icon"><p><span class="info_icon"><ion-icon name="information-circle-outline"></ion-icon></span></p></div>
+                    </div>
+                </div>
+                <%--Confirm Password Textbox--%>
+                <div class="col-half col-half2">
+                    <h4 class="h4_text">Confirm Password</h4>
+                    <div class="input-group input-group-icon">
+                        <asp:TextBox ID="confirm_password_text" runat="server" CssClass="input" placeholder="Confirm Password"></asp:TextBox>
+                        <div class="input-icon" onmouseover="icon_hover()">
+                            <div class="tooltip">Delete</div>
+                            <p>
+                                <span id="info_icon" class="info_icon"><ion-icon name="information-circle-outline"></ion-icon></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%--Address Textbox--%>
+            <div class="row row2">
+                <h4 class="h4_text">Address</h4>
+                <div class="input-group input-group-icon">
+                    <asp:TextBox ID="address_text" runat="server" CssClass="input" placeholder="Address"></asp:TextBox>
+                    <div class="input-icon"><p></p></div>
+                </div>
+            </div>
+            <div class="row row2">
+                <%-- Phone Number Textbox --%>
+                <div class="col-half col-half2">
+                    <h4 class="h4_text">Phone Number</h4>
+                    <div class="input-group input-group-icon">
+                        <asp:TextBox ID="phone_text" runat="server" CssClass="input" placeholder="Phone Number"></asp:TextBox>
+                        <div class="input-icon">
+                            <asp:LinkButton ID="delete_btn" runat="server" CssClass="info_icon delete" OnClick="delete_btn_Click">
+                                <div class="tooltip">Delete</div>
+                                <span><ion-icon name="trash-outline"></ion-icon></span>
+                            </asp:LinkButton>
+                            <%--<p>
+                                <div class="tooltip">Delete</div>
+                                <span class="info_icon"><ion-icon name="information-circle-outline"></ion-icon></span>
+                            </p>--%>
+                        </div>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="info_icon delete" OnClick="delete_btn_Click">
+                            <div class="tooltip">Delete</div>
+                            <span><ion-icon name="trash-outline"></ion-icon></span>
+                        </asp:LinkButton>
+                    </div>
+                </div>
+                <%-- DOB DDL --%>
+                <div class="col-half col-half2">
+                    <h4 class="h4_text">Date of Birth</h4>
+                
+                </div>
+            </div>
+            <div class="row row2">
+                <%-- Education Level DDL --%>
+                <div class="col-half col-half2">
+                    <h4 class="h4_text">Education Level</h4>
                     <div class="input-group">
                         <asp:DropDownList ID="level_ddl" runat="server">
                             <asp:ListItem>Standard 1</asp:ListItem>
@@ -54,108 +131,35 @@
                         </asp:DropDownList>
                     </div>
                 </div>
-            </div>
-            <div class="col-half">
-                <%--Tutor ddl--%>
-                <div class="input-group input-group-icon">
-                    <h4>Tutor</h4>
-                    <div class="input-group">
-                        <asp:DropDownList ID="tutor_ddl" runat="server">
-                            <asp:ListItem>Tutor</asp:ListItem>
-                        </asp:DropDownList>
+                <%-- School Textbox --%>
+                <div class="col-half col-half2">
+                    <h4 class="h4_text">School</h4>
+                    <div class="input-group input-group-icon">
+                        <asp:TextBox ID="school_text" runat="server" CssClass="input" placeholder="School"></asp:TextBox>
+                        <div class="input-icon">
+                            <p>
+                                <div class="tooltip">Delete</div>
+                                <span class="info_icon"><ion-icon name="information-circle-outline"></ion-icon></span>
+                            </p>
+                        </div>
                     </div>
+                </div>
+            </div>
+            <div class="row row2">
+                <div class="col-half col-half2">
+                    <div class="input-group"></div>
+                </div>
+                <div class="col-half col-half2">
+                    <asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click"/>
+                    <asp:Button ID="submit_btn" runat="server" Text="Submit" CssClass="modal_btn" OnClick="submit_btn_Click"/>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-half">
-                <%--Language radio button--%>
-                <div class="input-group input-group-icon">
-                    <h4>Language</h4>
-                    <div class="input-group">
-                            <asp:DropDownList ID="language_ddl" runat="server">
-                            <asp:ListItem>Malay</asp:ListItem>
-                            <asp:ListItem>Chinese</asp:ListItem>
-                            <asp:ListItem>English</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                </div>
-            </div>
-            <div class="col-half">
-                <%--Price Textbox--%>
-                <div class="input-group input-group-icon">
-                    <h4>Price</h4>
-                    <div class="input-group">
-                        <asp:TextBox ID="price_text" runat="server" CssClass="input" placeholder="0.00"></asp:TextBox>
-                        <div class="input-icon input-icon2"><p>RM</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-half">
-                <%--Day DDL--%>
-                <div class="input-group input-group-icon">
-                    <h4>Day</h4>
-                    <div class="input-group">
-                        <asp:DropDownList ID="day_ddl" runat="server">
-                            <asp:ListItem>Monday</asp:ListItem>
-                            <asp:ListItem>Tuesday</asp:ListItem>
-                            <asp:ListItem>Wednesday</asp:ListItem>
-                            <asp:ListItem>Thursday</asp:ListItem>
-                            <asp:ListItem>Friday</asp:ListItem>
-                            <asp:ListItem>Saturday</asp:ListItem>
-                            <asp:ListItem>Sunday</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                </div>
-            </div>
-            <div class="col-half">
-                <%--Duration DDL--%>
-                <div class="input-group input-group-icon">
-                    <h4>Duration</h4>
-                    <div class="input-group">
-                        <asp:DropDownList ID="duration_ddl" runat="server">
-                            <asp:ListItem>1 hour</asp:ListItem>
-                            <asp:ListItem>1.5 hours</asp:ListItem>
-                            <asp:ListItem>2 hours</asp:ListItem>
-                            <asp:ListItem>2.5 hours</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <h4>Time</h4>
-        </div>
-        <div class="row">
-            <div class="col-half">
-                <%--Time Hour Text--%>
-                <div class="input-group input-group-icon">
-                    <div class="input-group">
-                        <asp:TextBox ID="hour_text" runat="server" CssClass="input" placeholder="00" MaxLength="2"></asp:TextBox>
-                        <div class="input-icon"><p>HH</p></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-half">
-                <%--Time Hour Text--%>
-                <div class="input-group input-group-icon">
-                    <div class="input-group">
-                        <asp:TextBox ID="min_text" runat="server" CssClass="input" placeholder="00" MaxLength="2"></asp:TextBox>
-                        <div class="input-icon"><p>MM</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-half">
-                <div class="input-group"></div>
-            </div>
-            <div class="col-half">
-                <%--<asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click"/>
-                <asp:Button ID="submit_btn" runat="server" Text="Submit" CssClass="modal_btn" OnClick="submit_btn_Click"/>--%>
-            </div>
-        </div>
-    </div>
+    </section>
+
+    <script>
+        function icon_hover() {
+            document.getElementById("info_icon").style.color = "red";
+        }
+    </script>
 </asp:Content>

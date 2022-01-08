@@ -60,6 +60,15 @@ namespace Tuition_Center_Application
         protected global::System.Web.UI.WebControls.Button login_staff_btn;
 
         /// <summary>
+        /// role_hf control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField role_hf;
+
+        /// <summary>
         /// forgotBtn control.
         /// </summary>
         /// <remarks>

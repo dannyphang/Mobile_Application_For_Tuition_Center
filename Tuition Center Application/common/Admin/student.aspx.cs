@@ -22,7 +22,6 @@ namespace Tuition_Center_Application.common.Admin
             educationLV_ddl.Items.Insert(0, new ListItem("Eduaction Level", "0"));
 
             get_a_doc();
-            get_a_doc();
         }
 
         async void get_a_doc()
@@ -67,6 +66,26 @@ namespace Tuition_Center_Application.common.Admin
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void clear_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void submit_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void reset_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void update_btn_Click(object sender, EventArgs e)
         {
 
         }
