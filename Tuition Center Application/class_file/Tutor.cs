@@ -29,5 +29,7 @@ namespace Tuition_Center_Application.class_file
         public string onBoardingDate { get; set; }
         [FirestoreProperty]
         public float salary { get; set; }
+        [FirestoreProperty]
+        public List<string> courseID { get; set; }
     }
 }

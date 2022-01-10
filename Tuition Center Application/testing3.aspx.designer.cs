@@ -15,120 +15,75 @@ namespace Tuition_Center_Application
     {
 
         /// <summary>
-        /// name_text control.
+        /// name_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox name_text;
+        protected global::System.Web.UI.WebControls.Label name_label;
 
         /// <summary>
-        /// IC_text control.
+        /// IC_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox IC_text;
+        protected global::System.Web.UI.WebControls.Label IC_label;
 
         /// <summary>
-        /// email_text control.
+        /// email_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox email_text;
+        protected global::System.Web.UI.WebControls.Label email_label;
 
         /// <summary>
-        /// password_text control.
+        /// address_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox password_text;
+        protected global::System.Web.UI.WebControls.Label address_label;
 
         /// <summary>
-        /// confirm_password_text control.
+        /// phone_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox confirm_password_text;
+        protected global::System.Web.UI.WebControls.Label phone_label;
 
         /// <summary>
-        /// address_text control.
+        /// DOB_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox address_text;
+        protected global::System.Web.UI.WebControls.Label DOB_label;
 
         /// <summary>
-        /// phone_text control.
+        /// education_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox phone_text;
+        protected global::System.Web.UI.WebControls.Label education_label;
 
         /// <summary>
-        /// delete_btn control.
+        /// school_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton delete_btn;
-
-        /// <summary>
-        /// LinkButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
-
-        /// <summary>
-        /// level_ddl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList level_ddl;
-
-        /// <summary>
-        /// school_text control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox school_text;
-
-        /// <summary>
-        /// clear_btn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button clear_btn;
-
-        /// <summary>
-        /// submit_btn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button submit_btn;
+        protected global::System.Web.UI.WebControls.Label school_label;
     }
 }

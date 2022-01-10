@@ -12,7 +12,7 @@ namespace Tuition_Center_Application.common.Admin
     public partial class student : System.Web.UI.Page
     {
         FirestoreDb database;
-        protected List<Student> student_var = new List<Student>();
+        protected List<class_file.Student> student_var = new List<class_file.Student>();
         string new_id = "why r u here???";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace Tuition_Center_Application.common.Admin
 
             foreach (DocumentSnapshot docsnap in snap.Documents)
             {
-                Student student = docsnap.ConvertTo<Student>();
+                class_file.Student student = docsnap.ConvertTo<class_file.Student>();
                 student_var.Add(student);
             }
             new_id = (int.Parse(student_var[student_var.Count() - 1].studentID) + 1).ToString();

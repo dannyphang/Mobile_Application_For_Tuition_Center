@@ -125,7 +125,7 @@
                                     </div>
                                 </div>
                             </div>--%>
-                            <div class="avatar-upload">
+                            <%--<div class="avatar-upload">
                                 <div class="avatar-edit">
                                     <input type='file' id="imageUpload" class="file_input" accept=".png, .jpg, .jpeg"/>
                                     <label for="imageUpload"></label>
@@ -134,7 +134,7 @@
                                     <div id="imagePreview" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
                                     </div>
                                 </div>
-                            </div>
+                            </div>--%>
                         </div>
                         <div class="row">
                             <h4>Course</h4>

@@ -153,6 +153,7 @@ namespace Tuition_Center_Application.common
             HttpCookie amount_cookie = new HttpCookie("amount_cookie");
             amount_cookie.Value = amount_text.Text;
             Response.Cookies.Add(amount_cookie);
+            Response.Cookies["amount_cookie"].Expires = DateTime.Now.AddMinutes(30);
 
             Response.Redirect("~/common/order_form.aspx", false);
 

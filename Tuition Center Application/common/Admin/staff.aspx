@@ -31,6 +31,7 @@
 			</asp:LinkButton>
 		</section>
 		<%-- CATEGORY --%>
+
 		<!-- MAIN -->
 		<main>
 			<div class="table-data">
@@ -90,8 +91,9 @@
 			</div>
 		</main>
 		<!-- MAIN -->
+
         <%-- Flow ADD Buttom --%>
-		<div class="email" onclick="this.classList.add('expand')">
+		<div class="email" id="email" onclick="expand_modal()">
 			<div class="from">
                 <div class="from-contents">
                     <div class="name">+</div>
@@ -120,14 +122,8 @@
 	<%--<script src="../../js/course_student.js"></script>--%>
 
 	<script>
-        const input = document.getElementById("search-input");
-        const searchBtn = document.getElementById("search-btn");
-
-        const expand = () => {
-            searchBtn.classList.toggle("close");
-            input.classList.toggle("square");
-        };
-
-        searchBtn.addEventListener("click", expand);
+		function expand_modal() {
+			document.getElementById("email").classList.add('expand');
+        }
     </script>
 </asp:Content>

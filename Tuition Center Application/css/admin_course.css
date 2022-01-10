@@ -38,7 +38,7 @@ li {
     --border-color: hsla(0, 0%, 100%, .2);
     --font-color: #f0a500;
     --modal_box_width: 460px;
-    --modal_box_height: 738px;
+    --modal_box_height: 630px;
 }
 
 html {
@@ -69,7 +69,6 @@ body.dark {
     width: 100%;
     padding: 36px 24px;
     font-family: var(--poppins);
-    max-height: calc(100vh - 56px);
     overflow-y: auto;
 }
 
@@ -449,7 +448,8 @@ body {
 .email {
     right: 10px;
     bottom: 10px;
-    background: #DEDBDF;
+    background: var(--box_background);
+    color: white;
     border-radius: 16px;
     height: 32px;
     overflow: hidden;
@@ -464,7 +464,7 @@ body {
 }
 
 .email:not(.expand):hover {
-    background: #C2C0C2;
+    background: #524b54;
 }
 
 .from {
@@ -578,6 +578,7 @@ body {
     width: 100%;
     padding: 10px;
     border-radius: 6px;
+    color: var(--font-color);
 }
 
 .email.expand {
@@ -585,6 +586,8 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.10), 0 6px 6px rgba(0,0,0,0.16);
     height: var(--modal_box_height); /*modal box height*/
     width: var(--modal_box_width);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .expand .from {
@@ -593,7 +596,7 @@ body {
 }
 
 .expand .from-contents {
-    transform: scale(1);
+
 }
 
 .expand .to {
@@ -602,8 +605,8 @@ body {
 }
 
 .expand .to-contents {
-    width: 510px;
-    transform: scale(0.9);
+    width: 460px;
+    transform: scale(1);
 }
 
 .modal_btn {

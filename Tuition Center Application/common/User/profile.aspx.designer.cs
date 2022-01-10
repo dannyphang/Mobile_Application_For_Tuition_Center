@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tuition_Center_Application.common.Staff
+namespace Tuition_Center_Application.common.Student
 {
 
 

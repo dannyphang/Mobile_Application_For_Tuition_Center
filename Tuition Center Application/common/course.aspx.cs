@@ -83,6 +83,7 @@ namespace Tuition_Center_Application.common
 
             add_course_cookie.Value = added_course_list_hf.Value;
             Response.Cookies.Add(add_course_cookie);
+            Response.Cookies["Course_Cookies"].Expires = DateTime.Now.AddMinutes(30);
         }
 
         async void get_a_doc()

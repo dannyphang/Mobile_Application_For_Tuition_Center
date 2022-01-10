@@ -13,7 +13,7 @@ namespace Tuition_Center_Application.common
     {
         FirestoreDb database;
         protected List<Course> course_var = new List<Course>();
-        protected List<Student> student_var = new List<Student>();
+        protected List<class_file.Student> student_var = new List<class_file.Student>();
         protected List<string> cart_var = new List<string>();
         string new_student_id = "student: why am i here???";
 
@@ -34,7 +34,7 @@ namespace Tuition_Center_Application.common
         {
             DocumentReference doc = database.Collection("Student").Document(new_student_id);
 
-            Student new_student = new Student
+            class_file.Student new_student = new class_file.Student
             {
                 name = name_text.Text.Trim(),
                 IC = IC_text.Text.Trim(),
@@ -45,9 +45,9 @@ namespace Tuition_Center_Application.common
                 educationLV = level_ddl.SelectedValue.Trim(),
                 school = school_text.Text.Trim(),
                 DOB = Timestamp.GetCurrentTimestamp().ToDateTime(),
-                OTP = "",
+                OTP = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 6).Select(s => s[new Random().Next(s.Length)]).ToArray()),
                 OTP_Send = Timestamp.GetCurrentTimestamp().ToDateTime(),
-                avatar = "",
+                avatar = image_hf.Value,
                 courseID = cart_var, 
             };
 
@@ -64,7 +64,7 @@ namespace Tuition_Center_Application.common
 
             foreach (DocumentSnapshot docsnap in snap.Documents)
             {
-                Student student = docsnap.ConvertTo<Student>();
+                class_file.Student student = docsnap.ConvertTo<class_file.Student>();
                 student_var.Add(student);
             }
 
@@ -77,6 +77,7 @@ namespace Tuition_Center_Application.common
 
         protected void clear_btn_Click(object sender, EventArgs e)
         {
+            //System.Diagnostics.Debug.WriteLine("image_hf: " + image_hf.Value);
             clear_data();
         }
 

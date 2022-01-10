@@ -16,7 +16,10 @@ namespace Tuition_Center_Application.common.Admin
         protected static string[] level_list = Course.level_list;
         protected static string[] day_list = Course.day_list;
         protected static string[] duration_list = Course.duration_list;
+        List<string> course_display_var = new List<string>();
         string new_id = "why r u here???";
+        HttpCookie course_cookie = new HttpCookie("course", "");
+
         protected void Page_Load(object sender, EventArgs e)
         {
             database = util.firebase.get_database();
@@ -33,7 +36,25 @@ namespace Tuition_Center_Application.common.Admin
 
         async void get_a_doc()
         {
+            course_var.Clear();
+
             QuerySnapshot snap = await util.firebase.get_doc_snap("Course");
+            
+            //if (Response.Cookies["Course_Cookies"].Value != null && Response.Cookies["Course_Cookies"].Value != "")
+            //{
+            //    course_display_var = Response.Cookies["Course_Cookies"].Value.Split(' ').ToList();
+
+
+            //}
+            //else
+            //{
+            //    foreach (DocumentSnapshot docsnap in snap.Documents)
+            //    {
+            //        Course course = docsnap.ConvertTo<Course>();
+            //        course_var.Add(course);
+            //        course_cookie.Value += course.courseID + " ";
+            //    }
+            //}
 
             foreach (DocumentSnapshot docsnap in snap.Documents)
             {
@@ -41,6 +62,10 @@ namespace Tuition_Center_Application.common.Admin
                 course_var.Add(course);
             }
             new_id = (int.Parse(course_var[course_var.Count() - 1].courseID) + 1).ToString();
+
+            //Response.Cookies.Add(course_cookie);
+            
+
 
             course_repeater.DataSource = course_var;
             course_repeater.DataBind();
@@ -97,6 +122,7 @@ namespace Tuition_Center_Application.common.Admin
 
             doc.SetAsync(new_course);
             clear_data();
+            get_a_doc();
         }
 
         float duration_str_to_float(int index)
@@ -181,7 +207,6 @@ namespace Tuition_Center_Application.common.Admin
             {
                 if (course_var[i].courseID == getID(sender))
                 {
-                    //System.Diagnostics.Debug.WriteLine(course_var[i].courseID + ": " + course_var[i].language);
                     name_text2.Text = course_var[i].courseName;
                     level_ddl2.SelectedValue = course_var[i].level;
                     language_ddl2.SelectedValue = course_var[i].language;
@@ -201,8 +226,6 @@ namespace Tuition_Center_Application.common.Admin
                     min_text2.Enabled = false;
                     reset_btn.Visible = false;
                     update_btn.Visible = false;
-
-
                 }
             }
         }
@@ -244,6 +267,8 @@ namespace Tuition_Center_Application.common.Admin
             DocumentReference doc = database.Collection("Course").Document(getID(sender));
 
             doc.DeleteAsync();
+
+            get_a_doc();
         }
 
         protected int duration_int(float duration)
@@ -300,10 +325,7 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void update_btn_Click(object sender, EventArgs e)
         {
-            //System.Diagnostics.Debug.WriteLine("courseName_hd: " + courseID_hd2.Value);
-
             DocumentReference doc = database.Collection("Course").Document(courseID_hd2.Value);
-            //DocumentReference doc2 = database.Collection("Cart").Document("1");
 
             Course new_course = new Course
             {
@@ -318,7 +340,6 @@ namespace Tuition_Center_Application.common.Admin
             };
 
             doc.SetAsync(new_course);
-            //doc2.UpdateAsync("courseID", FieldValue.ArrayUnion("100"));
         }
     }
 }

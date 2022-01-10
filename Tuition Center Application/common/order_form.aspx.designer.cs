@@ -15,6 +15,15 @@ namespace Tuition_Center_Application.common
     {
 
         /// <summary>
+        /// image_hf control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField image_hf;
+
+        /// <summary>
         /// name_text control.
         /// </summary>
         /// <remarks>
@@ -85,15 +94,6 @@ namespace Tuition_Center_Application.common
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton delete_btn;
-
-        /// <summary>
-        /// LinkButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
 
         /// <summary>
         /// level_ddl control.
