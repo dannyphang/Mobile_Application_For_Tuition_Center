@@ -1,11 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/guess.Master" AutoEventWireup="true" CodeBehind="course.aspx.cs" Inherits="Tuition_Center_Application.common.course" Async="true" EnableEventValidation="false" %>
+﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/guess.Master" AutoEventWireup="true" CodeBehind="course.aspx.cs" Inherits="Tuition_Center_Application.common.course" Async="true" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--css--%>
     <link rel="stylesheet" href=".././css/course.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
     <%--content--%>
     <section>
@@ -96,18 +95,17 @@
                     </asp:Repeater>
                 </div>
                 <asp:HiddenField ID="added_course_list_hf" runat="server" />
-                <div class="next_btn_container">
-                    <asp:LinkButton ID="next_btn" runat="server" CssClass="notification" OnClick="next_btn_Click" PostBackUrl="~/common/order.aspx">
-                        <span>
-                            <ion-icon name="chevron-forward-outline"></ion-icon>
-                        </span>
-                        <asp:Label ID="notification_label" runat="server" Text="0" CssClass="badge"></asp:Label>
-                    </asp:LinkButton>
+                <div class="next_container">
+                    <div class="next_btn_container">
+                        <asp:LinkButton ID="next_btn" runat="server" CssClass="notification" OnClick="next_btn_Click" PostBackUrl="~/common/order.aspx">
+                            <span>
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </span>
+                            <asp:Label ID="notification_label" runat="server" Text="0" CssClass="badge"></asp:Label>
+                        </asp:LinkButton>
+                    </div>
                 </div>
             </ContentTemplate>
-            <%--<Triggers>
-                    <asp:AsyncPostBackTrigger ControlID="view_btn" EventName="Click" />
-                </Triggers>--%>
         </asp:UpdatePanel>
     </section>
     <script>

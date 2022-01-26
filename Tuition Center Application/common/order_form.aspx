@@ -158,12 +158,18 @@
                 </div>
                 <div class="col-half col-half2">
                     <asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click"/>
-                    <asp:Button ID="submit_btn" runat="server" Text="Submit" CssClass="modal_btn" OnClick="submit_btn_Click" />
+                    <%--<asp:Button ID="submit_btn" runat="server" Text="Submit" CssClass="modal_btn" OnClick="submit_btn_Click" />--%>
+                    <button type="button">Checkout</button>
                 </div>
             </div>
         </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <%-- Stripe --%>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="module" src="../js/stripe.js"></script>
+
     <script>
         function icon_hover() {
             document.getElementById("info_icon").style.color = "red";

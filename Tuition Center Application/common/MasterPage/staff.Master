@@ -10,7 +10,6 @@
 </head>
 <body>
     <CURSOR:POINTER ID="cursorcontrol" runat="server" />
-    <form runat="server">
         <div class="sidebar">
             <%--logo--%>
             <div class="logo-details"> 
@@ -20,11 +19,6 @@
             </div>
             <ul class="nav-list">
                 <li>
-                    <i class="search_icon"><ion-icon name="search-outline" id="search_btn"></ion-icon></i>
-                    <input type="text" placeholder="Search...">
-                    <span class="tooltip">Search</span>
-                </li>
-                <li>
                     <a href="#">
                         <i><ion-icon name="home-outline"></ion-icon></i>
                         <span class="links_name">Home</span>
@@ -32,7 +26,7 @@
                     <span class="tooltip">Home</span>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="./timetable.aspx">
                         <i><ion-icon name="calendar-outline"></ion-icon></i>
                         <span class="links_name">Timetable</span>
                     </a>
@@ -73,7 +67,6 @@
                 </asp:ContentPlaceHolder>
             </div>
         </section>
-    </form>
     
     <!----------------------------------------Javascript----------------------------------------------->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

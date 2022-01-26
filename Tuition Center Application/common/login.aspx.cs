@@ -72,6 +72,7 @@ namespace Tuition_Center_Application
                 {
                     if (password == tutor_var[i].password)
                     {
+                        Session["Current_User"] = tutor_var[i].tutorID;
                         Response.Redirect("~/common/Staff/home.aspx");
                     }
                     else
@@ -104,6 +105,7 @@ namespace Tuition_Center_Application
                 {
                     if (password == student_var[i].password)
                     {
+                        Session["Current_User"] = student_var[i].studentID;
                         Response.Redirect("~/common/Student/home.aspx");
                     }
                     else

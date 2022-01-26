@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Google.Cloud.Firestore;
+using Stripe;
+using Stripe.Checkout;
 using Tuition_Center_Application.class_file;
 
 namespace Tuition_Center_Application.common
@@ -16,13 +18,14 @@ namespace Tuition_Center_Application.common
         protected List<class_file.Student> student_var = new List<class_file.Student>();
         protected List<string> cart_var = new List<string>();
         string new_student_id = "student: why am i here???";
+        public string sessionId = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             database = util.firebase.get_database();
 
             get_a_doc();
-
+            stripe_checkout();
         }
 
         protected void delete_btn_Click(object sender, EventArgs e)
@@ -48,7 +51,7 @@ namespace Tuition_Center_Application.common
                 OTP = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 6).Select(s => s[new Random().Next(s.Length)]).ToArray()),
                 OTP_Send = Timestamp.GetCurrentTimestamp().ToDateTime(),
                 avatar = image_hf.Value,
-                courseID = cart_var, 
+                courseID = cart_var,
             };
 
             doc.SetAsync(new_student);
@@ -73,6 +76,32 @@ namespace Tuition_Center_Application.common
             System.Diagnostics.Debug.WriteLine("Student_Var count (from get_a_doc): " + student_var.Count());
 
             get_cart();
+        }
+
+        void stripe_checkout()
+        {
+
+            StripeConfiguration.ApiKey = "sk_test_51KLfunFk6dh40g5t1gLqZvN5hOpYVBqp4LK6YJorr0v20oUw05YOuKbs56vxdMa3mQFWE68w5os9Bl6MqTJvcLjl00kUpS4ld0";
+
+            var options = new SessionCreateOptions
+            {
+                SuccessUrl = "https://www.google.com",
+                CancelUrl = "https://www.youtube.com",
+                LineItems = new List<SessionLineItemOptions>
+                {
+                    new SessionLineItemOptions
+                    {
+                        Name = "T-shirt", 
+                        Description = "hihi", 
+                        Currency = "myr", 
+                        Amount = 100,
+                        Quantity = 2,
+                    },
+                },
+                Mode = "payment",
+            };
+            var service = new SessionService();
+            service.Create(options);
         }
 
         protected void clear_btn_Click(object sender, EventArgs e)

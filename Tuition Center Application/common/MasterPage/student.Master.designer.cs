@@ -15,13 +15,13 @@ namespace Tuition_Center_Application.common.MasterPage
     {
 
         /// <summary>
-        /// head control.
+        /// cursorcontrol control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::Tuition_Center_Application.common.cursor cursorcontrol;
 
         /// <summary>
         /// form1 control.

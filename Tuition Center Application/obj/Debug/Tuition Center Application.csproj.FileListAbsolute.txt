@@ -375,3 +375,7 @@ C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Ce
 C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\roslyn\vbc.rsp
 C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\roslyn\VBCSCompiler.exe
 C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\obj\Debug\Tuition Center Application.csproj.AssemblyReference.cache
+C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\Stripe.net.dll
+C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\Stripe.net.pdb
+C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\Stripe.net.xml

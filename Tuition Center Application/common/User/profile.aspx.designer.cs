@@ -24,6 +24,15 @@ namespace Tuition_Center_Application.common.Student
         protected global::System.Web.UI.WebControls.Label name_label;
 
         /// <summary>
+        /// age_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label age_label;
+
+        /// <summary>
         /// IC_label control.
         /// </summary>
         /// <remarks>
@@ -42,15 +51,6 @@ namespace Tuition_Center_Application.common.Student
         protected global::System.Web.UI.WebControls.Label email_label;
 
         /// <summary>
-        /// address_label control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label address_label;
-
-        /// <summary>
         /// phone_label control.
         /// </summary>
         /// <remarks>
@@ -60,24 +60,6 @@ namespace Tuition_Center_Application.common.Student
         protected global::System.Web.UI.WebControls.Label phone_label;
 
         /// <summary>
-        /// DOB_label control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DOB_label;
-
-        /// <summary>
-        /// education_label control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label education_label;
-
-        /// <summary>
         /// school_label control.
         /// </summary>
         /// <remarks>
@@ -85,5 +67,14 @@ namespace Tuition_Center_Application.common.Student
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label school_label;
+
+        /// <summary>
+        /// level_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label level_label;
     }
 }

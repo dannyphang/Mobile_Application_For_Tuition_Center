@@ -30,5 +30,15 @@ namespace Tuition_Center_Application
         {
 
         }
+
+        protected void next_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void view_btn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

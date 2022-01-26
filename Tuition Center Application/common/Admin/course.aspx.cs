@@ -64,8 +64,6 @@ namespace Tuition_Center_Application.common.Admin
             new_id = (int.Parse(course_var[course_var.Count() - 1].courseID) + 1).ToString();
 
             //Response.Cookies.Add(course_cookie);
-            
-
 
             course_repeater.DataSource = course_var;
             course_repeater.DataBind();
@@ -197,16 +195,20 @@ namespace Tuition_Center_Application.common.Admin
         {
             LinkButton btn = (LinkButton)sender;
             RepeaterItem item = (RepeaterItem)btn.NamingContainer;
+            string value = ((HiddenField)item.FindControl("courseID_hd")).Value;
 
-            return ((HiddenField)item.FindControl("courseID_hd")).Value;
+            return value;
         }
 
         protected void more_btn_Click(object sender, EventArgs e)
         {
+
             for (int i = 0; i < course_var.Count(); i++)
             {
                 if (course_var[i].courseID == getID(sender))
                 {
+                    courseID_hd2.Value = getID(sender);
+
                     name_text2.Text = course_var[i].courseName;
                     level_ddl2.SelectedValue = course_var[i].level;
                     language_ddl2.SelectedValue = course_var[i].language;

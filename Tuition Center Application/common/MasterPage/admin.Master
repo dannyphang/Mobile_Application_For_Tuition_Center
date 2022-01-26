@@ -58,7 +58,7 @@
                 <span class="tooltip">Report</span>
             </li>
             <li class="profile">
-                <a href="../../home.aspx" onclick="signout_confirm()">
+                <a href="../login.aspx" onclick="signout_confirm()">
                     <i id="log_out"><ion-icon name="log-out-outline"></ion-icon></i>
                 </a>
             </li>
