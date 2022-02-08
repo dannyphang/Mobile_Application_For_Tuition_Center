@@ -19,7 +19,12 @@ namespace Tuition_Center_Application.common.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             database = util.firebase.get_database();
-
+            if (IsPostBack)
+            {
+                demo_modal.Attributes.Add("class", "modal_form expand");
+                
+                System.Diagnostics.Debug.WriteLine("Post Back AGAIN!!!!!");
+            }
             get_a_doc();
         }
 
@@ -136,6 +141,16 @@ namespace Tuition_Center_Application.common.Admin
             address_text.Text = "";
             phone_text.Text = "";
             salary_text.Text = "";
+        }
+
+        protected void reset_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void update_btn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

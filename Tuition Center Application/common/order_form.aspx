@@ -159,7 +159,8 @@
                 <div class="col-half col-half2">
                     <asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click"/>
                     <%--<asp:Button ID="submit_btn" runat="server" Text="Submit" CssClass="modal_btn" OnClick="submit_btn_Click" />--%>
-                    <button type="button">Checkout</button>
+                    <%--<button type="button">Checkout</button>--%>
+                    <asp:Button ID="Button1" runat="server" Text="Checkout" CssClass="modal_btn" OnClick="stripe_checkout"/>
                 </div>
             </div>
         </div>

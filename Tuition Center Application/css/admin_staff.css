@@ -1134,7 +1134,7 @@ a#move-thread {
     outline: 0px solid slategrey;
 }
 
-div#modal-overlay {
+div#modal-overlay, .modal-overlay {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
@@ -1153,15 +1153,15 @@ div#modal-overlay {
     transition: all 0.3s ease;
 }
 
-div#modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-}
+    div#modal-overlay.active, .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
 
 div.modal {
     width: 600px;
@@ -1186,7 +1186,7 @@ div.modal {
     transition: all 0.3s ease;
 }
 
-div.modal.active {
+div.modal.active, .modal.active {
     opacity: 1;
     -webkit-transform: scale(1) translateY(-50%);
     -ms-transform: scale(1) translateY(-50%);

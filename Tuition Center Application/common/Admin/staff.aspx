@@ -73,11 +73,11 @@
                                         </td>
                                         <td>
                                             <div class="wrapper">
-                                                <asp:LinkButton ID="more_btn" runat="server" CssClass="icon more" OnClick="more_btn_Click" OnClientClick="detail_btn_func()">
+                                                <asp:LinkButton ID="more_btn" runat="server" CssClass="icon more" OnClick="more_btn_Click" OnClientClick="return detail_btn_func()">
                                                     <div class="tooltip">More</div>
                                                     <span><ion-icon name="information-circle-outline"></ion-icon></span>
                                                 </asp:LinkButton>
-                                                <asp:LinkButton ID="edit_btn" runat="server" CssClass="icon edit" OnClick="edit_btn_Click" OnClientClick="detail_btn_func()">
+                                                <asp:LinkButton ID="edit_btn" runat="server" CssClass="icon edit" OnClick="edit_btn_Click" OnClientClick="return detail_btn_func()">
                                                     <div class="tooltip">Edit</div>
                                                     <span><ion-icon name="create-outline"></ion-icon></span>
                                                 </asp:LinkButton>
@@ -127,7 +127,7 @@
                 <ion-icon name="add-outline"></ion-icon>
             </a>
 
-            <div id="move-thread-modal" class="modal">
+            <div id="move_thread_modal" class="modal " runat="server">
                 <a href="#" id="move-thread-close" class="btn-normal red">
                     <span>
                         <ion-icon name="close-outline"></ion-icon>
@@ -286,7 +286,6 @@
                 <div class="row row2">
                     <h4 class="h4_text">Time</h4>
                     <asp:CheckBoxList ID="time_listbox" runat="server" CssClass="checkbox_list" RepeatColumns="3">
-                        
                     </asp:CheckBoxList>
                 </div>
                 <div class="row row2">
@@ -301,6 +300,162 @@
             </div>
         </div>
         <%-- Modal Box --%>
+
+        <%-- EDIT & MORE --%>
+        <div id="demo_modal" class="modal_form" runat="server">
+            <div class="modal__content">
+                <%--<a class="modal__close" onclick="document.querySelector('.modal_form').classList.remove('expand');event.stopPropagation();"><ion-icon name="close-outline" class="edit_close_icon"></ion-icon></a>--%>
+                <div class="top">
+                    <div class="x-touch" onclick="document.querySelector('.modal_form').classList.remove('expand');event.stopPropagation();">
+                        <div class="x">
+                            <div class="line1"></div>
+                            <div class="line2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="to">
+                    <div class="to-contents">
+                        <div class="bottom">
+                            <div class="row row2">
+                                <div class="avatar-upload">
+                                    <div class="avatar-edit">
+                                        <input type='file' id="imageUpload" class="file_input" accept=".png, .jpg, .jpeg" />
+                                        <asp:HiddenField ID="HiddenField1" runat="server" Value="Why are you here? I don't want to see you eh.." />
+                                    </div>
+                                    <div class="avatar-preview">
+                                        <div id="imagePreview" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <%--Tutor Name Textbox--%>
+                            <div class="row row2">
+                                <h4 class="h4_text">Name</h4>
+                                <div class="input-group input-group-icon">
+                                    <asp:TextBox ID="name_text2" runat="server" CssClass="input" placeholder="Name"></asp:TextBox>
+                                    <div class="input-icon">
+                                        <p>
+                                            <span class="info_icon">
+                                                <ion-icon name="person-circle-outline"></ion-icon>
+                                            </span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <%--IC Textbox--%>
+                            <div class="row row2">
+                                <h4 class="h4_text">IC NO</h4>
+                                <div class="input-group input-group-icon">
+                                    <asp:TextBox ID="IC_text2" runat="server" CssClass="input" placeholder="IC No"></asp:TextBox>
+                                    <div class="input-icon">
+                                        <p>
+                                            <span class="info_icon">
+                                                <ion-icon name="id-card-outline"></ion-icon>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <%--Email Textbox--%>
+                            <div class="row row2">
+                                <h4 class="h4_text">Email</h4>
+                                <div class="input-group input-group-icon">
+                                    <asp:TextBox ID="email_text2" runat="server" CssClass="input" placeholder="Email" TextMode="SingleLine"></asp:TextBox>
+                                    <div class="input-icon">
+                                        <p>
+                                            <span class="info_icon">
+                                                <ion-icon name="mail-outline"></ion-icon>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <%--Address Textbox--%>
+                            <div class="row row2">
+                                <h4 class="h4_text">Address</h4>
+                                <div class="input-group input-group-icon">
+                                    <asp:TextBox ID="address_text2" runat="server" CssClass="input" placeholder="Address"></asp:TextBox>
+                                    <div class="input-icon">
+                                        <p>
+                                            <span class="info_icon">
+                                                <ion-icon name="planet-outline"></ion-icon>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row2">
+                                <%-- Phone Number Textbox --%>
+                                <div class="col-half col-half2">
+                                    <h4 class="h4_text">Phone Number</h4>
+                                    <div class="input-group input-group-icon">
+                                        <asp:TextBox ID="phone_text2" runat="server" CssClass="input" placeholder="Phone Number"></asp:TextBox>
+                                        <div class="input-icon">
+                                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="info_icon delete">
+                                <p><span class="info_icon"><ion-icon name="call-outline"></ion-icon></span></p>
+                                            </asp:LinkButton>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%-- OnBoard Date DDL --%>
+                                <div class="col-half col-half2">
+                                    <h4 class="h4_text">OnBoarding Date</h4>
+                                    <div id="calendar"></div>
+                                    <asp:HiddenField ID="HiddenField2" runat="server" Value="0000" ClientIDMode="Static" />
+                                </div>
+                            </div>
+                            <div class="row row2">
+                                <%-- Position DDL --%>
+                                <div class="col-half col-half2">
+                                    <h4 class="h4_text">Position</h4>
+                                    <div class="input-group">
+                                        <asp:DropDownList ID="position_ddl2" runat="server">
+                                            <asp:ListItem>Standard 1</asp:ListItem>
+                                            <asp:ListItem>Standard 2</asp:ListItem>
+                                            <asp:ListItem>Standard 3</asp:ListItem>
+                                            <asp:ListItem>Standard 4</asp:ListItem>
+                                            <asp:ListItem>Standard 5</asp:ListItem>
+                                            <asp:ListItem>Standard 6</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <%-- Salary Textbox --%>
+                                <div class="col-half col-half2">
+                                    <h4 class="h4_text">Salary</h4>
+                                    <div class="input-group input-group-icon">
+                                        <asp:TextBox ID="salary_text2" runat="server" CssClass="input" placeholder="Salary" TextMode="Number"></asp:TextBox>
+                                        <div class="input-icon">
+                                            <p>
+                                                <span class="info_icon">
+                                                    <ion-icon name="logo-usd"></ion-icon>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <%--Time Textbox--%>
+                            <div class="row row2">
+                                <h4 class="h4_text">Time</h4>
+                                <asp:CheckBoxList ID="time_box" runat="server" CssClass="checkbox_list" RepeatColumns="3">
+                                </asp:CheckBoxList>
+                            </div>
+                            <div class="row row2">
+                                <div class="col-half col-half2">
+                                    <div class="input-group"></div>
+                                </div>
+                                <div class="col-half col-half2">
+                                    <asp:Button ID="reset_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="reset_btn_Click" />
+                                    <asp:Button ID="update_btn" runat="server" Text="Submit" CssClass="modal_btn" OnClick="update_btn_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%-- EDIT & MORE --%>
     </section>
     <%-- CONTENT --%>
 
@@ -313,7 +468,12 @@
         function expand_modal() {
             document.getElementById("email").classList.add('expand');
         }
+        function detail_btn_func() {
+            document.querySelector('.modal_form').classList.add('expand');
+            // return false;
+        }
     </script>
+
     <script>
         window.addEventListener('load',
             function load() {
@@ -325,12 +485,12 @@
             $("#move-thread").click(function (event) {
                 event.preventDefault();
                 $("#modal-overlay").addClass("active");
-                $("#move-thread-modal").addClass("active");
+                $("#move_thread_modal").addClass("active");
             });
             $("#move-thread-close").click(function (event) {
                 event.preventDefault();
                 $("#modal-overlay").removeClass("active");
-                $("#move-thread-modal").removeClass("active");
+                $("#move_thread_modal").removeClass("active");
             });
         });
         $(document).ready(function () {

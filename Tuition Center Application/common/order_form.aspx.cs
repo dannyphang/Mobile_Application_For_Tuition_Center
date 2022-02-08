@@ -25,7 +25,6 @@ namespace Tuition_Center_Application.common
             database = util.firebase.get_database();
 
             get_a_doc();
-            stripe_checkout();
         }
 
         protected void delete_btn_Click(object sender, EventArgs e)
@@ -78,9 +77,8 @@ namespace Tuition_Center_Application.common
             get_cart();
         }
 
-        void stripe_checkout()
+        protected void stripe_checkout(object sender, EventArgs e)
         {
-
             StripeConfiguration.ApiKey = "sk_test_51KLfunFk6dh40g5t1gLqZvN5hOpYVBqp4LK6YJorr0v20oUw05YOuKbs56vxdMa3mQFWE68w5os9Bl6MqTJvcLjl00kUpS4ld0";
 
             var options = new SessionCreateOptions
@@ -101,7 +99,9 @@ namespace Tuition_Center_Application.common
                 Mode = "payment",
             };
             var service = new SessionService();
-            service.Create(options);
+            Session session = service.Create(options);
+            System.Diagnostics.Trace.WriteLine(session.Url);
+            Response.Redirect(session.Url, false);
         }
 
         protected void clear_btn_Click(object sender, EventArgs e)
