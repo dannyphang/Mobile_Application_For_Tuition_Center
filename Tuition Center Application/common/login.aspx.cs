@@ -33,15 +33,6 @@ namespace Tuition_Center_Application
             password_input = Request.Form["password_input"];
             string role = Request.Form["role_hf"];
 
-            //if (password_input == "hi")
-            //{
-            //    Response.Write("<script>alert('hihi')</script>");
-            //}
-            //else
-            //{
-            //    Response.Write("<script>alert('no hi')</script>");
-            //}
-
             if (role == "staff")
             {
                 get_staff(email_input, password_input);
@@ -73,16 +64,18 @@ namespace Tuition_Center_Application
                     if (password == tutor_var[i].password)
                     {
                         Session["Current_User"] = tutor_var[i].tutorID;
-                        Response.Redirect("~/common/Staff/home.aspx");
+                        Response.Redirect("~/common/Staff/home.aspx", false);
                     }
                     else
                     {
                         // display error message (Password is incorrect)
+                        Response.Write("<script>alert('Your Password is incorrect!')</script>");
                     }
                 }
                 else
                 {
                     // display error message (Email is incorrect)
+                    Response.Write("<script>alert('Your Email is incorrect!')</script>");
                 }
             }
         }
@@ -97,7 +90,7 @@ namespace Tuition_Center_Application
             {
                 Student student = docsnap.ConvertTo<Student>();
                 student_var.Add(student);
-            }
+            } 
 
             for (int i = 0; i < student_var.Count(); i++)
             {
@@ -105,17 +98,21 @@ namespace Tuition_Center_Application
                 {
                     if (password == student_var[i].password)
                     {
-                        Session["Current_User"] = student_var[i].studentID;
-                        Response.Redirect("~/common/Student/home.aspx");
+                        Session["Current_User"] = student_var[i].email;
+                        System.Diagnostics.Debug.WriteLine("Session[current user]: " + Session["Current_User"].ToString());
+
+                        Response.Redirect("~/common/User/timetable.aspx", false);
                     }
                     else
                     {
                         // display error message (Password is incorrect)
+                        Response.Write("<script>alert('Your Password is incorrect!')</script>");
                     }
                 }
                 else
                 {
                     // display error message (Email is incorrect)
+                    Response.Write("<script>alert('Your Email is incorrect!')</script>");
                 }
             }
         }

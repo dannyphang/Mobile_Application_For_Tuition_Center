@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-namespace Tuition_Center_Application.common.User
+namespace Tuition_Center_Application.common.Staff
 {
-    public partial class profile2
+    public partial class classroom
     {
     }
 }

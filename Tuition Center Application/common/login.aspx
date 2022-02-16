@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Login" Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Tuition_Center_Application.login" %>
+﻿<%@ Page Title="Login" Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Tuition_Center_Application.login" Async="true"%>
 
 <!DOCTYPE html>
 <%@ Register Src="~/common/cursor.ascx" TagPrefix="CURSOR" TagName="POINTER"%>

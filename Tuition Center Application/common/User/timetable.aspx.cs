@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using Google.Cloud.Firestore;
 using Tuition_Center_Application.class_file;
 
-namespace Tuition_Center_Application.common.Staff
+namespace Tuition_Center_Application.common.User
 {
     public partial class timetable : System.Web.UI.Page
     {
@@ -22,9 +22,9 @@ namespace Tuition_Center_Application.common.Staff
         protected List<Course> day_sun_list = new List<Course>();
         protected List<Course> course_var = new List<Course>();
         protected List<Course> filtered = new List<Course>();
-        protected List<Tutor> tutor_var = new List<Tutor>();
+        protected List<class_file.Student> student_var = new List<class_file.Student>();
         protected string current_email = "";
-        protected Tutor current_user;
+        protected class_file.Student current_user;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -48,7 +48,7 @@ namespace Tuition_Center_Application.common.Staff
                 int temp = (int)(i * 100);
 
                 if (temp - (Math.Floor(i) * 100) == 60)
-                { 
+                {
                     i = Math.Ceiling(i);
                 }
 
@@ -58,29 +58,29 @@ namespace Tuition_Center_Application.common.Staff
 
         async void get_a_doc()
         {
-            QuerySnapshot student_snap = await util.firebase.get_doc_snap("Staff");
+            QuerySnapshot student_snap = await util.firebase.get_doc_snap("Student");
 
             foreach (DocumentSnapshot docsnap in student_snap.Documents)
             {
-                Tutor tutor = docsnap.ConvertTo<Tutor>();
-                tutor_var.Add(tutor);
+                class_file.Student student = docsnap.ConvertTo<class_file.Student>();
+                student_var.Add(student);
             }
 
-            List<string> staff_time_list = new List<string>();
+            List<string> student_time_list = new List<string>();
 
-            // get the staff's info
-            for (int i = 0; i < tutor_var.Count(); i++)
+            // get the student's info
+            for (int i = 0; i < student_var.Count(); i++)
             {
-                if (tutor_var[i].email == current_email)
+                if (student_var[i].email == current_email)
                 {
-                    current_user = tutor_var[i];
+                    current_user = student_var[i];
                 }
             }
 
             System.Diagnostics.Debug.WriteLine("Current Course ID Count: " + current_user.courseID.Count());
             for (int i = 0; i < current_user.courseID.Count(); i++)
             {
-                staff_time_list.Add(current_user.courseID[i]);
+                student_time_list.Add(current_user.courseID[i]);
             }
 
             QuerySnapshot snap = await util.firebase.get_doc_snap("Course");
@@ -91,7 +91,7 @@ namespace Tuition_Center_Application.common.Staff
                 course_var.Add(course);
             }
 
-            filtered = course_var.Where(course => staff_time_list.Contains(course.courseID)).ToList();
+            filtered = course_var.Where(course => student_time_list.Contains(course.courseID)).ToList();
             System.Diagnostics.Debug.WriteLine("filtered count: " + filtered.Count());
 
             for (int i = 0; i < filtered.Count; i++)
