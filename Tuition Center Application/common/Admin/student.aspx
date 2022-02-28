@@ -119,18 +119,6 @@
                 <div class="to">
                     <div class="to-contents">
                         <div class="bottom">
-                            <div class="row">
-                                <div class="avatar-upload">
-                                    <div class="avatar-edit">
-                                        <input type='file' id="imageUpload2" class="file_input" accept=".png, .jpg, .jpeg" />
-                                        <label for="imageUpload"></label>
-                                    </div>
-                                    <div class="avatar-preview">
-                                        <div id="imagePreview2" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="row row2">
                                 <div class="avatar-upload">
                                     <div class="avatar-edit">
@@ -159,7 +147,6 @@
                                                 <ion-icon name="person-circle-outline"></ion-icon>
                                             </span>
                                         </p>
-
                                     </div>
                                 </div>
                             </div>
@@ -320,8 +307,8 @@
                 <div class="row row2">
                     <div class="avatar-upload">
                         <div class="avatar-edit">
-                            <input type='file' id="imageUpload_m" class="file_input" accept=".png, .jpg, .jpeg" />
-                            <label for="imageUpload">
+                            <input type='file' id="imageUpload2" class="file_input" accept=".png, .jpg, .jpeg" />
+                            <label for="imageUpload2">
                                 <span>
                                     <ion-icon name="pencil-outline"></ion-icon>
                                 </span>
@@ -329,7 +316,7 @@
                             <asp:HiddenField ID="image_hf" runat="server" Value="Why are you here? I don't want to see you eh.." />
                         </div>
                         <div class="avatar-preview">
-                            <div id="imagePreview_m" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                            <div id="imagePreview2" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
                             </div>
                         </div>
                     </div>
@@ -345,7 +332,6 @@
                                     <ion-icon name="person-circle-outline"></ion-icon>
                                 </span>
                             </p>
-
                         </div>
                     </div>
                 </div>
@@ -495,7 +481,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="https://designmodo.com/demo/calendarjquerycss3/js/jquery-ui-datepicker.min.js"></script>
     <<script src="../../js/admin_student.js"></script>
-    <script src="../../js/calander.js"></script>
+    <script src="../../js/calendar.js"></script>
 
     <script>
         const input = document.getElementById("search-input");
@@ -513,15 +499,16 @@
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
-                    $('#imagePreview').hide();
-                    $('#imagePreview').fadeIn(650);
+                    $('#imagePreview2').css('background-image', 'url(' + e.target.result + ')');
+                    $('#imagePreview2').hide();
+                    $('#imagePreview2').fadeIn(650);
                     document.getElementById("<%= image_hf.ClientID %>").value = String(e.target.result);
+                    alert(document.getElementById("<%= image_hf.ClientID %>").value);
                 }
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $("#imageUpload").change(function () {
+        $("#imageUpload2").change(function () {
             readURL(this);
         });
     </script>

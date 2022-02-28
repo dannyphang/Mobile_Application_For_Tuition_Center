@@ -156,7 +156,6 @@ namespace Tuition_Center_Application.common
             Response.Cookies["amount_cookie"].Expires = DateTime.Now.AddMinutes(30);
 
             Response.Redirect("~/common/order_form.aspx", false);
-
         }
     }
 }

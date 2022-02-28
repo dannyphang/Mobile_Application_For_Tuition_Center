@@ -379,3 +379,10 @@ C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Ce
 C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\Stripe.net.dll
 C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\Stripe.net.pdb
 C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\Stripe.net.xml
+C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\Twilio.dll
+C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\Twilio.xml

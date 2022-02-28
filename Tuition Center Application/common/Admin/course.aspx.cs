@@ -13,12 +13,8 @@ namespace Tuition_Center_Application.common.Admin
     {
         FirestoreDb database;
         protected List<Course> course_var = new List<Course>();
-        protected static string[] level_list = Course.level_list;
-        protected static string[] day_list = Course.day_list;
-        protected static string[] duration_list = Course.duration_list;
-        List<string> course_display_var = new List<string>();
+        List<string> tutorID_list = new List<string>();
         string new_id = "why r u here???";
-        HttpCookie course_cookie = new HttpCookie("course", "");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,31 +26,16 @@ namespace Tuition_Center_Application.common.Admin
                 System.Diagnostics.Debug.WriteLine("Post Back AGAIN!!!!!");
             }
 
-
             get_a_doc();
         }
 
         async void get_a_doc()
         {
             course_var.Clear();
+            tutor_ddl.Items.Clear();
+            tutorID_list.Clear();
 
             QuerySnapshot snap = await util.firebase.get_doc_snap("Course");
-            
-            //if (Response.Cookies["Course_Cookies"].Value != null && Response.Cookies["Course_Cookies"].Value != "")
-            //{
-            //    course_display_var = Response.Cookies["Course_Cookies"].Value.Split(' ').ToList();
-
-
-            //}
-            //else
-            //{
-            //    foreach (DocumentSnapshot docsnap in snap.Documents)
-            //    {
-            //        Course course = docsnap.ConvertTo<Course>();
-            //        course_var.Add(course);
-            //        course_cookie.Value += course.courseID + " ";
-            //    }
-            //}
 
             foreach (DocumentSnapshot docsnap in snap.Documents)
             {
@@ -63,36 +44,16 @@ namespace Tuition_Center_Application.common.Admin
             }
             new_id = (int.Parse(course_var[course_var.Count() - 1].courseID) + 1).ToString();
 
-            //Response.Cookies.Add(course_cookie);
-
             course_repeater.DataSource = course_var;
             course_repeater.DataBind();
-        }
 
-        public void level_item()
-        {
-            level_ddl.Items.Clear();
-            for (int i = 0; i < level_list.Length; i++)
-            {
-                level_ddl.Items.Add(level_list[i]);
-            }
-        }
+            QuerySnapshot tutor_snap = await util.firebase.get_doc_snap("Staff");
 
-        public void day_item()
-        {
-            day_ddl.Items.Clear();
-            for (int i = 0; i < day_list.Length; i++)
+            foreach (DocumentSnapshot docsnap in tutor_snap.Documents)
             {
-                day_ddl.Items.Add(day_list[i]);
-            }
-        }
-
-        public void duration_item()
-        {
-            duration_ddl.Items.Clear();
-            for (int i = 0; i < duration_list.Length; i++)
-            {
-                duration_ddl.Items.Add(duration_list[i]);
+                Tutor tutor = docsnap.ConvertTo<Tutor>();
+                tutor_ddl.Items.Add(tutor.name);
+                tutorID_list.Add(tutor.tutorID);
             }
         }
 
@@ -103,24 +64,42 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void submit_btn_Click(object sender, EventArgs e)
         {
-            //System.Diagnostics.Debug.WriteLine("New ID: " + new_id);
             DocumentReference doc = database.Collection("Course").Document(new_id);
 
             Course new_course = new Course
             {
                 courseName = name_text.Text,
-                level = level_ddl.SelectedValue, 
+                level = level_ddl.SelectedValue,
                 price = int.Parse(price_text.Text),
                 language = language_ddl.SelectedValue,
-                day = day_ddl.SelectedValue, 
+                day = day_ddl.SelectedValue,
                 time_start = hour_text.Text + ":" + min_text.Text,
                 time_end = time_end_count(duration_str_to_float(duration_ddl.SelectedIndex), hour_text.Text, min_text.Text),
-                duration = duration_str_to_float(duration_ddl.SelectedIndex), 
+                duration = duration_str_to_float(duration_ddl.SelectedIndex),
+                tutorID = tutorID_list[tutor_ddl.SelectedIndex],
             };
 
             doc.SetAsync(new_course);
+
+            add_tutor_course(new_id);
+
             clear_data();
-            get_a_doc();
+
+            Response.Redirect("~/common/Admin/course.aspx", false);
+        }
+
+        async void add_tutor_course(string newID)
+        {
+            DocumentReference staff_doc = database.Collection("Staff").Document(tutorID_list[tutor_ddl.SelectedIndex]);
+
+            await staff_doc.UpdateAsync("courseID", FieldValue.ArrayUnion(newID));
+        }
+
+        async void delete_tutor_course(string id)
+        {
+            DocumentReference staff_doc = database.Collection("Staff").Document(tutorID_list[tutor_ddl.SelectedIndex]);
+
+            await staff_doc.UpdateAsync("courseID", FieldValue.ArrayRemove(id));
         }
 
         float duration_str_to_float(int index)
@@ -202,7 +181,6 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void more_btn_Click(object sender, EventArgs e)
         {
-
             for (int i = 0; i < course_var.Count(); i++)
             {
                 if (course_var[i].courseID == getID(sender))
@@ -233,8 +211,7 @@ namespace Tuition_Center_Application.common.Admin
         }
 
         protected void edit_btn_Click(object sender, EventArgs e)
-        {
-            
+        { 
             for (int i = 0; i < course_var.Count(); i++)
             {
                 if (course_var[i].courseID == getID(sender))
@@ -270,7 +247,9 @@ namespace Tuition_Center_Application.common.Admin
 
             doc.DeleteAsync();
 
-            get_a_doc();
+            delete_tutor_course(getID(sender));
+
+            Response.Redirect("~/common/Admin/course.aspx", false);
         }
 
         protected int duration_int(float duration)
@@ -342,6 +321,8 @@ namespace Tuition_Center_Application.common.Admin
             };
 
             doc.SetAsync(new_course);
+
+            Response.Redirect("~/common/Admin/course.aspx", false);
         }
     }
 }

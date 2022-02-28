@@ -67,13 +67,6 @@
                 </div>
             </div>
         </main>
-        <%--<a href="#" class="btn-normal blue move-thread" id="move-thread"><i class="fa fa-share"></i>Move Thread</a>
-
-        <div id="move-thread-modal" class="modal move-thread-modal">
-            <a href="#" id="move-thread-close" class="btn-normal red"><i class="fa fa-ban"></i><span>
-                <ion-icon name="close-outline"></ion-icon>
-            </span></a>
-        </div>--%>
 
         <%--Flow ADD Button--%>
         <div class="email" onclick="this.classList.add('expand')">
@@ -276,18 +269,6 @@
                 <div class="to">
                     <div class="to-contents">
                         <div class="bottom">
-                            <div class="row">
-                                <div class="avatar-upload">
-                                    <div class="avatar-edit">
-                                        <input type='file' id="imageUpload2" class="file_input" accept=".png, .jpg, .jpeg" />
-                                        <label for="imageUpload"></label>
-                                    </div>
-                                    <div class="avatar-preview">
-                                        <div id="imagePreview2" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="row">
                                 <h4>Course</h4>
                                 <%--Course Name Textbox--%>

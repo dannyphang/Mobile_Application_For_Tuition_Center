@@ -27,6 +27,8 @@ namespace Tuition_Center_Application.class_file
         public string time_end { get; set; }
         [FirestoreProperty]
         public float duration { get; set; }
+        [FirestoreProperty]
+        public string tutorID { get; set; }
 
         public static string[] level_list = { "Standard 1", "Standard 2", "Standard 3", "Standard 4", "Standard 5", "Standard 6", "Form 1", "Form 2", "Form 3", "Form 4", "Form 5" };
         public static string[] day_list = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };

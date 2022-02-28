@@ -17,6 +17,7 @@ namespace Tuition_Center_Application.common
         protected List<Course> course_var = new List<Course>();
         protected List<class_file.Student> student_var = new List<class_file.Student>();
         protected List<string> cart_var = new List<string>();
+        protected List<Course> filtered = new List<Course>();
         string new_student_id = "student: why am i here???";
         public string sessionId = "";
 
@@ -60,6 +61,7 @@ namespace Tuition_Center_Application.common
         async void get_a_doc()
         {
             student_var.Clear();
+            course_var.Clear();
 
             Query student_query = database.Collection("Student");
             QuerySnapshot snap = await student_query.GetSnapshotAsync();
@@ -70,11 +72,17 @@ namespace Tuition_Center_Application.common
                 student_var.Add(student);
             }
 
+            QuerySnapshot course_snap = await util.firebase.get_doc_snap("Course");
+
+            foreach (DocumentSnapshot docsnap in course_snap.Documents)
+            {
+                Course course = docsnap.ConvertTo<Course>();
+                course_var.Add(course);
+            }
+
             new_student_id = (int.Parse(student_var[student_var.Count() - 1].studentID) + 1).ToString();
 
             System.Diagnostics.Debug.WriteLine("Student_Var count (from get_a_doc): " + student_var.Count());
-
-            get_cart();
         }
 
         protected void stripe_checkout(object sender, EventArgs e)
@@ -89,11 +97,11 @@ namespace Tuition_Center_Application.common
                 {
                     new SessionLineItemOptions
                     {
-                        Name = "T-shirt", 
-                        Description = "hihi", 
+                        Name = "Course", 
+                        Description = desc(Request.Cookies["Course_Cookies"].Value),
                         Currency = "myr", 
-                        Amount = 100,
-                        Quantity = 2,
+                        Amount = long.Parse(Request.Cookies["amount_cookie"].Value) * 100,
+                        Quantity = 1,
                     },
                 },
                 Mode = "payment",
@@ -102,6 +110,25 @@ namespace Tuition_Center_Application.common
             Session session = service.Create(options);
             System.Diagnostics.Trace.WriteLine(session.Url);
             Response.Redirect(session.Url, false);
+        }
+
+        string desc(string cookie_course)
+        {
+            string msg = "";
+
+            if (cookie_course != null)
+            {
+                cart_var = cookie_course.Split(' ').ToList();
+
+                filtered = course_var.Where(course => cart_var.Contains(course.courseID)).ToList();
+
+                for (int i = 0; i < filtered.Count(); i++)
+                {
+                    msg += (i + 1) + ". " + filtered[i].courseName + " (" + filtered[i].day + " " + filtered[i].time_start + "-" + filtered[i].time_end + ")\n";
+                }
+            }
+
+            return msg;
         }
 
         protected void clear_btn_Click(object sender, EventArgs e)
@@ -121,54 +148,6 @@ namespace Tuition_Center_Application.common
             phone_text.Text = "";
             level_ddl.SelectedIndex = 0;
             school_text.Text = "";
-        }
-
-        async void get_cart()
-        {
-            cart_var.Clear();
-
-            DocumentReference doc = database.Collection("Cart").Document("1");
-
-            DocumentSnapshot snap = await doc.GetSnapshotAsync();
-
-            Dictionary<string, object> key = snap.ToDictionary();
-            if (snap.Exists)
-            {
-                foreach (var item in key)
-                {
-                    if (item.Key == "startTime")
-                    {
-                        DateTime startTime = ((Timestamp)item.Value).ToDateTime();
-                        DateTime current_time = Timestamp.GetCurrentTimestamp().ToDateTime();
-
-                        TimeSpan span = current_time.Subtract(startTime);
-
-                        System.Diagnostics.Debug.WriteLine("Start Time: " + startTime);
-                        System.Diagnostics.Debug.WriteLine("Current Time: " + current_time);
-                        System.Diagnostics.Debug.WriteLine("Span(days): " + span.Days);
-                        System.Diagnostics.Debug.WriteLine("Span(hours): " + span.Hours);
-                        System.Diagnostics.Debug.WriteLine("Span(minutes): " + span.Minutes);
-                        System.Diagnostics.Debug.WriteLine("Span(seconds): " + span.Seconds);
-
-                        if (int.Parse(span.Days.ToString()) > 0 || int.Parse(span.Hours.ToString()) > 1)
-                        {
-                            await doc.DeleteAsync();
-                            System.Diagnostics.Debug.WriteLine("--DOCUMENT DELETED--");
-                        }
-                    }
-
-                    if (item.Key == "courseID")
-                    {
-                        foreach (var array_item in (List<object>)item.Value)
-                        {
-                            System.Diagnostics.Debug.WriteLine("array_item: " + array_item);
-                            cart_var.Add(array_item.ToString());
-                        }
-                    }
-                }
-            }
-
-            System.Diagnostics.Debug.WriteLine("------------------------------------------------------");
         }
     }
 }

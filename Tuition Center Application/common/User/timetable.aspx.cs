@@ -28,9 +28,9 @@ namespace Tuition_Center_Application.common.User
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            current_email = Session["Current_User"].ToString();
+            current_user = (class_file.Student)Session["Current_User"];
             //current_email = "dannyphang64@gmail.com";
-            System.Diagnostics.Debug.WriteLine("Current Email: " + current_email);
+            //System.Diagnostics.Debug.WriteLine("Current Email: " + current_email);
 
             database = util.firebase.get_database();
 
@@ -58,24 +58,24 @@ namespace Tuition_Center_Application.common.User
 
         async void get_a_doc()
         {
-            QuerySnapshot student_snap = await util.firebase.get_doc_snap("Student");
+            //QuerySnapshot student_snap = await util.firebase.get_doc_snap("Student");
 
-            foreach (DocumentSnapshot docsnap in student_snap.Documents)
-            {
-                class_file.Student student = docsnap.ConvertTo<class_file.Student>();
-                student_var.Add(student);
-            }
+            //foreach (DocumentSnapshot docsnap in student_snap.Documents)
+            //{
+            //    class_file.Student student = docsnap.ConvertTo<class_file.Student>();
+            //    student_var.Add(student);
+            //}
 
             List<string> student_time_list = new List<string>();
 
-            // get the student's info
-            for (int i = 0; i < student_var.Count(); i++)
-            {
-                if (student_var[i].email == current_email)
-                {
-                    current_user = student_var[i];
-                }
-            }
+            //// get the student's info
+            //for (int i = 0; i < student_var.Count(); i++)
+            //{
+            //    if (student_var[i].email == current_email)
+            //    {
+            //        current_user = student_var[i];
+            //    }
+            //}
 
             System.Diagnostics.Debug.WriteLine("Current Course ID Count: " + current_user.courseID.Count());
             for (int i = 0; i < current_user.courseID.Count(); i++)

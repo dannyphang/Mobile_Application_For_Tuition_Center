@@ -21,17 +21,13 @@ namespace Tuition_Center_Application
         protected void Page_Load(object sender, EventArgs e)
         {
             database = util.firebase.get_database();
-            if (IsPostBack)
-            {
-                role = "student";
-            }
         }
 
         protected void login_btn_Click(object sender, EventArgs e)
         {
             email_input = Request.Form["email_input"];
             password_input = Request.Form["password_input"];
-            string role = Request.Form["role_hf"];
+            role = Request.Form["role_hf"];
 
             if (role == "staff")
             {
@@ -63,8 +59,8 @@ namespace Tuition_Center_Application
                 {
                     if (password == tutor_var[i].password)
                     {
-                        Session["Current_User"] = tutor_var[i].tutorID;
-                        Response.Redirect("~/common/Staff/home.aspx", false);
+                        Session["Current_User"] = tutor_var[i];
+                        Response.Redirect("~/common/Staff/profile.aspx", false);
                     }
                     else
                     {
@@ -98,10 +94,10 @@ namespace Tuition_Center_Application
                 {
                     if (password == student_var[i].password)
                     {
-                        Session["Current_User"] = student_var[i].email;
+                        Session["Current_User"] = student_var[i];
                         System.Diagnostics.Debug.WriteLine("Session[current user]: " + Session["Current_User"].ToString());
 
-                        Response.Redirect("~/common/User/timetable.aspx", false);
+                        Response.Redirect("~/common/User/profile.aspx", false);
                     }
                     else
                     {

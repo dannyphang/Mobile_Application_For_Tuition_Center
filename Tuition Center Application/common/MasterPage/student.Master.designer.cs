@@ -33,6 +33,15 @@ namespace Tuition_Center_Application.common.MasterPage
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// logout_btn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton logout_btn;
+
+        /// <summary>
         /// profile_img2 control.
         /// </summary>
         /// <remarks>

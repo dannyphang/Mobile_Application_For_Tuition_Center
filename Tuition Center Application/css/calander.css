@@ -1,6 +1,7 @@
 ﻿#calendar {
     margin: auto;
     width: 370px;
+    z-index: 1;
 }
 
 .ui-datepicker {

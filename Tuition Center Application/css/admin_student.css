@@ -758,7 +758,6 @@ h1 {
 }
 
 .avatar-upload .avatar-edit .file_input + label:after {
-                    content: "\f040";
                     font-family: 'FontAwesome';
                     color: #757575;
                     position: absolute;

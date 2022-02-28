@@ -37,5 +37,15 @@ namespace Tuition_Center_Application.class_file
         public string school { get; set; }
         [FirestoreProperty]
         public List<string> courseID { get; set; }
+        [FirestoreProperty]
+        public string website { get; set; }
+        [FirestoreProperty]
+        public string twitter { get; set; }
+        [FirestoreProperty]
+        public string github { get; set; }
+        [FirestoreProperty]
+        public string facebook { get; set; }
+        [FirestoreProperty]
+        public string instagram { get; set; }
     }
 }

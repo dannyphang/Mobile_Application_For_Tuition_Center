@@ -13,5 +13,11 @@ namespace Tuition_Center_Application.common.MasterPage
         {
 
         }
+
+        protected void logout_btn_Click(object sender, EventArgs e)
+        {
+            Session["Current_User"] = null;
+            Response.Redirect("~/common/login.aspx", false);
+        }
     }
 }
