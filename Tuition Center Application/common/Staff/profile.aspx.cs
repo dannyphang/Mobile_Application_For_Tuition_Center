@@ -24,7 +24,7 @@ namespace Tuition_Center_Application.common.Staff
             if (IsPostBack)
             {
                 System.Diagnostics.Debug.WriteLine("POST AGAIN!!!!!!!!!!!");
-                display_info();
+                return;
             }
 
             display_info();
@@ -78,6 +78,7 @@ namespace Tuition_Center_Application.common.Staff
         protected void cancel_btn_Click(object sender, EventArgs e)
         {
             close_textbox();
+            Response.Redirect("~/common/Staff/profile.aspx", false);
         }
 
         protected void save_btn_Click(object sender, EventArgs e)
@@ -138,6 +139,7 @@ namespace Tuition_Center_Application.common.Staff
         void display_info()
         {
             //imagePreview_asp.ImageUrl = current_tutor.avatar;
+            //profile_image.ImageUrl = current_tutor.avatar;
             image_hf.Value = current_tutor.avatar;
 
             name_label.Text = current_tutor.name;

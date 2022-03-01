@@ -20,13 +20,16 @@
                                 <div class="card-body">
                                     <div class="d-flex flex-column align-items-center text-center">
                                         <div class="avatar-upload">
-                                            <%--<div class="avatar-edit">
-                                                <input type='file' id="imageUpload2" class="file_input" accept=".png, .jpg, .jpeg"/>
-                                                <label for="imageUpload2">
+                                            <div class="avatar-edit">
+                                                <button style="border: 0px; border-radius: 100%; background-color: transparent; height: 34px;" onclick="return upload_btn_clicked()">
+                                                    <input type='file' id="imageUpload2" class="file_input" accept=".png, .jpg, .jpeg" />
+                                                    <label for="imageUpload2">
+                                                </button>
                                                 </label>
-                                            </div>--%>
+                                            </div>
                                             <div class="avatar-preview">
-                                                <div id="imagePreview2" class="image_preview"></div>
+                                                <div id="imagePreview2" class="image_preview" style="background-image: url(<%= current_tutor.avatar %>)"></div>
+                                                <%--<asp:Image ID="profile_image" runat="server" CssClass="image_preview profile_img" />--%>
                                             </div>
                                         </div>
                                         <asp:HiddenField ID="image_hf" runat="server" />
@@ -40,8 +43,6 @@
                                             <p class="text-muted font-size-sm">
                                                 <asp:Label ID="IC_label" runat="server" Text="19191911919919111"></asp:Label>
                                             </p>
-                                            <button class="btn btn-primary">Follow</button>
-                                            <button class="btn btn-outline-primary">Message</button>
                                         </div>
                                     </div>
                                 </div>
@@ -143,9 +144,15 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <asp:Button ID="edit_btn" runat="server" CssClass="btn btn-info edit_btn" Text="EDIT" OnClick="edit_btn_Click" OnClientClick="edit_btn_clicked()"/>
-                                            <asp:Button ID="cancel_btn" runat="server" CssClass="btn btn-info cancel_btn" Text="CANCEL" OnClick="cancel_btn_Click" />
-                                            <asp:Button ID="save_btn" runat="server" CssClass="btn btn-info save_btn" Text="SAVE" OnClick="save_btn_Click" />
+                                            <a id="a1" class="btn btn-info" style="z-index: -1; padding: 0px;">
+                                                <asp:Button ID="edit_btn" runat="server" CssClass="btn btn-info edit_btn" Text="EDIT" OnClick="edit_btn_Click" OnClientClick="edit_btn_clicked()" />
+                                            </a>
+                                            <a id="a2" class="btn btn-info" style="z-index: -1; padding: 0px; visibility: hidden">
+                                                <asp:Button ID="cancel_btn" runat="server" CssClass="btn btn-info cancel_btn" Text="CANCEL" OnClick="cancel_btn_Click" OnClientClick="save_btn_clicked()" />
+                                            </a>
+                                            <a id="a3" class="btn btn-info" style="z-index: -1; padding: 0px; visibility: hidden">
+                                                <asp:Button ID="save_btn" runat="server" CssClass="btn btn-info save_btn" Text="SAVE" OnClick="save_btn_Click" OnClientClick="save_btn_clicked()" />
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -211,8 +218,23 @@
         </Triggers>
     </asp:UpdatePanel>
     <script>
-        document.getElementById('imagePreview2').style.backgroundImage = "url(" + document.getElementById("<%= image_hf.ClientID %>").value + ")";
-        console.log(document.getElementById("<%= image_hf.ClientID %>").value);
+
+        function edit_btn_clicked() {
+            document.getElementById('a1').style.visibility = 'hidden';
+
+            document.getElementById('a2').style.visibility = 'visible';
+            document.getElementById('a3').style.visibility = 'visible';
+
+        }
+
+        function save_btn_clicked() {
+
+        }
+
+        function upload_btn_clicked() {
+            //return false;
+        }
+
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -220,6 +242,7 @@
                     $('#imagePreview2').css('background-image', 'url(' + e.target.result + ')');
                     $('#imagePreview2').hide();
                     $('#imagePreview2').fadeIn(650);
+                    //$('.profile_img').attr("src", e.target.result);
                     document.getElementById("<%= image_hf.ClientID %>").value = String(e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]);
@@ -228,11 +251,5 @@
         $("#imageUpload2").change(function () {
             readURL(this);
         });
-    </script>
-    <script>
-        function edit_btn_clicked() {
-            document.getElementById('imagePreview2').style.backgroundImage = "url(" + document.getElementById("<%= image_hf.ClientID %>").value + ")";
-            console.log(document.getElementById("<%= image_hf.ClientID %>").value);
-        }
     </script>
 </asp:Content>

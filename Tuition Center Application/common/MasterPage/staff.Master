@@ -64,7 +64,7 @@
                         <div class="profile-details">
                             <img id="profile_img2" src=".." runat="server" alt="profileImg">
                             <div class="name_job">
-                                <asp:Label ID="profile_name" runat="server" Text="Label" CssClass="name">DannyPhang</asp:Label>
+                                <asp:Label ID="profile_name" runat="server" Text="Label" CssClass="name"></asp:Label>
                             </div>
                         </div>
                         <i id="log_out">

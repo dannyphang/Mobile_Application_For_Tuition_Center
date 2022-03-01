@@ -13,7 +13,7 @@
             <div class="table-data">
                 <div class="order">
                     <div class="head">
-                        <h3>Students</h3>
+                        <h3>Staff</h3>
                         <i class='bx bx-search'></i>
                         <%--<i class='bx bx-list-ul'></i>--%>
                     </div>
@@ -153,15 +153,23 @@
                                     <div class="input-group input-group-icon">
                                         <asp:TextBox ID="phone_text_e" runat="server" CssClass="input" placeholder="Phone Number"></asp:TextBox>
                                         <div class="input-icon">
-                                            <p><span class="info_icon"><ion-icon name="call-outline"></ion-icon></span></p>
+                                            <p><span class="info_icon">
+                                                <ion-icon name="call-outline"></ion-icon>
+                                            </span></p>
                                         </div>
                                     </div>
                                 </div>
                                 <%-- DOB DDL --%>
                                 <div class="col-half col-half2">
-                                    <h4 class="h4_text">On Boarding Date</h4>
-                                    <div id="calendar2"></div>
-                                    <asp:HiddenField ID="datehf2" runat="server" />
+                                    <h4 class="h4_text">OnBoarding Date</h4>
+                                    <div class="input-group input-group-icon">
+                                        <asp:TextBox ID="date_text" runat="server" CssClass="input" placeholder="OnBoarding Date"></asp:TextBox>
+                                        <div class="input-icon">
+                                            <p><span class="info_icon">
+                                                <ion-icon name="calendar-clear-outline"></ion-icon>
+                                            </span></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row row2">
@@ -185,8 +193,8 @@
                                     <div class="input-group"></div>
                                 </div>
                                 <div class="col-half col-half2">
-                                    <asp:LinkButton ID="reset_btn" runat="server" Text="Reset" CssClass="modal_btn" OnClick="reset_btn_Click" ></asp:LinkButton>
-                                    <asp:LinkButton ID="update_btn" runat="server" Text="Update" CssClass="modal_btn" OnClick="update_btn_Click" ></asp:LinkButton>
+                                    <asp:LinkButton ID="reset_btn" runat="server" Text="Reset" CssClass="modal_btn" OnClick="reset_btn_Click"></asp:LinkButton>
+                                    <asp:LinkButton ID="update_btn" runat="server" Text="Update" CssClass="modal_btn" OnClick="update_btn_Click"></asp:LinkButton>
                                     <asp:HiddenField ID="tutorID_hd2" runat="server" />
                                 </div>
                             </div>

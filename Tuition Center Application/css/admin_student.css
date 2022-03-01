@@ -758,15 +758,16 @@ h1 {
 }
 
 .avatar-upload .avatar-edit .file_input + label:after {
-                    font-family: 'FontAwesome';
-                    color: #757575;
-                    position: absolute;
-                    top: 10px;
-                    left: 0;
-                    right: 0;
-                    text-align: center;
-                    margin: auto;
-                }
+    content: "\f040";
+    font-family: 'FontAwesome';
+    color: #757575;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+}
 
 .avatar-upload .avatar-preview {
     width: 192px;

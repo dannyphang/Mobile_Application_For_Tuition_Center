@@ -171,6 +171,7 @@
     <Content Include="common\Admin\student.aspx" />
     <Content Include="common\course.aspx" />
     <Content Include="common\cursor.ascx" />
+    <Content Include="common\cursor2.ascx" />
     <Content Include="common\footer.ascx" />
     <Content Include="common\home.aspx" />
     <Content Include="common\order.aspx" />
@@ -269,6 +270,13 @@
     </Compile>
     <Compile Include="common\cursor.ascx.designer.cs">
       <DependentUpon>cursor.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="common\cursor2.ascx.cs">
+      <DependentUpon>cursor2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\cursor2.ascx.designer.cs">
+      <DependentUpon>cursor2.ascx</DependentUpon>
     </Compile>
     <Compile Include="common\footer.ascx.cs">
       <DependentUpon>footer.ascx</DependentUpon>

@@ -8,8 +8,8 @@
                 <div class="avatar-upload">
                     <div class="avatar-edit">
                         <input type='file' id="imageUpload" class="file_input" accept=".png, .jpg, .jpeg" />
-                        <label for="imageUpload"><span><ion-icon name="pencil-outline"></ion-icon></span></label>
-                        <asp:HiddenField ID="image_hf" runat="server" Value="Why are you here? I don't want to see you eh.."/>
+                        <label for="imageUpload"></label>
+                        <asp:HiddenField ID="image_hf" runat="server" Value="Why are you here? I don't want to see you eh.." />
                     </div>
                     <div class="avatar-preview">
                         <div id="imagePreview" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
@@ -24,7 +24,7 @@
                     <asp:TextBox ID="name_text" runat="server" CssClass="input" placeholder="Name"></asp:TextBox>
                     <div class="input-icon">
                         <p>
-                            <span class="info_icon">
+                            <span class="info_icon" data-blobity-tooltip="Tooltip text">
                                 <ion-icon name="person-circle-outline"></ion-icon>
                             </span>
                         </p>
@@ -52,9 +52,11 @@
                 <div class="input-group input-group-icon">
                     <asp:TextBox ID="email_text" runat="server" CssClass="input" placeholder="Email" TextMode="SingleLine"></asp:TextBox>
                     <div class="input-icon">
-                        <p><span class="info_icon">
-                            <ion-icon name="mail-outline"></ion-icon>
-                        </span></p>
+                        <p>
+                            <span class="info_icon">
+                                <ion-icon name="mail-outline"></ion-icon>
+                            </span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -65,9 +67,11 @@
                     <div class="input-group input-group-icon">
                         <asp:TextBox ID="password_text" runat="server" CssClass="input" placeholder="Password" AutoCompleteType="Disabled" TextMode="Password"></asp:TextBox>
                         <div class="input-icon">
-                            <p><span class="info_icon">
-                                <ion-icon name="lock-closed-outline"></ion-icon>
-                            </span></p>
+                            <p>
+                                <span class="info_icon">
+                                    <ion-icon name="lock-closed-outline"></ion-icon>
+                                </span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -92,9 +96,11 @@
                 <div class="input-group input-group-icon">
                     <asp:TextBox ID="address_text" runat="server" CssClass="input" placeholder="Address"></asp:TextBox>
                     <div class="input-icon">
-                        <p><span class="info_icon">
-                            <ion-icon name="planet-outline"></ion-icon>
-                        </span></p>
+                        <p>
+                            <span class="info_icon">
+                                <ion-icon name="planet-outline"></ion-icon>
+                            </span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -105,9 +111,9 @@
                     <div class="input-group input-group-icon">
                         <asp:TextBox ID="phone_text" runat="server" CssClass="input" placeholder="Phone Number"></asp:TextBox>
                         <div class="input-icon">
-                            <asp:LinkButton ID="delete_btn" runat="server" CssClass="info_icon delete" OnClick="delete_btn_Click">
-                                <p><span class="info_icon"><ion-icon name="call-outline"></ion-icon></span></p>
-                            </asp:LinkButton>
+                            <p><span class="info_icon">
+                                <ion-icon name="call-outline"></ion-icon>
+                            </span></p>
                         </div>
                     </div>
                 </div>
@@ -157,10 +163,8 @@
                     <div class="input-group"></div>
                 </div>
                 <div class="col-half col-half2">
-                    <asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click"/>
-                    <%--<asp:Button ID="submit_btn" runat="server" Text="Submit" CssClass="modal_btn" OnClick="submit_btn_Click" />--%>
-                    <%--<button type="button">Checkout</button>--%>
-                    <asp:Button ID="Button1" runat="server" Text="Checkout" CssClass="modal_btn" OnClick="stripe_checkout"/>
+                    <asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click" data-blobity-tooltip="Tooltip text"/>
+                    <asp:Button ID="checkout_btn" runat="server" Text="Checkout" CssClass="modal_btn" OnClick="stripe_checkout" />
                 </div>
             </div>
         </div>

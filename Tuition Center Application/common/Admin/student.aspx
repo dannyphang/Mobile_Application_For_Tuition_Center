@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/admin.Master" AutoEventWireup="true" CodeBehind="student.aspx.cs" Inherits="Tuition_Center_Application.common.Admin.student" Async="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://designmodo.com/demo/calendarjquerycss3/css/calendar.css" media="screen">
     <link rel="stylesheet" href="../../css/calander.css" />
     <meta name="robots" content="noindex,follow" />
@@ -62,7 +61,7 @@
                                     <asp:HiddenField ID="name_hd" runat="server" Value='<%# Eval("name") %>' />
                                     <tr>
                                         <td class="name_column">
-                                            <img src="../../img/profile.png">
+                                            <asp:Image ID="profile_image" runat="server" />
                                             <asp:Label ID="name_label" runat="server" Text='<%# Eval("name") %>'></asp:Label>
                                         </td>
                                         <td>
@@ -100,14 +99,9 @@
         </main>
         <!-- MAIN -->
 
-        <%-- Flow ADD Buttom --%>
-
-        <%-- Flow ADD Buttom --%>
-
         <%-- Flow EDIT Modal --%>
         <div id="demo_modal" class="modal_form" runat="server">
             <div class="modal__content">
-                <%--<a class="modal__close" onclick="document.querySelector('.modal_form').classList.remove('expand');event.stopPropagation();"><ion-icon name="close-outline" class="edit_close_icon"></ion-icon></a>--%>
                 <div class="top">
                     <div class="x-touch" onclick="document.querySelector('.modal_form').classList.remove('expand');event.stopPropagation();">
                         <div class="x">
@@ -121,18 +115,9 @@
                         <div class="bottom">
                             <div class="row row2">
                                 <div class="avatar-upload">
-                                    <div class="avatar-edit">
-                                        <input type='file' id="imageUpload" class="file_input" accept=".png, .jpg, .jpeg" />
-                                        <label for="imageUpload">
-                                            <span>
-                                                <ion-icon name="pencil-outline"></ion-icon>
-                                            </span>
-                                        </label>
-                                        <asp:HiddenField ID="HiddenField1" runat="server" Value="Why are you here? I don't want to see you eh.." />
-                                    </div>
                                     <div class="avatar-preview">
-                                        <div id="imagePreview" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                        </div>
+                                        <asp:Image ID="imagePreview_asp" runat="server" CssClass="image_preview" />
+                                        <asp:HiddenField ID="table_image_hf" runat="server" />
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +125,7 @@
                             <div class="row row2">
                                 <h4 class="h4_text">Name</h4>
                                 <div class="input-group input-group-icon">
-                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="input" placeholder="Name"></asp:TextBox>
+                                    <asp:TextBox ID="name_text" runat="server" CssClass="input" placeholder="Name"></asp:TextBox>
                                     <div class="input-icon">
                                         <p>
                                             <span class="info_icon">
@@ -154,7 +139,7 @@
                             <div class="row row2">
                                 <h4 class="h4_text">IC NO</h4>
                                 <div class="input-group input-group-icon">
-                                    <asp:TextBox ID="TextBox2" runat="server" CssClass="input" placeholder="IC No"></asp:TextBox>
+                                    <asp:TextBox ID="IC_text" runat="server" CssClass="input" placeholder="IC No"></asp:TextBox>
                                     <div class="input-icon">
                                         <p>
                                             <span class="info_icon">
@@ -168,7 +153,7 @@
                             <div class="row row2">
                                 <h4 class="h4_text">Email</h4>
                                 <div class="input-group input-group-icon">
-                                    <asp:TextBox ID="TextBox3" runat="server" CssClass="input" placeholder="Email" TextMode="SingleLine"></asp:TextBox>
+                                    <asp:TextBox ID="email_text" runat="server" CssClass="input" placeholder="Email" TextMode="SingleLine"></asp:TextBox>
                                     <div class="input-icon">
                                         <p>
                                             <span class="info_icon">
@@ -178,41 +163,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row row2">
-                                <%--Password Textbox--%>
-                                <div class="col-half col-half2">
-                                    <h4 class="h4_text">Password</h4>
-                                    <div class="input-group input-group-icon">
-                                        <asp:TextBox ID="TextBox4" runat="server" CssClass="input" placeholder="Password" AutoCompleteType="Disabled" TextMode="Password"></asp:TextBox>
-                                        <div class="input-icon">
-                                            <p>
-                                                <span class="info_icon">
-                                                    <ion-icon name="lock-closed-outline"></ion-icon>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <%--Confirm Password Textbox--%>
-                                <div class="col-half col-half2">
-                                    <h4 class="h4_text">Confirm Password</h4>
-                                    <div class="input-group input-group-icon">
-                                        <asp:TextBox ID="TextBox5" runat="server" CssClass="input" placeholder="Confirm Password" AutoCompleteType="Disabled" TextMode="Password"></asp:TextBox>
-                                        <div class="input-icon">
-                                            <p>
-                                                <span class="info_icon">
-                                                    <ion-icon name="lock-closed-outline"></ion-icon>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <%--Address Textbox--%>
                             <div class="row row2">
                                 <h4 class="h4_text">Address</h4>
                                 <div class="input-group input-group-icon">
-                                    <asp:TextBox ID="TextBox6" runat="server" CssClass="input" placeholder="Address"></asp:TextBox>
+                                    <asp:TextBox ID="address_text" runat="server" CssClass="input" placeholder="Address"></asp:TextBox>
                                     <div class="input-icon">
                                         <p>
                                             <span class="info_icon">
@@ -227,18 +182,25 @@
                                 <div class="col-half col-half2">
                                     <h4 class="h4_text">Phone Number</h4>
                                     <div class="input-group input-group-icon">
-                                        <asp:TextBox ID="TextBox7" runat="server" CssClass="input" placeholder="Phone Number"></asp:TextBox>
+                                        <asp:TextBox ID="phone_text" runat="server" CssClass="input" placeholder="Phone Number"></asp:TextBox>
                                         <div class="input-icon">
-                                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="info_icon delete" OnClick="delete_btn_Click">
-                                <p><span class="info_icon"><ion-icon name="call-outline"></ion-icon></span></p>
-                                            </asp:LinkButton>
+                                            <p><span class="info_icon">
+                                                <ion-icon name="call-outline"></ion-icon>
+                                            </span></p>
                                         </div>
                                     </div>
                                 </div>
                                 <%-- DOB DDL --%>
                                 <div class="col-half col-half2">
                                     <h4 class="h4_text">Date of Birth</h4>
-
+                                    <div class="input-group input-group-icon">
+                                        <asp:TextBox ID="DOB_text" runat="server" CssClass="input" placeholder="Date of Birth"></asp:TextBox>
+                                        <div class="input-icon">
+                                            <p><span class="info_icon">
+                                                <ion-icon name="calendar-clear-outline"></ion-icon>
+                                            </span></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row row2">
@@ -246,7 +208,7 @@
                                 <div class="col-half col-half2">
                                     <h4 class="h4_text">Education Level</h4>
                                     <div class="input-group">
-                                        <asp:DropDownList ID="DropDownList1" runat="server">
+                                        <asp:DropDownList ID="level_ddl" runat="server">
                                             <asp:ListItem>Standard 1</asp:ListItem>
                                             <asp:ListItem>Standard 2</asp:ListItem>
                                             <asp:ListItem>Standard 3</asp:ListItem>
@@ -265,7 +227,7 @@
                                 <div class="col-half col-half2">
                                     <h4 class="h4_text">School</h4>
                                     <div class="input-group input-group-icon">
-                                        <asp:TextBox ID="TextBox8" runat="server" CssClass="input" placeholder="School"></asp:TextBox>
+                                        <asp:TextBox ID="school_text" runat="server" CssClass="input" placeholder="School"></asp:TextBox>
                                         <div class="input-icon">
                                             <p>
                                                 <span class="info_icon">
@@ -281,8 +243,8 @@
                                     <div class="input-group"></div>
                                 </div>
                                 <div class="col-half col-half2">
-                                    <asp:Button ID="Button1" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click" />
-                                    <asp:Button ID="Button2" runat="server" Text="Submit" CssClass="modal_btn" OnClick="submit_btn_Click" />
+                                    <asp:Button ID="Reset" runat="server" Text="Reset" CssClass="modal_btn" OnClick="reset_btn_Click" />
+                                    <asp:Button ID="Update" runat="server" Text="Update" CssClass="modal_btn" OnClick="update_btn_Click" />
                                 </div>
                             </div>
                         </div>
@@ -308,12 +270,8 @@
                     <div class="avatar-upload">
                         <div class="avatar-edit">
                             <input type='file' id="imageUpload2" class="file_input" accept=".png, .jpg, .jpeg" />
-                            <label for="imageUpload2">
-                                <span>
-                                    <ion-icon name="pencil-outline"></ion-icon>
-                                </span>
-                            </label>
-                            <asp:HiddenField ID="image_hf" runat="server" Value="Why are you here? I don't want to see you eh.." />
+                            <label for="imageUpload2"></label>
+                            <asp:HiddenField ID="image_hf2" runat="server" Value="Why are you here? I don't want to see you eh.." />
                         </div>
                         <div class="avatar-preview">
                             <div id="imagePreview2" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
@@ -325,7 +283,7 @@
                 <div class="row row2">
                     <h4 class="h4_text">Name</h4>
                     <div class="input-group input-group-icon">
-                        <asp:TextBox ID="name_text" runat="server" CssClass="input" placeholder="Name"></asp:TextBox>
+                        <asp:TextBox ID="name_text_e" runat="server" CssClass="input" placeholder="Name"></asp:TextBox>
                         <div class="input-icon">
                             <p>
                                 <span class="info_icon">
@@ -339,7 +297,7 @@
                 <div class="row row2">
                     <h4 class="h4_text">IC NO</h4>
                     <div class="input-group input-group-icon">
-                        <asp:TextBox ID="IC_text" runat="server" CssClass="input" placeholder="IC No"></asp:TextBox>
+                        <asp:TextBox ID="IC_text_e" runat="server" CssClass="input" placeholder="IC No"></asp:TextBox>
                         <div class="input-icon">
                             <p>
                                 <span class="info_icon">
@@ -353,7 +311,7 @@
                 <div class="row row2">
                     <h4 class="h4_text">Email</h4>
                     <div class="input-group input-group-icon">
-                        <asp:TextBox ID="email_text" runat="server" CssClass="input" placeholder="Email" TextMode="SingleLine"></asp:TextBox>
+                        <asp:TextBox ID="email_text_e" runat="server" CssClass="input" placeholder="Email" TextMode="SingleLine"></asp:TextBox>
                         <div class="input-icon">
                             <p>
                                 <span class="info_icon">
@@ -368,7 +326,7 @@
                     <div class="col-half col-half2">
                         <h4 class="h4_text">Password</h4>
                         <div class="input-group input-group-icon">
-                            <asp:TextBox ID="password_text" runat="server" CssClass="input" placeholder="Password" AutoCompleteType="Disabled" TextMode="Password"></asp:TextBox>
+                            <asp:TextBox ID="password_text_e" runat="server" CssClass="input" placeholder="Password" AutoCompleteType="Disabled" TextMode="Password"></asp:TextBox>
                             <div class="input-icon">
                                 <p>
                                     <span class="info_icon">
@@ -382,7 +340,7 @@
                     <div class="col-half col-half2">
                         <h4 class="h4_text">Confirm Password</h4>
                         <div class="input-group input-group-icon">
-                            <asp:TextBox ID="confirm_password_text" runat="server" CssClass="input" placeholder="Confirm Password" AutoCompleteType="Disabled" TextMode="Password"></asp:TextBox>
+                            <asp:TextBox ID="confirm_password_text_e" runat="server" CssClass="input" placeholder="Confirm Password" AutoCompleteType="Disabled" TextMode="Password"></asp:TextBox>
                             <div class="input-icon">
                                 <p>
                                     <span class="info_icon">
@@ -397,7 +355,7 @@
                 <div class="row row2">
                     <h4 class="h4_text">Address</h4>
                     <div class="input-group input-group-icon">
-                        <asp:TextBox ID="address_text" runat="server" CssClass="input" placeholder="Address"></asp:TextBox>
+                        <asp:TextBox ID="address_text_e" runat="server" CssClass="input" placeholder="Address"></asp:TextBox>
                         <div class="input-icon">
                             <p>
                                 <span class="info_icon">
@@ -412,7 +370,7 @@
                     <div class="col-half col-half2">
                         <h4 class="h4_text">Phone Number</h4>
                         <div class="input-group input-group-icon">
-                            <asp:TextBox ID="phone_text" runat="server" CssClass="input" placeholder="Phone Number"></asp:TextBox>
+                            <asp:TextBox ID="phone_text_e" runat="server" CssClass="input" placeholder="Phone Number"></asp:TextBox>
                             <div class="input-icon">
                                 <asp:LinkButton ID="delete_btn" runat="server" CssClass="info_icon delete" OnClick="delete_btn_Click">
                                 <p><span class="info_icon"><ion-icon name="call-outline"></ion-icon></span></p>
@@ -432,7 +390,7 @@
                     <div class="col-half col-half2">
                         <h4 class="h4_text">Education Level</h4>
                         <div class="input-group">
-                            <asp:DropDownList ID="level_ddl" runat="server">
+                            <asp:DropDownList ID="level_ddl_e" runat="server">
                                 <asp:ListItem>Standard 1</asp:ListItem>
                                 <asp:ListItem>Standard 2</asp:ListItem>
                                 <asp:ListItem>Standard 3</asp:ListItem>
@@ -451,7 +409,7 @@
                     <div class="col-half col-half2">
                         <h4 class="h4_text">School</h4>
                         <div class="input-group input-group-icon">
-                            <asp:TextBox ID="school_text" runat="server" CssClass="input" placeholder="School"></asp:TextBox>
+                            <asp:TextBox ID="school_text_e" runat="server" CssClass="input" placeholder="School"></asp:TextBox>
                             <div class="input-icon">
                                 <p>
                                     <span class="info_icon">
@@ -476,7 +434,7 @@
         <%-- Modal Box --%>
     </section>
     <%-- CONTENT --%>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="https://designmodo.com/demo/calendarjquerycss3/js/jquery-ui-datepicker.min.js"></script>
@@ -502,8 +460,7 @@
                     $('#imagePreview2').css('background-image', 'url(' + e.target.result + ')');
                     $('#imagePreview2').hide();
                     $('#imagePreview2').fadeIn(650);
-                    document.getElementById("<%= image_hf.ClientID %>").value = String(e.target.result);
-                    alert(document.getElementById("<%= image_hf.ClientID %>").value);
+                    document.getElementById("<%= image_hf2.ClientID %>").value = String(e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]);
             }
@@ -533,11 +490,6 @@
         });
         $(document).ready(function () {
             $(document.body).append("<div id='modal-overlay'></div>");
-        });
-        $(function () {
-            $('[id*=CheckBoxList1]').multiselect({
-                includeSelectAllOption: true
-            });
         });
     </script>
 </asp:Content>

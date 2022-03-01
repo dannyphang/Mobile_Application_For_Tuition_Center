@@ -43,6 +43,7 @@ namespace Tuition_Center_Application.common.Admin
                     phone_text_e.Text = tutor_var[i].phoneNo;
                     salary_text_e.Text = tutor_var[i].salary.ToString();
                     address_text_e.Text = tutor_var[i].address;
+                    date_text.Text = tutor_var[i].onBoardingDate;
 
                     name_text_e.Enabled = false;
                     IC_text_e.Enabled = false;
@@ -50,6 +51,7 @@ namespace Tuition_Center_Application.common.Admin
                     phone_text_e.Enabled = false;
                     salary_text_e.Enabled = false;
                     address_text_e.Enabled = false;
+                    date_text.Enabled = false;
 
                     reset_btn.Visible = false;
                     update_btn.Visible = false;
@@ -67,7 +69,6 @@ namespace Tuition_Center_Application.common.Admin
 
                     table_image_hf.Value = tutor_var[i].avatar;
                     imagePreview_asp.ImageUrl = table_image_hf.Value;
-                    datehf2.Value = tutor_var[i].onBoardingDate;
 
                     name_text_e.Text = tutor_var[i].name;
                     IC_text_e.Text = tutor_var[i].IC;
@@ -75,6 +76,7 @@ namespace Tuition_Center_Application.common.Admin
                     phone_text_e.Text = tutor_var[i].phoneNo;
                     salary_text_e.Text = tutor_var[i].salary.ToString();
                     address_text_e.Text = tutor_var[i].address;
+                    date_text.Text = tutor_var[i].onBoardingDate;
 
                     name_text_e.Enabled = true;
                     IC_text_e.Enabled = true;
@@ -82,6 +84,7 @@ namespace Tuition_Center_Application.common.Admin
                     phone_text_e.Enabled = true;
                     salary_text_e.Enabled = true;
                     address_text_e.Enabled = true;
+                    date_text.Enabled = true;
 
                     reset_btn.Visible = true;
                     update_btn.Visible = true;
@@ -144,7 +147,7 @@ namespace Tuition_Center_Application.common.Admin
         protected void submit_btn_Click(object sender, EventArgs e)
         {
             DocumentReference doc = database.Collection("Staff").Document(new_id);
-
+            //System.Diagnostics.Debug.WriteLine("datehf: " + datehf.Value);
             string formatted_date = datehf.Value.Substring(3, 2) + "/" + datehf.Value.Substring(0, 2) + "/" + datehf.Value.Substring(6, 4);
 
             Tutor new_tutor = new Tutor
@@ -200,8 +203,6 @@ namespace Tuition_Center_Application.common.Admin
         {
             DocumentReference doc = database.Collection("Staff").Document(tutorID_hd2.Value);
 
-            string formatted_date = datehf2.Value.Substring(3, 2) + "/" + datehf2.Value.Substring(0, 2) + "/" + datehf2.Value.Substring(6, 4);
-
             Dictionary<string, object> new_tutor = new Dictionary<string, object>
             {
                 { "name", name_text_e.Text.Trim() },
@@ -209,13 +210,13 @@ namespace Tuition_Center_Application.common.Admin
                 { "IC", IC_text_e.Text.Trim() },
                 { "address", address_text_e.Text.Trim() },
                 { "phoneNo", phone_text_e.Text.Trim() },
-                { "obBoardingDate", formatted_date },
+                { "onBoardingDate", date_text.Text.Trim() },
                 { "salary", float.Parse(salary_text_e.Text) }
             };
             doc.UpdateAsync(new_tutor);
             clear_data();
 
-            Response.Redirect("~/common/Admin/satff.aspx", false);
+            Response.Redirect("~/common/Admin/staff.aspx", false);
         }
     }
 }

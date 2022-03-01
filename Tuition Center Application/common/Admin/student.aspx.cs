@@ -19,7 +19,12 @@ namespace Tuition_Center_Application.common.Admin
         {
             database = util.firebase.get_database();
 
-            educationLV_ddl.Items.Insert(0, new ListItem("Eduaction Level", "0"));
+            if (IsPostBack)
+            {
+                demo_modal.Attributes.Add("class", "modal_form expand");
+
+                System.Diagnostics.Debug.WriteLine("Post Back AGAIN!!!!!");
+            }
 
             get_a_doc();
         }
@@ -47,12 +52,25 @@ namespace Tuition_Center_Application.common.Admin
             LinkButton btn = (LinkButton)sender;
             RepeaterItem item = (RepeaterItem)btn.NamingContainer;
 
-            return ((HiddenField)item.FindControl("courseID_hd")).Value;
+            return ((HiddenField)item.FindControl("studentID_hd")).Value;
         }
 
         protected void more_btn_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < student_var.Count(); i++)
+            {
+                if (student_var[i].studentID == getID(sender))
+                {
+                    table_image_hf.Value = student_var[i].avatar;
+                    imagePreview_asp.ImageUrl = table_image_hf.Value;
 
+                    name_text.Text = student_var[i].name;
+                    IC_text.Text = student_var[i].IC;
+                    email_text.Text = student_var[i].email;
+                    address_text.Text = student_var[i].address;
+                    phone_text.Text = student_var[i].phoneNo;
+                }
+            }
         }
 
         protected void edit_btn_Click(object sender, EventArgs e)

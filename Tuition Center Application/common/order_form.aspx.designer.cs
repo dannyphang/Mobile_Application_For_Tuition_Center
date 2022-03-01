@@ -87,15 +87,6 @@ namespace Tuition_Center_Application.common
         protected global::System.Web.UI.WebControls.TextBox phone_text;
 
         /// <summary>
-        /// delete_btn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton delete_btn;
-
-        /// <summary>
         /// level_ddl control.
         /// </summary>
         /// <remarks>
@@ -123,12 +114,12 @@ namespace Tuition_Center_Application.common
         protected global::System.Web.UI.WebControls.Button clear_btn;
 
         /// <summary>
-        /// Button1 control.
+        /// checkout_btn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button checkout_btn;
     }
 }

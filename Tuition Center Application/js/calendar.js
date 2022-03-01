@@ -5,8 +5,8 @@
 	dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 });
 $('#calendar').on("change", function () {
-	let selected = $(this).val();
-	document.getElementById('datehf').value = selected;
+	alert($(this).val());
+	document.getElementById('datehf').value = $(this).val();
 });
 
 let date_pick2 = $('#calendar2').datepicker({
@@ -16,16 +16,6 @@ let date_pick2 = $('#calendar2').datepicker({
 	dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 });
 $('#calendar2').on("change", function () {
-	let selected2 = $(this).val();
-	document.getElementById('datehf2').value = selected2;
+	alert($(this).val());
+	document.getElementById('datehf2').value = $(this).val();
 });
-
-function date_func() {
-	if (date_pick != null) {
-		date_pick instanceof Date;
-		var date_str = date_pick.getDate();
-		//alert("hi");
-		alert(date_str);
-	}
-	return false;
-}

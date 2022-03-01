@@ -28,9 +28,7 @@ namespace Tuition_Center_Application.common.Staff
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            current_email = Session["Current_User"].ToString();
-            //current_email = "dannyphang64@gmail.com";
-            System.Diagnostics.Debug.WriteLine("Current Email: " + current_email);
+            current_user = (Tutor)Session["Current_User"];
 
             database = util.firebase.get_database();
 

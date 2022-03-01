@@ -21,7 +21,7 @@ namespace Tuition_Center_Application.common.MasterPage
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Tuition_Center_Application.common.cursor cursorcontrol;
+        protected global::Tuition_Center_Application.common.cursor2 cursorcontrol;
 
         /// <summary>
         /// form1 control.
