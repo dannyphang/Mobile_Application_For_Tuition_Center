@@ -56,7 +56,7 @@ namespace Tuition_Center_Application.common.Student
         {
             name_label.Text = current_student.name;
             IC_label.Text = current_student.IC;
-            age_label.Text = cal_age(current_student.DOB);
+            age_label.Text = "";
             email_label.Text = current_student.email;
             phone_label.Text = current_student.phoneNo;
             address_label.Text = current_student.address;

@@ -30,7 +30,7 @@ namespace Tuition_Center_Application.class_file
         [FirestoreProperty]
         public string phoneNo { get; set; }
         [FirestoreProperty]
-        public DateTime DOB { get; set; }
+        public string DOB { get; set; }
         [FirestoreProperty]
         public string educationLV { get; set; }
         [FirestoreProperty]

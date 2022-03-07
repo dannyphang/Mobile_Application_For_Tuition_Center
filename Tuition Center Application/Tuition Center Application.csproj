@@ -191,6 +191,7 @@
     <Content Include="css\admin_course.css" />
     <Content Include="css\admin_staff.css" />
     <Content Include="css\calander.css" />
+    <Content Include="css\classroom.css" />
     <Content Include="css\course.css" />
     <Content Include="css\admin_student.css" />
     <Content Include="css\footer.css" />
@@ -226,7 +227,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="class_file\Cart.cs" />
+    <Compile Include="class_file\Comment.cs" />
     <Compile Include="class_file\Course.cs" />
+    <Compile Include="class_file\Post.cs" />
     <Compile Include="class_file\Student.cs" />
     <Compile Include="class_file\Tutor.cs" />
     <Compile Include="common\Admin\course.aspx.cs">

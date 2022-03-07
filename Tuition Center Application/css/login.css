@@ -127,15 +127,12 @@ h1 {
 
 .form__button {
     display: block;
-    margin-left: auto;
+    margin: auto;
     padding: .75rem 2rem;
-    outline: none;
-    border: none;
     background-color: var(--first-color);
     color: #fff;
     font-size: var(--normal-font-size);
     border-radius: .5rem;
-    cursor: pointer;
     transition: .3s;
 }
 
@@ -182,10 +179,18 @@ h1 {
 }
 
 .log-forgotBtn {
-    background: transparent;
     border: 0px;
-    width: 100%;
+    margin-left: 30%;
     font-size: 12px;
     color: darkblue;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 10px;
+    float: right;
+}
+
+.log-forgotBtn2 {
+    background: transparent;
+    border: 1px;
+    font-size: 12px;
+    color: darkblue;
 }

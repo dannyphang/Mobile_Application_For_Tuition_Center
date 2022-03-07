@@ -28,13 +28,10 @@ namespace Tuition_Center_Application.common
             get_a_doc();
         }
 
-        protected void delete_btn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void submit_btn_Click(object sender, EventArgs e)
         {
+            string formatted_date = datehf.Value.Substring(3, 2) + "/" + datehf.Value.Substring(0, 2) + "/" + datehf.Value.Substring(6, 4);
+
             DocumentReference doc = database.Collection("Student").Document(new_student_id);
 
             class_file.Student new_student = new class_file.Student
@@ -47,7 +44,7 @@ namespace Tuition_Center_Application.common
                 phoneNo = phone_text.Text.Trim(),
                 educationLV = level_ddl.SelectedValue.Trim(),
                 school = school_text.Text.Trim(),
-                DOB = Timestamp.GetCurrentTimestamp().ToDateTime(),
+                DOB = formatted_date,
                 OTP = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 6).Select(s => s[new Random().Next(s.Length)]).ToArray()),
                 OTP_Send = Timestamp.GetCurrentTimestamp().ToDateTime(),
                 avatar = image_hf.Value,

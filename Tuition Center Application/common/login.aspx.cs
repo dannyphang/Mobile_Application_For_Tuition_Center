@@ -28,17 +28,24 @@ namespace Tuition_Center_Application
             email_input = Request.Form["email_input"];
             password_input = Request.Form["password_input"];
             role = Request.Form["role_hf"];
-
-            if (role == "staff")
+            string[] admin_info = { "admin", "admin123" };
+            if (email_input == admin_info[0] && password_input == admin_info[1])
             {
-                get_staff(email_input, password_input);
-                Response.Write("<script>alert('staff here')</script>");
+                Response.Redirect("~/common/Admin/home.aspx", false);
             }
-            else if (role == "student")
+            else
             {
-                get_student(email_input, password_input);
-                Response.Write("<script>alert('student here')</script>");
-            }
+                if (role == "staff")
+                {
+                    get_staff(email_input, password_input);
+                    Response.Write("<script>alert('staff here')</script>");
+                }
+                else if (role == "student")
+                {
+                    get_student(email_input, password_input);
+                    Response.Write("<script>alert('student here')</script>");
+                }
+            }            
         }
 
         async void get_staff(string email, string password)

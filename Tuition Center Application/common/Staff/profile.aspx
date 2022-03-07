@@ -144,7 +144,7 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <a id="a1" class="btn btn-info" style="z-index: -1; padding: 0px;">
+                                            <a id="a1" class="btn btn-info" style="z-index: -1; padding: 0px; border: 0px;">
                                                 <asp:Button ID="edit_btn" runat="server" CssClass="btn btn-info edit_btn" Text="EDIT" OnClick="edit_btn_Click" OnClientClick="edit_btn_clicked()" />
                                             </a>
                                             <a id="a2" class="btn btn-info" style="z-index: -1; padding: 0px; visibility: hidden">

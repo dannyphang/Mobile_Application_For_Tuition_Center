@@ -24,7 +24,7 @@
             </div>
             <ul class="nav-list">
                 <li>
-                    <a href="#">
+                    <a href="./profile.aspx">
                         <i>
                             <ion-icon name="home-outline"></ion-icon>
                         </i>
@@ -51,7 +51,7 @@
                     <span class="tooltip">Students</span>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="./classroom.aspx">
                         <i>
                             <ion-icon name="school-outline"></ion-icon>
                         </i>

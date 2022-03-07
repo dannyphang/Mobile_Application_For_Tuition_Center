@@ -87,6 +87,15 @@ namespace Tuition_Center_Application.common
         protected global::System.Web.UI.WebControls.TextBox phone_text;
 
         /// <summary>
+        /// datehf control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField datehf;
+
+        /// <summary>
         /// level_ddl control.
         /// </summary>
         /// <remarks>

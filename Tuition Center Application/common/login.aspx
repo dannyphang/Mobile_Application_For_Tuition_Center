@@ -29,6 +29,7 @@
                 fontSize: 14,
                 fontColor: 'rgb(255, 255, 255)',
                 mode: 'bouncy',
+
             });
     </script>
 </head>
@@ -59,7 +60,9 @@
                     <input type="password" class="form__input form__input2" placeholder=" " name="password_input" id="password_input" maxlength="20" runat="server" />
                     <label for="" class="form__label">Password</label>
                 </div>
-                <asp:Button ID="forgotBtn" runat="server" Text="FORGOT Password" CssClass="log-forgotBtn" />
+                <a class="log-forgotBtn">
+                    <asp:Button ID="forgotBtn" runat="server" Text="FORGOT Password" CssClass="log-forgotBtn2" />
+                </a>
                 <asp:Button ID="login_submit_btn" runat="server" Text="Login" CssClass="form__button" OnClick="login_btn_Click" />
             </div>
         </div>

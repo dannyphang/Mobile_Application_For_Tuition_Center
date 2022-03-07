@@ -87,30 +87,6 @@
                     </div>
                     <div class="bottom">
                         <div class="row">
-                            <%-- Avatar preview & upload --%>
-                            <%--<div class="avatar-upload">
-                                <div class="avatar-edit">
-                                    <asp:FileUpload ID="imageUpload" runat="server" CssClass="file_input"/>
-                                    <input type='file' id="imageUpload" class="file_input" accept=".png, .jpg, .jpeg" />
-                                    <label for="imageUpload"></label>
-                                </div>
-                                <div class="avatar-preview">
-                                    <div class="image_preview" id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                    </div>
-                                </div>
-                            </div>--%>
-                            <%--<div class="avatar-upload">
-                                <div class="avatar-edit">
-                                    <input type='file' id="imageUpload" class="file_input" accept=".png, .jpg, .jpeg"/>
-                                    <label for="imageUpload"></label>
-                                </div>
-                                <div class="avatar-preview">
-                                    <div id="imagePreview" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                    </div>
-                                </div>
-                            </div>--%>
-                        </div>
-                        <div class="row">
                             <h4>Course</h4>
                             <%--Course Name Textbox--%>
                             <div class="input-group input-group-icon">
@@ -257,7 +233,6 @@
         <%-- Flow EDIT Modal --%>
         <div id="demo_modal" class="modal_form" runat="server">
             <div class="modal__content">
-                <%--<a class="modal__close" onclick="document.querySelector('.modal_form').classList.remove('expand');event.stopPropagation();"><ion-icon name="close-outline" class="edit_close_icon"></ion-icon></a>--%>
                 <div class="top">
                     <div class="x-touch" onclick="document.querySelector('.modal_form').classList.remove('expand');event.stopPropagation();">
                         <div class="x">

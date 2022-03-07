@@ -120,7 +120,8 @@
                 <%-- DOB DDL --%>
                 <div class="col-half col-half2">
                     <h4 class="h4_text">Date of Birth</h4>
-
+                    <div id="calendar"></div>
+                    <asp:HiddenField ID="datehf" runat="server" Value="0000" ClientIDMode="Static" />
                 </div>
             </div>
             <div class="row row2">
@@ -172,8 +173,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <%-- Stripe --%>
+    <script src="https://designmodo.com/demo/calendarjquerycss3/js/jquery-ui-datepicker.min.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
     <script type="module" src="../js/stripe.js"></script>
+    <script src="../../js/calendar.js"></script>
 
     <script>
         function icon_hover() {

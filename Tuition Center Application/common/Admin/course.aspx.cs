@@ -13,6 +13,7 @@ namespace Tuition_Center_Application.common.Admin
     {
         FirestoreDb database;
         protected List<Course> course_var = new List<Course>();
+        protected List<Tutor> tutor_var = new List<Tutor>();
         List<string> tutorID_list = new List<string>();
         string new_id = "why r u here???";
 
@@ -32,8 +33,6 @@ namespace Tuition_Center_Application.common.Admin
         async void get_a_doc()
         {
             course_var.Clear();
-            tutor_ddl.Items.Clear();
-            tutorID_list.Clear();
 
             QuerySnapshot snap = await util.firebase.get_doc_snap("Course");
 
@@ -47,12 +46,22 @@ namespace Tuition_Center_Application.common.Admin
             course_repeater.DataSource = course_var;
             course_repeater.DataBind();
 
+            get_tutor_list();
+        }
+
+        async void get_tutor_list()
+        {
+            tutor_ddl.Items.Clear();
+            tutor_ddl2.Items.Clear();
+            tutorID_list.Clear();
+
             QuerySnapshot tutor_snap = await util.firebase.get_doc_snap("Staff");
 
             foreach (DocumentSnapshot docsnap in tutor_snap.Documents)
             {
                 Tutor tutor = docsnap.ConvertTo<Tutor>();
                 tutor_ddl.Items.Add(tutor.name);
+                tutor_ddl2.Items.Add(tutor.name);
                 tutorID_list.Add(tutor.tutorID);
             }
         }
@@ -97,7 +106,27 @@ namespace Tuition_Center_Application.common.Admin
 
         async void delete_tutor_course(string id)
         {
-            DocumentReference staff_doc = database.Collection("Staff").Document(tutorID_list[tutor_ddl.SelectedIndex]);
+            string tutor_contain_courseID = "";
+            QuerySnapshot tutor_snap = await util.firebase.get_doc_snap("Staff");
+
+            foreach (DocumentSnapshot docsnap in tutor_snap.Documents)
+            {
+                Tutor tutor = docsnap.ConvertTo<Tutor>();
+                tutor_var.Add(tutor);
+            }
+
+            for (int i = 0; i < tutor_var.Count(); i++)
+            {
+                for (int j = 0; j < tutor_var[i].courseID.Count(); j++)
+                {
+                    if (tutor_var[i].courseID[j] == id)
+                    {
+                        tutor_contain_courseID = tutor_var[i].courseID[j];
+                    }
+                }
+            }
+
+            DocumentReference staff_doc = database.Collection("Staff").Document(tutor_contain_courseID);
 
             await staff_doc.UpdateAsync("courseID", FieldValue.ArrayRemove(id));
         }
@@ -196,6 +225,15 @@ namespace Tuition_Center_Application.common.Admin
                     hour_text2.Text = hour_convert(course_var[i].time_start);
                     min_text2.Text = min_convert(course_var[i].time_start);
 
+                    for (int j = 0; j < tutor_var.Count(); j++)
+                    {
+                        if (tutor_var[j].tutorID == course_var[i].tutorID)
+                        {
+                            tutor_ddl2.SelectedValue = tutor_var[j].name;
+                            break;
+                        }
+                    }
+
                     name_text2.Enabled = false;
                     level_ddl2.Enabled = false;
                     language_ddl2.Enabled = false;
@@ -226,6 +264,14 @@ namespace Tuition_Center_Application.common.Admin
                     duration_ddl2.SelectedIndex = duration_int(course_var[i].duration);
                     hour_text2.Text = hour_convert(course_var[i].time_start);
                     min_text2.Text = min_convert(course_var[i].time_start);
+                    for (int j = 0; j < tutor_var.Count(); j++)
+                    {
+                        if (tutor_var[j].tutorID == course_var[i].tutorID)
+                        {
+                            tutor_ddl2.SelectedValue = tutor_var[j].name;
+                            break;
+                        }
+                    }
 
                     name_text2.Enabled = true;
                     level_ddl2.Enabled = true;
