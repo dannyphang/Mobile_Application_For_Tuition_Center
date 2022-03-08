@@ -15,8 +15,7 @@
                         <img src="https://bootdey.com/img/Content/bg1.jpg" alt="">
                     </div>
                     <div class="fb-name">
-                        <h2>
-                            <asp:Label ID="course_name_label" runat="server" Text="course name"></asp:Label></h2>
+                        <h2><asp:Label ID="course_name_label" runat="server" Text="course name"></asp:Label></h2>
                     </div>
                 </div>
                 <div class="panel-body">

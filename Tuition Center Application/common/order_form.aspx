@@ -161,10 +161,10 @@
             </div>
             <div class="row row2">
                 <div class="col-half col-half2">
-                    <div class="input-group"></div>
+                    <a href="order.aspx" class="modal_btn" data-blobity-tooltip="Back"><span><ion-icon name="arrow-back-outline"></ion-icon></span></a>
                 </div>
                 <div class="col-half col-half2">
-                    <asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click" data-blobity-tooltip="Tooltip text"/>
+                    <asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click"/>
                     <asp:Button ID="checkout_btn" runat="server" Text="Checkout" CssClass="modal_btn" OnClick="stripe_checkout" />
                 </div>
             </div>

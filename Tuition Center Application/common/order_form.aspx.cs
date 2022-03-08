@@ -78,18 +78,19 @@ namespace Tuition_Center_Application.common
             }
 
             new_student_id = (int.Parse(student_var[student_var.Count() - 1].studentID) + 1).ToString();
-
-            System.Diagnostics.Debug.WriteLine("Student_Var count (from get_a_doc): " + student_var.Count());
         }
 
         protected void stripe_checkout(object sender, EventArgs e)
         {
             StripeConfiguration.ApiKey = "sk_test_51KLfunFk6dh40g5t1gLqZvN5hOpYVBqp4LK6YJorr0v20oUw05YOuKbs56vxdMa3mQFWE68w5os9Bl6MqTJvcLjl00kUpS4ld0";
+            //Session["new_student"] = new class_file.Student
+            //{
 
+            //}
             var options = new SessionCreateOptions
             {
-                SuccessUrl = "https://www.google.com",
-                CancelUrl = "https://www.youtube.com",
+                SuccessUrl = "https://localhost:44378/" + "common/course.aspx",
+                CancelUrl = "https://localhost:44378/" + "common/order.aspx",
                 LineItems = new List<SessionLineItemOptions>
                 {
                     new SessionLineItemOptions
@@ -130,7 +131,6 @@ namespace Tuition_Center_Application.common
 
         protected void clear_btn_Click(object sender, EventArgs e)
         {
-            //System.Diagnostics.Debug.WriteLine("image_hf: " + image_hf.Value);
             clear_data();
         }
 

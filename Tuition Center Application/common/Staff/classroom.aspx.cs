@@ -22,6 +22,8 @@ namespace Tuition_Center_Application.common.Staff
         {
             database = util.firebase.get_database();
 
+
+
             get_a_post();
         }
 

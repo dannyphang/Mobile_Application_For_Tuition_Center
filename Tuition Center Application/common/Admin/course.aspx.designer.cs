@@ -24,6 +24,24 @@ namespace Tuition_Center_Application.common.Admin
         protected global::System.Web.UI.WebControls.Repeater course_repeater;
 
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+
+        /// <summary>
         /// name_text control.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,15 @@ namespace Tuition_Center_Application.common.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList tutor_ddl;
+
+        /// <summary>
+        /// tutor_ddl_hf control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField tutor_ddl_hf;
 
         /// <summary>
         /// language_ddl control.
@@ -121,6 +148,15 @@ namespace Tuition_Center_Application.common.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button submit_btn;
+
+        /// <summary>
+        /// submit_btn_hf control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField submit_btn_hf;
 
         /// <summary>
         /// demo_modal control.

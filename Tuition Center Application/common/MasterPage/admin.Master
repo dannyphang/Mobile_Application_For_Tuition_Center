@@ -22,13 +22,6 @@
         </div>
         <ul class="nav-list">
             <li>
-                <i class="search_icon">
-                    <ion-icon name="search-outline" id="search_btn"></ion-icon>
-                </i>
-                <input type="text" placeholder="Search...">
-                <span class="tooltip">Search</span>
-            </li>
-            <li>
                 <a href="./home.aspx">
                     <i>
                         <ion-icon name="home-outline"></ion-icon>

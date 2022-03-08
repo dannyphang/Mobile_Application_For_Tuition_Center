@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Google.Cloud.Firestore;
@@ -16,6 +17,7 @@ namespace Tuition_Center_Application.common.Admin
         protected List<Tutor> tutor_var = new List<Tutor>();
         List<string> tutorID_list = new List<string>();
         string new_id = "why r u here???";
+        int selected_tutor;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,6 +27,8 @@ namespace Tuition_Center_Application.common.Admin
             {
                 demo_modal.Attributes.Add("class", "modal_form expand");
                 System.Diagnostics.Debug.WriteLine("Post Back AGAIN!!!!!");
+                System.Diagnostics.Debug.WriteLine("get tutor from ddl (page load): " + tutor_ddl.SelectedIndex);
+                selected_tutor = tutor_ddl.SelectedIndex;
             }
 
             get_a_doc();
@@ -73,6 +77,8 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void submit_btn_Click(object sender, EventArgs e)
         {
+            System.Diagnostics.Trace.WriteLine(selected_tutor);
+
             DocumentReference doc = database.Collection("Course").Document(new_id);
 
             Course new_course = new Course
@@ -85,7 +91,7 @@ namespace Tuition_Center_Application.common.Admin
                 time_start = hour_text.Text + ":" + min_text.Text,
                 time_end = time_end_count(duration_str_to_float(duration_ddl.SelectedIndex), hour_text.Text, min_text.Text),
                 duration = duration_str_to_float(duration_ddl.SelectedIndex),
-                tutorID = tutorID_list[tutor_ddl.SelectedIndex],
+                tutorID = tutorID_list[selected_tutor],
             };
 
             doc.SetAsync(new_course);

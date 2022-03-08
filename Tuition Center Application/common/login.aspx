@@ -17,6 +17,7 @@
                     btn.click();
                 }
             }
+        }
     </script>
     <script src="https://cdn.blobity.dev/by.js?noAutoStart"></script>
     <script>
