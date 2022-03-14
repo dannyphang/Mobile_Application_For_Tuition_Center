@@ -49,7 +49,7 @@
                                         </td>
                                         <td>
                                             <div class="wrapper">
-                                                <asp:LinkButton ID="delete_btn" runat="server" CssClass="icon delete" OnClick="delete_btn_Click">
+                                                <asp:LinkButton ID="delete_btn" runat="server" CssClass="icon delete" OnClick="delete_btn_Click" data-no-blobity>
 													<div class="tooltip">Delete</div>
 													<span><ion-icon name="trash-outline"></ion-icon></span>
                                                 </asp:LinkButton>

@@ -28,33 +28,6 @@ namespace Tuition_Center_Application.common
             get_a_doc();
         }
 
-        protected void submit_btn_Click(object sender, EventArgs e)
-        {
-            string formatted_date = datehf.Value.Substring(3, 2) + "/" + datehf.Value.Substring(0, 2) + "/" + datehf.Value.Substring(6, 4);
-
-            DocumentReference doc = database.Collection("Student").Document(new_student_id);
-
-            class_file.Student new_student = new class_file.Student
-            {
-                name = name_text.Text.Trim(),
-                IC = IC_text.Text.Trim(),
-                email = email_text.Text.Trim(),
-                password = password_text.Text.Trim(),
-                address = address_text.Text.Trim(),
-                phoneNo = phone_text.Text.Trim(),
-                educationLV = level_ddl.SelectedValue.Trim(),
-                school = school_text.Text.Trim(),
-                DOB = formatted_date,
-                OTP = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 6).Select(s => s[new Random().Next(s.Length)]).ToArray()),
-                OTP_Send = Timestamp.GetCurrentTimestamp().ToDateTime(),
-                avatar = image_hf.Value,
-                courseID = cart_var,
-            };
-
-            doc.SetAsync(new_student);
-            clear_data();
-        }
-
         async void get_a_doc()
         {
             student_var.Clear();
@@ -83,13 +56,30 @@ namespace Tuition_Center_Application.common
         protected void stripe_checkout(object sender, EventArgs e)
         {
             StripeConfiguration.ApiKey = "sk_test_51KLfunFk6dh40g5t1gLqZvN5hOpYVBqp4LK6YJorr0v20oUw05YOuKbs56vxdMa3mQFWE68w5os9Bl6MqTJvcLjl00kUpS4ld0";
-            //Session["new_student"] = new class_file.Student
-            //{
+            
+            Session["create_new_student"] = new class_file.Student
+            {
+                name = name_text.Text.Trim(),
+                IC = IC_text.Text.Trim(),
+                email = email_text.Text.Trim(),
+                password = password_text.Text.Trim(),
+                address = address_text.Text.Trim(),
+                phoneNo = phone_text.Text.Trim(),
+                educationLV = level_ddl.SelectedValue.Trim(),
+                school = school_text.Text.Trim(),
+                DOB = datehf.Value,
+                OTP = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 6).Select(s => s[new Random().Next(s.Length)]).ToArray()),
+                //OTP_Send = Timestamp.GetCurrentTimestamp().ToDateTime(),
+                OTP_Send = Timestamp.FromDateTime(DateTime.UtcNow), 
+                avatar = image_hf.Value,
+                courseID = (Request.Cookies["Course_Cookies"].Value).Split(' ').ToList(),
+                twitter = "", 
 
-            //}
+            };
+
             var options = new SessionCreateOptions
             {
-                SuccessUrl = "https://localhost:44378/" + "common/course.aspx",
+                SuccessUrl = "https://localhost:44378/" + "common/home.aspx",
                 CancelUrl = "https://localhost:44378/" + "common/order.aspx",
                 LineItems = new List<SessionLineItemOptions>
                 {

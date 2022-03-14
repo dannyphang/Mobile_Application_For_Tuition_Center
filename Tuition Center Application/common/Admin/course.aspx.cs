@@ -27,7 +27,6 @@ namespace Tuition_Center_Application.common.Admin
             {
                 demo_modal.Attributes.Add("class", "modal_form expand");
                 System.Diagnostics.Debug.WriteLine("Post Back AGAIN!!!!!");
-                System.Diagnostics.Debug.WriteLine("get tutor from ddl (page load): " + tutor_ddl.SelectedIndex);
                 selected_tutor = tutor_ddl.SelectedIndex;
             }
 
@@ -58,12 +57,15 @@ namespace Tuition_Center_Application.common.Admin
             tutor_ddl.Items.Clear();
             tutor_ddl2.Items.Clear();
             tutorID_list.Clear();
+            tutor_var.Clear();
 
             QuerySnapshot tutor_snap = await util.firebase.get_doc_snap("Staff");
 
             foreach (DocumentSnapshot docsnap in tutor_snap.Documents)
             {
                 Tutor tutor = docsnap.ConvertTo<Tutor>();
+
+                tutor_var.Add(tutor);
                 tutor_ddl.Items.Add(tutor.name);
                 tutor_ddl2.Items.Add(tutor.name);
                 tutorID_list.Add(tutor.tutorID);
@@ -105,7 +107,8 @@ namespace Tuition_Center_Application.common.Admin
 
         async void add_tutor_course(string newID)
         {
-            DocumentReference staff_doc = database.Collection("Staff").Document(tutorID_list[tutor_ddl.SelectedIndex]);
+
+            DocumentReference staff_doc = database.Collection("Staff").Document(tutorID_list[selected_tutor]);
 
             await staff_doc.UpdateAsync("courseID", FieldValue.ArrayUnion(newID));
         }
@@ -113,21 +116,13 @@ namespace Tuition_Center_Application.common.Admin
         async void delete_tutor_course(string id)
         {
             string tutor_contain_courseID = "";
-            QuerySnapshot tutor_snap = await util.firebase.get_doc_snap("Staff");
-
-            foreach (DocumentSnapshot docsnap in tutor_snap.Documents)
-            {
-                Tutor tutor = docsnap.ConvertTo<Tutor>();
-                tutor_var.Add(tutor);
-            }
-
             for (int i = 0; i < tutor_var.Count(); i++)
             {
                 for (int j = 0; j < tutor_var[i].courseID.Count(); j++)
                 {
                     if (tutor_var[i].courseID[j] == id)
                     {
-                        tutor_contain_courseID = tutor_var[i].courseID[j];
+                        tutor_contain_courseID = tutor_var[i].tutorID;
                     }
                 }
             }
@@ -233,7 +228,7 @@ namespace Tuition_Center_Application.common.Admin
 
                     for (int j = 0; j < tutor_var.Count(); j++)
                     {
-                        if (tutor_var[j].tutorID == course_var[i].tutorID)
+                        if (course_var[i].tutorID == tutor_var[j].tutorID)
                         {
                             tutor_ddl2.SelectedValue = tutor_var[j].name;
                             break;
@@ -295,11 +290,11 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void delete_btn_Click(object sender, EventArgs e)
         {
+            delete_tutor_course(getID(sender));
+
             DocumentReference doc = database.Collection("Course").Document(getID(sender));
 
             doc.DeleteAsync();
-
-            delete_tutor_course(getID(sender));
 
             Response.Redirect("~/common/Admin/course.aspx", false);
         }

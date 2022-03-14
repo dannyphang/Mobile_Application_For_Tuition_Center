@@ -1,7 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/guess.Master" AutoEventWireup="true" CodeBehind="order_form.aspx.cs" Inherits="Tuition_Center_Application.common.order_form" Async="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css"/>
+    <%--<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>--%>
     <link rel="stylesheet" href="../../css/order_form.css" />
+
     <section id="container">
         <div class="reg_form_content">
             <div class="row row2">
@@ -111,16 +116,18 @@
                     <div class="input-group input-group-icon">
                         <asp:TextBox ID="phone_text" runat="server" CssClass="input" placeholder="Phone Number"></asp:TextBox>
                         <div class="input-icon">
-                            <p><span class="info_icon">
-                                <ion-icon name="call-outline"></ion-icon>
-                            </span></p>
+                            <p>
+                                <span class="info_icon">
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </span>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <%-- DOB DDL --%>
                 <div class="col-half col-half2">
                     <h4 class="h4_text">Date of Birth</h4>
-                    <div id="calendar"></div>
+                    <input class="datepicker form-control" data-date-format="mm/dd/yyyy"  data-date-end-date="0d"/>
                     <asp:HiddenField ID="datehf" runat="server" Value="0000" ClientIDMode="Static" />
                 </div>
             </div>
@@ -161,35 +168,36 @@
             </div>
             <div class="row row2">
                 <div class="col-half col-half2">
-                    <a href="order.aspx" class="modal_btn" data-blobity-tooltip="Back"><span><ion-icon name="arrow-back-outline"></ion-icon></span></a>
+                    <a href="order.aspx" class="modal_btn" data-blobity-tooltip="Back"><span>
+                        <ion-icon name="arrow-back-outline"></ion-icon>
+                    </span></a>
                 </div>
                 <div class="col-half col-half2">
-                    <asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click"/>
+                    <asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click" />
                     <asp:Button ID="checkout_btn" runat="server" Text="Checkout" CssClass="modal_btn" OnClick="stripe_checkout" />
                 </div>
             </div>
         </div>
     </section>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" ></script>
+    <script src="../js/air_datepicker.js" type="text/javascript"></script>
 
     <%-- Stripe --%>
-    <script src="https://designmodo.com/demo/calendarjquerycss3/js/jquery-ui-datepicker.min.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
     <script type="module" src="../js/stripe.js"></script>
-    <script src="../../js/calendar.js"></script>
 
     <script>
-        function icon_hover() {
-            document.getElementById("info_icon").style.color = "red";
-        }
-
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
                     $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
                     $('#imagePreview').hide();
-                    $('#imagePreview').fadeIn(650);
+                    //$('#imagePreview').fadeIn(650);
+                    console.log(e.target.result);
                     document.getElementById("<%= image_hf.ClientID %>").value = String(e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]);

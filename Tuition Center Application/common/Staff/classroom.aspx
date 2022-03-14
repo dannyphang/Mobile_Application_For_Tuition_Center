@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/staff.Master" AutoEventWireup="true" CodeBehind="classroom.aspx.cs" Inherits="Tuition_Center_Application.common.Staff.classroom" Async="true"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/staff.Master" AutoEventWireup="true" CodeBehind="classroom.aspx.cs" Inherits="Tuition_Center_Application.common.Staff.classroom" Async="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -15,7 +15,9 @@
                         <img src="https://bootdey.com/img/Content/bg1.jpg" alt="">
                     </div>
                     <div class="fb-name">
-                        <h2><asp:Label ID="course_name_label" runat="server" Text="course name"></asp:Label></h2>
+                        <h2>
+                            <asp:Label ID="course_name_label" runat="server" Text="course name"></asp:Label>
+                        </h2>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -30,7 +32,7 @@
                 <asp:TextBox ID="post_box_text" runat="server" placeholder="Announce something to your class..." CssClass="form-control input-lg p-text-area"></asp:TextBox>
                 <div>
                     <a>
-                        <asp:LinkButton ID="post_btn" runat="server" class="btn btn-info pull-right post_btn">
+                        <asp:LinkButton ID="post_btn" runat="server" class="btn btn-info pull-right post_btn" OnClick="post_btn_Click">
                                 <span><ion-icon name="paper-plane-outline"></ion-icon></span>
                         </asp:LinkButton>
                     </a>
@@ -49,7 +51,7 @@
                                     <a>
                                         <asp:Label ID="tutor_name_label" runat="server" Text='<%# Eval("creatorName") %>'></asp:Label>
                                     </a>
-                                    <asp:HiddenField ID="postID_hf" runat="server" Value='<%# Eval("postID") %>'/>
+                                    <asp:HiddenField ID="postID_hf" runat="server" Value='<%# Eval("postID") %>' />
                                 </h3>
                                 <asp:Label ID="post_time_label" runat="server" Text='<%# Eval("postTime") %>'></asp:Label>
                             </div>
@@ -80,7 +82,14 @@
                                     <li>
                                         <asp:Image ID="comment_user_img3" runat="server" CssClass="cmt-thumb" ImageUrl="https://bootdey.com/img/Content/avatar/avatar8.png" />
                                         <div class="cmt-form">
-                                            <asp:TextBox ID="current_user_comment_text" runat="server" placeholder="Write something..." CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="current_user_comment_text" runat="server" placeholder="Comment something..." CssClass="form-control input-lg p-text-area text_padding" OnTextChanged="current_user_comment_text_TextChanged"></asp:TextBox>
+                                            <div>
+                                                <a>
+                                                    <asp:LinkButton ID="comment_btn" runat="server" class="btn btn-info pull-right post_btn2" OnClick="comment_btn_Click" OnClientClick="comment_btn()">
+                                                        <span><ion-icon name="return-down-forward-outline"></ion-icon></span>
+                                                    </asp:LinkButton>
+                                                </a>
+                                            </div>
                                         </div>
                                     </li>
                                 </ul>
@@ -98,5 +107,9 @@
     <%-- IONICONS --%>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+    <script>
+        function comment_btn() {
+            //alert(document.getElementById("current_user_comment_text").value);
+        }
+    </script>
 </asp:Content>

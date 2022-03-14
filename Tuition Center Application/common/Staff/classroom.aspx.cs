@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -17,12 +18,20 @@ namespace Tuition_Center_Application.common.Staff
         protected List<Tutor> tutor_var = new List<Tutor>();
         protected List<class_file.Student> student_var = new List<class_file.Student>();
         protected Repeater comment_repeater;
+        protected TextBox comment_textbox;
+        protected string comment_text;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             database = util.firebase.get_database();
 
+            course_name_label.Text = ((Course)Session["current_classroom"]).courseName;
+            time_label.Text = ((Course)Session["current_classroom"]).time_start + " - " + ((Course)Session["current_classroom"]).time_end;
 
+            if (IsPostBack)
+            {
+                
+            }
 
             get_a_post();
         }
@@ -36,7 +45,11 @@ namespace Tuition_Center_Application.common.Staff
             foreach (DocumentSnapshot docsnap in snap.Documents)
             {
                 Post post = docsnap.ConvertTo<Post>();
-                post_var.Add(post);
+                if (post.courseID == ((Course)Session["current_classroom"]).courseID)
+                {
+                    post_var.Add(post);
+                }
+                
                 //get_comment(post.postID);
             }
 
@@ -91,9 +104,7 @@ namespace Tuition_Center_Application.common.Staff
                     }
                 }
 
-
                 Image comment_user_img2 = (Image)e.Item.FindControl("comment_user_img3");
-                //System.Diagnostics.Debug.WriteLine("Session['Current_User']: " + ((Tutor)Session["Current_User"]).name);
                 comment_user_img2.ImageUrl = ((Tutor)Session["Current_User"]).avatar;
                 comment_repeater.DataSource = get_comment((e.Item.FindControl("postID_hf") as HiddenField).Value);
                 comment_repeater.DataBind();
@@ -145,6 +156,79 @@ namespace Tuition_Center_Application.common.Staff
                     }
                 }
             }
+        }
+
+        protected void post_btn_Click(object sender, EventArgs e)
+        {
+            add_post();
+        }
+
+        async void add_post()
+        {
+            Console.WriteLine("You are here");
+            
+            Post new_post = new Post
+            {
+                courseID = ((Course)Session["current_classroom"]).courseID,
+                creatorName = ((Tutor)Session["Current_User"]).name,
+                postContent = post_box_text.Text.Trim(),
+                postTime = Timestamp.FromDateTime(DateTime.UtcNow),
+            };
+
+            await database.Collection("Post").AddAsync(new_post);
+
+            Response.Redirect("~/common/Staff/classroom.aspx", false);
+        }
+
+        protected void comment_btn_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            RepeaterItem item = (RepeaterItem)btn.NamingContainer;
+            string post_id = ((HiddenField)item.FindControl("postID_hf")).Value;
+
+            for (int i = 0; i < post_var.Count(); i++)
+            {
+                if (post_var[i].postID == post_id)
+                {
+                    TextBox comment_textbox = ((TextBox)item.FindControl("current_user_comment_text"));
+
+                    System.Diagnostics.Debug.WriteLine("comment_textbox.text: " + comment_textbox.Text);
+                    add_comment(post_id, sender);
+                }
+            }
+
+            Response.Redirect("~/common/Staff/classroom.aspx", false);
+        }
+
+        async void add_comment(string post_id, object sender)
+        {
+            LinkButton btn = (LinkButton)sender;
+            RepeaterItem item = (RepeaterItem)btn.NamingContainer;
+
+            TextBox comment_textbox = ((TextBox)item.FindControl("current_user_comment_text"));
+
+            System.Diagnostics.Debug.WriteLine("comment_text: " + comment_text);
+
+            //Comment new_comment = new Comment
+            //{
+            //    commentContent = comment_text,
+            //    commentTime = Timestamp.FromDateTime(DateTime.UtcNow),
+            //    commentUser = ((Tutor)Session["Current_User"]).name,
+            //    commentUserRole = "Staff",
+            //    postID = post_id, 
+            //};
+
+            //await database.Collection("Comment").AddAsync(new_comment);
+
+            //Response.Redirect("~/common/Staff/classroom.aspx", false);
+        }
+
+        protected void current_user_comment_text_TextChanged(object sender, EventArgs e)
+        {
+            Repeater item = (Repeater)((TextBox)sender).NamingContainer;
+
+            comment_text = ((TextBox)item.FindControl("current_user_comment_text")).Text;
+            System.Diagnostics.Debug.WriteLine("comment_text1: " + comment_text);
         }
     }
 }

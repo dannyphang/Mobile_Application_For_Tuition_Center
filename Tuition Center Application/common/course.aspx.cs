@@ -57,27 +57,6 @@ namespace Tuition_Center_Application.common
             string course_id = ((HiddenField)item.FindControl("courseID_hf")).Value;
 
             System.Diagnostics.Debug.WriteLine("Course id: " + course_id);
-
-            //DocumentReference cart_doc = database.Collection("Cart").Document("1");
-            //DocumentSnapshot snap = await cart_doc.GetSnapshotAsync();
-
-            //if (snap.Exists)
-            //{
-            //    await cart_doc.UpdateAsync("courseID", FieldValue.ArrayUnion(course_id));
-            //}
-            //else
-            //{
-            //    System.Diagnostics.Debug.WriteLine("Documents is not exists!!!!!!");
-            //    cart_var.Add(course_id);
-            //    Dictionary<string, object> cart_item = new Dictionary<string, object>
-            //    {
-            //        { "courseID", cart_var },
-            //        { "startTime", Timestamp.GetCurrentTimestamp().ToDateTime() }
-            //    };
-            //    await database.Collection("Cart").Document("1").SetAsync(cart_item);
-            //}
-
-            //get_cart();
             
             added_course_list_hf.Value += course_id + " ";
 

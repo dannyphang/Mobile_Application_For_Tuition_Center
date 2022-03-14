@@ -22,7 +22,7 @@ namespace Tuition_Center_Application.class_file
         [FirestoreProperty]
         public string OTP { get; set; }
         [FirestoreProperty]
-        public DateTime OTP_Send { get; set; }
+        public Timestamp OTP_Send { get; set; }
         [FirestoreProperty]
         public string avatar { get; set; }
         [FirestoreProperty]

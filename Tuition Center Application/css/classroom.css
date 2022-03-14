@@ -233,6 +233,10 @@ img {
     background: #FF6C60 !important;
 }
 
+.post_btn {
+    transform: rotate(45deg);
+}
+
 .post_btn, .post_btn:hover {
     border-radius: 100%;
     width: 40px;
@@ -245,7 +249,24 @@ img {
     top: -40px;
     margin-right: 20px;
     position: relative;
-    transform: rotate(45deg);
+}
+
+.post_btn2, post_btn2:hover {
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    font-size: 20px;
+    background-color: transparent;
+    border: 0px;
+    color: grey;
+    top: -40px;
+    margin-right: 50px;
+    position: relative;
+}
+
+.text_padding {
+    padding-right: 45px;
 }
 
 .comment_user {

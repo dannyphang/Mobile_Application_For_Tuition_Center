@@ -21,6 +21,6 @@ namespace Tuition_Center_Application.class_file
         [FirestoreProperty]
         public string commentContent { get; set; }
         [FirestoreProperty]
-        public DateTime commentTime { get; set; }
+        public Timestamp commentTime { get; set; }
     }
 }

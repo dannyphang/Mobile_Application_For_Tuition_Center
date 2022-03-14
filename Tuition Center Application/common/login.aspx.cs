@@ -38,12 +38,12 @@ namespace Tuition_Center_Application
                 if (role == "staff")
                 {
                     get_staff(email_input, password_input);
-                    Response.Write("<script>alert('staff here')</script>");
+                    //Response.Write("<script>alert('staff here')</script>");
                 }
                 else if (role == "student")
                 {
                     get_student(email_input, password_input);
-                    Response.Write("<script>alert('student here')</script>");
+                    //Response.Write("<script>alert('student here')</script>");
                 }
             }            
         }

@@ -98,6 +98,8 @@ namespace Tuition_Center_Application.common.Admin
 
             doc.DeleteAsync();
 
+            // TODO: delete course, post and comment of this tutor
+
             Response.Redirect("~/common/Admin/satff.aspx", false);
         }
 
@@ -147,7 +149,7 @@ namespace Tuition_Center_Application.common.Admin
         protected void submit_btn_Click(object sender, EventArgs e)
         {
             DocumentReference doc = database.Collection("Staff").Document(new_id);
-            //System.Diagnostics.Debug.WriteLine("datehf: " + datehf.Value);
+            
             string formatted_date = datehf.Value.Substring(3, 2) + "/" + datehf.Value.Substring(0, 2) + "/" + datehf.Value.Substring(6, 4);
 
             Tutor new_tutor = new Tutor
@@ -162,11 +164,16 @@ namespace Tuition_Center_Application.common.Admin
                 onBoardingDate = formatted_date,
                 salary = float.Parse(salary_text.Text),
                 courseID = new List<string>(),
+                github = "",
+                website = "",
+                twitter = "",
+                facebook = "",
+                instagram = "",
             };
             doc.SetAsync(new_tutor);
             clear_data();
 
-            Response.Redirect("~/common/Admin/satff.aspx", false);
+            Response.Redirect("~/common/Admin/staff.aspx", false);
         }
 
         void clear_data()

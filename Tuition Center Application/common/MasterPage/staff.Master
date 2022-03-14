@@ -51,7 +51,7 @@
                     <span class="tooltip">Students</span>
                 </li>
                 <li>
-                    <a href="./classroom.aspx">
+                    <a href="./classroom_main.aspx">
                         <i>
                             <ion-icon name="school-outline"></ion-icon>
                         </i>

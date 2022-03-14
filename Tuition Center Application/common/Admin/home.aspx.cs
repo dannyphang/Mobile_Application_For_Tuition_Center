@@ -11,6 +11,7 @@ namespace Tuition_Center_Application.common.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
 
         }
     }

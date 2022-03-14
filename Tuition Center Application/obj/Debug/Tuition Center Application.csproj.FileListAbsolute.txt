@@ -129,8 +129,8 @@ C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Ce
 C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\Twilio.xml
 C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\obj\Debug\Tuition Center Application.csproj.AssemblyReference.cache
 C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\obj\Debug\Tuition Center Application.csproj.CoreCompileInputs.cache
 C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\obj\Debug\Tuition Center Application.csproj.CopyComplete
 C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\obj\Debug\Tuition Center Application.dll
 C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\obj\Debug\Tuition Center Application.pdb
+C:\Users\danny\Documents\GitHub\Mobile_Application_For_Tuition_Center\Tuition Center Application\obj\Debug\Tuition Center Application.csproj.AssemblyReference.cache

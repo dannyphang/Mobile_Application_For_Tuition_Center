@@ -13,7 +13,7 @@ namespace Tuition_Center_Application.class_file
         [FirestoreDocumentId]
         public string postID { get; set; }
         [FirestoreProperty]
-        public DateTime postTime { get; set; }
+        public Timestamp postTime { get; set; }
         [FirestoreProperty]
         public string courseID { get; set; }
         [FirestoreProperty]

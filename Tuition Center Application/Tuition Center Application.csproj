@@ -176,12 +176,15 @@
     <Content Include="common\home.aspx" />
     <Content Include="common\order.aspx" />
     <Content Include="common\order_form.aspx" />
+    <Content Include="common\payment_successful.aspx" />
     <Content Include="common\Staff\classroom.aspx" />
+    <Content Include="common\Staff\classroom_main.aspx" />
     <Content Include="common\Staff\course.aspx" />
     <Content Include="common\Staff\home.aspx" />
     <Content Include="common\Staff\profile.aspx" />
     <Content Include="common\Staff\timetable.aspx" />
     <Content Include="common\User\classroom.aspx" />
+    <Content Include="common\User\classroom_main.aspx" />
     <Content Include="common\User\home.aspx" />
     <Content Include="common\User\payment.aspx" />
     <Content Include="common\User\profile.aspx" />
@@ -190,8 +193,10 @@
     <Content Include="common\User\timetable.aspx" />
     <Content Include="css\admin_course.css" />
     <Content Include="css\admin_staff.css" />
+    <Content Include="css\air-datepicker.css" />
     <Content Include="css\calander.css" />
     <Content Include="css\classroom.css" />
+    <Content Include="css\classroom_main.css" />
     <Content Include="css\course.css" />
     <Content Include="css\admin_student.css" />
     <Content Include="css\footer.css" />
@@ -212,6 +217,7 @@
     <Content Include="img\profile.png" />
     <Content Include="js\admin_course.js" />
     <Content Include="js\admin_student.js" />
+    <Content Include="js\air_datepicker.js" />
     <Content Include="js\calendar.js" />
     <Content Include="js\footer.js" />
     <Content Include="js\side_nav.js" />
@@ -337,12 +343,26 @@
     <Compile Include="common\order_form.aspx.designer.cs">
       <DependentUpon>order_form.aspx</DependentUpon>
     </Compile>
+    <Compile Include="common\payment_successful.aspx.cs">
+      <DependentUpon>payment_successful.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\payment_successful.aspx.designer.cs">
+      <DependentUpon>payment_successful.aspx</DependentUpon>
+    </Compile>
     <Compile Include="common\Staff\classroom.aspx.cs">
       <DependentUpon>classroom.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="common\Staff\classroom.aspx.designer.cs">
       <DependentUpon>classroom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Staff\classroom_main.aspx.cs">
+      <DependentUpon>classroom_main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Staff\classroom_main.aspx.designer.cs">
+      <DependentUpon>classroom_main.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\Staff\course.aspx.cs">
       <DependentUpon>course.aspx</DependentUpon>
@@ -378,6 +398,13 @@
     </Compile>
     <Compile Include="common\User\classroom.aspx.designer.cs">
       <DependentUpon>classroom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\User\classroom_main.aspx.cs">
+      <DependentUpon>classroom_main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\User\classroom_main.aspx.designer.cs">
+      <DependentUpon>classroom_main.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\User\home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
