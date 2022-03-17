@@ -33,12 +33,6 @@ namespace Tuition_Center_Application.common
             RepeaterItem item = (RepeaterItem)btn.NamingContainer;
             string course_id = ((HiddenField)item.FindControl("courseID_hd")).Value;
 
-            //DocumentReference cart_doc = database.Collection("Cart").Document("1");
-
-            //System.Diagnostics.Debug.WriteLine("Removed course ID: " + course_id);
-            //await cart_doc.UpdateAsync("courseID", FieldValue.ArrayRemove(course_id));
-            //Request.Cookies["Course_Cookies"].Value = "Removed" + Timestamp.GetCurrentTimestamp().ToString();
-
             cart_var.Remove(course_id);
 
             Request.Cookies["Course_Cookies"].Value = "";

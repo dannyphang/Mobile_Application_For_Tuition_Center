@@ -176,7 +176,6 @@
     <Content Include="common\home.aspx" />
     <Content Include="common\order.aspx" />
     <Content Include="common\order_form.aspx" />
-    <Content Include="common\payment_successful.aspx" />
     <Content Include="common\Staff\classroom.aspx" />
     <Content Include="common\Staff\classroom_main.aspx" />
     <Content Include="common\Staff\course.aspx" />
@@ -187,9 +186,10 @@
     <Content Include="common\User\classroom_main.aspx" />
     <Content Include="common\User\home.aspx" />
     <Content Include="common\User\payment.aspx" />
+    <Content Include="common\User\payment_history.aspx" />
     <Content Include="common\User\profile.aspx" />
-    <Content Include="common\testing.aspx" />
     <Content Include="common\tutor.aspx" />
+    <Content Include="common\User\success.aspx" />
     <Content Include="common\User\timetable.aspx" />
     <Content Include="css\admin_course.css" />
     <Content Include="css\admin_staff.css" />
@@ -203,6 +203,8 @@
     <Content Include="css\login.css" />
     <Content Include="css\order.css" />
     <Content Include="css\order_form.css" />
+    <Content Include="css\payment_history.css" />
+    <Content Include="css\receipt.css" />
     <Content Include="css\remixicon.css" />
     <Content Include="css\side_nav.css" />
     <Content Include="common\login.aspx" />
@@ -235,6 +237,7 @@
     <Compile Include="class_file\Cart.cs" />
     <Compile Include="class_file\Comment.cs" />
     <Compile Include="class_file\Course.cs" />
+    <Compile Include="class_file\PaymentHistory.cs" />
     <Compile Include="class_file\Post.cs" />
     <Compile Include="class_file\Student.cs" />
     <Compile Include="class_file\Tutor.cs" />
@@ -343,13 +346,6 @@
     <Compile Include="common\order_form.aspx.designer.cs">
       <DependentUpon>order_form.aspx</DependentUpon>
     </Compile>
-    <Compile Include="common\payment_successful.aspx.cs">
-      <DependentUpon>payment_successful.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="common\payment_successful.aspx.designer.cs">
-      <DependentUpon>payment_successful.aspx</DependentUpon>
-    </Compile>
     <Compile Include="common\Staff\classroom.aspx.cs">
       <DependentUpon>classroom.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -420,19 +416,19 @@
     <Compile Include="common\User\payment.aspx.designer.cs">
       <DependentUpon>payment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="common\User\payment_history.aspx.cs">
+      <DependentUpon>payment_history.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\User\payment_history.aspx.designer.cs">
+      <DependentUpon>payment_history.aspx</DependentUpon>
+    </Compile>
     <Compile Include="common\User\profile.aspx.cs">
       <DependentUpon>profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="common\User\profile.aspx.designer.cs">
       <DependentUpon>profile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="common\testing.aspx.cs">
-      <DependentUpon>testing.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="common\testing.aspx.designer.cs">
-      <DependentUpon>testing.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -447,6 +443,13 @@
     </Compile>
     <Compile Include="common\tutor.aspx.designer.cs">
       <DependentUpon>tutor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\User\success.aspx.cs">
+      <DependentUpon>success.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\User\success.aspx.designer.cs">
+      <DependentUpon>success.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\User\timetable.aspx.cs">
       <DependentUpon>timetable.aspx</DependentUpon>
@@ -481,6 +484,7 @@
     <Compile Include="testing.aspx.designer.cs">
       <DependentUpon>testing.aspx</DependentUpon>
     </Compile>
+    <Compile Include="util\validation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="common\MasterPage\guess.Master" />

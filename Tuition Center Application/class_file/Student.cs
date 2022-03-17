@@ -47,5 +47,7 @@ namespace Tuition_Center_Application.class_file
         public string facebook { get; set; }
         [FirestoreProperty]
         public string instagram { get; set; }
+        [FirestoreProperty]
+        public Timestamp lastPayment { get; set; }
     }
 }

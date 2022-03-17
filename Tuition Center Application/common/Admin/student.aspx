@@ -8,34 +8,6 @@
 
     <%-- CONTENT --%>
     <section id="content">
-        <%-- CATEGORY --%>
-        <%--<section id="cat_container">
-            <asp:DropDownList ID="educationLV_ddl" runat="server" CssClass="ddl_btn" AppendDataBoundItems="True">
-                <asp:ListItem>Standard 1</asp:ListItem>
-                <asp:ListItem>Standard 2</asp:ListItem>
-                <asp:ListItem>Standard 3</asp:ListItem>
-                <asp:ListItem>Standard 4</asp:ListItem>
-                <asp:ListItem>Standard 5</asp:ListItem>
-                <asp:ListItem>Standard 6</asp:ListItem>
-                <asp:ListItem>Form 1</asp:ListItem>
-                <asp:ListItem>Form 2</asp:ListItem>
-                <asp:ListItem>Form 3</asp:ListItem>
-                <asp:ListItem>Form 4</asp:ListItem>
-                <asp:ListItem>Form 5</asp:ListItem>
-            </asp:DropDownList>
-            <asp:DropDownList ID="sort_ddl" runat="server" CssClass="ddl_btn">
-                <asp:ListItem>↑ Alphabetical</asp:ListItem>
-                <asp:ListItem>↓ Alphabetical</asp:ListItem>
-                <asp:ListItem>↑ Level</asp:ListItem>
-                <asp:ListItem>↓ Level</asp:ListItem>
-            </asp:DropDownList>
-            <asp:TextBox ID="search_input" runat="server" CssClass="search_box" placeholder="Student name..."></asp:TextBox>
-            <asp:LinkButton ID="search_text_btn" runat="server" CssClass="search_box_btn">
-				<span><ion-icon name="search-circle-outline" class="search_box_icon"></ion-icon></span>
-            </asp:LinkButton>
-        </section>--%>
-        <%-- CATEGORY --%>
-        <!-- MAIN -->
         <main>
             <div class="table-data">
                 <div class="order">

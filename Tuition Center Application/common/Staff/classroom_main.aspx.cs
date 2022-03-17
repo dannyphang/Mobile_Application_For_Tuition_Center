@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Google.Cloud.Firestore;
 using Tuition_Center_Application.class_file;
+using Tuition_Center_Application.util;
 
 namespace Tuition_Center_Application.common.Staff
 {
@@ -14,10 +15,10 @@ namespace Tuition_Center_Application.common.Staff
         FirestoreDb database;
         protected List<Course> course_var = new List<Course>();
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            database = util.firebase.get_database();
+            database = firebase.get_database();
+            validation.check_user("Current_User");
 
             if (IsPostBack)
             {

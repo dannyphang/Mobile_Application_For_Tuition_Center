@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Google.Cloud.Firestore;
 using Tuition_Center_Application.class_file;
+using Tuition_Center_Application.util;
 
 namespace Tuition_Center_Application.common.Student
 {
@@ -18,14 +19,14 @@ namespace Tuition_Center_Application.common.Student
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            database = util.firebase.get_database();
-
+            database = firebase.get_database();
+            validation.check_user("Current_User");
             current_student = (class_file.Student)Session["Current_User"];
 
             if (IsPostBack)
             {
                 System.Diagnostics.Debug.WriteLine("POST AGAIN!!!!!!!!!!!");
-                //get_a_student();
+                get_a_student();
             }
 
             display_info();
@@ -56,7 +57,7 @@ namespace Tuition_Center_Application.common.Student
         {
             name_label.Text = current_student.name;
             IC_label.Text = current_student.IC;
-            age_label.Text = "";
+            age_label.Text = cal_age(current_student.DOB);
             email_label.Text = current_student.email;
             phone_label.Text = current_student.phoneNo;
             address_label.Text = current_student.address;
@@ -76,10 +77,9 @@ namespace Tuition_Center_Application.common.Student
             instagram_label.Text = current_student.instagram;
         }
         
-        string cal_age(DateTime DOB)
+        string cal_age(string DOB)
         {
-            string year = ((int)((DateTime.Now - DOB).TotalDays / 365)).ToString();
-            return year;
+            return (DateTime.Now.Year - int.Parse(DOB.Substring(6, 4))).ToString();
         }
 
         protected void edit_btn_Click(object sender, EventArgs e)
@@ -165,8 +165,6 @@ namespace Tuition_Center_Application.common.Student
             // update to session
             Session["Current_User"] = new_student;
             current_student = new_student;
-
-            //System.Diagnostics.Debug.WriteLine("address: " + current_student.address);
 
             close_textbox();
             display_info();
