@@ -7,38 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tuition_Center_Application.common.User
+namespace Tuition_Center_Application.common
 {
 
 
-    public partial class classroom
+    public partial class payment_receipt
     {
 
         /// <summary>
-        /// course_name_label control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label course_name_label;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// time_label control.
+        /// course_desc_repeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label time_label;
-
-        /// <summary>
-        /// post_repeater control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater post_repeater;
+        protected global::System.Web.UI.WebControls.Repeater course_desc_repeater;
     }
 }

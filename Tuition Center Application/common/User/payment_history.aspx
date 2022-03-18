@@ -9,17 +9,9 @@
     <asp:Repeater ID="history_repeater" runat="server" OnItemDataBound="history_repeater_ItemDataBound">
         <ItemTemplate>
             <div class="btn_background">
-                <asp:Button ID="history_btn" runat="server" CssClass="button-67" Text='<%# Eval("payMonth") %>' />
+                <div class="button-67"><%# Eval("payMonth") %></div>
             </div>
             <asp:HiddenField ID="payID_hf" runat="server" Value='<%# Eval("paymentHistoryID") %>' />
-            <%--<div class="sec-center">
-                <input class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
-                <label class="for-dropdown" for="dropdown">
-                    <asp:Label ID="monthly_title_label" runat="server" Text='<%# Eval("payMonth") %>'></asp:Label>
-                    <asp:HiddenField ID="datehf" runat="server" Value='<%# Eval("payDate") %>' />
-                    <asp:HiddenField ID="payID_hf" runat="server" Value='<%# Eval("paymentHistoryID") %>' />
-                    <%--<i class="uil uil-arrow-down"></i>--%>
-                </label>
                 <div class="section-dropdown">
                     <table class="body-wrap">
                         <tbody>
@@ -80,7 +72,7 @@
                                                                 <tr>
                                                                     <td class="content-block">
                                                                         <a class="receipt_btn">
-                                                                            <asp:Button ID="receipt_btn" runat="server" Text="Get receipt" CssClass="receipt_btn" />
+                                                                            <asp:Button ID="receipt_btn" runat="server" Text="Get receipt" CssClass="receipt_btn" OnClick="receipt_btn_Click"/>
                                                                         </a>
                                                                     </td>
                                                                 </tr>

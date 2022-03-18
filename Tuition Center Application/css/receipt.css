@@ -60,9 +60,9 @@ table td {
     border-radius: 3px;
 }
 
-.section-dropdown:hover .main {
+/*.section-dropdown:hover .main {
     border: 1px solid #000;
-}
+}*/
 
 .section-dropdown:hover {
 
@@ -239,9 +239,9 @@ a {
             border-top: #eee 1px solid;
         }
 
-.section-dropdown:hover .invoice .invoice-items td {
+/*.section-dropdown:hover .invoice .invoice-items td {
     border-top: #222 1px solid;
-}
+}*/
 
 .invoice .invoice-items .total td {
     border-top: 2px solid #333;
@@ -249,10 +249,10 @@ a {
     font-weight: 700;
 }
 
-.section-dropdown:hover .invoice .invoice-items .total td {
+/*.section-dropdown:hover .invoice .invoice-items .total td {
     border-top: 2px solid #333;
     border-bottom: 2px solid #333;
-}
+}*/
 
 /* -------------------------------------
     RESPONSIVE AND MOBILE FRIENDLY STYLES

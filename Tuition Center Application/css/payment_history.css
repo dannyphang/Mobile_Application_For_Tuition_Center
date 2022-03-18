@@ -58,8 +58,6 @@ body {
         transition: transform 200ms linear;
     }
 
-
-
 .dropdown:not(:checked) ~ .section-dropdown {
     opacity: 1;
     pointer-events: auto;
@@ -116,10 +114,10 @@ body {
     -ms-flex-pack: distribute;
 }
 
-.section-dropdown:hover {
+/*.section-dropdown:hover {
     color: #102770;
     background-color: #ffeba7;
-}
+}*/
 
 .a_pay .uil {
     font-size: 22px;
@@ -157,10 +155,10 @@ body {
         transition: transform 200ms linear;
     }
 
-    .dropdown-sub:not(:checked) + label:hover {
+    /*.dropdown-sub:not(:checked) + label:hover {
         color: #102770;
         background-color: #ffeba7;
-    }
+    }*/
 
 .section-dropdown-sub {
     position: relative;

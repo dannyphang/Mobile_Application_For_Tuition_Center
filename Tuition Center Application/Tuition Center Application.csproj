@@ -176,6 +176,7 @@
     <Content Include="common\home.aspx" />
     <Content Include="common\order.aspx" />
     <Content Include="common\order_form.aspx" />
+    <Content Include="common\payment_receipt.aspx" />
     <Content Include="common\Staff\classroom.aspx" />
     <Content Include="common\Staff\classroom_main.aspx" />
     <Content Include="common\Staff\course.aspx" />
@@ -184,6 +185,7 @@
     <Content Include="common\Staff\timetable.aspx" />
     <Content Include="common\User\classroom.aspx" />
     <Content Include="common\User\classroom_main.aspx" />
+    <Content Include="common\User\course.aspx" />
     <Content Include="common\User\home.aspx" />
     <Content Include="common\User\payment.aspx" />
     <Content Include="common\User\payment_history.aspx" />
@@ -346,6 +348,13 @@
     <Compile Include="common\order_form.aspx.designer.cs">
       <DependentUpon>order_form.aspx</DependentUpon>
     </Compile>
+    <Compile Include="common\payment_receipt.aspx.cs">
+      <DependentUpon>payment_receipt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\payment_receipt.aspx.designer.cs">
+      <DependentUpon>payment_receipt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="common\Staff\classroom.aspx.cs">
       <DependentUpon>classroom.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -401,6 +410,13 @@
     </Compile>
     <Compile Include="common\User\classroom_main.aspx.designer.cs">
       <DependentUpon>classroom_main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\User\course.aspx.cs">
+      <DependentUpon>course.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\User\course.aspx.designer.cs">
+      <DependentUpon>course.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\User\home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>

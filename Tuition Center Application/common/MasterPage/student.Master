@@ -53,7 +53,16 @@
                     <span class="tooltip">Payment</span>
                 </li>
                 <li>
-                    <a href="../User/classroom.aspx">
+                    <a href="../User/course.aspx">
+                        <i>
+                            <ion-icon name="book-outline"></ion-icon>
+                        </i>
+                        <span class="links_name">Course</span>
+                    </a>
+                    <span class="tooltip">Course</span>
+                </li>
+                <li>
+                    <a href="../User/classroom_main.aspx">
                         <i>
                             <ion-icon name="school-outline"></ion-icon>
                         </i>

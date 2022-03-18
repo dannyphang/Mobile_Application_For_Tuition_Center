@@ -1,8 +1,7 @@
-﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/guess.Master" AutoEventWireup="true" CodeBehind="course.aspx.cs" Inherits="Tuition_Center_Application.common.course" Async="true" EnableEventValidation="false" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/student.Master" AutoEventWireup="true" CodeBehind="course.aspx.cs" Inherits="Tuition_Center_Application.common.User.course" EnableEventValidation="false" Async="true"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--css--%>
-    <link rel="stylesheet" href=".././css/course.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/course.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
@@ -38,7 +37,7 @@
                                         <div class="card-back">
                                             <figure>
                                                 <div class="img-bg"></div>
-                                                <img src="../img/profile.png" alt="Brohm Lake">
+                                                <img src="../../img/profile.png" alt="Brohm Lake">
                                             </figure>
 
                                             <asp:Button ID="view_btn" runat="server" Text="Add to Cart" CssClass="book_btn" OnClick="view_btn_Click" />
@@ -67,7 +66,7 @@
                             <span>
                                 <ion-icon name="chevron-forward-outline"></ion-icon>
                             </span>
-                            <asp:Label ID="notification_label" runat="server" Text="0" CssClass="badge"></asp:Label>
+                            <%--<asp:Label ID="notification_label" runat="server" Text="0" CssClass="badge"></asp:Label>--%>
                         </asp:LinkButton>
                     </div>
                 </div>
@@ -75,8 +74,6 @@
         </asp:UpdatePanel>
     </section>
     <script>
-        function add_to_cart_function() {
-
-        }
+        
     </script>
 </asp:Content>

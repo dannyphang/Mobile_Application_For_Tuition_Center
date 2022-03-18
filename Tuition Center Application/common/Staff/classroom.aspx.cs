@@ -166,7 +166,7 @@ namespace Tuition_Center_Application.common.Staff
         async void add_post()
         {
             Console.WriteLine("You are here");
-            
+
             Post new_post = new Post
             {
                 courseID = ((Course)Session["current_classroom"]).courseID,
