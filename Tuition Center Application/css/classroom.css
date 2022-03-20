@@ -33,7 +33,7 @@ a:hover {
 
 .fb-timeline-img img {
     width: 100%;
-    height: auto;
+    height: 100%;
     max-height: 280px;
     border-radius: 4px 4px 0 0;
     -webkit-border-radius: 4px 4px 0 0;
@@ -66,12 +66,10 @@ img {
     width: 95%;
 }
 
-
 .fb-user-mail {
     margin: 10px 0 0 20px;
     display: inline-block;
 }
-
 
 .fb-name {
     bottom: 5px;
@@ -159,18 +157,14 @@ img {
 
 .fb-comments .cmt-thumb {
     width: 50px;
+    height: 50px;
     float: left;
     margin-right: 15px;
 }
 
-    .fb-comments .cmt-thumb img {
-        width: 50px;
-    }
-
 .fb-comments .cmt-details {
     padding-top: 5px;
 }
-
 
     .fb-comments .cmt-details a {
         font-size: 14px;

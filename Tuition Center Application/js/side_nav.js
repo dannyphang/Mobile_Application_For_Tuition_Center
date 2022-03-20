@@ -1,6 +1,5 @@
 ﻿let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.querySelector("#btn");
-let searchBtn = document.querySelector("#search_btn");
 
 closeBtn.addEventListener("click", () => {
     sidebar.classList.toggle("open");

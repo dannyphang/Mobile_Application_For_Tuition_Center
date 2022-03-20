@@ -8,6 +8,19 @@
     <section id="content">
         <!-- MAIN -->
         <main>
+            <%--<ul class="box-info">
+                <li>
+                    <i class='bx bxs-calendar-check'></i>
+                    <span class="text">
+                        <h3>
+                            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                        </h3>
+                        <p>
+                            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                        </p>
+                    </span>
+                </li>
+            </ul>--%>
             <div class="table-data">
                 <div class="order">
                     <div class="head">
@@ -124,10 +137,10 @@
                                         <div class="input-group input-group-icon">
                                             <h4>Tutor</h4>
                                             <div class="input-group">
-                                                <asp:DropDownList ID="tutor_ddl" runat="server" >
+                                                <asp:DropDownList ID="tutor_ddl" runat="server">
                                                     <asp:ListItem>Tutor</asp:ListItem>
                                                 </asp:DropDownList>
-                                                <asp:HiddenField ID="tutor_ddl_hf" runat="server" ClientIDMode="Static"/>
+                                                <asp:HiddenField ID="tutor_ddl_hf" runat="server" ClientIDMode="Static" />
                                             </div>
                                         </div>
                                     </div>
@@ -225,7 +238,7 @@
                                     </div>
                                     <div class="col-half">
                                         <asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click" />
-                                        <asp:Button ID="submit_btn" runat="server" Text="Submit" CssClass="modal_btn" OnClick="submit_btn_Click"/>
+                                        <asp:Button ID="submit_btn" runat="server" Text="Submit" CssClass="modal_btn" OnClick="submit_btn_Click" />
                                         <asp:HiddenField ID="submit_btn_hf" runat="server" />
                                     </div>
                                 </div>

@@ -11,7 +11,7 @@ namespace Tuition_Center_Application.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["Current_User"] = null;
         }
     }
 }

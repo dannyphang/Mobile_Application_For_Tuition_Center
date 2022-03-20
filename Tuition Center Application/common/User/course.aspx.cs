@@ -15,7 +15,6 @@ namespace Tuition_Center_Application.common.User
         FirestoreDb database;
         protected List<String> add_course_var = new List<String>();
         protected List<Course> course_var = new List<Course>();
-        HttpCookie add_course_cookie = new HttpCookie("Course_Cookies");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,11 +32,7 @@ namespace Tuition_Center_Application.common.User
 
             System.Diagnostics.Debug.WriteLine("Course id: " + course_id);
 
-            added_course_list_hf.Value += course_id + " ";
-
-            add_course_cookie.Value = added_course_list_hf.Value;
-            Response.Cookies.Add(add_course_cookie);
-            Response.Cookies["Course_Cookies"].Expires = DateTime.Now.AddMinutes(30);
+            Session["Register_new_course"] += course_id + " ";
         }
 
         async void get_a_doc()
@@ -65,8 +60,7 @@ namespace Tuition_Center_Application.common.User
 
         protected void next_btn_Click(object sender, EventArgs e)
         {
-            //System.Diagnostics.Debug.WriteLine("Course List: " + course_cookie_list.ToString());
-            Response.Redirect("~/common/order.aspx");
+            System.Diagnostics.Debug.WriteLine("Selected courseID string: " + Session["Register_new_course"].ToString());
         }
     }
 }

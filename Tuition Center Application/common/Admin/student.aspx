@@ -8,6 +8,7 @@
 
     <%-- CONTENT --%>
     <section id="content">
+        <!-- MAIN -->
         <main>
             <div class="table-data">
                 <div class="order">
@@ -33,7 +34,7 @@
                                     <asp:HiddenField ID="name_hd" runat="server" Value='<%# Eval("name") %>' />
                                     <tr>
                                         <td class="name_column">
-                                            <asp:Image ID="profile_image" runat="server" ImageUrl='<%# Eval("avatar") %>'/>
+                                            <asp:Image ID="profile_image" runat="server" ImageUrl='<%# Eval("avatar") %>' />
                                             <asp:Label ID="name_label" runat="server" Text='<%# Eval("name") %>'></asp:Label>
                                         </td>
                                         <td>
@@ -233,195 +234,195 @@
 
         <%-- Modal Box --%>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
-        
-            <div>
-                <a href="#" class="btn-normal blue" id="move-thread">
-                    <ion-icon name="add-outline"></ion-icon>
-                </a>
-                
-                        <div id="move-thread-modal" class="modal">
-                            <a href="#" id="move-thread-close" class="btn-normal red">
-                                <span>
-                                    <ion-icon name="close-outline"></ion-icon>
-                                </span>
-                            </a>
-                            <div class="row row2">
-                                <div class="avatar-upload">
-                                    <div class="avatar-edit">
-                                        <input type='file' id="imageUpload2" class="file_input" accept=".png, .jpg, .jpeg" />
-                                        <label for="imageUpload2"></label>
-                                        <asp:HiddenField ID="image_hf2" runat="server" Value="Why are you here? I don't want to see you eh.." />
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+
+                <div>
+                    <a href="#" class="btn-normal blue" id="move-thread">
+                        <ion-icon name="add-outline"></ion-icon>
+                    </a>
+
+                    <div id="move-thread-modal" class="modal">
+                        <a href="#" id="move-thread-close" class="btn-normal red">
+                            <span>
+                                <ion-icon name="close-outline"></ion-icon>
+                            </span>
+                        </a>
+                        <div class="row row2">
+                            <div class="avatar-upload">
+                                <div class="avatar-edit">
+                                    <input type='file' id="imageUpload2" class="file_input" accept=".png, .jpg, .jpeg" />
+                                    <label for="imageUpload2"></label>
+                                    <asp:HiddenField ID="image_hf2" runat="server" Value="Why are you here? I don't want to see you eh.." />
+                                </div>
+                                <div class="avatar-preview">
+                                    <div id="imagePreview2" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
                                     </div>
-                                    <div class="avatar-preview">
-                                        <div id="imagePreview2" class="image_preview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <%--Student Name Textbox--%>
-                            <div class="row row2">
-                                <h4 class="h4_text">Name</h4>
-                                <div class="input-group input-group-icon">
-                                    <asp:TextBox ID="name_text_e" runat="server" CssClass="input" placeholder="Name"></asp:TextBox>
-                                    <div class="input-icon">
-                                        <p>
-                                            <span class="info_icon">
-                                                <ion-icon name="person-circle-outline"></ion-icon>
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <%--IC Textbox--%>
-                            <div class="row row2">
-                                <h4 class="h4_text">IC NO</h4>
-                                <div class="input-group input-group-icon">
-                                    <asp:TextBox ID="IC_text_e" runat="server" CssClass="input" placeholder="IC No"></asp:TextBox>
-                                    <div class="input-icon">
-                                        <p>
-                                            <span class="info_icon">
-                                                <ion-icon name="id-card-outline"></ion-icon>
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <%--Email Textbox--%>
-                            <div class="row row2">
-                                <h4 class="h4_text">Email</h4>
-                                <div class="input-group input-group-icon">
-                                    <asp:TextBox ID="email_text_e" runat="server" CssClass="input" placeholder="Email" TextMode="SingleLine"></asp:TextBox>
-                                    <div class="input-icon">
-                                        <p>
-                                            <span class="info_icon">
-                                                <ion-icon name="mail-outline"></ion-icon>
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row row2">
-                                <%--Password Textbox--%>
-                                <div class="col-half col-half2">
-                                    <h4 class="h4_text">Password</h4>
-                                    <div class="input-group input-group-icon">
-                                        <asp:TextBox ID="password_text_e" runat="server" CssClass="input" placeholder="Password" AutoCompleteType="Disabled" TextMode="Password"></asp:TextBox>
-                                        <div class="input-icon">
-                                            <p>
-                                                <span class="info_icon">
-                                                    <ion-icon name="lock-closed-outline"></ion-icon>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <%--Confirm Password Textbox--%>
-                                <div class="col-half col-half2">
-                                    <h4 class="h4_text">Confirm Password</h4>
-                                    <div class="input-group input-group-icon">
-                                        <asp:TextBox ID="confirm_password_text_e" runat="server" CssClass="input" placeholder="Confirm Password" AutoCompleteType="Disabled" TextMode="Password"></asp:TextBox>
-                                        <div class="input-icon">
-                                            <p>
-                                                <span class="info_icon">
-                                                    <ion-icon name="lock-closed-outline"></ion-icon>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <%--Address Textbox--%>
-                            <div class="row row2">
-                                <h4 class="h4_text">Address</h4>
-                                <div class="input-group input-group-icon">
-                                    <asp:TextBox ID="address_text_e" runat="server" CssClass="input" placeholder="Address"></asp:TextBox>
-                                    <div class="input-icon">
-                                        <p>
-                                            <span class="info_icon">
-                                                <ion-icon name="planet-outline"></ion-icon>
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row row2">
-                                <%-- Phone Number Textbox --%>
-                                <div class="col-half col-half2">
-                                    <h4 class="h4_text">Phone Number</h4>
-                                    <div class="input-group input-group-icon">
-                                        <asp:TextBox ID="phone_text_e" runat="server" CssClass="input" placeholder="Phone Number"></asp:TextBox>
-                                        <div class="input-icon">
-                                            <asp:LinkButton ID="delete_btn" runat="server" CssClass="info_icon delete" OnClick="delete_btn_Click">
-                                <p><span class="info_icon"><ion-icon name="call-outline"></ion-icon></span></p>
-                                            </asp:LinkButton>
-                                        </div>
-                                    </div>
-                                </div>
-                                <%-- DOB DDL --%>
-                                <div class="col-half col-half2">
-                                    <h4 class="h4_text">Date of Birth</h4>
-                                    <div id="calendar"></div>
-                                    <asp:HiddenField ID="datehf" runat="server" Value="0000" ClientIDMode="Static" />
-                                </div>
-                            </div>
-                            <div class="row row2">
-                                <%-- Education Level DDL --%>
-                                <div class="col-half col-half2">
-                                    <h4 class="h4_text">Education Level</h4>
-                                    <div class="input-group">
-                                        <asp:DropDownList ID="level_ddl_e" runat="server" OnSelectedIndexChanged="level_ddl_e_SelectedIndexChanged" AutoPostBack="true">
-                                            <asp:ListItem>Standard 1</asp:ListItem>
-                                            <asp:ListItem>Standard 2</asp:ListItem>
-                                            <asp:ListItem>Standard 3</asp:ListItem>
-                                            <asp:ListItem>Standard 4</asp:ListItem>
-                                            <asp:ListItem>Standard 5</asp:ListItem>
-                                            <asp:ListItem>Standard 6</asp:ListItem>
-                                            <asp:ListItem>Form 1</asp:ListItem>
-                                            <asp:ListItem>Form 2</asp:ListItem>
-                                            <asp:ListItem>Form 3</asp:ListItem>
-                                            <asp:ListItem>Form 4</asp:ListItem>
-                                            <asp:ListItem>Form 5</asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                                <%-- School Textbox --%>
-                                <div class="col-half col-half2">
-                                    <h4 class="h4_text">School</h4>
-                                    <div class="input-group input-group-icon">
-                                        <asp:TextBox ID="school_text_e" runat="server" CssClass="input" placeholder="School"></asp:TextBox>
-                                        <div class="input-icon">
-                                            <p>
-                                                <span class="info_icon">
-                                                    <ion-icon name="school-outline"></ion-icon>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-group input-group-icon">
-                                    <asp:CheckBoxList ID="course_check" runat="server" OnSelectedIndexChanged="course_check_SelectedIndexChanged">
-                                    </asp:CheckBoxList>
-                                </div>
-                            </div>
-                            <div class="row row2">
-                                <div class="col-half col-half2">
-                                    <div class="input-group"></div>
-                                </div>
-                                <div class="col-half col-half2">
-                                    <asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click" />
-                                    <asp:Button ID="submit_btn" runat="server" Text="Submit" CssClass="modal_btn" OnClick="submit_btn_Click" />
                                 </div>
                             </div>
                         </div>
-            </div>
+                        <%--Student Name Textbox--%>
+                        <div class="row row2">
+                            <h4 class="h4_text">Name</h4>
+                            <div class="input-group input-group-icon">
+                                <asp:TextBox ID="name_text_e" runat="server" CssClass="input" placeholder="Name"></asp:TextBox>
+                                <div class="input-icon">
+                                    <p>
+                                        <span class="info_icon">
+                                            <ion-icon name="person-circle-outline"></ion-icon>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <%--IC Textbox--%>
+                        <div class="row row2">
+                            <h4 class="h4_text">IC NO</h4>
+                            <div class="input-group input-group-icon">
+                                <asp:TextBox ID="IC_text_e" runat="server" CssClass="input" placeholder="IC No"></asp:TextBox>
+                                <div class="input-icon">
+                                    <p>
+                                        <span class="info_icon">
+                                            <ion-icon name="id-card-outline"></ion-icon>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <%--Email Textbox--%>
+                        <div class="row row2">
+                            <h4 class="h4_text">Email</h4>
+                            <div class="input-group input-group-icon">
+                                <asp:TextBox ID="email_text_e" runat="server" CssClass="input" placeholder="Email" TextMode="SingleLine"></asp:TextBox>
+                                <div class="input-icon">
+                                    <p>
+                                        <span class="info_icon">
+                                            <ion-icon name="mail-outline"></ion-icon>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row2">
+                            <%--Password Textbox--%>
+                            <div class="col-half col-half2">
+                                <h4 class="h4_text">Password</h4>
+                                <div class="input-group input-group-icon">
+                                    <asp:TextBox ID="password_text_e" runat="server" CssClass="input" placeholder="Password" AutoCompleteType="Disabled" TextMode="Password"></asp:TextBox>
+                                    <div class="input-icon">
+                                        <p>
+                                            <span class="info_icon">
+                                                <ion-icon name="lock-closed-outline"></ion-icon>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <%--Confirm Password Textbox--%>
+                            <div class="col-half col-half2">
+                                <h4 class="h4_text">Confirm Password</h4>
+                                <div class="input-group input-group-icon">
+                                    <asp:TextBox ID="confirm_password_text_e" runat="server" CssClass="input" placeholder="Confirm Password" AutoCompleteType="Disabled" TextMode="Password"></asp:TextBox>
+                                    <div class="input-icon">
+                                        <p>
+                                            <span class="info_icon">
+                                                <ion-icon name="lock-closed-outline"></ion-icon>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%--Address Textbox--%>
+                        <div class="row row2">
+                            <h4 class="h4_text">Address</h4>
+                            <div class="input-group input-group-icon">
+                                <asp:TextBox ID="address_text_e" runat="server" CssClass="input" placeholder="Address"></asp:TextBox>
+                                <div class="input-icon">
+                                    <p>
+                                        <span class="info_icon">
+                                            <ion-icon name="planet-outline"></ion-icon>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row2">
+                            <%-- Phone Number Textbox --%>
+                            <div class="col-half col-half2">
+                                <h4 class="h4_text">Phone Number</h4>
+                                <div class="input-group input-group-icon">
+                                    <asp:TextBox ID="phone_text_e" runat="server" CssClass="input" placeholder="Phone Number"></asp:TextBox>
+                                    <div class="input-icon">
+                                        <asp:LinkButton ID="delete_btn" runat="server" CssClass="info_icon delete" OnClick="delete_btn_Click">
+                                <p><span class="info_icon"><ion-icon name="call-outline"></ion-icon></span></p>
+                                        </asp:LinkButton>
+                                    </div>
+                                </div>
+                            </div>
+                            <%-- DOB DDL --%>
+                            <div class="col-half col-half2">
+                                <h4 class="h4_text">Date of Birth</h4>
+                                <div id="calendar"></div>
+                                <asp:HiddenField ID="datehf" runat="server" Value="0000" ClientIDMode="Static" />
+                            </div>
+                        </div>
+                        <div class="row row2">
+                            <%-- Education Level DDL --%>
+                            <div class="col-half col-half2">
+                                <h4 class="h4_text">Education Level</h4>
+                                <div class="input-group">
+                                    <asp:DropDownList ID="level_ddl_e" runat="server" OnSelectedIndexChanged="level_ddl_e_SelectedIndexChanged" AutoPostBack="false">
+                                        <asp:ListItem>Standard 1</asp:ListItem>
+                                        <asp:ListItem>Standard 2</asp:ListItem>
+                                        <asp:ListItem>Standard 3</asp:ListItem>
+                                        <asp:ListItem>Standard 4</asp:ListItem>
+                                        <asp:ListItem>Standard 5</asp:ListItem>
+                                        <asp:ListItem>Standard 6</asp:ListItem>
+                                        <asp:ListItem>Form 1</asp:ListItem>
+                                        <asp:ListItem>Form 2</asp:ListItem>
+                                        <asp:ListItem>Form 3</asp:ListItem>
+                                        <asp:ListItem>Form 4</asp:ListItem>
+                                        <asp:ListItem>Form 5</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <%-- School Textbox --%>
+                            <div class="col-half col-half2">
+                                <h4 class="h4_text">School</h4>
+                                <div class="input-group input-group-icon">
+                                    <asp:TextBox ID="school_text_e" runat="server" CssClass="input" placeholder="School"></asp:TextBox>
+                                    <div class="input-icon">
+                                        <p>
+                                            <span class="info_icon">
+                                                <ion-icon name="school-outline"></ion-icon>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group input-group-icon">
+                                <asp:CheckBoxList ID="course_check" runat="server" OnSelectedIndexChanged="course_check_SelectedIndexChanged">
+                                </asp:CheckBoxList>
+                            </div>
+                        </div>
+                        <div class="row row2">
+                            <div class="col-half col-half2">
+                                <div class="input-group"></div>
+                            </div>
+                            <div class="col-half col-half2">
+                                <asp:Button ID="clear_btn" runat="server" Text="Clear" CssClass="modal_btn" OnClick="clear_btn_Click" />
+                                <asp:Button ID="submit_btn" runat="server" Text="Submit" CssClass="modal_btn" OnClick="submit_btn_Click" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            <%-- Modal Box --%>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <%-- Modal Box --%>
     </section>
     <%-- CONTENT --%>
 
