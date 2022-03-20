@@ -224,6 +224,7 @@
                                     <asp:Button ID="reset_btn" runat="server" Text="Reset" CssClass="modal_btn" OnClick="reset_btn_Click" />
                                     <asp:Button ID="update_btn" runat="server" Text="Update" CssClass="modal_btn" OnClick="update_btn_Click" />
                                 </div>
+                                <asp:HiddenField ID="studentID_hd2" runat="server" />
                             </div>
                         </div>
                     </div>
@@ -236,7 +237,6 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-
                 <div>
                     <a href="#" class="btn-normal blue" id="move-thread">
                         <ion-icon name="add-outline"></ion-icon>
@@ -372,7 +372,7 @@
                             <div class="col-half col-half2">
                                 <h4 class="h4_text">Education Level</h4>
                                 <div class="input-group">
-                                    <asp:DropDownList ID="level_ddl_e" runat="server" OnSelectedIndexChanged="level_ddl_e_SelectedIndexChanged" AutoPostBack="false">
+                                    <asp:DropDownList ID="level_ddl_e" runat="server" onchange="get_level_drop()">
                                         <asp:ListItem>Standard 1</asp:ListItem>
                                         <asp:ListItem>Standard 2</asp:ListItem>
                                         <asp:ListItem>Standard 3</asp:ListItem>
@@ -402,10 +402,46 @@
                                 </div>
                             </div>
                         </div>
+                        <%-- Course CheckList --%>
                         <div class="row">
                             <div class="input-group input-group-icon">
-                                <asp:CheckBoxList ID="course_check" runat="server" OnSelectedIndexChanged="course_check_SelectedIndexChanged">
+                                <%--<asp:CheckBoxList ID="course_check" runat="server" OnSelectedIndexChanged="course_check_SelectedIndexChanged" >
+
+                                </asp:CheckBoxList>--%>
+                                <asp:CheckBoxList ID="form1_check" runat="server" OnSelectedIndexChanged="form1_check_SelectedIndexChanged" CssClass="checkitem_none checklist">
+
                                 </asp:CheckBoxList>
+                                <asp:CheckBoxList ID="form2_check" runat="server" OnSelectedIndexChanged="form2_check_SelectedIndexChanged" CssClass="checkitem_none checklist">
+
+                                </asp:CheckBoxList>
+                                <asp:CheckBoxList ID="form3_check" runat="server" OnSelectedIndexChanged="form3_check_SelectedIndexChanged" CssClass="checkitem_none checklist">
+
+                                </asp:CheckBoxList>
+                                <asp:CheckBoxList ID="form4_check" runat="server" OnSelectedIndexChanged="form4_check_SelectedIndexChanged" CssClass="checkitem_none checklist">
+
+                                </asp:CheckBoxList>
+                                <asp:CheckBoxList ID="form5_check" runat="server" OnSelectedIndexChanged="form5_check_SelectedIndexChanged" CssClass="checkitem_none checklist">
+
+                                </asp:CheckBoxList>
+                                <asp:CheckBoxList ID="standard1_check" runat="server" OnSelectedIndexChanged="standard1_check_SelectedIndexChanged" CssClass="checkitem_none checklist">
+
+                                </asp:CheckBoxList>
+                                <asp:CheckBoxList ID="standard2_check" runat="server" OnSelectedIndexChanged="standard2_check_SelectedIndexChanged" CssClass="checkitem_none checklist">
+
+                                </asp:CheckBoxList>
+                                <asp:CheckBoxList ID="standard3_check" runat="server" OnSelectedIndexChanged="standard3_check_SelectedIndexChanged" CssClass="checkitem_none checklist">
+
+                                </asp:CheckBoxList>
+                                <asp:CheckBoxList ID="standard4_check" runat="server" OnSelectedIndexChanged="standard4_check_SelectedIndexChanged" CssClass="checkitem_none checklist">
+
+                                </asp:CheckBoxList>
+                                <asp:CheckBoxList ID="standard5_check" runat="server" OnSelectedIndexChanged="standard5_check_SelectedIndexChanged" CssClass="checkitem_none checklist">
+
+                                </asp:CheckBoxList>
+                                <asp:CheckBoxList ID="standard6_check" runat="server" OnSelectedIndexChanged="standard6_check_SelectedIndexChanged" CssClass="checkitem_none checklist">
+
+                                </asp:CheckBoxList>
+
                             </div>
                         </div>
                         <div class="row row2">
@@ -429,8 +465,63 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="https://designmodo.com/demo/calendarjquerycss3/js/jquery-ui-datepicker.min.js"></script>
-    <<script src="../../js/admin_student.js"></script>
+    <script src="../../js/admin_student.js"></script>
     <script src="../../js/calendar.js"></script>
+
+    <script>
+        function get_level_drop() {
+            let droplist = document.getElementById("<%= level_ddl_e.ClientID %>");
+            let get_index = droplist.options[droplist.selectedIndex].index;
+            let get_text = droplist.options[droplist.selectedIndex].value;
+
+            //alert('index: ' + get_index + '\ntext: ' + get_text);
+            document.getElementById("<%= form1_check.ClientID %>").style.display = "none";
+            document.getElementById("<%= form2_check.ClientID %>").style.display = "none";
+            document.getElementById("<%= form3_check.ClientID %>").style.display = "none";
+            document.getElementById("<%= form4_check.ClientID %>").style.display = "none";
+            document.getElementById("<%= form5_check.ClientID %>").style.display = "none";
+            document.getElementById("<%= standard1_check.ClientID %>").style.display = "none";
+            document.getElementById("<%= standard2_check.ClientID %>").style.display = "none";
+            document.getElementById("<%= standard3_check.ClientID %>").style.display = "none";
+            document.getElementById("<%= standard4_check.ClientID %>").style.display = "none";
+            document.getElementById("<%= standard5_check.ClientID %>").style.display = "none";
+            document.getElementById("<%= standard6_check.ClientID %>").style.display = "none";
+
+            if (get_text == 'Form 1') {
+                document.getElementById("<%= form1_check.ClientID %>").style.display = "block";
+            }
+            else if (get_text == 'Form 2') {
+                document.getElementById("<%= form2_check.ClientID %>").style.display = "block";
+            }
+            else if (get_text == 'Form 3') {
+                document.getElementById("<%= form3_check.ClientID %>").style.display = "block";
+            }
+            else if (get_text == 'Form 4') {
+                document.getElementById("<%= form4_check.ClientID %>").style.display = "block";
+            }
+            else if (get_text == 'Form 5') {
+                document.getElementById("<%= form5_check.ClientID %>").style.display = "block";
+            }
+            else if (get_text == 'Standard 1') {
+                document.getElementById("<%= standard1_check.ClientID %>").style.display = "block";
+            }
+            else if (get_text == 'Standard 2') {
+                document.getElementById("<%= standard2_check.ClientID %>").style.display = "block";
+            }
+            else if (get_text == 'Standard 3') {
+                document.getElementById("<%= standard3_check.ClientID %>").style.display = "block";
+            }
+            else if (get_text == 'Standard 4') {
+                document.getElementById("<%= standard4_check.ClientID %>").style.display = "block";
+            }
+            else if (get_text == 'Standard 5') {
+                document.getElementById("<%= standard5_check.ClientID %>").style.display = "block";
+            }
+            else if (get_text == 'Standard 6') {
+                document.getElementById("<%= standard6_check.ClientID %>").style.display = "block";
+            }
+        }
+    </script>
 
     <script>
         function readURL(input) {

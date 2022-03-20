@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Google.Cloud.Firestore;
 using Tuition_Center_Application.class_file;
+using Tuition_Center_Application.util;
 
 namespace Tuition_Center_Application.common.Staff
 {
@@ -23,14 +24,16 @@ namespace Tuition_Center_Application.common.Staff
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            database = util.firebase.get_database();
+            database = firebase.get_database();
+
+            validation.check_user("current_classroom");
 
             course_name_label.Text = ((Course)Session["current_classroom"]).courseName;
             time_label.Text = ((Course)Session["current_classroom"]).time_start + " - " + ((Course)Session["current_classroom"]).time_end;
 
             if (IsPostBack)
             {
-                
+                System.Diagnostics.Debug.WriteLine("comment_text (post back): " + post_box_text.Text.Trim());
             }
 
             get_a_post();
@@ -49,7 +52,7 @@ namespace Tuition_Center_Application.common.Staff
                 {
                     post_var.Add(post);
                 }
-                
+
                 //get_comment(post.postID);
             }
 
@@ -88,6 +91,7 @@ namespace Tuition_Center_Application.common.Staff
                 comment_repeater = (Repeater)e.Item.FindControl("comment_repeater");
 
                 Label post_username = (Label)e.Item.FindControl("tutor_name_label");
+                Label post_time = (Label)e.Item.FindControl("post_time_label");
                 Image post_user_img = (Image)e.Item.FindControl("post_creator_img");
 
                 for (int i = 0; i < post_var.Count(); i++)
@@ -101,6 +105,7 @@ namespace Tuition_Center_Application.common.Staff
                                 post_user_img.ImageUrl = tutor_var[j].avatar;
                             }
                         }
+                        post_time.Text = post_var[i].postTime.ToDateTime().ToString("dd MMMM yyyy");
                     }
                 }
 
@@ -128,6 +133,7 @@ namespace Tuition_Center_Application.common.Staff
         protected void comment_repeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             Label comment_username = (Label)e.Item.FindControl("comment_username_label");
+            Label comment_time = (Label)e.Item.FindControl("comment_time_label");
             Image comment_user_img = (Image)e.Item.FindControl("comment_user_img");
 
             for (int i = 0; i < comment_var.Count(); i++)
@@ -155,6 +161,7 @@ namespace Tuition_Center_Application.common.Staff
                         }
                     }
                 }
+                comment_time.Text = comment_var[i].commentTime.ToDateTime().ToString("dd MMMM yyyy");
             }
         }
 
@@ -185,14 +192,12 @@ namespace Tuition_Center_Application.common.Staff
             LinkButton btn = (LinkButton)sender;
             RepeaterItem item = (RepeaterItem)btn.NamingContainer;
             string post_id = ((HiddenField)item.FindControl("postID_hf")).Value;
-
+            TextBox comment_textbox = ((TextBox)item.FindControl("current_user_comment_text"));
             for (int i = 0; i < post_var.Count(); i++)
             {
                 if (post_var[i].postID == post_id)
                 {
-                    TextBox comment_textbox = ((TextBox)item.FindControl("current_user_comment_text"));
-
-                    System.Diagnostics.Debug.WriteLine("comment_textbox.text: " + comment_textbox.Text);
+                    //System.Diagnostics.Debug.WriteLine("comment_textbox.text: " + comment_textbox.Text);
                     add_comment(post_id, sender);
                 }
             }
@@ -206,8 +211,8 @@ namespace Tuition_Center_Application.common.Staff
             RepeaterItem item = (RepeaterItem)btn.NamingContainer;
 
             TextBox comment_textbox = ((TextBox)item.FindControl("current_user_comment_text"));
-
-            System.Diagnostics.Debug.WriteLine("comment_text: " + comment_text);
+            comment_text = comment_textbox.Text;
+            System.Diagnostics.Debug.WriteLine("comment_text (add_comment): " + comment_text);
 
             //Comment new_comment = new Comment
             //{
@@ -228,6 +233,7 @@ namespace Tuition_Center_Application.common.Staff
             Repeater item = (Repeater)((TextBox)sender).NamingContainer;
 
             comment_text = ((TextBox)item.FindControl("current_user_comment_text")).Text;
+
             System.Diagnostics.Debug.WriteLine("comment_text1: " + comment_text);
         }
     }

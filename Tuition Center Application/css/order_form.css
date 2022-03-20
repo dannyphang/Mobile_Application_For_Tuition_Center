@@ -364,3 +364,7 @@ h1 {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.z_index {
+    z-index: 1000;
+}

@@ -2,8 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link rel="stylesheet" href="https://designmodo.com/demo/calendarjquerycss3/css/calendar.css" media="screen">
-    <link rel="stylesheet" href="../../css/calander.css" />
-    <meta name="robots" content="noindex,follow" />
+    <link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css"/>
     <link rel="stylesheet" href="../../css/admin_staff.css" />
 
     <%-- CONTENT --%>
@@ -333,8 +334,8 @@
                     <%-- DOB DDL --%>
                     <div class="col-half col-half2">
                         <h4 class="h4_text">On Boarding Date</h4>
-                        <div id="calendar"></div>
-                        <asp:HiddenField ID="datehf" runat="server" Value="0000" ClientIDMode="Static" />
+                        <input class="datepicker form-control" data-date-format="mm/dd/yyyy"  data-date-end-date="0d"/>
+                        <asp:HiddenField ID="datehf" runat="server" Value="03/25/2000" ClientIDMode="Static" />
                     </div>
                 </div>
                 <div class="row row2">
@@ -374,7 +375,9 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
     <script src="https://designmodo.com/demo/calendarjquerycss3/js/jquery-ui-datepicker.min.js"></script>
     <script src="../../js/admin_student.js"></script>
-    <script src="../../js/calendar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" ></script>
+
+    <script src="../../js/air_datepicker.js" type="text/javascript"></script>
 
     <script>
         function readURL(input) {
@@ -383,7 +386,7 @@
                 reader.onload = function (e) {
                     $('#imagePreview2').css('background-image', 'url(' + e.target.result + ')');
                     $('#imagePreview2').hide();
-                    $('#imagePreview2').fadeIn(650);
+                    //$('#imagePreview2').fadeIn(650);
                     document.getElementById("<%= image_hf2.ClientID %>").value = String(e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]);

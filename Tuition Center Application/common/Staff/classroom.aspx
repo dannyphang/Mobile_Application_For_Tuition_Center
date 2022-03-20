@@ -66,7 +66,7 @@
                                     <asp:Repeater ID="comment_repeater" runat="server" OnItemDataBound="comment_repeater_ItemDataBound">
                                         <ItemTemplate>
                                             <li>
-                                                <asp:Image ID="comment_user_img" runat="server" CssClass="cmt-thumb" ImageUrl="https://bootdey.com/img/Content/avatar/avatar3.png" />
+                                                <asp:Image ID="comment_user_img" runat="server" CssClass="cmt-thumb" Imag6eUrl="https://bootdey.com/img/Content/avatar/avatar3.png" />
                                                 <div class="cmt-details">
                                                     <a class="comment_user">
                                                         <asp:Label ID="comment_username_label" runat="server" Text='<%# Eval("commentUser") %>'></asp:Label>

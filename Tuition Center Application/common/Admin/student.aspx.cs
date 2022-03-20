@@ -26,6 +26,7 @@ namespace Tuition_Center_Application.common.Admin
             {
                 demo_modal.Attributes.Add("class", "modal_form expand");
                 System.Diagnostics.Debug.WriteLine("Post Back AGAIN!!!!!");
+                //System.Diagnostics.Debug.WriteLine("level_selected (post back): " + level_ddl_e.SelectedValue);
             }
 
             get_a_doc();
@@ -38,17 +39,64 @@ namespace Tuition_Center_Application.common.Admin
             // clear all the elements from the list
             course_var.Clear();
 
+            // level_ddl_e.Items.Clear();
+
             foreach (DocumentSnapshot docsnap in course_snap.Documents)
             {
                 Course course = docsnap.ConvertTo<Course>();
                 course_var.Add(course);
-                course_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ")"));
+                // course_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ")"));
                 for (int i = 0; i < course_var.Count(); i++)
                 {
                     if (level_ddl_e.SelectedValue == course_var[i].level)
                     {
                         //course_check.Items.Add((course.courseName + "(" + course.time_start + " - " + course.time_end + ")"));
                     }
+                }
+
+                if (course.level == "Form 5")
+                {
+                    form5_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                }
+                else if (course.level == "Form 4")
+                {
+                    form4_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                }
+                else if (course.level == "Form 3")
+                {
+                    form3_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                }
+                else if (course.level == "Form 2")
+                {
+                    form2_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                }
+                else if (course.level == "Form 1")
+                {
+                    form1_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                }
+                else if (course.level == "Standard 1")
+                {
+                    standard1_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                }
+                else if (course.level == "Standard 2")
+                {
+                    standard2_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                }
+                else if (course.level == "Standard 3")
+                {
+                    standard3_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                }
+                else if (course.level == "Standard 4")
+                {
+                    standard4_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                }
+                else if (course.level == "Standard 5")
+                {
+                    standard5_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                }
+                else if (course.level == "Standard 6")
+                {
+                    standard6_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
                 }
             }
 
@@ -93,6 +141,7 @@ namespace Tuition_Center_Application.common.Admin
                     address_text.Text = student_var[i].address;
                     phone_text.Text = student_var[i].phoneNo;
                     school_text.Text = student_var[i].school;
+                    level_ddl.SelectedValue = student_var[i].educationLV;
 
                     name_text.Enabled = false;
                     IC_text.Enabled = false;
@@ -115,6 +164,8 @@ namespace Tuition_Center_Application.common.Admin
             {
                 if (student_var[i].studentID == getID(sender))
                 {
+                    studentID_hd2.Value = getID(sender);
+
                     table_image_hf.Value = student_var[i].avatar;
                     imagePreview_asp.ImageUrl = table_image_hf.Value;
 
@@ -125,6 +176,7 @@ namespace Tuition_Center_Application.common.Admin
                     address_text.Text = student_var[i].address;
                     phone_text.Text = student_var[i].phoneNo;
                     school_text.Text = student_var[i].school;
+                    level_ddl.SelectedValue = student_var[i].educationLV;
 
                     name_text.Enabled = true;
                     IC_text.Enabled = true;
@@ -159,6 +211,7 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void submit_btn_Click(object sender, EventArgs e)
         {
+            // selected course 
             for (int j = 0; j < selected_var.Count(); j++)
             {
                 for (int i = 0; i < course_var.Count(); i++)
@@ -171,49 +224,93 @@ namespace Tuition_Center_Application.common.Admin
                 System.Diagnostics.Debug.WriteLine("added_selected_var item: " + added_selected_var[j]);
             }
 
-            DocumentReference doc = database.Collection("Student").Document(new_id);
+            //// add new student
+            //DocumentReference doc = database.Collection("Student").Document(new_id);
 
-            string formatted_date = datehf.Value.Substring(3, 2) + "/" + datehf.Value.Substring(0, 2) + "/" + datehf.Value.Substring(6, 4);
+            //string formatted_date = datehf.Value.Substring(3, 2) + "/" + datehf.Value.Substring(0, 2) + "/" + datehf.Value.Substring(6, 4);
 
-            class_file.Student new_student = new class_file.Student
-            {
-                name = name_text_e.Text.Trim(),
-                email = email_text_e.Text.Trim(),
-                password = password_text_e.Text.Trim(),
-                IC = IC_text_e.Text.Trim(),
-                avatar = image_hf2.Value,
-                address = address_text_e.Text.Trim(),
-                phoneNo = phone_text_e.Text.Trim(),
-                DOB = formatted_date,
-                educationLV = level_ddl_e.SelectedValue,
-                school = school_text_e.Text.Trim(),
+            //class_file.Student new_student = new class_file.Student
+            //{
+            //    name = name_text_e.Text.Trim(),
+            //    email = email_text_e.Text.Trim(),
+            //    password = password_text_e.Text.Trim(),
+            //    IC = IC_text_e.Text.Trim(),
+            //    avatar = image_hf2.Value,
+            //    address = address_text_e.Text.Trim(),
+            //    phoneNo = phone_text_e.Text.Trim(),
+            //    DOB = formatted_date,
+            //    educationLV = level_ddl_e.SelectedValue,
+            //    school = school_text_e.Text.Trim(),
 
-                OTP = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 6).Select(s => s[new Random().Next(s.Length)]).ToArray()),
-                OTP_Send = Timestamp.FromDateTime(DateTime.UtcNow),
+            //    OTP = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 6).Select(s => s[new Random().Next(s.Length)]).ToArray()),
+            //    OTP_Send = Timestamp.FromDateTime(DateTime.UtcNow),
 
-                github = "",
-                website = "",
-                twitter = "",
-                facebook = "",
-                instagram = "",
+            //    github = "",
+            //    website = "",
+            //    twitter = "",
+            //    facebook = "",
+            //    instagram = "",
 
-                courseID = added_selected_var,
-            };
-            doc.SetAsync(new_student);
+            //    courseID = added_selected_var,
+            //};
+            //doc.SetAsync(new_student);
 
-            clear_data();
-            course_check.Items.Clear();
+            //clear_data();
+            //course_check.Items.Clear();
             Response.Redirect("~/common/Admin/student.aspx", false);
         }
 
         protected void reset_btn_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < student_var.Count(); i++)
+            {
+                if (student_var[i].studentID == getID(sender))
+                {
+                    table_image_hf.Value = student_var[i].avatar;
+                    imagePreview_asp.ImageUrl = table_image_hf.Value;
 
+                    DOB_text.Text = student_var[i].DOB;
+                    name_text.Text = student_var[i].name;
+                    IC_text.Text = student_var[i].IC;
+                    email_text.Text = student_var[i].email;
+                    address_text.Text = student_var[i].address;
+                    phone_text.Text = student_var[i].phoneNo;
+                    school_text.Text = student_var[i].school;
+
+                    name_text.Enabled = true;
+                    IC_text.Enabled = true;
+                    email_text.Enabled = true;
+                    phone_text.Enabled = true;
+                    DOB_text.Enabled = true;
+                    address_text.Enabled = true;
+                    level_ddl.Enabled = true;
+                    school_text.Enabled = true;
+
+                    reset_btn.Visible = true;
+                    update_btn.Visible = true;
+                }
+            }
         }
 
         protected void update_btn_Click(object sender, EventArgs e)
         {
+            DocumentReference doc = database.Collection("Student").Document(studentID_hd2.Value);
 
+            Dictionary<string, object> new_tutor = new Dictionary<string, object>
+            {
+                { "name", name_text.Text.Trim() },
+                { "email", email_text.Text.Trim() },
+                { "IC", IC_text.Text.Trim() },
+                { "address", address_text.Text.Trim() },
+                { "phoneNo", phone_text.Text.Trim() },
+                { "DOB", DOB_text.Text.Trim() },
+                { "educationLV", level_ddl.SelectedValue },
+                { "school", school_text.Text.Trim() },
+            };
+            doc.UpdateAsync(new_tutor);
+            clear_data();
+
+            Response.Redirect("~/common/Admin/staff.aspx", false);
         }
 
         void clear_data()
@@ -225,32 +322,145 @@ namespace Tuition_Center_Application.common.Admin
             phone_text.Text = "";
             DOB_text.Text = "";
 
-            foreach (ListItem item in course_check.Items)
+            foreach (ListItem item in form1_check.Items)
+            {
+                item.Selected = false;
+            }
+            foreach (ListItem item in form2_check.Items)
+            {
+                item.Selected = false;
+            }
+            foreach (ListItem item in form3_check.Items)
+            {
+                item.Selected = false;
+            }
+            foreach (ListItem item in form4_check.Items)
+            {
+                item.Selected = false;
+            }
+            foreach (ListItem item in form5_check.Items)
             {
                 item.Selected = false;
             }
         }
 
-        protected void course_check_SelectedIndexChanged(object sender, EventArgs e)
+        protected void form1_check_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (ListItem item in course_check.Items)
+            foreach (ListItem item in form1_check.Items)
             {
                 if (item.Selected)
                 {
-                    selected_var.Add(course_check.Items.IndexOf(item));
+                    selected_var.Add(form1_check.Items.IndexOf(item));
                 }
             }
         }
 
-        protected void level_ddl_e_SelectedIndexChanged(object sender, EventArgs e)
+        protected void form2_check_SelectedIndexChanged(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("level_selected: " + level_ddl_e.SelectedValue);
-
-            for (int i = 0; i < course_var.Count(); i++)
+            foreach (ListItem item in form2_check.Items)
             {
-                if (level_ddl_e.SelectedValue == course_var[i].level)
+                if (item.Selected)
                 {
-                    course_check.Items.Add("  " + (course_var[i].courseName + " (" + course_var[i].time_start + " - " + course_var[i].time_end + ")"));
+                    selected_var.Add(form2_check.Items.IndexOf(item));
+                }
+            }
+        }
+
+        protected void form3_check_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListItem item in form3_check.Items)
+            {
+                if (item.Selected)
+                {
+                    selected_var.Add(form3_check.Items.IndexOf(item));
+                }
+            }
+        }
+
+        protected void form4_check_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListItem item in form4_check.Items)
+            {
+                if (item.Selected)
+                {
+                    selected_var.Add(form4_check.Items.IndexOf(item));
+                }
+            }
+        }
+
+        protected void form5_check_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListItem item in form5_check.Items)
+            {
+                if (item.Selected)
+                {
+                    selected_var.Add(form5_check.Items.IndexOf(item));
+                }
+            }
+        }
+
+        protected void standard1_check_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListItem item in standard1_check.Items)
+            {
+                if (item.Selected)
+                {
+                    selected_var.Add(standard1_check.Items.IndexOf(item));
+                }
+            }
+        }
+
+        protected void standard2_check_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListItem item in standard2_check.Items)
+            {
+                if (item.Selected)
+                {
+                    selected_var.Add(standard2_check.Items.IndexOf(item));
+                }
+            }
+        }
+
+        protected void standard3_check_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListItem item in standard3_check.Items)
+            {
+                if (item.Selected)
+                {
+                    selected_var.Add(standard3_check.Items.IndexOf(item));
+                }
+            }
+        }
+
+        protected void standard4_check_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListItem item in standard4_check.Items)
+            {
+                if (item.Selected)
+                {
+                    selected_var.Add(standard4_check.Items.IndexOf(item));
+                }
+            }
+        }
+
+        protected void standard5_check_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListItem item in standard5_check.Items)
+            {
+                if (item.Selected)
+                {
+                    selected_var.Add(standard5_check.Items.IndexOf(item));
+                }
+            }
+        }
+
+        protected void standard6_check_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListItem item in standard6_check.Items)
+            {
+                if (item.Selected)
+                {
+                    selected_var.Add(standard6_check.Items.IndexOf(item));
                 }
             }
         }
