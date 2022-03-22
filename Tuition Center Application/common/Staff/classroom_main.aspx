@@ -12,7 +12,7 @@
                             <asp:Label ID="course_name_label" runat="server" Text='<%# Eval("courseName") %>'></asp:Label>
                         </h3>
                         <h4>
-                            <asp:Label ID="time_label" runat="server" Text=""><%# Eval("time_start") %> - <%# Eval("time_end") %></asp:Label>
+                            <asp:Label ID="time_label" runat="server" Text=""><%# Eval("day") %> <br /><%# Eval("time_start") %> - <%# Eval("time_end") %></asp:Label>
                         </h4>
                         <%--<p>Aenean lacinia bibendum nulla sed consectetur.</p>--%>
                         <span class="link-text">

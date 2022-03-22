@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://designmodo.com/demo/calendarjquerycss3/css/calendar.css" media="screen">
     <link rel="stylesheet" href="../../css/calander.css" />
     <meta name="robots" content="noindex,follow" />
-    <link rel="stylesheet" href="../../css/admin_student.css" />
+    <link rel="stylesheet" href="../../css/student.css" />
 
     <section id="content">
         <!-- MAIN -->
@@ -28,10 +28,10 @@
                                 <i class='bx bxs-calendar-check'></i>
                                 <span class="text">
                                     <h3>
-                                        <asp:Label ID="name_label" runat="server" Text='<%# Eval("courseName") %>'></asp:Label>
+                                        <asp:Label ID="name_label" runat="server"><%# Eval("courseName") %> <h6>(<%# Eval("level") %>)</h6></asp:Label>
                                     </h3>
                                     <p>
-                                        <asp:Label ID="time_label" runat="server"><%# Eval("time_start") %> - <%# Eval("time_end") %></asp:Label>
+                                        <asp:Label ID="time_label" runat="server"><%# Eval("day") %> - <%# Eval("time_start") %></asp:Label>
                                     </p>
                                 </span>
                             </li>

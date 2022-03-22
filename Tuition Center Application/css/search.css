@@ -1,0 +1,170 @@
+﻿/*-------------------- Body --------------------*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/*-------------------- App --------------------*/
+.search-form {
+    position: relative;
+    top: 100%;
+    left: 50%;
+    width: 90%;
+    height: 40px;
+    border-radius: 40px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translate(-50%, -50%);
+    background: #fff;
+    transition: all 0.3s ease;
+    margin-top: 100px;
+}
+
+    .search-form.focus {
+        box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+    }
+
+.search-input {
+    position: absolute;
+    top: 10px;
+    left: 38px;
+    font-size: 14px;
+    background: none;
+    color: #5a6674;
+    width: 65%;
+    height: 20px;
+    border: none;
+    appearance: none;
+    outline: none;
+    z-index: 2;
+}
+
+    .search-input::-webkit-search-cancel-button {
+        appearance: none;
+    }
+
+.search-button {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    outline: none !important;
+    z-index: 5;
+}
+
+    .search-button .icon_span {
+        width: 20px;
+        height: 20px;
+        fill: #5a6674;
+    }
+
+.zero_padding {
+    padding-top: 7px;
+    position: absolute;
+    left: 38%;
+    height: 16px;
+}
+
+.search-option {
+    position: relative;
+    text-align: right;
+
+    left: 70%;
+    top: 6px;
+    /*right: 15px;*/
+    width: 27%;
+    z-index: 5;
+}
+
+    .search-option .radio_div {
+        position: relative;
+        display: inline-block;
+        margin: -1px;
+        /*margin-left: -7%;*/
+        width: 24%;
+    }
+
+        .search-option div input {
+            position: relative;
+            top: 0;
+            left: 0;
+            opacity: 0.01;
+        }
+
+        .search-option div .tool_span {
+            position: relative;
+            display: block;
+            text-align: center;
+            left: 50%;
+            transform: translateX(-50%) translateY(-40%);
+            opacity: 0;
+            background: #929aa3;
+            color: #fff;
+            font-size: 11px;
+            letter-spacing: 1px;
+            line-height: 3;
+            text-transform: uppercase;
+            /*padding: 4px 7px;*/
+            border-radius: 12px;
+            top: -18px;
+            transition: all 0.2s ease-in-out;
+        }
+
+            .search-option div .tool_span::after {
+                content: '';
+                position: absolute;
+                bottom: -3px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-top: 4px solid #929aa3;
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                transition: all 0.2s ease-in-out;
+            }
+
+        .search-option div:hover .tool_span {
+            opacity: 1;
+            top: -21px;
+        }
+
+        .search-option div label {
+            /*display: block;*/
+            padding: 0px;
+            background-color: transparent;
+            width: 100%;
+            margin: 0;
+            /*border: none;*/
+        }
+
+        .search-option div .icon_span {
+            height: 20px;
+            width: 20px;
+            /*fill: #5a6674;*/
+            opacity: 0.6;
+            transition: all 0.2s ease-in-out;
+            pointer-events: none;
+            padding-left: -25%;
+        }
+
+        .search-option div:hover .icon_span {
+            opacity: 1;
+        }
+
+        .search-option div input:checked + label .icon_span {
+            fill: #e24040;
+            opacity: 0.9;
+        }
+
+        .search-option div input:checked + label .tool_span {
+            background: #e24040;
+        }
+
+            .search-option div input:checked + label .tool_span::after {
+                border-top-color: #e24040;
+            }
+
+        .search-option div input:checked ~ .radio_div{
+            background: none;
+        }

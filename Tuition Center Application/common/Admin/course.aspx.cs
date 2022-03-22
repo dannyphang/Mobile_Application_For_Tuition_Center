@@ -31,6 +31,14 @@ namespace Tuition_Center_Application.common.Admin
             }
 
             get_a_doc();
+
+        }
+
+        async void update_staff_course(string newID, string tutorID)
+        {
+            DocumentReference staff_doc = database.Collection("Staff").Document(tutorID);
+
+            await staff_doc.UpdateAsync("courseID", FieldValue.ArrayUnion(newID));
         }
 
         async void get_a_doc()
@@ -43,10 +51,23 @@ namespace Tuition_Center_Application.common.Admin
             {
                 Course course = docsnap.ConvertTo<Course>();
                 course_var.Add(course);
+                //update_staff_course(course.courseID, course.tutorID);
             }
-            new_id = (int.Parse(course_var[course_var.Count() - 1].courseID) + 1).ToString();
+            
+            List<Course> sorted = course_var.OrderBy(o => o.level).ToList();
 
-            course_repeater.DataSource = course_var;
+            int biggestNum = int.Parse(course_var[0].courseID);
+
+            for (int i = 0; i < course_var.Count(); i++)
+            {
+                if (int.Parse(course_var[i].courseID) > biggestNum)
+                {
+                    biggestNum = int.Parse(course_var[i].courseID);
+                }
+            }
+            new_id = (biggestNum + 1).ToString();
+
+            course_repeater.DataSource = sorted;
             course_repeater.DataBind();
 
             get_tutor_list();
@@ -107,7 +128,6 @@ namespace Tuition_Center_Application.common.Admin
 
         async void add_tutor_course(string newID)
         {
-
             DocumentReference staff_doc = database.Collection("Staff").Document(tutorID_list[selected_tutor]);
 
             await staff_doc.UpdateAsync("courseID", FieldValue.ArrayUnion(newID));

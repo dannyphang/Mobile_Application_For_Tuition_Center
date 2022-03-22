@@ -32,7 +32,7 @@
                                 <ItemTemplate>
                                     <li class="cd-schedule__event">
                                         <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
-                                            <em class="cd-schedule__name"><%# Eval("courseName") %></em>
+                                            <em class="cd-schedule__name"><%# Eval("courseName") %> <h6>(<%# Eval("level") %>)</h6></em>
                                         </a>
                                     </li>
                                 </ItemTemplate>
@@ -49,7 +49,7 @@
                                 <ItemTemplate>
                                     <li class="cd-schedule__event">
                                         <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
-                                            <em class="cd-schedule__name"><%# Eval("courseName") %></em>
+                                            <em class="cd-schedule__name"><%# Eval("courseName") %> (<%# Eval("level") %>)</em>
                                         </a>
                                     </li>
                                 </ItemTemplate>
@@ -66,7 +66,7 @@
                                 <ItemTemplate>
                                     <li class="cd-schedule__event">
                                         <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
-                                            <em class="cd-schedule__name"><%# Eval("courseName") %></em>
+                                            <em class="cd-schedule__name"><%# Eval("courseName") %> (<%# Eval("level") %>)</em>
                                         </a>
                                     </li>
                                 </ItemTemplate>
@@ -83,7 +83,7 @@
                                 <ItemTemplate>
                                     <li class="cd-schedule__event">
                                         <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
-                                            <em class="cd-schedule__name"><%# Eval("courseName") %></em>
+                                            <em class="cd-schedule__name"><%# Eval("courseName") %> (<%# Eval("level") %>)</em>
                                         </a>
                                     </li>
                                 </ItemTemplate>
@@ -100,7 +100,7 @@
                                 <ItemTemplate>
                                     <li class="cd-schedule__event">
                                         <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
-                                            <em class="cd-schedule__name"><%# Eval("courseName") %></em>
+                                            <em class="cd-schedule__name"><%# Eval("courseName") %> (<%# Eval("level") %>)</em>
                                         </a>
                                     </li>
                                 </ItemTemplate>
@@ -117,7 +117,7 @@
                                 <ItemTemplate>
                                     <li class="cd-schedule__event">
                                         <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
-                                            <em class="cd-schedule__name"><%# Eval("courseName") %></em>
+                                            <em class="cd-schedule__name"><%# Eval("courseName") %> (<%# Eval("level") %>)</em>
                                         </a>
                                     </li>
                                 </ItemTemplate>
@@ -134,7 +134,7 @@
                                 <ItemTemplate>
                                     <li class="cd-schedule__event">
                                         <a data-start = <%# Eval("time_start") %> data-end = <%# Eval("time_end") %> data-content = "" data-event="event-1" href="#">
-                                            <em class="cd-schedule__name"><%# Eval("courseName") %></em>
+                                            <em class="cd-schedule__name"><%# Eval("courseName") %> (<%# Eval("level") %>)</em>
                                         </a>
                                     </li>
                                 </ItemTemplate>

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Google.Cloud.Firestore;
 using Tuition_Center_Application.class_file;
+using Tuition_Center_Application.util;
 
 namespace Tuition_Center_Application.common.Staff
 {
@@ -28,6 +29,7 @@ namespace Tuition_Center_Application.common.Staff
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            validation.check_user("Current_User");
             current_user = (Tutor)Session["Current_User"];
 
             database = util.firebase.get_database();
@@ -39,7 +41,7 @@ namespace Tuition_Center_Application.common.Staff
         protected void timetable_list()
         {
             double time_start = 8.0;
-            double time_end = 20.0;
+            double time_end = 22.0;
 
             for (double i = time_start; i < time_end; i += 0.3)
             {

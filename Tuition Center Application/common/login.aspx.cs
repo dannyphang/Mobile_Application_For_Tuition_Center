@@ -78,7 +78,7 @@ namespace Tuition_Center_Application
                 else
                 {
                     // display error message (Email is incorrect)
-                    Response.Write("<script>alert('Your Email is incorrect!')</script>");
+                    //Response.Write("<script>alert('Your Email is incorrect!')</script>");
                 }
             }
         }
@@ -115,7 +115,7 @@ namespace Tuition_Center_Application
                 else
                 {
                     // display error message (Email is incorrect)
-                    Response.Write("<script>alert('Your Email is incorrect!')</script>");
+                    //Response.Write("<script>alert('Your Email is incorrect!')</script>");
                 }
             }
         }

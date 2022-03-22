@@ -1,33 +1,70 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/admin.Master" AutoEventWireup="true" CodeBehind="course.aspx.cs" Inherits="Tuition_Center_Application.common.Admin.course" Async="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" />
     <link rel="stylesheet" href="../../css/admin_course.css" />
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../../css/search.css" />
 
     <!-- CONTENT -->
     <section id="content">
+        <div class="search-form">
+            <input type="search" id="search_input" value="" placeholder="Search" class="search-input" onkeyup="search_filter()">
+            <button type="submit" class="search-button">
+                <span class="icon_span">
+                    <ion-icon name="search-circle-outline"></ion-icon>
+                </span>
+            </button>
+            <div class="search-option">
+                <div class="radio_div">
+                    <input name="type" type="radio" value="type-users" id="type-users" onclick="option_checked()" checked="checked">
+                    <label for="type-users">
+                        <span class="icon_span">
+                            <ion-icon name="bookmark-outline" class="zero_padding"></ion-icon>
+                        </span>
+                        <span class="tool_span">Name</span>
+                    </label>
+                </div>
+
+                <div class="radio_div">
+                    <input name="type" type="radio" value="type-posts" id="type-posts" onclick="option_checked()">
+                    <label for="type-posts">
+                        <span class="icon_span">
+                            <ion-icon name="bulb-outline" class="zero_padding"></ion-icon>
+                        </span>
+                        <span class="tool_span">Level</span>
+                    </label>
+                </div>
+                <div class="radio_div">
+                    <input name="type" type="radio" value="type-images" id="type-images" onclick="option_checked()">
+                    <label for="type-images">
+                        <span class="icon_span">
+                            <ion-icon name="cash-outline" class="zero_padding"></ion-icon>
+                        </span>
+                        <span class="tool_span">Price</span>
+                    </label>
+                </div>
+                <div class="radio_div">
+                    <input name="type" type="radio" value="type-special" id="type-special" onclick="option_checked()">
+                    <label for="type-special">
+                        <span class="icon_span">
+                            <ion-icon name="chatbubble-ellipses-outline" class="zero_padding"></ion-icon>
+                        </span>
+                        <span class="tool_span">Language</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
         <!-- MAIN -->
         <main>
-            <%--<ul class="box-info">
-                <li>
-                    <i class='bx bxs-calendar-check'></i>
-                    <span class="text">
-                        <h3>
-                            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                        </h3>
-                        <p>
-                            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-                        </p>
-                    </span>
-                </li>
-            </ul>--%>
             <div class="table-data">
                 <div class="order">
                     <div class="head">
                         <h3>Courses</h3>
                         <i class='bx bx-search'></i>
                     </div>
-                    <table>
+                    <table id="display_table">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -414,6 +451,53 @@
 
     <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <%-- Search Filter --%>
+    <script>
+        $('.search-input').focus(function () {
+            $(this).parent().addClass('focus');
+        }).blur(function () {
+            $(this).parent().removeClass('focus');
+        })
+
+        function option_checked() {
+            var option_checked_num = 0;
+
+            if (document.getElementById("type-users").checked == true) {
+                option_checked_num = 0;
+            }
+            else if (document.getElementById("type-posts").checked == true) {
+                option_checked_num = 1;
+            }
+            else if (document.getElementById("type-images").checked == true) {
+                option_checked_num = 2;
+            }
+            else if (document.getElementById("type-special").checked == true) {
+                option_checked_num = 3;
+            }
+            console.log(option_checked_num);
+            return option_checked_num;
+        }
+
+        function search_filter() {
+            let input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search_input");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("display_table");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[option_checked()];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 
     <script>
         function readURL(input) {

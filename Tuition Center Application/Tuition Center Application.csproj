@@ -210,10 +210,12 @@
     <Content Include="css\payment_history.css" />
     <Content Include="css\receipt.css" />
     <Content Include="css\remixicon.css" />
+    <Content Include="css\search.css" />
     <Content Include="css\side_nav.css" />
     <Content Include="common\login.aspx" />
     <Content Include="css\staff_master.css" />
     <Content Include="css\staff_profile.css" />
+    <Content Include="css\student.css" />
     <Content Include="css\student_profile.css" />
     <Content Include="css\testing.css" />
     <Content Include="css\testing2.css" />
