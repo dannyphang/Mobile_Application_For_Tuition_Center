@@ -131,6 +131,29 @@ namespace Tuition_Center_Application.common.Admin
             DocumentReference staff_doc = database.Collection("Staff").Document(tutorID_list[selected_tutor]);
 
             await staff_doc.UpdateAsync("courseID", FieldValue.ArrayUnion(newID));
+
+            update_salary();
+        }
+
+        async void update_salary()
+        {
+            DocumentReference staff_doc = database.Collection("Staff").Document(tutorID_list[selected_tutor]);
+
+            float salary = 0;
+
+            for (int i = 0; i < tutor_var.Count(); i++)
+            {
+                if (tutor_var[i].tutorID == tutorID_list[selected_tutor])
+                {
+                    for (int j = 0; j < tutor_var[i].courseID.Count(); j++)
+                    {
+                        // 1 subject = 100
+                        salary += 150;
+                    }
+                }
+            }
+
+            await staff_doc.UpdateAsync("salary", salary);
         }
 
         async void delete_tutor_course(string id)

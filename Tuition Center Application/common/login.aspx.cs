@@ -119,5 +119,11 @@ namespace Tuition_Center_Application
                 }
             }
         }
+
+        protected void forgotBtn_Click(object sender, EventArgs e)
+        {
+            Session["Reset_Email"] = Request.Form["email_input"];
+            Response.Redirect("~/common/OTP.aspx", false);
+        }
     }
 }

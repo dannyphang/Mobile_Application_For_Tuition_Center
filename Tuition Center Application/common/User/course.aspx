@@ -62,7 +62,7 @@
                 <asp:HiddenField ID="added_course_list_hf" runat="server" />
                 <div class="next_container">
                     <div class="next_btn_container">
-                        <asp:LinkButton ID="next_btn" runat="server" CssClass="notification" OnClick="next_btn_Click" PostBackUrl="~/common/User/order.aspx">
+                        <asp:LinkButton ID="next_btn" runat="server" CssClass="notification" OnClick="next_btn_Click">
                             <span>
                                 <ion-icon name="chevron-forward-outline"></ion-icon>
                             </span>

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Google.Cloud.Firestore;
 using Tuition_Center_Application.class_file;
+using Tuition_Center_Application.util;
 
 namespace Tuition_Center_Application.common.Staff
 {
@@ -18,13 +19,13 @@ namespace Tuition_Center_Application.common.Staff
         protected void Page_Load(object sender, EventArgs e)
         {
             database = util.firebase.get_database();
-
+            validation.check_user("Current_User");
             current_tutor = (Tutor)Session["Current_User"];
 
             if (IsPostBack)
             {
                 System.Diagnostics.Debug.WriteLine("POST AGAIN!!!!!!!!!!!");
-                return;
+                get_a_tutor();
             }
 
             display_info();
@@ -34,6 +35,21 @@ namespace Tuition_Center_Application.common.Staff
             twitter_text.Style.Add("display", "none");
             instagram_text.Style.Add("display", "none");
             facebook_text.Style.Add("display", "none");
+        }
+
+        async void get_a_tutor()
+        {
+            QuerySnapshot snap = await util.firebase.get_doc_snap("Staff");
+
+            foreach (DocumentSnapshot docsnap in snap.Documents)
+            {
+                Tutor tutor = docsnap.ConvertTo<Tutor>();
+                if (tutor.tutorID == current_tutor.tutorID)
+                {
+                    Session["Current_User"] = tutor;
+                    current_tutor = tutor;
+                }
+            }
         }
 
         protected void edit_btn_Click(object sender, EventArgs e)

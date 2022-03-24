@@ -58,7 +58,7 @@
                 <span class="tooltip">Course</span>
             </li>
             <li>
-                <a href="#">
+                <a href="./report.aspx">
                     <i>
                         <ion-icon name="document-text-outline"></ion-icon>
                     </i>

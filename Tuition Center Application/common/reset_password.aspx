@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Login" Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Tuition_Center_Application.login" Async="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="reset_password.aspx.cs" Inherits="Tuition_Center_Application.common.reset_password" Async="true"%>
 
 <!DOCTYPE html>
 <%@ Register Src="~/common/cursor.ascx" TagPrefix="CURSOR" TagName="POINTER" %>
@@ -39,20 +39,11 @@
     <form id="form1" runat="server">
         <div class="l-form">
             <div class="form">
-                <span class="back-icon"><a href="home.aspx">
+                <span class="back-icon"><a href="login.aspx">
                     <ion-icon name="arrow-back-outline"></ion-icon>
                 </a></span>
-                <h1 class="form__title">Sign In</h1>
-                <div class="btn-box">
-                    <div runat="server" id="role_btn"></div>
-                    <asp:Button ID="login_student_btn" runat="server" Text="Student" CssClass="toggle-btn" Style="color: white" OnClientClick="return student_btn();" />
-                    <asp:Button ID="login_staff_btn" runat="server" Text="Staff" CssClass="toggle-btn" OnClientClick="return staff_btn();" />
-                    <asp:HiddenField ID="role_hf" runat="server" Value="student" />
-                </div>
-                <div class="form__div">
-                    <input type="text" class="form__input" name="email_input" placeholder=" " />
-                    <label for="" class="form__label">Email</label>
-                </div>
+                <h1 class="form__title">Reset Password</h1>
+
                 <div class="form__div">
                     <span class="password-icon" onclick="show_password()">
                         <ion-icon name="eye-off-outline" id="pw_close"></ion-icon>
@@ -61,10 +52,16 @@
                     <input type="password" class="form__input form__input2" placeholder=" " name="password_input" id="password_input" maxlength="20" runat="server" />
                     <label for="" class="form__label">Password</label>
                 </div>
-                <a class="log-forgotBtn">
-                    <asp:Button ID="forgotBtn" runat="server" Text="FORGOT Password" CssClass="log-forgotBtn2" OnClick="forgotBtn_Click"/>
-                </a>
-                <asp:Button ID="login_submit_btn" runat="server" Text="Login" CssClass="form__button" OnClick="login_btn_Click" />
+                <div class="form__div">
+                    <span class="password-icon" onclick="show_password2()">
+                        <ion-icon name="eye-off-outline" id="pw_close2"></ion-icon>
+                        <ion-icon name="eye-outline" id="pw_open2"></ion-icon>
+                    </span>
+                    <input type="password" class="form__input form__input2" placeholder=" " name="passwordc_input" id="passwordc_input" maxlength="20" runat="server" />
+                    <label for="" class="form__label">Confirm Password</label>
+                </div>
+
+                <asp:Button ID="confirm_btn" runat="server" Text="Confirm" CssClass="form__button" OnClick="confirm_btn_Click" />
             </div>
         </div>
     </form>
@@ -75,9 +72,9 @@
     <script>
             // show password
             function show_password() {
-                var password_input = document.getElementById("password_input");
-                var pw_close = document.getElementById("pw_close");
-                var pw_open = document.getElementById("pw_open");
+                let password_input = document.getElementById("password_input");
+                let pw_close = document.getElementById("pw_close");
+                let pw_open = document.getElementById("pw_open");
 
                 if (password_input.type === 'password') {
                     password_input.type = "text";
@@ -89,35 +86,20 @@
                     pw_close.style.display = "block";
                 }
             }
+            function show_password2() {
+                let password_input = document.getElementById("passwordc_input");
+                let pw_close = document.getElementById("pw_close2");
+                let pw_open = document.getElementById("pw_open2");
 
-            // button transition
-            function swap_btn() {
-                var btn = document.getElementById("role_btn");
-
-            }
-
-            // student button
-            function student_btn() {
-                var btn = document.getElementById("role_btn");
-                var student = document.getElementById("login_student_btn");
-                var staff = document.getElementById("login_staff_btn");
-                btn.style.left = "0%";
-                student.style.color = "white";
-                staff.style.color = "black";
-                document.getElementById("role_hf").value = "student";
-                return false;
-            }
-
-            // staff button
-            function staff_btn() {
-                var btn = document.getElementById("role_btn");
-                var student = document.getElementById("login_student_btn");
-                var staff = document.getElementById("login_staff_btn");
-                btn.style.left = "51%";
-                staff.style.color = "white";
-                student.style.color = "black";
-                document.getElementById("role_hf").value = "staff";
-                return false;
+                if (password_input.type === 'password') {
+                    password_input.type = "text";
+                    pw_open.style.display = "block";
+                    pw_close.style.display = "none";
+                } else {
+                    password_input.type = "password";
+                    pw_open.style.display = "none";
+                    pw_close.style.display = "block";
+                }
             }
     </script>
 </body>

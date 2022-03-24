@@ -8,8 +8,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Google.Cloud.Firestore;
-using Stripe;
-using Stripe.Checkout;
 using Tuition_Center_Application.class_file;
 using Tuition_Center_Application.util;
 

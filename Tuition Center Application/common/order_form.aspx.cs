@@ -69,12 +69,16 @@ namespace Tuition_Center_Application.common
                 school = school_text.Text.Trim(),
                 DOB = datehf.Value,
                 OTP = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 6).Select(s => s[new Random().Next(s.Length)]).ToArray()),
-                //OTP_Send = Timestamp.GetCurrentTimestamp().ToDateTime(),
                 OTP_Send = Timestamp.FromDateTime(DateTime.UtcNow), 
                 avatar = image_hf.Value,
                 courseID = (Request.Cookies["Course_Cookies"].Value).Split(' ').ToList(),
                 twitter = "", 
-
+                github = "", 
+                facebook = "", 
+                website = "", 
+                instagram = "", 
+                registeredDate = Timestamp.FromDateTime(DateTime.UtcNow), 
+                lastPayment = Timestamp.FromDateTime(DateTime.UtcNow),
             };
 
             var options = new SessionCreateOptions

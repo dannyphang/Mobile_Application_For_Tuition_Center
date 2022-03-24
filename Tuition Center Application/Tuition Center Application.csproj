@@ -167,6 +167,14 @@
   <ItemGroup>
     <Content Include="common\Admin\course.aspx" />
     <Content Include="common\Admin\home.aspx" />
+    <Content Include="common\Admin\report.aspx" />
+    <Content Include="common\Admin\report_bill_history.aspx" />
+    <Content Include="common\Admin\report_bill_invoice.aspx" />
+    <Content Include="common\Admin\report_bill_month.aspx" />
+    <Content Include="common\Admin\report_bill_year.aspx" />
+    <Content Include="common\Admin\report_course.aspx" />
+    <Content Include="common\Admin\report_course_student.aspx" />
+    <Content Include="common\Admin\report_level.aspx" />
     <Content Include="common\Admin\staff.aspx" />
     <Content Include="common\Admin\student.aspx" />
     <Content Include="common\course.aspx" />
@@ -177,6 +185,8 @@
     <Content Include="common\order.aspx" />
     <Content Include="common\order_form.aspx" />
     <Content Include="common\payment_receipt.aspx" />
+    <Content Include="common\OTP.aspx" />
+    <Content Include="common\reset_password.aspx" />
     <Content Include="common\Staff\classroom.aspx" />
     <Content Include="common\Staff\classroom_main.aspx" />
     <Content Include="common\Staff\course.aspx" />
@@ -195,6 +205,7 @@
     <Content Include="common\tutor.aspx" />
     <Content Include="common\User\success.aspx" />
     <Content Include="common\User\timetable.aspx" />
+    <Content Include="common\User\success2.aspx" />
     <Content Include="css\admin_course.css" />
     <Content Include="css\admin_staff.css" />
     <Content Include="css\air-datepicker.css" />
@@ -210,6 +221,7 @@
     <Content Include="css\payment_history.css" />
     <Content Include="css\receipt.css" />
     <Content Include="css\remixicon.css" />
+    <Content Include="css\report.css" />
     <Content Include="css\search.css" />
     <Content Include="css\side_nav.css" />
     <Content Include="common\login.aspx" />
@@ -243,10 +255,12 @@
     <Compile Include="class_file\Cart.cs" />
     <Compile Include="class_file\Comment.cs" />
     <Compile Include="class_file\Course.cs" />
+    <Compile Include="class_file\Month.cs" />
     <Compile Include="class_file\PaymentHistory.cs" />
     <Compile Include="class_file\Post.cs" />
     <Compile Include="class_file\Student.cs" />
     <Compile Include="class_file\Tutor.cs" />
+    <Compile Include="class_file\Year.cs" />
     <Compile Include="common\Admin\course.aspx.cs">
       <DependentUpon>course.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -260,6 +274,62 @@
     </Compile>
     <Compile Include="common\Admin\home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Admin\report.aspx.cs">
+      <DependentUpon>report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Admin\report.aspx.designer.cs">
+      <DependentUpon>report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Admin\report_bill_history.aspx.cs">
+      <DependentUpon>report_bill_history.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Admin\report_bill_history.aspx.designer.cs">
+      <DependentUpon>report_bill_history.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Admin\report_bill_invoice.aspx.cs">
+      <DependentUpon>report_bill_invoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Admin\report_bill_invoice.aspx.designer.cs">
+      <DependentUpon>report_bill_invoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Admin\report_bill_month.aspx.cs">
+      <DependentUpon>report_bill_month.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Admin\report_bill_month.aspx.designer.cs">
+      <DependentUpon>report_bill_month.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Admin\report_bill_year.aspx.cs">
+      <DependentUpon>report_bill_year.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Admin\report_bill_year.aspx.designer.cs">
+      <DependentUpon>report_bill_year.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Admin\report_course.aspx.cs">
+      <DependentUpon>report_course.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Admin\report_course.aspx.designer.cs">
+      <DependentUpon>report_course.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Admin\report_course_student.aspx.cs">
+      <DependentUpon>report_course_student.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Admin\report_course_student.aspx.designer.cs">
+      <DependentUpon>report_course_student.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\Admin\report_level.aspx.cs">
+      <DependentUpon>report_level.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\Admin\report_level.aspx.designer.cs">
+      <DependentUpon>report_level.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\Admin\staff.aspx.cs">
       <DependentUpon>staff.aspx</DependentUpon>
@@ -358,6 +428,20 @@
     </Compile>
     <Compile Include="common\payment_receipt.aspx.designer.cs">
       <DependentUpon>payment_receipt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\OTP.aspx.cs">
+      <DependentUpon>OTP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\OTP.aspx.designer.cs">
+      <DependentUpon>OTP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\reset_password.aspx.cs">
+      <DependentUpon>reset_password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\reset_password.aspx.designer.cs">
+      <DependentUpon>reset_password.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\Staff\classroom.aspx.cs">
       <DependentUpon>classroom.aspx</DependentUpon>
@@ -491,6 +575,13 @@
     </Compile>
     <Compile Include="common\User\timetable.aspx.designer.cs">
       <DependentUpon>timetable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\User\success2.aspx.cs">
+      <DependentUpon>success2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\User\success2.aspx.designer.cs">
+      <DependentUpon>success2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="testing2.aspx.cs">

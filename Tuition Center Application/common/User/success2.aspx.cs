@@ -9,7 +9,7 @@ using Tuition_Center_Application.class_file;
 
 namespace Tuition_Center_Application.common.User
 {
-    public partial class success : System.Web.UI.Page
+    public partial class WebForm1 : System.Web.UI.Page
     {
         FirestoreDb database;
         protected List<PaymentHistory> history_var = new List<PaymentHistory>();
@@ -21,15 +21,16 @@ namespace Tuition_Center_Application.common.User
         {
             database = util.firebase.get_database();
 
-            System.Diagnostics.Debug.WriteLine(((PaymentHistory)Session["new_monthly_payment"]).paymentHistoryID);
-            
-            add_new_payment();
+            update_payment();
+            update_course();
         }
 
-        async void add_new_payment()
+        async void update_payment()
         {
+            //vadd new history to PaymentHistory
             await database.Collection("PaymentHistory").AddAsync((PaymentHistory)Session["new_monthly_payment"]);
 
+            // update last payment to Student
             DocumentReference doc = database.Collection("Student").Document(((class_file.Student)Session["Current_User"]).studentID);
 
             Dictionary<string, object> new_payment = new Dictionary<string, object>
@@ -39,6 +40,18 @@ namespace Tuition_Center_Application.common.User
             await doc.UpdateAsync(new_payment);
 
             Session["new_monthly_payment"] = null;
+        }
+
+        async void update_course()
+        {
+            DocumentReference staff_doc = database.Collection("Student").Document(((class_file.Student)Session["Current_User"]).studentID);
+
+            List<string> list = Session["Register_new_course"].ToString().Split(' ').ToList();
+
+            for (int i = 0; i < list.Count(); i++)
+            {
+                await staff_doc.UpdateAsync("courseID", FieldValue.ArrayUnion(list[i]));
+            }
 
             Response.Redirect("~/common/User/payment.aspx");
         }

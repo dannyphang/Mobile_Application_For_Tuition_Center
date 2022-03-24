@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Google.Cloud.Firestore;
+using Stripe;
+using Stripe.Checkout;
 using Tuition_Center_Application.class_file;
 using Tuition_Center_Application.util;
 
@@ -65,7 +67,6 @@ namespace Tuition_Center_Application.common.User
             try
             {
                 cart_var = Session["Register_new_course"].ToString().Split(' ').ToList();
-                //System.Diagnostics.Debug.WriteLine("Course_Cookies: " + Request.Cookies["Course_Cookies"].Value);
             }
             catch
             {
@@ -97,14 +98,56 @@ namespace Tuition_Center_Application.common.User
 
         protected void next_btn_Click(object sender, EventArgs e)
         {
-            //HttpCookie amount_cookie = new HttpCookie("amount_cookie");
-            //amount_cookie.Value = amount_text.Text;
-            //Response.Cookies.Add(amount_cookie);
-            //Response.Cookies["amount_cookie"].Expires = DateTime.Now.AddMinutes(30);
+            Session["new_monthly_payment"] = new PaymentHistory
+            {
+                payDate = Timestamp.FromDateTime(DateTime.UtcNow),
+                amount = long.Parse(get_amount(filtered)),
+                courseID = ((class_file.Student)Session["Current_User"]).courseID,
+                payMonth = DateTime.Now.ToString("MMMM"),
+                studentID = ((class_file.Student)Session["Current_User"]).studentID,
+            };
 
-            //Response.Redirect("~/common/User/order_form.aspx", false);
+            StripeConfiguration.ApiKey = "sk_test_51KLfunFk6dh40g5t1gLqZvN5hOpYVBqp4LK6YJorr0v20oUw05YOuKbs56vxdMa3mQFWE68w5os9Bl6MqTJvcLjl00kUpS4ld0";
 
+            var options = new SessionCreateOptions
+            {
+                SuccessUrl = "https://localhost:44378/" + "common/User/success2.aspx",
+                CancelUrl = "https://localhost:44378/" + "common/User/payment.aspx",
+                LineItems = new List<SessionLineItemOptions>
+                {
+                    new SessionLineItemOptions
+                    {
+                        Name = "Tuition Fee",
+                        Description = desc(),
+                        Currency = "myr",
+                        Amount = long.Parse(get_amount(filtered)) * 100,
+                        Quantity = 1,
+                    },
+                },
+                Mode = "payment",
+            };
 
+            Session session = new SessionService().Create(options);
+            //System.Diagnostics.Trace.WriteLine(session.Url);
+
+            Response.Redirect(session.Url, false);
+        }
+
+        string desc()
+        {
+            string msg = "";
+
+            if (cart_var.Count() != 0)
+            {
+                filtered = course_var.Where(course => cart_var.Contains(course.courseID)).ToList();
+
+                for (int i = 0; i < filtered.Count(); i++)
+                {
+                    msg += (i + 1) + ". " + filtered[i].courseName + " (" + filtered[i].day + " " + filtered[i].time_start + "-" + filtered[i].time_end + ")\n";
+                }
+            }
+
+            return msg;
         }
     }
 }

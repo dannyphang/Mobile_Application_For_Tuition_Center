@@ -26,7 +26,6 @@ namespace Tuition_Center_Application.common.Admin
             {
                 demo_modal.Attributes.Add("class", "modal_form expand");
                 System.Diagnostics.Debug.WriteLine("Post Back AGAIN!!!!!");
-                //System.Diagnostics.Debug.WriteLine("level_selected (post back): " + level_ddl_e.SelectedValue);
             }
 
             get_a_doc();
@@ -45,58 +44,50 @@ namespace Tuition_Center_Application.common.Admin
             {
                 Course course = docsnap.ConvertTo<Course>();
                 course_var.Add(course);
-                // course_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ")"));
-                for (int i = 0; i < course_var.Count(); i++)
-                {
-                    if (level_ddl_e.SelectedValue == course_var[i].level)
-                    {
-                        //course_check.Items.Add((course.courseName + "(" + course.time_start + " - " + course.time_end + ")"));
-                    }
-                }
 
                 if (course.level == "Form 5")
                 {
-                    form5_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                    form5_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.day));
                 }
                 else if (course.level == "Form 4")
                 {
-                    form4_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                    form4_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.day));
                 }
                 else if (course.level == "Form 3")
                 {
-                    form3_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                    form3_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.day));
                 }
                 else if (course.level == "Form 2")
                 {
-                    form2_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                    form2_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.day));
                 }
                 else if (course.level == "Form 1")
                 {
-                    form1_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                    form1_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.day));
                 }
                 else if (course.level == "Standard 1")
                 {
-                    standard1_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                    standard1_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.day));
                 }
                 else if (course.level == "Standard 2")
                 {
-                    standard2_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                    standard2_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.day));
                 }
                 else if (course.level == "Standard 3")
                 {
-                    standard3_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                    standard3_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.day));
                 }
                 else if (course.level == "Standard 4")
                 {
-                    standard4_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                    standard4_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.day));
                 }
                 else if (course.level == "Standard 5")
                 {
-                    standard5_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                    standard5_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.day));
                 }
                 else if (course.level == "Standard 6")
                 {
-                    standard6_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.level));
+                    standard6_check.Items.Add("  " + (course.courseName + " (" + course.time_start + " - " + course.time_end + ") - " + course.day));
                 }
             }
 
@@ -111,7 +102,16 @@ namespace Tuition_Center_Application.common.Admin
                 student_var.Add(student);
             }
 
-            new_id = (int.Parse(student_var[student_var.Count() - 1].studentID) + 1).ToString();
+            int biggestNum = int.Parse(student_var[0].studentID);
+
+            for (int i = 0; i < student_var.Count(); i++)
+            {
+                if (int.Parse(student_var[i].studentID) > biggestNum)
+                {
+                    biggestNum = int.Parse(student_var[i].studentID);
+                }
+            }
+            new_id = (biggestNum + 1).ToString();
 
             student_repeater.DataSource = student_var;
             student_repeater.DataBind();
@@ -224,39 +224,40 @@ namespace Tuition_Center_Application.common.Admin
                 System.Diagnostics.Debug.WriteLine("added_selected_var item: " + added_selected_var[j]);
             }
 
-            //// add new student
-            //DocumentReference doc = database.Collection("Student").Document(new_id);
+            // add new student
+            DocumentReference doc = database.Collection("Student").Document(new_id);
 
-            //string formatted_date = datehf.Value.Substring(3, 2) + "/" + datehf.Value.Substring(0, 2) + "/" + datehf.Value.Substring(6, 4);
+            string formatted_date = datehf.Value.Substring(3, 2) + "/" + datehf.Value.Substring(0, 2) + "/" + datehf.Value.Substring(6, 4);
 
-            //class_file.Student new_student = new class_file.Student
-            //{
-            //    name = name_text_e.Text.Trim(),
-            //    email = email_text_e.Text.Trim(),
-            //    password = password_text_e.Text.Trim(),
-            //    IC = IC_text_e.Text.Trim(),
-            //    avatar = image_hf2.Value,
-            //    address = address_text_e.Text.Trim(),
-            //    phoneNo = phone_text_e.Text.Trim(),
-            //    DOB = formatted_date,
-            //    educationLV = level_ddl_e.SelectedValue,
-            //    school = school_text_e.Text.Trim(),
+            class_file.Student new_student = new class_file.Student
+            {
+                name = name_text_e.Text.Trim(),
+                email = email_text_e.Text.Trim(),
+                password = password_text_e.Text.Trim(),
+                IC = IC_text_e.Text.Trim(),
+                avatar = image_hf2.Value,
+                address = address_text_e.Text.Trim(),
+                phoneNo = phone_text_e.Text.Trim(),
+                DOB = formatted_date,
+                educationLV = level_ddl_e.SelectedValue,
+                school = school_text_e.Text.Trim(),
 
-            //    OTP = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 6).Select(s => s[new Random().Next(s.Length)]).ToArray()),
-            //    OTP_Send = Timestamp.FromDateTime(DateTime.UtcNow),
+                OTP = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 6).Select(s => s[new Random().Next(s.Length)]).ToArray()),
+                OTP_Send = Timestamp.FromDateTime(DateTime.UtcNow),
 
-            //    github = "",
-            //    website = "",
-            //    twitter = "",
-            //    facebook = "",
-            //    instagram = "",
+                github = "",
+                website = "",
+                twitter = "",
+                facebook = "",
+                instagram = "",
 
-            //    courseID = added_selected_var,
-            //};
-            //doc.SetAsync(new_student);
+                courseID = added_selected_var,
+                lastPayment = Timestamp.FromDateTime(DateTime.UtcNow),
+                registeredDate = Timestamp.FromDateTime(DateTime.UtcNow),
+            };
+            doc.SetAsync(new_student);
 
-            //clear_data();
-            //course_check.Items.Clear();
+            clear_data();
             Response.Redirect("~/common/Admin/student.aspx", false);
         }
 

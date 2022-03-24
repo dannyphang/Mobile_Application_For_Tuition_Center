@@ -100,7 +100,7 @@ namespace Tuition_Center_Application.common.Admin
 
             // TODO: delete course, post and comment of this tutor
 
-            Response.Redirect("~/common/Admin/satff.aspx", false);
+            Response.Redirect("~/common/Admin/staff.aspx", false);
         }
 
         async void get_a_doc()
@@ -127,7 +127,16 @@ namespace Tuition_Center_Application.common.Admin
                 course_var.Add(course);
             }
 
-            new_id = (int.Parse(tutor_var[tutor_var.Count() - 1].tutorID) + 1).ToString();
+            int biggestNum = int.Parse(tutor_var[0].tutorID);
+
+            for (int i = 0; i < tutor_var.Count(); i++)
+            {
+                if (int.Parse(tutor_var[i].tutorID) > biggestNum)
+                {
+                    biggestNum = int.Parse(tutor_var[i].tutorID);
+                }
+            }
+            new_id = (biggestNum + 1).ToString();
 
             tutor_repeater.DataSource = tutor_var;
             tutor_repeater.DataBind();
@@ -162,7 +171,7 @@ namespace Tuition_Center_Application.common.Admin
                 address = address_text.Text.Trim(),
                 phoneNo = phone_text.Text.Trim(),
                 onBoardingDate = formatted_date,
-                salary = float.Parse(salary_text.Text),
+                salary = 0,
                 courseID = new List<string>(),
                 github = "",
                 website = "",
@@ -184,7 +193,6 @@ namespace Tuition_Center_Application.common.Admin
             IC_text.Text = "";
             address_text.Text = "";
             phone_text.Text = "";
-            salary_text.Text = "";
         }
 
         protected void reset_btn_Click(object sender, EventArgs e)

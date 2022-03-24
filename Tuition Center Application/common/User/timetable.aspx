@@ -25,13 +25,6 @@
                         </div>
 
                         <ul>
-                            <%--<% foreach (var tt in datetime_mon_list) { %>
-                                <li class="cd-schedule__event">
-                                    <a data-start = <%= tt.time_start %> data-end = <%= tt.time_end %> data-content = "" data-event="event-1" href="#">
-                                        <em class="cd-schedule__name"><%= tt.datetimeID %></em>
-                                    </a>
-                                </li>
-                            <% } %>--%>
                             <asp:Repeater ID="monday_repeater" runat="server">
                                 <ItemTemplate>
                                     <li class="cd-schedule__event">

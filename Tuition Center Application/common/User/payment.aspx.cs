@@ -27,8 +27,6 @@ namespace Tuition_Center_Application.common.User
             validation.check_user("Current_User");
 
             get_a_student();
-
-            
         }
 
         async void get_a_student()

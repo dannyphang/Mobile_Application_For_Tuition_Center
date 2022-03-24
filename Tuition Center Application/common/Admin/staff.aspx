@@ -339,22 +339,6 @@
                     </div>
                 </div>
                 <div class="row row2">
-                    <%-- School Textbox --%>
-                    <div class="col-half col-half2">
-                        <h4 class="h4_text">Salary</h4>
-                        <div class="input-group input-group-icon">
-                            <asp:TextBox ID="salary_text" runat="server" CssClass="input" placeholder="Salary"></asp:TextBox>
-                            <div class="input-icon">
-                                <p>
-                                    <span class="info_icon">
-                                        <ion-icon name="school-outline"></ion-icon>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row row2">
                     <div class="col-half col-half2">
                         <div class="input-group"></div>
                     </div>

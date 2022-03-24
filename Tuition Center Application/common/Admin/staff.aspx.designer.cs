@@ -231,15 +231,6 @@ namespace Tuition_Center_Application.common.Admin
         protected global::System.Web.UI.WebControls.HiddenField datehf;
 
         /// <summary>
-        /// salary_text control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox salary_text;
-
-        /// <summary>
         /// clear_btn control.
         /// </summary>
         /// <remarks>

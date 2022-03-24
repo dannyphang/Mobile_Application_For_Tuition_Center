@@ -30,8 +30,6 @@
                                             <p class="text-muted font-size-sm">
                                                 <asp:Label ID="IC_label" runat="server" Text="19191911919919111"></asp:Label>
                                             </p>
-                                            <button class="btn btn-primary">Follow</button>
-                                            <button class="btn btn-outline-primary">Message</button>
                                         </div>
                                     </div>
                                 </div>

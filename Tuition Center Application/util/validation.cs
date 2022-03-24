@@ -9,11 +9,18 @@ namespace Tuition_Center_Application.util
     {
         public static void check_user(string current_user_session)
         {
-            //System.Web.SessionState.HttpSessionState Page.Session
             if (HttpContext.Current.Session[current_user_session] == null)
             {
                 System.Diagnostics.Debug.WriteLine("Checked~~~~~~~~");
                 HttpContext.Current.Response.Redirect("~/common/login.aspx", true);
+            }
+        }
+
+        public static void check_report(string current_report_session)
+        {
+            if (HttpContext.Current.Session[current_report_session] == null)
+            {
+                HttpContext.Current.Response.Redirect("~/common/Admin/report.aspx", true);
             }
         }
     }

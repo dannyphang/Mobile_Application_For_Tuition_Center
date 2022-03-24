@@ -18,7 +18,7 @@ namespace Tuition_Center_Application.common.User
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            database = util.firebase.get_database();
+            database = firebase.get_database();
             validation.check_user("Current_User");
 
             get_a_doc();
@@ -61,6 +61,7 @@ namespace Tuition_Center_Application.common.User
         protected void next_btn_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Selected courseID string: " + Session["Register_new_course"].ToString());
+            Response.Redirect("~/common/User/order.aspx", false);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/staff.Master" AutoEventWireup="true" CodeBehind="profile.aspx.cs" Inherits="Tuition_Center_Application.common.Staff.profile" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/staff.Master" AutoEventWireup="true" CodeBehind="profile.aspx.cs" Inherits="Tuition_Center_Application.common.Staff.profile" Async="true"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,13 +20,13 @@
                                 <div class="card-body">
                                     <div class="d-flex flex-column align-items-center text-center">
                                         <div class="avatar-upload">
-                                            <div class="avatar-edit">
+                                            <%--<div class="avatar-edit">
                                                 <button style="border: 0px; border-radius: 100%; background-color: transparent; height: 34px;" onclick="return upload_btn_clicked()">
                                                     <input type='file' id="imageUpload2" class="file_input" accept=".png, .jpg, .jpeg" />
                                                     <label for="imageUpload2">
                                                 </button>
                                                 </label>
-                                            </div>
+                                            </div>--%>
                                             <div class="avatar-preview">
                                                 <div id="imagePreview2" class="image_preview" style="background-image: url(<%= current_tutor.avatar %>)"></div>
                                                 <%--<asp:Image ID="profile_image" runat="server" CssClass="image_preview profile_img" />--%>
