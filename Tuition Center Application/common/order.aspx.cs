@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Google.Cloud.Firestore;
 using Tuition_Center_Application.class_file;
+using Tuition_Center_Application.util;
 
 namespace Tuition_Center_Application.common
 {
@@ -19,11 +20,14 @@ namespace Tuition_Center_Application.common
         protected void Page_Load(object sender, EventArgs e)
         {
             database = util.firebase.get_database();
-            
+            //System.Diagnostics.Debug.WriteLine("Session['level_page2']: " + Session["level_page2"].ToString());
+            Session["level_page2"] = null;
+
             get_a_doc();
             if (IsPostBack)
             {
                 System.Diagnostics.Debug.WriteLine("~~~~ POST BACK AGAIN ~~~~");
+                Response.Write("<script>alert('" + Session["Error_Msg"].ToString() + "')</script>");
             }
         }
 
@@ -69,67 +73,23 @@ namespace Tuition_Center_Application.common
             get_course();
         }
 
-        async void get_cart()
-        {
-            cart_var.Clear();
-
-            DocumentReference doc = database.Collection("Cart").Document("1");
-
-            DocumentSnapshot snap = await doc.GetSnapshotAsync();
-
-            Dictionary<string, object> key = snap.ToDictionary();
-            if (snap.Exists)
-            {
-                foreach (var item in key)
-                {
-                    if (item.Key == "startTime")
-                    {
-                        DateTime startTime = ((Timestamp)item.Value).ToDateTime();
-                        DateTime current_time = Timestamp.GetCurrentTimestamp().ToDateTime();
-
-                        TimeSpan span = current_time.Subtract(startTime);
-
-                        System.Diagnostics.Debug.WriteLine("Start Time: " + startTime);
-                        System.Diagnostics.Debug.WriteLine("Current Time: " + current_time);
-                        System.Diagnostics.Debug.WriteLine("Span(days): " + span.Days);
-                        System.Diagnostics.Debug.WriteLine("Span(hours): " + span.Hours);
-                        System.Diagnostics.Debug.WriteLine("Span(minutes): " + span.Minutes);
-                        System.Diagnostics.Debug.WriteLine("Span(seconds): " + span.Seconds);
-
-                        //System.Diagnostics.Debug.WriteLine("End Time: " + endTime);
-
-                        //await doc.UpdateAsync("currentTime", current_time);
-
-                        if (int.Parse(span.Days.ToString()) > 0 || int.Parse(span.Hours.ToString()) > 1)
-                        {
-                            await doc.DeleteAsync();
-                            System.Diagnostics.Debug.WriteLine("--DOCUMENT DELETED--");
-                        }
-                    }
-
-                    if (item.Key == "courseID")
-                    {
-                        foreach (var array_item in (List<object>)item.Value)
-                        {
-                            System.Diagnostics.Debug.WriteLine("array_item: " + array_item);
-                            cart_var.Add(array_item.ToString());
-                        }
-                    }
-                }
-            }
-
-            get_course();
-            System.Diagnostics.Debug.WriteLine("------------------------------------------------------");
-        }
-
         void get_course()
         {
             filtered = course_var.Where(course => cart_var.Contains(course.courseID)).ToList();
 
-            order_repeater.DataSource = filtered;
-            order_repeater.DataBind();
+            if (validation.check_time(filtered))
+            {
+                order_repeater.DataSource = filtered;
+                order_repeater.DataBind();
 
-            amount_text.Text = get_amount(filtered);
+                amount_text.Text = get_amount(filtered);
+            }
+            else
+            {
+                Session["level_page2"] = filtered[0].level;
+                Response.Redirect("~/common/course.aspx", false);
+            }
+
         }
 
         string get_amount(List<Course> filtered_list)

@@ -1,13 +1,14 @@
-﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/guess.Master" AutoEventWireup="true" CodeBehind="course.aspx.cs" Inherits="Tuition_Center_Application.common.course" Async="true" EnableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/common/MasterPage/guess.Master" AutoEventWireup="true" CodeBehind="course.aspx.cs" Inherits="Tuition_Center_Application.common.course" Async="true" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--css--%>
-    <link rel="stylesheet" href=".././css/course.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href=".././css/course.css" type="text/css" />
 
     <%--content--%>
-    <section>
+    <section class="course_section">
+
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
@@ -15,7 +16,6 @@
                     <asp:Repeater ID="course_repeater" runat="server">
                         <ItemTemplate>
                             <div>
-                                <!-- flip-card-container -->
                                 <div class="flip-card-container" style="--hue: 220">
                                     <div class="flip-card">
                                         <div class="card-front">
@@ -25,12 +25,9 @@
                                             </figure>
                                             <asp:HiddenField ID="courseID_hf" runat="server" Value='<%# Eval("courseID") %>' />
                                             <ul class="course_ul">
-                                                <%--<li>
-                                                    <asp:Label ID="courseID_label" runat="server" Text=<%# Eval("courseID") %>></asp:Label>
-                                                </li>--%>
                                                 <li><%# Eval("courseName") %></li>
                                                 <li><%# Eval("level") %></li>
-                                                <li>RM <%# Eval("price") %></li>
+                                                <li><%# Eval("day") %></li>
                                                 <li><%# Eval("time_start") %> - <%# Eval("time_end") %></li>
                                             </ul>
                                         </div>
@@ -55,7 +52,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /flip-card-container -->
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -74,9 +70,4 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </section>
-    <script>
-        function add_to_cart_function() {
-
-        }
-    </script>
 </asp:Content>

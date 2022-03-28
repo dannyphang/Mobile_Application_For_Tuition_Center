@@ -1,0 +1,87 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="guess.Master.cs" Inherits="Tuition_Center_Application.MasterPage.Guess" %>
+
+<!DOCTYPE html>
+<%@ Register Src="~/common/cursor.ascx" TagPrefix="CURSOR" TagName="POINTER"%>
+<%@ Register Src="~/common/footer.ascx" TagPrefix="FOOTER" TagName="FOOTER"%>
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="~/css/side_nav.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <CURSOR:POINTER ID="cursorcontrol" runat="server" />
+    <%--side navgation bar version 2--%>
+    <div class="sidebar">
+        <%--logo--%>
+        <div class="logo-details"> 
+            <i><ion-icon name="heart" class="icon"></ion-icon></i>
+            <div class="logo_name">Authentic Education Center</div>
+            <ion-icon name="menu-outline" id="btn"></ion-icon>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="./home.aspx">
+                    <i><ion-icon name="home-outline"></ion-icon></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="./course.aspx">
+                    <i><ion-icon name="book-outline"></ion-icon></i>
+                    <span class="links_name">Course</span>
+                </a>
+                <span class="tooltip">Course</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i><ion-icon name="people-outline"></ion-icon></i>
+                    <span class="links_name">Tutor</span>
+                </a>
+                <span class="tooltip">Tutor</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i><ion-icon name="call-outline"></ion-icon></i>
+                    <span class="links_name">Contat Us</span>
+                </a>
+                <span class="tooltip">Contact Us</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i><ion-icon name="megaphone-outline"></ion-icon></i>
+                    <span class="links_name">About Us</span>
+                </a>
+                <span class="tooltip">About Us</span>
+            </li>
+            <li>
+                <a href="./login.aspx">
+                    <i><ion-icon name="log-in-outline" id="log_out"></ion-icon></i>
+                    <span class="links_name">Sign In</span>
+                </a>
+                <span class="tooltip">Sign In</span>
+            </li>
+        </ul>
+    </div>
+
+    <%--content--%>
+    <section class="site-content">
+        <form id="form1" runat="server">
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </form>
+    </section>
+    <FOOTER:FOOTER ID="footercontrol" runat="server" />
+
+    <!--Javascript-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script src="../../js/side_nav.js"></script>
+</body>
+</html>

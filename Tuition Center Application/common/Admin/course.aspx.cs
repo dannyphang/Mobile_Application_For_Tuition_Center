@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Google.Cloud.Firestore;
 using Tuition_Center_Application.class_file;
+using Tuition_Center_Application.util;
 
 namespace Tuition_Center_Application.common.Admin
 {
@@ -28,6 +29,10 @@ namespace Tuition_Center_Application.common.Admin
                 demo_modal.Attributes.Add("class", "modal_form expand");
                 System.Diagnostics.Debug.WriteLine("Post Back AGAIN!!!!!");
                 selected_tutor = tutor_ddl.SelectedIndex;
+                if (Session["Error_Msg"] != null)
+                {
+                    Response.Write("<script>alert('" + Session["Error_Msg"].ToString() + "')</script>");
+                }
             }
 
             get_a_doc();
@@ -53,7 +58,7 @@ namespace Tuition_Center_Application.common.Admin
                 course_var.Add(course);
                 //update_staff_course(course.courseID, course.tutorID);
             }
-            
+
             List<Course> sorted = course_var.OrderBy(o => o.level).ToList();
 
             int biggestNum = int.Parse(course_var[0].courseID);
@@ -100,7 +105,7 @@ namespace Tuition_Center_Application.common.Admin
 
         protected void submit_btn_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Trace.WriteLine(selected_tutor);
+            //System.Diagnostics.Trace.WriteLine(selected_tutor);
 
             DocumentReference doc = database.Collection("Course").Document(new_id);
 
@@ -117,9 +122,14 @@ namespace Tuition_Center_Application.common.Admin
                 tutorID = tutorID_list[selected_tutor],
             };
 
-            doc.SetAsync(new_course);
+            if (validation.check_time(course_var, new_course))
+            {
+                doc.SetAsync(new_course);
 
-            add_tutor_course(new_id);
+                add_tutor_course(new_id);
+
+                Session["Error_Msg"] = null;
+            }
 
             clear_data();
 
@@ -199,7 +209,7 @@ namespace Tuition_Center_Application.common.Admin
             float time_end = -1;
 
             int temp = (int)Math.Ceiling((time_start - Math.Floor(time_start)) * 100); // 10.45 - 10.00 = 0.45 * 100 = 45
-            
+
             if (duration == 1.0)
             {
                 time_end = (float)(time_start + 1);
@@ -208,7 +218,7 @@ namespace Tuition_Center_Application.common.Admin
             {
                 time_end = (float)(time_start + 1.3);
 
-                if (temp >= 30) 
+                if (temp >= 30)
                 {
                     time_end = (float)(time_end - 0.6) + 1; // 9.75 - 0.60 + 1 = 10.15
                 }
@@ -293,7 +303,7 @@ namespace Tuition_Center_Application.common.Admin
         }
 
         protected void edit_btn_Click(object sender, EventArgs e)
-        { 
+        {
             for (int i = 0; i < course_var.Count(); i++)
             {
                 if (course_var[i].courseID == getID(sender))

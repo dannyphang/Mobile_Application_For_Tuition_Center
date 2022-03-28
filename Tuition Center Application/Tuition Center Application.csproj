@@ -178,6 +178,7 @@
     <Content Include="common\Admin\staff.aspx" />
     <Content Include="common\Admin\student.aspx" />
     <Content Include="common\course.aspx" />
+    <Content Include="common\course_main.aspx" />
     <Content Include="common\cursor.ascx" />
     <Content Include="common\cursor2.ascx" />
     <Content Include="common\footer.ascx" />
@@ -223,6 +224,7 @@
     <Content Include="css\remixicon.css" />
     <Content Include="css\report.css" />
     <Content Include="css\search.css" />
+    <Content Include="css\search2.css" />
     <Content Include="css\side_nav.css" />
     <Content Include="common\login.aspx" />
     <Content Include="css\staff_master.css" />
@@ -240,6 +242,7 @@
     <Content Include="js\air_datepicker.js" />
     <Content Include="js\calendar.js" />
     <Content Include="js\footer.js" />
+    <Content Include="js\search.js" />
     <Content Include="js\side_nav.js" />
     <Content Include="js\stripe.js" />
     <Content Include="js\testing.js" />
@@ -351,6 +354,13 @@
     </Compile>
     <Compile Include="common\course.aspx.designer.cs">
       <DependentUpon>course.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common\course_main.aspx.cs">
+      <DependentUpon>course_main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common\course_main.aspx.designer.cs">
+      <DependentUpon>course_main.aspx</DependentUpon>
     </Compile>
     <Compile Include="common\cursor.ascx.cs">
       <DependentUpon>cursor.ascx</DependentUpon>
@@ -622,6 +632,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="twilio_sms.json" />
+    <None Include="Properties\PublishProfiles\TuitionCenterApplication20220325125434 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

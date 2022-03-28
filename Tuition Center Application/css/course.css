@@ -16,7 +16,18 @@
     align-items: center;
     background: hsl(220, 10%, 12%);
     font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
-    cursor: none;
+    margin: auto;
+}
+
+.search-option div .icon_span {
+    height: 20px;
+    width: 20px;
+    fill: #5a6674;
+    opacity: 0.6;
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
+    padding-left: -25%;
+    position: fixed;
 }
 
 /* .flip-card-container */

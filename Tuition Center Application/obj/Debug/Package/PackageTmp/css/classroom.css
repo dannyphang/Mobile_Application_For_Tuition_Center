@@ -1,0 +1,287 @@
+﻿body {
+    color: #797979;
+    background: #ddd;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0px !important;
+    margin: 0px !important;
+    font-size: 13px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    margin-top: 20px;
+}
+
+.container {
+    padding-left: 100px;
+}
+
+.panel-body {
+    background: #fff;
+}
+
+.panel-body2 {
+    border-radius: 5px;
+}
+
+.cover-photo {
+    position: relative;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.fb-timeline-img img {
+    width: 100%;
+    height: 100%;
+    max-height: 280px;
+    border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+}
+
+.profile-thumb img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    margin-top: -90px;
+    border: 3px solid #fff;
+}
+
+img {
+    border-radius: 100%;
+}
+
+.profile-thumb {
+    float: left;
+    position: relative;
+}
+
+.p-text-area, .p-text-area:focus {
+    border: none;
+    font-weight: 300;
+    box-shadow: none;
+    color: rgb(50 50 50);
+    font-size: 16px;
+    width: 95%;
+}
+
+.fb-user-mail {
+    margin: 10px 0 0 20px;
+    display: inline-block;
+}
+
+.fb-name {
+    bottom: 5px;
+    left: 175px;
+    position: absolute;
+}
+
+    .fb-name h2 {
+        color: #FFFFFF;
+        text-rendering: optimizelegibility;
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+        font-size: 25px;
+    }
+
+.fb-user-thumb {
+    float: left;
+    width: 70px;
+    margin-right: 15px;
+}
+
+    .fb-user-thumb img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+    }
+
+.fb-user-details h3 {
+    margin: 15px 0 0;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.fb-user-details p {
+    color: #c3c3c3;
+}
+
+.fb-user-status {
+    line-height: 20px;
+}
+
+.fb-time-action {
+    padding: 15px 0;
+}
+
+.fb-border {
+    border-top: 1px solid #ebeef5;
+}
+
+.fb-time-action span, .fb-time-action a {
+    margin-right: 5px;
+}
+
+.fb-time-action a {
+    color: #2972a1;
+}
+
+    .fb-time-action a:hover {
+        text-decoration: underline;
+    }
+
+.fb-time-action span {
+    color: #5a5a5a;
+}
+
+.fb-status-container, .fb-comments li {
+    margin: 0 -15px 0 -15px;
+    padding: 0 35px;
+}
+
+.fb-status-container {
+    margin-top: 20px;
+    margin-bottom: -25px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.fb-gray-bg {
+    background: #f6f6f6;
+}
+
+.fb-comments li {
+    padding: 15px;
+}
+
+.fb-comments .cmt-thumb {
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-right: 15px;
+}
+
+.fb-comments .cmt-details {
+    padding-top: 5px;
+}
+
+    .fb-comments .cmt-details a {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+.cmt-form {
+    display: inline-block;
+    width: 90%;
+    padding-bottom: 20px;
+}
+
+.fb-timeliner h2 {
+    background: #828283;
+    color: #fff;
+    margin-top: 0;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    font-weight: 300;
+}
+
+.fb-timeliner ul {
+    margin-left: 15px;
+    margin-bottom: 20px;
+    list-style-type: none;
+}
+
+.fb-comments {
+    list-style-type: none;
+}
+
+.fb-timeliner ul li {
+    margin-bottom: 3px;
+}
+
+    .fb-timeliner ul li a {
+        color: #999797;
+        border-left: 4px solid #d3d7dd;
+        padding-left: 10px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        display: block;
+    }
+
+        .fb-timeliner ul li a:hover {
+            color: #999797;
+            border-left: 4px solid #b1b1b1;
+            padding-left: 10px;
+        }
+
+    .fb-timeliner ul li.active a {
+        color: #7a7a7a;
+        border-left: 4px solid #7a7a7a;
+        padding-left: 10px;
+    }
+
+.recent-highlight {
+    background: #FF6C60 !important;
+}
+
+.post_btn {
+    transform: rotate(45deg);
+}
+
+.post_btn, .post_btn:hover {
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    font-size: 20px;
+    background-color: transparent;
+    border: 0px;
+    color: grey;
+    top: -40px;
+    margin-right: 20px;
+    position: relative;
+}
+
+.post_btn2, post_btn2:hover {
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    font-size: 20px;
+    background-color: transparent;
+    border: 0px;
+    color: grey;
+    top: -40px;
+    margin-right: 50px;
+    position: relative;
+}
+
+.text_padding {
+    padding-right: 45px;
+}
+
+.comment_user {
+    float: left;
+    clear: right;
+}
+
+.comment_label {
+    float: left;
+    clear: both;
+    margin-left: 65px;
+    margin-top: -20px;
+    color: rgb(50 50 50);
+    width: 90%;
+    border-bottom: 1px solid #ebeef5;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.comment_time {
+    margin-left: 10px;
+    float: left;
+    clear: right;
+}

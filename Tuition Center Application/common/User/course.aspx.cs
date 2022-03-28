@@ -44,12 +44,15 @@ namespace Tuition_Center_Application.common.User
             foreach (DocumentSnapshot docsnap in snap.Documents)
             {
                 Course course = docsnap.ConvertTo<Course>();
-                course_var.Add(course);
-                for (int i = 0; i < ((class_file.Student)Session["Current_User"]).courseID.Count(); i++)
+                if (course.level == ((class_file.Student)Session["Current_User"]).educationLV)
                 {
-                    if (((class_file.Student)Session["Current_User"]).courseID[i] == course.courseID)
+                    course_var.Add(course);
+                    for (int i = 0; i < ((class_file.Student)Session["Current_User"]).courseID.Count(); i++)
                     {
-                        course_var.Remove(course);
+                        if (((class_file.Student)Session["Current_User"]).courseID[i] == course.courseID)
+                        {
+                            course_var.Remove(course);
+                        }
                     }
                 }
             }

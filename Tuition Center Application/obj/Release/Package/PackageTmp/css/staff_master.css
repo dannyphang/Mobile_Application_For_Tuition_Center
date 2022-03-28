@@ -1,0 +1,31 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Lato');
+body {
+    font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.navigation ul {
+    margin-top: 50px;
+}
+
+.profile-img {
+    position: absolute;
+    align-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 3px solid white;
+    width: 50px;
+    left: 10px;
+    top: 20px;
+}
+
+.username-title {
+    position: absolute;
+    display: block;
+    left: 80px;
+    top: 14px;
+    height: 60px;
+    line-height: 60px;
+    white-space: normal;
+    font-size: 24px;
+    color: white;
+}
